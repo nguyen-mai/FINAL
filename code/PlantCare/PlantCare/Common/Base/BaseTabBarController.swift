@@ -34,8 +34,8 @@ class BaseTabBarController: UITabBarController {
         
         let cameraVC = UIStoryboard(name: NameConstant.Storyboard.Camera,
                                   bundle: nil).instantiateVC(CameraVC.self)
-        let cameraNavController = BaseNavigationController(rootViewController: cameraVC)
-        cameraNavController.tabBarItem = UITabBarItem(
+//        let cameraNavController = BaseNavigationController(rootViewController: cameraVC)
+        cameraVC.tabBarItem = UITabBarItem(
             title: nil,
             image: nil,
             tag: 1)
@@ -48,7 +48,7 @@ class BaseTabBarController: UITabBarController {
             image: UIImage(named: AppImage.Icon.ForumTabItem),
             tag: 2)
         
-        viewControllers = [homeNavController, cameraNavController, forumNavController]
+        viewControllers = [homeNavController, cameraVC, forumNavController]
         
         let items = tabBar.items
         guard let items = items else {
