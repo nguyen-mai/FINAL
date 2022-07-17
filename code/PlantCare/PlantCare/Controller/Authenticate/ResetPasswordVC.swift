@@ -1,4 +1,5 @@
 import UIKit
+import Firebase
 
 class ResetPasswordVC: UIViewController {
 
@@ -40,6 +41,7 @@ class ResetPasswordVC: UIViewController {
             icon: nil,
             underlineColor: AppColor.LightGrayColor)
         emailTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        emailTextField.delegate = self
     }
     
     private func setupButton() {
@@ -56,7 +58,31 @@ class ResetPasswordVC: UIViewController {
 extension ResetPasswordVC {
     @objc
     private func sendBtnTap() {
-        
+        guard let email = emailTextField.text else {
+            return
+        }
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            if let error = error {
+                print(error.localizedDescription)
+                self.showAlert(title: Localization.Alert.Sorry.localized(),
+                               message: "\(error.localizedDescription)")
+            }
+            self.showAlert(title: Localization.Alert.Congrat.localized(),
+                           message: Localization.Alert.ResetEmail.localized())
+        }
+    }
+    
+    private func showAlert(title: String?, message: String?) {
+        guard let title = title,
+              let message = message else {
+            return
+        }
+        let alert = UIAlertController(title: title.localized(),
+                                      message: message.localized(),
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: Localization.Alert.OK, style: .default)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
     @objc
@@ -64,7 +90,7 @@ extension ResetPasswordVC {
         if let emailInput = emailTextField.text, !emailInput.isEmpty {
             CustomTextField.shared.styleTextField(
                 textfield: emailTextField,
-                placeholer: Localization.Authenticate.EmailPlaceHolder,
+                placeholer: Localization.Authenticate.EmailPlaceHolder.localized(),
                 icon: nil,
                 underlineColor: AppColor.GreenColor)
             sendButton.isEnabled = true
@@ -72,11 +98,18 @@ extension ResetPasswordVC {
         } else {
             CustomTextField.shared.styleTextField(
                 textfield: emailTextField,
-                placeholer: Localization.Authenticate.EmailPlaceHolder,
+                placeholer: Localization.Authenticate.EmailPlaceHolder.localized(),
                 icon: nil,
                 underlineColor: AppColor.LightGrayColor)
             sendButton.isEnabled = false
             sendButton.backgroundColor = AppColor.LightGrayColor
         }
+    }
+}
+
+extension ResetPasswordVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        emailTextField.resignFirstResponder()
+        return true
     }
 }

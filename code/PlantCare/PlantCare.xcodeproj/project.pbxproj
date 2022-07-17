@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0AAF3B1DDCFBD61C244D2530 /* Pods_PlantCare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F8F2BCA190BB099CDB93787 /* Pods_PlantCare.framework */; };
 		1800A25028840D4400A394B7 /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1800A24F28840D4400A394B7 /* AccountVC.swift */; };
 		1800A25328840FFF00A394B7 /* CommentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1800A25228840FFF00A394B7 /* CommentVC.swift */; };
 		1800A2552884107A00A394B7 /* ForumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1800A2542884107A00A394B7 /* ForumCell.swift */; };
@@ -65,6 +66,13 @@
 		18775F9B2875FDBA0032793D /* CameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18775F9A2875FDBA0032793D /* CameraVC.swift */; };
 		18775F9F2875FDE30032793D /* ForumVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18775F9E2875FDE30032793D /* ForumVC.swift */; };
 		187E143528830DF300CEAF54 /* ButtonWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E143428830DF300CEAF54 /* ButtonWithImage.swift */; };
+		18ABE5B1288466C300034619 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18ABE5B0288466C300034619 /* GoogleService-Info.plist */; };
+		18ABE5B528846AB500034619 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ABE5B428846AB500034619 /* Config.swift */; };
+		18ABE5B728846E6900034619 /* FirebaseUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ABE5B628846E6900034619 /* FirebaseUtilities.swift */; };
+		18ABE5B9288499D200034619 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ABE5B8288499D200034619 /* ProfileCell.swift */; };
+		18ABE5BB288499E500034619 /* ChangePasswordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ABE5BA288499E500034619 /* ChangePasswordCell.swift */; };
+		18ADFE2B2884BC1C00D159F1 /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ADFE2A2884BC1C00D159F1 /* NotificationExtension.swift */; };
+		18ADFE3A2884C65A00D159F1 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ADFE392884C65A00D159F1 /* CustomImageView.swift */; };
 		18BE2EDF28773F16004F1E43 /* ClassifierModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 18BE2EDE28773F16004F1E43 /* ClassifierModel.mlmodel */; };
 		18DBB6A72883E91F00D12D55 /* PostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DBB6A62883E91F00D12D55 /* PostVC.swift */; };
 		18EDEEF6287FBA8B008090E9 /* DetailDiseaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDEEF5287FBA8B008090E9 /* DetailDiseaseVC.swift */; };
@@ -133,10 +141,20 @@
 		18775F9A2875FDBA0032793D /* CameraVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraVC.swift; sourceTree = "<group>"; };
 		18775F9E2875FDE30032793D /* ForumVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumVC.swift; sourceTree = "<group>"; };
 		187E143428830DF300CEAF54 /* ButtonWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithImage.swift; sourceTree = "<group>"; };
+		18ABE5B0288466C300034619 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		18ABE5B428846AB500034619 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		18ABE5B628846E6900034619 /* FirebaseUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseUtilities.swift; sourceTree = "<group>"; };
+		18ABE5B8288499D200034619 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
+		18ABE5BA288499E500034619 /* ChangePasswordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordCell.swift; sourceTree = "<group>"; };
+		18ADFE2A2884BC1C00D159F1 /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
+		18ADFE392884C65A00D159F1 /* CustomImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		18BE2EDE28773F16004F1E43 /* ClassifierModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ClassifierModel.mlmodel; sourceTree = "<group>"; };
 		18DBB6A62883E91F00D12D55 /* PostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostVC.swift; sourceTree = "<group>"; };
 		18EDEEF5287FBA8B008090E9 /* DetailDiseaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDiseaseVC.swift; sourceTree = "<group>"; };
 		18EDEEF7287FBBB6008090E9 /* BlogCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogCell.swift; sourceTree = "<group>"; };
+		9F8F2BCA190BB099CDB93787 /* Pods_PlantCare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlantCare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F40F0C294299E76065A14EAD /* Pods-PlantCare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlantCare.release.xcconfig"; path = "Target Support Files/Pods-PlantCare/Pods-PlantCare.release.xcconfig"; sourceTree = "<group>"; };
+		FBBBF18605DFAAD0EE06BD0B /* Pods-PlantCare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlantCare.debug.xcconfig"; path = "Target Support Files/Pods-PlantCare/Pods-PlantCare.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +162,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AAF3B1DDCFBD61C244D2530 /* Pods_PlantCare.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +172,7 @@
 		1800A25128840DB400A394B7 /* UIView */ = {
 			isa = PBXGroup;
 			children = (
+				18ADFE392884C65A00D159F1 /* CustomImageView.swift */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -165,6 +185,8 @@
 				1870E0C62883229E009C5529 /* LanguageCell.swift */,
 				1800A2542884107A00A394B7 /* ForumCell.swift */,
 				1800A256288411B400A394B7 /* CommentCell.swift */,
+				18ABE5B8288499D200034619 /* ProfileCell.swift */,
+				18ABE5BA288499E500034619 /* ChangePasswordCell.swift */,
 			);
 			path = "Table Cell";
 			sourceTree = "<group>";
@@ -218,6 +240,8 @@
 			children = (
 				18775F252875DBF00032793D /* PlantCare */,
 				18775F242875DBF00032793D /* Products */,
+				F7DF6BA829EC6D2D6B5E6E6C /* Pods */,
+				4563BBFA5262C00F4E79B846 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -240,6 +264,7 @@
 				18775F712875E4080032793D /* Controller */,
 				18775F702875E3F70032793D /* View */,
 				18775F342875DBF10032793D /* Info.plist */,
+				18ABE5B0288466C300034619 /* GoogleService-Info.plist */,
 			);
 			path = PlantCare;
 			sourceTree = "<group>";
@@ -259,6 +284,8 @@
 		18775F3E2875DC190032793D /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				18ABE5B428846AB500034619 /* Config.swift */,
+				18ABE5B628846E6900034619 /* FirebaseUtilities.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -294,6 +321,7 @@
 				18775F482875DC190032793D /* TextFieldExtension.swift */,
 				18775F492875DC190032793D /* TableViewExtension.swift */,
 				18775F4A2875DC190032793D /* CollectionViewExtension.swift */,
+				18ADFE2A2884BC1C00D159F1 /* NotificationExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -436,6 +464,23 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		4563BBFA5262C00F4E79B846 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9F8F2BCA190BB099CDB93787 /* Pods_PlantCare.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F7DF6BA829EC6D2D6B5E6E6C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FBBBF18605DFAAD0EE06BD0B /* Pods-PlantCare.debug.xcconfig */,
+				F40F0C294299E76065A14EAD /* Pods-PlantCare.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -443,9 +488,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18775F372875DBF10032793D /* Build configuration list for PBXNativeTarget "PlantCare" */;
 			buildPhases = (
+				3FA996155B9E2981595C6648 /* [CP] Check Pods Manifest.lock */,
 				18775F1F2875DBF00032793D /* Sources */,
 				18775F202875DBF00032793D /* Frameworks */,
 				18775F212875DBF00032793D /* Resources */,
+				9636B4E2C2CEBF424FF2178F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -499,6 +546,7 @@
 				18775F902875FD120032793D /* Camera.storyboard in Resources */,
 				18775F302875DBF10032793D /* Assets.xcassets in Resources */,
 				18775F802875F1450032793D /* OnboardingCollectionViewCell.xib in Resources */,
+				18ABE5B1288466C300034619 /* GoogleService-Info.plist in Resources */,
 				18775F2E2875DBF00032793D /* Start.storyboard in Resources */,
 				18775F852875FC580032793D /* Authenticate.storyboard in Resources */,
 				18775F942875FD790032793D /* Forum.storyboard in Resources */,
@@ -507,6 +555,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3FA996155B9E2981595C6648 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PlantCare-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9636B4E2C2CEBF424FF2178F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PlantCare/Pods-PlantCare-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PlantCare/Pods-PlantCare-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PlantCare/Pods-PlantCare-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		18775F1F2875DBF00032793D /* Sources */ = {
@@ -528,10 +618,13 @@
 				184F8C62287C1CDC0079102B /* Comment.swift in Sources */,
 				18EDEEF6287FBA8B008090E9 /* DetailDiseaseVC.swift in Sources */,
 				18775F5C2875DC190032793D /* TableViewExtension.swift in Sources */,
+				18ABE5B9288499D200034619 /* ProfileCell.swift in Sources */,
 				18775F732875E4250032793D /* SplashVC.swift in Sources */,
 				18775F582875DC190032793D /* UIStoryboardExtension.swift in Sources */,
 				18091F46288283CE00C08EC4 /* HistoryVC.swift in Sources */,
 				18775F652875DC8E0032793D /* Localization.swift in Sources */,
+				18ABE5B728846E6900034619 /* FirebaseUtilities.swift in Sources */,
+				18ADFE2B2884BC1C00D159F1 /* NotificationExtension.swift in Sources */,
 				18091F4228826A2F00C08EC4 /* SettingViewEntity.swift in Sources */,
 				184F8C64287C1CE10079102B /* Post.swift in Sources */,
 				18775F8A2875FCAC0032793D /* LoginVC.swift in Sources */,
@@ -541,11 +634,13 @@
 				18775F272875DBF00032793D /* AppDelegate.swift in Sources */,
 				18775F7F2875F1450032793D /* OnboardingCollectionViewCell.swift in Sources */,
 				18091F44288282D800C08EC4 /* LanguageVC.swift in Sources */,
+				18ABE5BB288499E500034619 /* ChangePasswordCell.swift in Sources */,
 				18775F292875DBF00032793D /* SceneDelegate.swift in Sources */,
 				18260AE92882631400D1C935 /* SettingVC.swift in Sources */,
 				187E143528830DF300CEAF54 /* ButtonWithImage.swift in Sources */,
 				18775F612875DC190032793D /* LanguageViewEntity.swift in Sources */,
 				18775F562875DC190032793D /* EnumConstant.swift in Sources */,
+				18ADFE3A2884C65A00D159F1 /* CustomImageView.swift in Sources */,
 				1870E0CB288332D3009C5529 /* DiseasesListVC.swift in Sources */,
 				18775F602875DC190032793D /* OnboardingViewEntity.swift in Sources */,
 				18775F9B2875FDBA0032793D /* CameraVC.swift in Sources */,
@@ -557,6 +652,7 @@
 				1800A257288411B400A394B7 /* CommentCell.swift in Sources */,
 				1800A2552884107A00A394B7 /* ForumCell.swift in Sources */,
 				18775F552875DC190032793D /* NameConstant.swift in Sources */,
+				18ABE5B528846AB500034619 /* Config.swift in Sources */,
 				18775F522875DC190032793D /* Logger.swift in Sources */,
 				18775F672875DC9A0032793D /* AppColor.swift in Sources */,
 				1870E0CD28833424009C5529 /* DiseaseCell.swift in Sources */,
@@ -713,6 +809,7 @@
 		};
 		18775F382875DBF10032793D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FBBBF18605DFAAD0EE06BD0B /* Pods-PlantCare.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -741,6 +838,7 @@
 		};
 		18775F392875DBF10032793D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F40F0C294299E76065A14EAD /* Pods-PlantCare.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

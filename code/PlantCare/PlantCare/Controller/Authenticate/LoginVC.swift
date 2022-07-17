@@ -1,4 +1,6 @@
 import UIKit
+import Firebase
+import ProgressHUD
 
 class LoginVC: UIViewController {
     
@@ -42,6 +44,7 @@ class LoginVC: UIViewController {
             icon: nil,
             underlineColor: AppColor.LightGrayColor)
         emailTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        emailTextField.keyboardType = .emailAddress
         
         CustomTextField.shared.styleTextField(
             textfield: passwordTextField,
@@ -86,7 +89,39 @@ class LoginVC: UIViewController {
 // MARK: - Handle Actions
 extension LoginVC {
     @objc private func logInBtnTap() {
+        view.endEditing(true)
+        ProgressHUD.show("Waiting...", interaction: false)
+        guard let email = emailTextField.text, let password = passwordTextField.text else {
+            return
+        }
+        Auth.auth().logIn(email: email, password: password) { (err) in
+            if err != nil {
+                print("Error")
+                return
+            }
+            let tabBarController = BaseTabBarController()
+            UIApplication.shared.windows.first?.rootViewController = tabBarController
+            UIApplication.shared.windows.first?.makeKeyAndVisible()
+            UserDefaults.standard.set(
+                EnumConstant.OnboardingStatus.Home.rawValue,
+                forKey: NameConstant.UserDefaults.HasOnboarding)
+            ProgressHUD.dismiss()
+        }
         
+//        Auth.auth().signIn(withEmail: email, password: password, completion: { (user, err) in
+//            if let err = err {
+//                print("Failed to sign in with email:", err)
+//                ProgressHUD.showError()
+//                return
+//            }
+//            let tabBarController = BaseTabBarController()
+//            UIApplication.shared.windows.first?.rootViewController = tabBarController
+//            UIApplication.shared.windows.first?.makeKeyAndVisible()
+//            UserDefaults.standard.set(
+//                EnumConstant.OnboardingStatus.Home.rawValue,
+//                forKey: NameConstant.UserDefaults.HasOnboarding)
+//            ProgressHUD.dismiss()
+//        })
     }
     
     @objc private func registerBtnTap() {

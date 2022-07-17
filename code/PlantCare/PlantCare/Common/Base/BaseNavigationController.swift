@@ -9,8 +9,8 @@ class BaseNavigationController: UINavigationController {
     }
     
     private func setupUI() {
-        UIBarButtonItem.appearance().tintColor = AppColor.WhiteColor
-        UINavigationBar.appearance().backgroundColor = AppColor.GreenColor
-        UINavigationBar.appearance().barTintColor = AppColor.GreenColor
+        UIBarButtonItem.appearance().tintColor = AppColor.GreenColor
+        UINavigationBar.appearance().backgroundColor = AppColor.WhiteColor
+        UINavigationBar.appearance().barTintColor = AppColor.WhiteColor
     }
 }

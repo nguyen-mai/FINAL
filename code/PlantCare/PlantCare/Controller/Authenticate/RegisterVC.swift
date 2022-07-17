@@ -1,4 +1,6 @@
 import UIKit
+import Firebase
+import ProgressHUD
 
 class RegisterVC: UIViewController {
     
@@ -64,6 +66,7 @@ class RegisterVC: UIViewController {
             placeholer: Localization.Authenticate.EmailPlaceHolder.localized(),
             icon: nil,
             underlineColor: AppColor.LightGrayColor)
+        emailTextField.keyboardType = .emailAddress
         emailTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         
         CustomTextField.shared.styleTextField(
@@ -75,10 +78,12 @@ class RegisterVC: UIViewController {
         
         CustomTextField.shared.styleTextField(
             textfield: confirmPasswordTextField,
-            placeholer: Localization.Authenticate.UsernamePlaceholder.localized(),
+            placeholer: Localization.Authenticate.ConfirmPassword.localized(),
             icon: AppImage.Icon.PrivatePassword,
             underlineColor: AppColor.LightGrayColor)
         confirmPasswordTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        
+        confirmPasswordTextField.delegate = self
     }
     
     private func setupButton() {
@@ -98,7 +103,39 @@ class RegisterVC: UIViewController {
 // MARK: - Handle Actions
 extension RegisterVC {
     @objc private func registerBtnTap() {
-        
+        view.endEditing(true)
+        ProgressHUD.show("Waiting...", interaction: false)
+        guard let userName = userNameTextField.text,let email = emailTextField.text, let password = passwordTextField.text else {
+            return
+        }
+        Auth.auth().createUser(withEmail: email, username: userName, password: password, image: nil) { (err) in
+            if err != nil {
+                print("Error")
+                return
+            }
+            ProgressHUD.dismiss()
+            self.showAlert()
+        }
+    }
+    
+    private func showAlert() {
+        let alert = UIAlertController(title: Localization.Alert.Congrat,
+                                      message: Localization.Alert.RegisterSuccessfully,
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(
+            title: Localization.Alert.GoLogIn.localized(),
+            style: .default) { _ in
+            let vc = UIStoryboard(name: NameConstant.Storyboard.Authenticate,
+                                  bundle: nil).instantiateVC(LoginVC.self)
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        }
+        let cancelAction = UIAlertAction(
+            title: Localization.Alert.Cancel.localized(),
+            style: .cancel)
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
     @objc private func logInBtnTap() {
@@ -145,5 +182,12 @@ extension RegisterVC {
             registerButton.isEnabled = false
             registerButton.backgroundColor = AppColor.LightGrayColor
         }
+    }
+}
+
+extension RegisterVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        confirmPasswordTextField.resignFirstResponder()
+        return true
     }
 }

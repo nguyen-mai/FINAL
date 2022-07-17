@@ -1,8 +1,9 @@
 import UIKit
+import Firebase
+import ProgressHUD
 
 class ForumVC: UIViewController {
-    @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet private weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -12,6 +13,22 @@ class ForumVC: UIViewController {
     
     private func setupUI() {
         setupNavBar()
+        setupCollectionView()
+    }
+    
+    private func setupCollectionView() {
+        collectionView?.backgroundColor = .white
+//        collectionView?.register(CommunityPostCell.self, forCellWithReuseIdentifier: CommunityPostCell.cellId)
+//        collectionView?.backgroundView = CommunityEmptyStateView()
+        collectionView?.backgroundView?.alpha = 0
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleRefresh), name: NSNotification.Name.updateCommunityFeed, object: nil)
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        collectionView?.refreshControl = refreshControl
+        
+        fetchAllPosts()
     }
     
     private func setupNavBar() {
@@ -24,7 +41,6 @@ class ForumVC: UIViewController {
         label.text = Localization.Forum.Forum.localized()
         label.font = UIFont(name: "Noteworthy Bold", size: 20)
         navigationItem.titleView = label
-//        navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: label)
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: AppImage.Icon.User)?.withRenderingMode(.alwaysOriginal),
                                                            style: .plain,
@@ -53,5 +69,34 @@ extension ForumVC {
                               bundle: nil).instantiateVC(AccountVC.self)
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func fetchAllPosts() {
+        collectionView?.refreshControl?.beginRefreshing()
+        
+        Database.database().fetchAllUsers(includeCurrentUser: true, completion: { (users) in
+            for user in users {
+                Database.database().fetchAllPosts(withUID: user.uid, completion: { (posts) in
+//                    self.posts.append(contentsOf: posts)
+//
+//                    self.posts.sort(by: { (p1, p2) -> Bool in
+//                        return p1.creationDate.compare(p2.creationDate) == .orderedDescending
+//                    })
+                    
+                    self.collectionView?.reloadData()
+                    self.collectionView?.refreshControl?.endRefreshing()
+                }) { (err) in
+                    self.collectionView?.refreshControl?.endRefreshing()
+                }
+            }
+        }) {  (_) in
+            self.collectionView?.refreshControl?.endRefreshing()
+        }
+    }
+    
+
+    @objc private func handleRefresh() {
+//        posts.removeAll()
+        fetchAllPosts()
     }
 }

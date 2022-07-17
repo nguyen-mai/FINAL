@@ -30,6 +30,7 @@ struct Localization {
         static let UsernamePlaceholder = "Enter username..."
         static let NoAccount = "Don't have an account?"
         static let AlreadyAccount = "Already have an account?"
+        static let ConfirmPassword = "Re-enter password..."
         
         static let Login = "Login"
         static let Register = "Register"
@@ -41,6 +42,8 @@ struct Localization {
         static let Send = "Send"
         
         static let RequirementPassword = "Password requires at least 8 characters, 1 uppercase, 1 lowercase and 1 number"
+        
+        static let LogOut = "Log Out"
     }
     
     struct Home {
@@ -135,6 +138,25 @@ struct Localization {
         static let PlaceholderProblem = "Describe your problem ..."
         static let Post = "Post"
         static let Forum = "Forum"
+    }
+    
+    struct Alert {
+        static let Congrat = "Hurray!"
+        static let RegisterSuccessfully = "Register successfully"
+        static let GoLogIn = "Go to Log in"
+        static let Cancel = "Cancel"
+        static let Sorry = "Sorry"
+        static let OK = "OK"
+        static let ResetEmail = "A password reset email has been sent!"
+        static let LogOut = "Log Out"
+        static let LogoutMessage = "Are you sure you want to log out?"
+    }
+    
+    struct Profile {
+        static let MyAccount = "My Account"
+        static let ChangePass = "Change password"
+        static let UserName = "User name"
+        static let Email = "Email"
     }
 }
 

@@ -1,5 +1,5 @@
 import UIKit
-//import Firebase
+import Firebase
 
 class PostVC: UIViewController {
     
@@ -39,6 +39,8 @@ class PostVC: UIViewController {
         label.text = Localization.Forum.Post.localized()
         label.font = UIFont(name: "Noteworthy Bold", size: 20)
         navigationItem.titleView = label
+        
+        navigationController?.navigationBar.tintColor = AppColor.WhiteColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,22 +78,21 @@ class PostVC: UIViewController {
     }
     
     @objc private func shareBtnTapped(_ sender: Any) {
-//        guard let postImage = selectedImage else { return }
-//        guard let caption = captionTextView.text else { return }
-//
-//        captionTextView.isUserInteractionEnabled = false
-//
-//        Database.database().createPost(withImage: postImage, caption: caption) { (err) in
-//            if err != nil {
-//                self.captionTextView.isUserInteractionEnabled = true
-//                return
-//            }
-//
-//            NotificationCenter.default.post(name: NSNotification.Name.updateCommunityFeed, object: nil)
-////            NotificationCenter.default.post(name: NSNotification.Name.updateUserProfileFeed, object: nil)
-//            self.dismiss(animated: true, completion: nil)
-//        }
-//        navigationController?.popViewController(animated: true)
+        guard let postImage = selectedImage else { return }
+        guard let caption = captionTextView.text else { return }
+
+        captionTextView.isUserInteractionEnabled = false
+
+        Database.database().createPost(withImage: postImage, caption: caption) { (err) in
+            if err != nil {
+                self.captionTextView.isUserInteractionEnabled = true
+                return
+            }
+
+            NotificationCenter.default.post(name: NSNotification.Name.updateCommunityFeed, object: nil)
+            self.dismiss(animated: true, completion: nil)
+        }
+        navigationController?.popViewController(animated: true)
     }
 }
 
@@ -121,4 +122,36 @@ extension PostVC: UITextViewDelegate {
             captionTextView.textColor = UIColor.lightGray
         }
     }
+}
+
+//extension ForumVC: UICollectionViewDelegate, UICollectionViewDataSource {
+//    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return posts.count
+//    }
+//
+//    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommunityPostCell.cellId, for: indexPath) as! CommunityPostCell
+//        if indexPath.item < posts.count {
+//            cell.post = posts[indexPath.item]
+//        }
+//        cell.delegate = self
+//        return cell
+//    }
+//}
+
+//MARK: - UICollectionViewDelegateFlowLayout
+
+extension ForumVC: UICollectionViewDelegateFlowLayout {
+
+//func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//    let dummyCell = CommunityPostCell(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 1000))
+//    dummyCell.post = posts[indexPath.item]
+//    dummyCell.layoutIfNeeded()
+//    
+//    var height: CGFloat = dummyCell.header.bounds.height
+//    height += view.frame.width
+//    height += 24 + 2 * dummyCell.padding //bookmark button + padding
+//    height += dummyCell.captionLabel.intrinsicContentSize.height + 8
+//    return CGSize(width: view.frame.width, height: height)
+//}
 }

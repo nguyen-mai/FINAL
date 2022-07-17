@@ -26,6 +26,7 @@ struct AppImage {
         static let Like = "ic_like"
         static let LikeSelected = "ic_likeSelected"
         static let Share = "ic_share"
+        static let Pencil = "ic_pencil"
     }
     
     struct Image {

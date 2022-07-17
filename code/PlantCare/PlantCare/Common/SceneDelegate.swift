@@ -7,15 +7,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         AppPreferences.shared.getLanguage()
-        
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-//            let splashVC = UIStoryboard(name: NameConstant.Storyboard.Start,
-//                                       bundle: nil).instantiateVC(SplashVC.self)
-//            let splashNavVC = BaseNavigationController(rootViewController: splashVC)
-//            window.rootViewController = splashNavVC
-//            self.window = window
-//            window.makeKeyAndVisible()
             
             if UserDefaults.standard.integer(forKey: NameConstant.UserDefaults.HasOnboarding)
                 == EnumConstant.OnboardingStatus.Home.rawValue {
