@@ -3,6 +3,7 @@ import Firebase
 
 class PostVC: UIViewController {
     
+    @IBOutlet private weak var headerView: UIView!
     @IBOutlet private weak var photo: UIImageView!
     @IBOutlet private weak var captionTextView: UITextView!
     @IBOutlet private weak var shareButton: UIButton!
@@ -41,6 +42,7 @@ class PostVC: UIViewController {
         navigationItem.titleView = label
         
         navigationController?.navigationBar.tintColor = AppColor.WhiteColor
+        headerView.backgroundColor = AppColor.GreenColor
     }
     
     override func viewWillAppear(_ animated: Bool) {

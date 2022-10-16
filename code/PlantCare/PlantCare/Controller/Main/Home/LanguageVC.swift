@@ -2,6 +2,7 @@ import UIKit
 
 class LanguageVC: UIViewController {
     
+    @IBOutlet private weak var headerView: UIView!
     @IBOutlet private weak var tableView: UITableView!
     
     private let data: LanguageViewEntity = LanguageViewEntity()
@@ -12,21 +13,16 @@ class LanguageVC: UIViewController {
         setupUI()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        navigationController?.setNavigationBarHidden(false, animated: true)
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-
-        navigationController?.setNavigationBarHidden(true, animated: true)
-    }
-    
     private func setupUI() {
+        setupNavBar()
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    private func setupNavBar() {
+        navigationController?.navigationBar.tintColor = AppColor.WhiteColor
+        navigationController?.navigationBar.backgroundColor = AppColor.GreenColor
+        headerView.backgroundColor = AppColor.GreenColor
     }
 }
 

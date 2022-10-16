@@ -29,6 +29,8 @@ class LoginVC: UIViewController {
     }
     
     private func setupNavigationItem() {
+        navigationController?.navigationBar.tintColor = AppColor.GreenColor
+        navigationController?.navigationBar.backgroundColor = AppColor.WhiteColor
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: Localization.Onboarding.Skip.localized(),

@@ -5,6 +5,8 @@ class BlogCell: UICollectionViewCell {
     
     @IBOutlet private weak var title: UILabel!
     
+    @IBOutlet private weak var dimView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -12,7 +14,8 @@ class BlogCell: UICollectionViewCell {
     }
     
     private func setupUI() {
-        self.layer.cornerRadius = 20
+        dimView.layer.cornerRadius = 20
+        img.layer.cornerRadius = 20
     }
     
     func config(with model: BlogViewEntity.Blog) {

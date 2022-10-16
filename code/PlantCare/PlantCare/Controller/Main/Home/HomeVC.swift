@@ -24,6 +24,10 @@ class HomeVC: UIViewController {
 //    var user: User?
     private var titleRightBtn = ""
     private var blogs: BlogViewEntity = BlogViewEntity()
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +36,6 @@ class HomeVC: UIViewController {
         setupUI()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-
     private func setupUI() {
         setupNavigationItem()
         setupTextField()
@@ -45,6 +44,16 @@ class HomeVC: UIViewController {
         setupButton()
         setupView()
         setupLabel()
+        setupNavBar()
+    }
+    
+    private func setupNavBar() {
+        navigationController?.navigationBar.tintColor = AppColor.WhiteColor
+        navigationController?.navigationBar.backgroundColor = AppColor.GreenColor
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: AppImage.Icon.Menu)?.withRenderingMode(.alwaysOriginal),
+                                                           style: .plain,
+                                                           target: self,
+                                                           action: #selector(leftButtonTap))
     }
     
     private func setupCollectionView() {
@@ -74,9 +83,6 @@ class HomeVC: UIViewController {
         cameraBtn.setTitleColor(AppColor.WhiteColor, for: .normal)
         cameraBtn.addTarget(self, action: #selector(cameraBtnTap), for: .touchUpInside)
         
-        leftButton.setImage(UIImage(named: AppImage.Icon.Menu), for: .normal)
-        leftButton.addTarget(self, action: #selector(leftButtonTap), for: .touchUpInside)
-        
         allButton.setTitle(Localization.Home.All, for: .normal)
         allButton.setTitleColor(AppColor.GreenColor, for: .normal)
         allButton.addTarget(self, action: #selector(searchTextFieldTap), for: .touchUpInside)
@@ -86,12 +92,12 @@ class HomeVC: UIViewController {
         view.backgroundColor = AppColor.LightGrayColor2
         helpView.layer.cornerRadius = 20
         helpView.layer.shadowColor = UIColor.lightGray.cgColor
-        
+        self.view.backgroundColor = AppColor.LightGrayColor4
     }
     
     private func setupLabel() {
         titleLabel.text = Localization.TitleApp.Title.localized()
-        titleLabel.font = UIFont(name: "Noteworthy Bold", size: 40)
+        titleLabel.font = UIFont(name: "Noteworthy Bold", size: 35)
         titleLabel.textColor = UIColor.white
         
         label1.text = Localization.Home.TakePicture.localized()
@@ -435,6 +441,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
         }
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
+        self.collectionView.deselectItem(at: indexPath, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -4,8 +4,6 @@ import Firebase
 class SettingVC: UIViewController {
     @IBOutlet private weak var subView: UIView!
     @IBOutlet private weak var tableView: UITableView!
-    
-    @IBOutlet private weak var backButton: UIButton!
     @IBOutlet private weak var loginButton: ButtonWithImage!
     
     private let list = SettingViewEntity()
@@ -15,11 +13,6 @@ class SettingVC: UIViewController {
         super.viewDidLoad()
 
         setupUI()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     private func setupUI() {
@@ -40,10 +33,16 @@ class SettingVC: UIViewController {
     }
     
     private func setupButton() {
-        backButton.setImage(UIImage(named: AppImage.Icon.Back), for: .normal)
-        backButton.addTarget(self, action: #selector(backBtnTap), for: .touchUpInside)
+        navigationController?.navigationBar.tintColor = AppColor.WhiteColor
+        navigationController?.navigationBar.backgroundColor = AppColor.GreenColor
         
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: AppImage.Icon.Back)?.withRenderingMode(.alwaysOriginal),
+                                                           style: .plain,
+                                                           target: self,
+                                                           action: #selector(backBtnTap))
+      
         loginButton.setImage(UIImage(named: AppImage.Icon.CircleNext), for: .normal)
+        loginButton.titleLabel?.font = UIFont(name: "Noteworthy Bold", size: 30)
         if Auth.auth().currentUser == nil {
             loginButton.setTitle(Localization.Authenticate.Login, for: .normal)
             loginButton.addTarget(self, action: #selector(loginBtnTap), for: .touchUpInside)

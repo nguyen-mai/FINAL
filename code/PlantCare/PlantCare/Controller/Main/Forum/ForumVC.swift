@@ -4,6 +4,12 @@ import ProgressHUD
 
 class ForumVC: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var searchTextField: UITextField!
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,16 +38,12 @@ class ForumVC: UIViewController {
     }
     
     private func setupNavBar() {
-        navigationController?.navigationBar.barTintColor = AppColor.GreenColor
-        navigationController?.navigationItem.titleView?.tintColor = AppColor.WhiteColor
+        titleLabel.text = Localization.TitleApp.Title.localized()
+        titleLabel.font = UIFont(name: "Noteworthy Bold", size: 35)
+        titleLabel.textColor = UIColor.white
+        
         navigationController?.navigationBar.tintColor = AppColor.WhiteColor
-        
-        let label = UILabel()
-        label.textColor = AppColor.WhiteColor
-        label.text = Localization.Forum.Forum.localized()
-        label.font = UIFont(name: "Noteworthy Bold", size: 20)
-        navigationItem.titleView = label
-        
+        navigationController?.navigationBar.backgroundColor = AppColor.GreenColor
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: AppImage.Icon.User)?.withRenderingMode(.alwaysOriginal),
                                                            style: .plain,
                                                            target: self,
@@ -52,11 +54,27 @@ class ForumVC: UIViewController {
         navigationItem.rightBarButtonItem = rightBtn
         
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+        setupTextField()
+    }
+    
+    private func setupTextField() {
+        CustomTextField.shared.searchTextField(textfield: searchTextField,
+                                               placeholder: Localization.Home.Search,
+                                               icon: AppImage.Icon.Search)
+        searchTextField.addTarget(self, action: #selector(searchTextFieldTap), for: .editingDidBegin)
     }
 }
 
 // MARK: - Handle action
 extension ForumVC {
+    @objc private func searchTextFieldTap() {
+        let vc = UIStoryboard(name: NameConstant.Storyboard.Home,
+                              bundle: nil).instantiateVC(DiseasesListVC.self)
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     @objc private func rightBtnTap() {
         let vc = UIStoryboard(name: NameConstant.Storyboard.Forum,
                               bundle: nil).instantiateVC(PostVC.self)
