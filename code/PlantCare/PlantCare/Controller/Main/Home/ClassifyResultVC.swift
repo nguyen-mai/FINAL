@@ -15,7 +15,12 @@ class ClassifyResultVC: UIViewController {
     @IBOutlet private weak var about: UILabel!
     @IBOutlet private weak var condition: UILabel!
     @IBOutlet private weak var treatment: UILabel!
-
+    
+    
+    @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var noButton: UIButton!
+    @IBOutlet weak var yesButton: UIButton!
+    
     var image = UIImage()
     var plantTypeText: String = ""
     var resultText: String = ""
@@ -55,6 +60,12 @@ class ClassifyResultVC: UIViewController {
         aboutBtn.setTitle(Localization.Result.SymptomTitle.localized().uppercased(), for: .normal)
         conditionBtn.setTitle(Localization.Result.ConditionTitle.localized().uppercased(), for: .normal)
         treatmentBtn.setTitle(Localization.Result.PredictionTitle.localized().uppercased(), for: .normal)
+        
+        yesButton.setTitle(Localization.Alert.Yes.localized(), for: .normal)
+        yesButton.addTarget(self, action: #selector(yesBtnTap), for: .touchUpInside)
+        
+        noButton.setTitle(Localization.Alert.No.localized(), for: .normal)
+        noButton.addTarget(self, action: #selector(noBtnTap), for: .touchUpInside)
     }
     
     private func setupLabel() {
@@ -66,7 +77,8 @@ class ClassifyResultVC: UIViewController {
         about.text = aboutText
         condition.text = conditionText
         treatment.text = treatmentText
-
+        
+        infoLabel.text = Localization.Alert.AuthentInfo.localized()
     }
     
     private func setupImageView() {
@@ -98,5 +110,13 @@ extension ClassifyResultVC {
     
     @objc private func dismissVC() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc private func noBtnTap() {
+        
+    }
+    
+    @objc private func yesBtnTap() {
+        
     }
 }

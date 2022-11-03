@@ -1,14 +1,11 @@
 import Foundation
 
 struct Post {
-    
     var id: String
-    
     let user: User
     let imageUrl: String
     let caption: String
     let creationDate: Date
-    
     var likes: Int = 0
     var likedByCurrentUser = false
     

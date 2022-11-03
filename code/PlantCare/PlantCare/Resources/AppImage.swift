@@ -41,5 +41,6 @@ struct AppImage {
         static let TomatoBacterialSpot = "Tomato Bacterial Spot"
         static let TomatoEarlyBlight = "Tomato Early Blight"
         static let TomatoLateBlight = "Tomato Late Blight"
+        static let CornGrayLeafSpot = "Corn Gray Leaf Spot"
     }
 }

@@ -32,6 +32,7 @@ class PostVC: UIViewController {
         captionTextView.delegate = self
         
         shareButton.layer.cornerRadius = 20
+        shareButton.addTarget(self, action: #selector(shareBtnTapped(_:)), for: .touchUpInside)
     }
     
     private func setupNavBar() {
@@ -48,6 +49,10 @@ class PostVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         handlePost()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
     }
     
     private func handlePost() {
@@ -124,36 +129,4 @@ extension PostVC: UITextViewDelegate {
             captionTextView.textColor = UIColor.lightGray
         }
     }
-}
-
-//extension ForumVC: UICollectionViewDelegate, UICollectionViewDataSource {
-//    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return posts.count
-//    }
-//
-//    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommunityPostCell.cellId, for: indexPath) as! CommunityPostCell
-//        if indexPath.item < posts.count {
-//            cell.post = posts[indexPath.item]
-//        }
-//        cell.delegate = self
-//        return cell
-//    }
-//}
-
-//MARK: - UICollectionViewDelegateFlowLayout
-
-extension ForumVC: UICollectionViewDelegateFlowLayout {
-
-//func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//    let dummyCell = CommunityPostCell(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 1000))
-//    dummyCell.post = posts[indexPath.item]
-//    dummyCell.layoutIfNeeded()
-//    
-//    var height: CGFloat = dummyCell.header.bounds.height
-//    height += view.frame.width
-//    height += 24 + 2 * dummyCell.padding //bookmark button + padding
-//    height += dummyCell.captionLabel.intrinsicContentSize.height + 8
-//    return CGSize(width: view.frame.width, height: height)
-//}
 }

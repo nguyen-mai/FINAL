@@ -1,12 +1,17 @@
 import UIKit
 
+protocol ProfileCellDelegate: AnyObject {
+    func changeInfo(_ cell: ProfileCell)
+}
+
+
 class ProfileCell: UITableViewCell {
     @IBOutlet private weak var title: UILabel!
     @IBOutlet private weak var subTitle: UILabel!
     @IBOutlet private weak var fixButton: UIButton!
     @IBOutlet private weak var underlineView: UIView!
     
-    var delegate: TapProfileCellProtocol?
+    var delegate: ProfileCellDelegate?
     private let titleArry: [String] = [
         Localization.Profile.UserName.localized(),
         Localization.Profile.Email.localized()
@@ -45,25 +50,10 @@ class ProfileCell: UITableViewCell {
         }
         delegate.changeInfo(self)
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
-    func configProfileCell(with model: User) {
-        guard let title = title.text else {
-            return
-        }
-        if title.contains("User") {
-            subTitle.text = model.username
-        } else {
-            subTitle.text = model.email
-        }
+    func configProfileCell(stringTitle: String, subTitleString: String) {
+        title.text = stringTitle
+        subTitle.text = subTitleString
     }
 }
 
-protocol TapProfileCellProtocol: AnyObject {
-    func changeInfo(_ cell: ProfileCell)
-}

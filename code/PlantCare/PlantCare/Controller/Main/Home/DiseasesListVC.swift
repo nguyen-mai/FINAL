@@ -2,8 +2,9 @@ import UIKit
 
 class DiseasesListVC: UIViewController {
 
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var table: UITableView!
+    @IBOutlet private weak var headerView: UIView!
+    @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet private weak var table: UITableView!
     
     private let data: BlogViewEntity = BlogViewEntity()
     private var filteredData = [BlogViewEntity.Blog]()
@@ -15,33 +16,41 @@ class DiseasesListVC: UIViewController {
     }
     
     private func setupUI() {
-        view.backgroundColor = AppColor.LightGrayColor1
-        table.backgroundColor = AppColor.LightGrayColor1
-        
+        headerView.backgroundColor = AppColor.GreenColor
+        view.backgroundColor = AppColor.WhiteColor
+        table.backgroundColor = AppColor.WhiteColor
+                
         filteredData = data.array
         configTable()
         setupSearchBar()
+        setupNavBar()
+    }
+    
+    private func setupNavBar() {
+        let label = UILabel()
+        label.textColor = AppColor.WhiteColor
+        label.text = Localization.Home.SearchTitle.localized()
+        label.font = UIFont(name: "Noteworthy Bold", size: 20)
+        navigationItem.titleView = label
+        
+        navigationController?.navigationBar.tintColor = AppColor.WhiteColor
+        headerView.backgroundColor = AppColor.GreenColor
     }
     
     private func setupSearchBar() {
         searchBar.searchBarStyle = .minimal
         searchBar.placeholder = Localization.Home.Search.localized()
-        searchBar.showsCancelButton = true
         searchBar.becomeFirstResponder()
         searchBar.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        navigationController?.setNavigationBarHidden(false, animated: animated)
         tabBarController?.hidesBottomBarWhenPushed = true
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-                
-        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     func configTable() {
@@ -78,7 +87,7 @@ extension DiseasesListVC: UITableViewDelegate, UITableViewDataSource {
         }
         vc.img = urlImg
         vc.lbl = urlImg
-        vc.hidesBottomBarWhenPushed = true
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
         navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -8,5 +8,5 @@
 import Foundation
 
 struct Config {
-    static var STORAGE_ROOF_REF = "gs://project-77f11.appspot.com"
+    static var STORAGE_ROOF_REF = "gs://plantcare-30477.appspot.com"
 }

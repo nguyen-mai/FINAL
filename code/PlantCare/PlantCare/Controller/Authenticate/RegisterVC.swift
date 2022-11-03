@@ -10,15 +10,14 @@ class RegisterVC: UIViewController {
     @IBOutlet private weak var userNameTextField: UITextField!
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
-    @IBOutlet private weak var confirmPasswordTextField: UITextField!
     
     @IBOutlet private weak var registerButton: UIButton!
     @IBOutlet private weak var logInButton: UIButton!
     
     @IBOutlet private weak var emailErrorLabel: UILabel!
     @IBOutlet private weak var passwordErrorLabel: UILabel!
-    @IBOutlet private weak var confirmPassErrorLabel: UILabel!
     @IBOutlet private weak var passInfoLabel: UILabel!
+    @IBOutlet private weak var userNameErrrorLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +32,17 @@ class RegisterVC: UIViewController {
         setupButton()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        // Show the navigation bar on other view controllers
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
     private func setupLabel() {
         createAccountLabel.text = Localization.Authenticate.CreateAccount.localized()
         createAccountLabel.textColor = AppColor.BlackColor
@@ -40,17 +50,21 @@ class RegisterVC: UIViewController {
         loginLabel.text = Localization.Authenticate.AlreadyAccount.localized()
         loginLabel.textColor = AppColor.BlackColor
         
-        emailErrorLabel.text = ""
+        emailErrorLabel.text = Localization.Authenticate.EmptyErrorTF
         emailErrorLabel.textColor = AppColor.RedColor
         
-        passwordErrorLabel.text = ""
+        passwordErrorLabel.text = Localization.Authenticate.EmptyErrorTF
         passwordErrorLabel.textColor = AppColor.RedColor
         
-        confirmPassErrorLabel.text = ""
-        confirmPassErrorLabel.textColor = AppColor.RedColor
+        userNameErrrorLabel.text = Localization.Authenticate.EmptyErrorTF
+        userNameErrrorLabel.textColor = AppColor.RedColor
         
         passInfoLabel.text = Localization.Authenticate.RequirementPassword
         passInfoLabel.textColor = AppColor.GrayColor
+        
+        emailErrorLabel.isHidden = true
+        passwordErrorLabel.isHidden = true
+        userNameErrrorLabel.isHidden = true
     }
     
     private func setupTextField() {
@@ -76,21 +90,15 @@ class RegisterVC: UIViewController {
             underlineColor: AppColor.LightGrayColor)
         passwordTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         
-        CustomTextField.shared.styleTextField(
-            textfield: confirmPasswordTextField,
-            placeholer: Localization.Authenticate.ConfirmPassword.localized(),
-            icon: AppImage.Icon.PrivatePassword,
-            underlineColor: AppColor.LightGrayColor)
-        confirmPasswordTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
-        
-        confirmPasswordTextField.delegate = self
+        userNameTextField.delegate = self
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
     }
     
     private func setupButton() {
         registerButton.setTitle(Localization.Authenticate.Register.localized(), for: .normal)
         registerButton.setTitleColor(AppColor.WhiteColor, for: .normal)
         registerButton.backgroundColor = AppColor.LightGrayColor
-        registerButton.isEnabled = false
         registerButton.layer.cornerRadius = 20
         registerButton.addTarget(self, action: #selector(registerBtnTap), for: .touchUpInside)
         
@@ -104,22 +112,24 @@ class RegisterVC: UIViewController {
 extension RegisterVC {
     @objc private func registerBtnTap() {
         view.endEditing(true)
+        guard let email = emailTextField.text,
+              let username = userNameTextField.text,
+              let password = passwordTextField.text else {
+                  return
+              }
         ProgressHUD.show("Waiting...", interaction: false)
-        guard let userName = userNameTextField.text,let email = emailTextField.text, let password = passwordTextField.text else {
-            return
-        }
-        Auth.auth().createUser(withEmail: email, username: userName, password: password, image: nil) { (err) in
+        Auth.auth().createUser(withEmail: email, username: username, password: password, image: nil) { (err) in
+            ProgressHUD.dismiss()
             if err != nil {
                 print("Error")
                 return
             }
-            ProgressHUD.dismiss()
-            self.showAlert()
+            self.showAlert(title: Localization.Alert.Congrat)
         }
     }
     
-    private func showAlert() {
-        let alert = UIAlertController(title: Localization.Alert.Congrat,
+    private func showAlert(title: String) {
+        let alert = UIAlertController(title: title,
                                       message: Localization.Alert.RegisterSuccessfully,
                                       preferredStyle: .alert)
         let okAction = UIAlertAction(
@@ -143,43 +153,56 @@ extension RegisterVC {
     }
     
     @objc private func textFieldDidChange() {
-        if let userNameInput = userNameTextField.text, !userNameInput.isEmpty {
-            
+        if let usernameInput = userNameTextField.text, !usernameInput.isEmpty {
+            CustomTextField.shared.styleTextField(
+                textfield: userNameTextField,
+                placeholer: Localization.Authenticate.UsernamePlaceholder.localized(),
+                icon: nil,
+                underlineColor: AppColor.GreenColor)
         } else {
-            
+            CustomTextField.shared.styleTextField(
+                textfield: userNameTextField,
+                placeholer: Localization.Authenticate.UsernamePlaceholder.localized(),
+                icon: nil,
+                underlineColor: AppColor.LightGrayColor)
         }
         
         if let emailInput = emailTextField.text, !emailInput.isEmpty {
-            
+            CustomTextField.shared.styleTextField(
+                textfield: emailTextField,
+                placeholer: Localization.Authenticate.EmailPlaceHolder.localized(),
+                icon: nil,
+                underlineColor: AppColor.GreenColor)
         } else {
-            
+            CustomTextField.shared.styleTextField(
+                textfield: emailTextField,
+                placeholer: Localization.Authenticate.EmailPlaceHolder.localized(),
+                icon: nil,
+                underlineColor: AppColor.LightGrayColor)
         }
         
         if let passwordInput = passwordTextField.text, !passwordInput.isEmpty {
-            
+            CustomTextField.shared.styleTextField(
+                textfield: passwordTextField,
+                placeholer: Localization.Authenticate.PasswordPlaceHolder.localized(),
+                icon: AppImage.Icon.PrivatePassword,
+                underlineColor: AppColor.GreenColor)
         } else {
-            
-        }
-        
-        if let confirmPassInput = confirmPasswordTextField.text, !confirmPassInput.isEmpty {
-            
-        } else {
-            
+            CustomTextField.shared.styleTextField(
+                textfield: passwordTextField,
+                placeholer: Localization.Authenticate.PasswordPlaceHolder.localized(),
+                icon: AppImage.Icon.PrivatePassword,
+                underlineColor: AppColor.LightGrayColor)
         }
         
         if let userNameInput = userNameTextField.text,
            let emailInput = emailTextField.text,
            let passwordInput = passwordTextField.text,
-           let confirmPassInput = confirmPasswordTextField.text,
            !userNameInput.isEmpty,
            !emailInput.isEmpty,
-           !passwordInput.isEmpty,
-           !confirmPassInput.isEmpty,
-           passwordInput == confirmPassInput {
-            registerButton.isEnabled = true
+           !passwordInput.isEmpty {
             registerButton.backgroundColor = AppColor.GreenColor
         } else {
-            registerButton.isEnabled = false
             registerButton.backgroundColor = AppColor.LightGrayColor
         }
     }
@@ -187,7 +210,9 @@ extension RegisterVC {
 
 extension RegisterVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        confirmPasswordTextField.resignFirstResponder()
+        userNameTextField.resignFirstResponder()
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
         return true
     }
 }

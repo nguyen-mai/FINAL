@@ -15,7 +15,7 @@ extension Auth {
     func createUser(withEmail email: String, username: String, password: String, image: UIImage?, completion: @escaping (Error?) -> ()) {
         Auth.auth().createUser(withEmail: email, password: password, completion: { (user, err) in
             if let err = err {
-                print("Failed to create user:", err)
+                print("Failed to create user:", err.localizedDescription)
                 completion(err)
                 return
             }
@@ -82,7 +82,7 @@ extension Storage {
         let storageRef = Storage.storage().reference().child("post_images").child(filename)
         storageRef.putData(uploadData, metadata: nil, completion: { (_, err) in
             if let err = err {
-                print("Failed to upload post image:", err)
+                print("Failed to upload post image:", err.localizedDescription)
                 return
             }
             

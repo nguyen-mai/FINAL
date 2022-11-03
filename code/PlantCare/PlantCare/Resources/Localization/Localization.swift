@@ -44,6 +44,8 @@ struct Localization {
         static let RequirementPassword = "Password requires at least 8 characters, 1 uppercase, 1 lowercase and 1 number"
         
         static let LogOut = "Log Out"
+        
+        static let EmptyErrorTF = "Please enter this field!"
     }
     
     struct Home {
@@ -56,6 +58,7 @@ struct Localization {
         static let Cancel = "Cancel"
         static let Search = "Search..."
         static let All = "All"
+        static let SearchTitle = "Search"
     }
     
     struct AppleDisease {
@@ -126,6 +129,8 @@ struct Localization {
     struct Setting {
         static let Language = "Language"
         static let History = "History"
+        static let EditingInfo = "Editing information"
+        static let EditingInfoPlaceholder = "Enter something"
     }
     
     struct Title {
@@ -138,6 +143,7 @@ struct Localization {
         static let PlaceholderProblem = "Describe your problem ..."
         static let Post = "Post"
         static let Forum = "Forum"
+        static let Comment = "Comment"
     }
     
     struct Alert {
@@ -150,6 +156,10 @@ struct Localization {
         static let ResetEmail = "A password reset email has been sent!"
         static let LogOut = "Log Out"
         static let LogoutMessage = "Are you sure you want to log out?"
+        static let Save = "Save"
+        static let Yes = "Yes"
+        static let No = "No"
+        static let AuthentInfo = "Is the result right?"
     }
     
     struct Profile {

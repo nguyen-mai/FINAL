@@ -12,5 +12,4 @@ target 'PlantCare' do
   pod 'Firebase/Storage'
   pod 'ProgressHUD'
   pod 'KILabel', '1.0.0'
-
 end

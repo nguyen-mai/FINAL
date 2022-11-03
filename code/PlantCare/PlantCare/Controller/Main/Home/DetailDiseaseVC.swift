@@ -33,15 +33,11 @@ class DetailDiseaseVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        navigationController?.setNavigationBarHidden(false, animated: animated)
         navigationController?.navigationBar.backgroundColor = AppColor.GreenColor
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-                
-        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     private func setupUI() {
@@ -85,6 +81,14 @@ class DetailDiseaseVC: UIViewController {
             type = "Cherry"
             typeDisease = Localization.Result.Fungus
             threat = Localization.Result.HighLevel
+        
+        case "Corn Gray Leaf Spot":
+            type = Localization.CornDisease.CornGraySpot
+            typeDisease = Localization.Result.Fungus
+            threat = Localization.Result.HighLevel
+            about = Localization.CornDisease.CornGraySpotAbout
+            condition = Localization.CornDisease.CornRustCondition
+            treatment = Localization.CornDisease.CornRustTreatment
             
         case "Corn Cercospora Leaf Spot Gray Leaf Spot":
             type = Localization.CornDisease.Corn

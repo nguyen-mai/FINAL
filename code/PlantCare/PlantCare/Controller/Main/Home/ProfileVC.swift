@@ -7,8 +7,7 @@ class ProfileVC: UIViewController {
     @IBOutlet private weak var avaImageView: UIImageView!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var subView: UIImageView!
-    @IBOutlet private weak var backButton: UIButton!
-    
+
     private var user: User?
     
     override func viewDidLoad() {
@@ -32,6 +31,7 @@ class ProfileVC: UIViewController {
     
     private func setupTableView() {
         tableView.backgroundColor = AppColor.LightGrayColor2
+        tableView.registerCellNib(type: ProfileCell.self)
         tableView.dataSource = self
         tableView.delegate = self
     }
@@ -47,9 +47,6 @@ class ProfileVC: UIViewController {
     }
     
     private func setupButton() {
-        backButton.setImage(UIImage(named: AppImage.Icon.Back)?.withRenderingMode(.alwaysOriginal), for: .normal)
-        backButton.addTarget(self, action: #selector(backBtnTap), for: .touchUpInside)
-        
         logOutButton.setTitle(Localization.Authenticate.LogOut.localized(),
                               for: .normal)
         logOutButton.backgroundColor = AppColor.WhiteColor
@@ -85,42 +82,49 @@ extension ProfileVC {
 }
 
 extension ProfileVC: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return 2
-        case 1:
-            return 1
-        default:
-            return 0
-        }
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.section {
-        case 0:
-            guard let cell = tableView.dequeueReusableCellNib(type: ProfileCell.self, for: indexPath) else {
-                return UITableViewCell()
-            }
-            return cell
-        case 1:
-            guard let cell = tableView.dequeueReusableCellNib(type: ChangePasswordCell.self, for: indexPath) else {
-                return UITableViewCell()
-            }
-            return cell
-        default:
-            let cell = UITableViewCell()
-            return cell
+        guard let cell = tableView.dequeueReusableCellNib(type: ProfileCell.self, for: indexPath) else {
+            return UITableViewCell()
         }
+        cell.delegate = self
+        return cell
     }
 }
 
 extension ProfileVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+    }
+}
+
+extension ProfileVC: ProfileCellDelegate {
+    func changeInfo(_ cell: ProfileCell) {
+        // create the actual alert controller view that will be the pop-up
+        let alertController = UIAlertController(title: Localization.Setting.EditingInfo.localized(), message: "", preferredStyle: .alert)
+
+        alertController.addTextField { (textField) in
+            // configure the properties of the text field
+            textField.placeholder = Localization.Setting.EditingInfoPlaceholder.localized()
+        }
+
+
+        // add the buttons/actions to the view controller
+        let cancelAction = UIAlertAction(title: Localization.Alert.Cancel, style: .cancel, handler: nil)
+        let saveAction = UIAlertAction(title: Localization.Alert.Save, style: .default) { _ in
+            // this code runs when the user hits the "save" button
+            let inputName = alertController.textFields![0].text
+            self.tableView.reloadData()
+            print(inputName)
+
+        }
+
+        alertController.addAction(cancelAction)
+        alertController.addAction(saveAction)
+
+        present(alertController, animated: true, completion: nil)
     }
 }

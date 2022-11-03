@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>678481966436-dui1tr3r340h92dvm6vnoapqvskle44h.apps.googleusercontent.com</string>
+	<string>1019793653485-j8kdnllcg6l9svtnc5su6j2otm48dnqc.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.678481966436-dui1tr3r340h92dvm6vnoapqvskle44h</string>
+	<string>com.googleusercontent.apps.1019793653485-j8kdnllcg6l9svtnc5su6j2otm48dnqc</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBUPDnBLjuMmaK0pqWpP0rOD2tGycxHhr8</string>
+	<string>AIzaSyB_pWh7FJwXz-dmQgySm_OKsqiNznlpzSA</string>
 	<key>GCM_SENDER_ID</key>
-	<string>678481966436</string>
+	<string>1019793653485</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.nguyenmai.PlantCare</string>
 	<key>PROJECT_ID</key>
-	<string>project-77f11</string>
+	<string>plantcare-30477</string>
 	<key>STORAGE_BUCKET</key>
-	<string>project-77f11.appspot.com</string>
+	<string>plantcare-30477.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:678481966436:ios:47320debde6a33f32c3671</string>
+	<string>1:1019793653485:ios:1aafdb20398cfdbbb296e4</string>
 </dict>
 </plist>

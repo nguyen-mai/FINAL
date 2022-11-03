@@ -46,6 +46,15 @@ extension OnboardingVC {
     }
     
     private func setupNavBar() {
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        navBarAppearance.backgroundColor = AppColor.WhiteColor
+        navBarAppearance.shadowColor = .clear
+
+        navigationController?.navigationBar.tintColor = AppColor.GreenColor
+        navigationController?.navigationBar.backgroundColor = AppColor.WhiteColor
+        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+        
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         if language.contains("vi") {

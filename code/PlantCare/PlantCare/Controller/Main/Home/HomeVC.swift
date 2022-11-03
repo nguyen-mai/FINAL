@@ -4,8 +4,6 @@ import CoreML
 import Vision
 
 class HomeVC: UIViewController {
-    
-    @IBOutlet private weak var leftButton: UIButton!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var cameraBtn: UIButton!
     @IBOutlet private weak var helpView: UIView!

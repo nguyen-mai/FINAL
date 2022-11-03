@@ -29,6 +29,11 @@ class LoginVC: UIViewController {
     }
     
     private func setupNavigationItem() {
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        navBarAppearance.backgroundColor = AppColor.WhiteColor
+        navBarAppearance.shadowColor = .clear
+
         navigationController?.navigationBar.tintColor = AppColor.GreenColor
         navigationController?.navigationBar.backgroundColor = AppColor.WhiteColor
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
@@ -37,6 +42,8 @@ class LoginVC: UIViewController {
                                                             style: .plain,
                                                             target: self,
                                                             action: #selector(skipBtnTap))
+        
+        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
     }
     
     private func setupTextField() {
