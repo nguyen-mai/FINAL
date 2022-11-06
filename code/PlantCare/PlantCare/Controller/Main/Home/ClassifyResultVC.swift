@@ -1,40 +1,17 @@
 import UIKit
 
 class ClassifyResultVC: UIViewController {
-    @IBOutlet private weak var result: UILabel!
-    @IBOutlet private weak var plant: UILabel!
-    @IBOutlet private weak var img: UIImageView!
-    @IBOutlet private weak var certainty: UILabel!
-    @IBOutlet private weak var type: UILabel!
-    @IBOutlet private weak var threatLevel: UILabel!
+    @IBOutlet private weak var tableView: UITableView!
     
-    @IBOutlet private weak var aboutBtn: UIButton!
-    @IBOutlet private weak var conditionBtn: UIButton!
-    @IBOutlet private weak var treatmentBtn: UIButton!
-    
-    @IBOutlet private weak var about: UILabel!
-    @IBOutlet private weak var condition: UILabel!
-    @IBOutlet private weak var treatment: UILabel!
-    
-    
-    @IBOutlet weak var infoLabel: UILabel!
-    @IBOutlet weak var noButton: UIButton!
-    @IBOutlet weak var yesButton: UIButton!
-    
-    var image = UIImage()
-    var plantTypeText: String = ""
-    var resultText: String = ""
-    var certaintyText: String = ""
-    var typeText: String = ""
-    var threatLevelText: String = ""
-    var aboutText: String = ""
-    var conditionText: String = ""
-    var treatmentText: String = ""
+    var model = DiseaseInfoViewEntity.Disease()
+    var arrayData = [DiseaseInfoViewEntity.ExpandedCell]()
+    private var moreDetail = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
+        setupData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,74 +26,87 @@ class ClassifyResultVC: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
+    private func setupData() {
+        arrayData = [
+            DiseaseInfoViewEntity.ExpandedCell(title: Localization.Result.SymptomTitle, detail: self.model.symptomInfo),
+            DiseaseInfoViewEntity.ExpandedCell(title: Localization.Result.ConditionTitle, detail: self.model.conditionInfo),
+            DiseaseInfoViewEntity.ExpandedCell(title: Localization.Result.PreventionTitle, detail: self.model.treatmentInfo)
+        ]
+    }
+    
     private func setupUI() {
-        setupButton()
-        setupLabel()
-        setupImageView()
-    }
-  
-    private func setupButton() {
-        // Tittle Button
-        aboutBtn.setTitle(Localization.Result.SymptomTitle.localized().uppercased(), for: .normal)
-        conditionBtn.setTitle(Localization.Result.ConditionTitle.localized().uppercased(), for: .normal)
-        treatmentBtn.setTitle(Localization.Result.PredictionTitle.localized().uppercased(), for: .normal)
-        
-        yesButton.setTitle(Localization.Alert.Yes.localized(), for: .normal)
-        yesButton.addTarget(self, action: #selector(yesBtnTap), for: .touchUpInside)
-        
-        noButton.setTitle(Localization.Alert.No.localized(), for: .normal)
-        noButton.addTarget(self, action: #selector(noBtnTap), for: .touchUpInside)
+        setupTableView()
     }
     
-    private func setupLabel() {
-        result.text = resultText
-        plant.text = plantTypeText
-        certainty.text = Localization.Result.CertaintyTitle.localized() + ": \(certaintyText) %"
-        type.text = Localization.Result.TypeTitle.localized() + ": \(typeText)"
-        threatLevel.text = Localization.Result.ThreatTitle.localized() + ": \(threatLevelText)"
-        about.text = aboutText
-        condition.text = conditionText
-        treatment.text = treatmentText
+    private func setupTableView() {
+        tableView.registerCellNib(type: DiseaseInfoCell.self)
+        tableView.registerCellNib(type: HeaderDiseaseInfoCell.self)
+        tableView.registerCellNib(type: FooterDiseaseInfoCell.self)
         
-        infoLabel.text = Localization.Alert.AuthentInfo.localized()
-    }
-    
-    private func setupImageView() {
-        img.image = image
-        img.layer.cornerRadius = 20
+        tableView.rowHeight = UITableView.automaticDimension
+        
+        tableView.delegate = self
+        tableView.dataSource = self
     }
 }
 
 // MARK: - Handle actions
 extension ClassifyResultVC {
+    @objc private func dismissVC() {
+        navigationController?.popViewController(animated: true)
+    }
+}
 
-    @IBAction private func aboutTap(_ sender: Any) {
+extension ClassifyResultVC: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return arrayData.count + 2
     }
     
-    @IBAction private func conditionTap(_ sender: Any) {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch indexPath.row {
+        case 0:
+            guard let cell = tableView.dequeueReusableCellNib(type: HeaderDiseaseInfoCell.self, for: indexPath) else {
+                return UITableViewCell()
+            }
+            cell.configHeaderDiseaseInfoCell(content: model)
+            return cell
+        case 1...arrayData.count:
+            guard let cell = tableView.dequeueReusableCellNib(type: DiseaseInfoCell.self, for: indexPath) else {
+                return UITableViewCell()
+            }
+            cell.configDiseaseInfoCell(content: arrayData[indexPath.row - 1], moreDetail: moreDetail)
+            cell.delegate = self
+            return cell
+        case arrayData.count + 1:
+            guard let cell = tableView.dequeueReusableCellNib(type: FooterDiseaseInfoCell.self, for: indexPath) else {
+                return UITableViewCell()
+            }
+            cell.delegate = self
+            return cell
+        default:
+            return UITableViewCell()
+        }
+    }
+}
+
+extension ClassifyResultVC: DiseaseInfoCellDelegate, FooterDiseaseInfoCellDelegate {
+    func tapExpandedButton(cell: DiseaseInfoCell) {
+        moreDetail = !moreDetail
+        guard let index = self.tableView.indexPath(for: cell) else {
+            return
+        }
+        tableView.reloadRows(at: [index], with: .automatic)
     }
     
-    
-    @IBAction private func treatementTap(_ sender: Any) {
+    func yesBtnTap(cell: FooterDiseaseInfoCell) {
+        print("Yes")
     }
     
-    @IBAction func noBtnTapped(_ sender: Any) {
+    func noBtnTapp(cell: FooterDiseaseInfoCell) {
         let ac = UIAlertController(title: "Label again", message: nil, preferredStyle: .alert)
         ac.addTextField(configurationHandler: nil)
         ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(ac, animated: true, completion: nil)
-    }
-    
-    @objc private func dismissVC() {
-        navigationController?.popViewController(animated: true)
-    }
-    
-    @objc private func noBtnTap() {
-        
-    }
-    
-    @objc private func yesBtnTap() {
-        
     }
 }

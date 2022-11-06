@@ -22,6 +22,8 @@ class HomeVC: UIViewController {
 //    var user: User?
     private var titleRightBtn = ""
     private var blogs: BlogViewEntity = BlogViewEntity()
+    private var timer = Timer()
+    private var counter: Int = 0
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -57,6 +59,13 @@ class HomeVC: UIViewController {
     private func setupCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+        DispatchQueue.main.async {
+            self.timer = Timer.scheduledTimer(timeInterval: 8,
+                                              target: self,
+                                              selector: #selector(self.changeImage),
+                                              userInfo: nil, repeats: true)
+        }
     }
     
     private func setupTextField() {
@@ -166,6 +175,19 @@ extension HomeVC {
                               bundle: nil).instantiateVC(DiseasesListVC.self)
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc private func changeImage() {
+        if counter < blogs.array.count {
+            let index = IndexPath(item: counter, section: 0)
+            collectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: true)
+            counter += 1
+        } else {
+            counter = 0
+            let index = IndexPath(item: counter, section: 0)
+            collectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: false)
+            counter = 1
+        }
     }
 }
 
@@ -379,16 +401,17 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
                 DispatchQueue.main.async { [weak self] in
                     let vc = UIStoryboard(name: NameConstant.Storyboard.Home,
                                           bundle: nil).instantiateVC(ClassifyResultVC.self)
-                    vc.image = pickedImage
-                    vc.resultText = predictedResult
-                    vc.plantTypeText = plantType
-                    vc.certaintyText = predconfidence
-                    vc.typeText = type
-                    vc.threatLevelText = threatLevel
-                    vc.aboutText = aboutTxt
-                    vc.conditionText = conditionTxt
-                    vc.treatmentText = treatmentTxt
+                    vc.model = DiseaseInfoViewEntity.Disease(diseaseImage: pickedImage,
+                                                             diseaseName: predictedResult,
+                                                             plantName: plantType,
+                                                             typeDisease: type,
+                                                             threatLevel: threatLevel,
+                                                             symptomInfo: aboutTxt,
+                                                             conditionInfo: conditionTxt,
+                                                             treatmentInfo: treatmentTxt,
+                                                             certainty: predconfidence)
                     self?.navigationController?.pushViewController(vc, animated: true)
+                    vc.hidesBottomBarWhenPushed = true
                 }
             }
             

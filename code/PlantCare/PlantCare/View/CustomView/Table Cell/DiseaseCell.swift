@@ -13,12 +13,13 @@ class DiseaseCell: UITableViewCell {
     }
     
     private func setupUI() {
-        cellView.layer.cornerRadius = 10
+        cellView.layer.cornerRadius = 20
         cellView.layer.borderWidth = 1
         cellView.layer.borderColor = AppColor.LightGrayColor2?.cgColor
-        cellView.layer.shadowOpacity = 0.5
+        cellView.layer.shadowOpacity = 5
         cellView.layer.shadowColor = AppColor.LightGrayColor1?.cgColor
-        img.layer.cornerRadius = 10
+        cellView.clipsToBounds = true
+//        img.layer.cornerRadius = 20
     }
 
     func configDiseaseCell(with model: BlogViewEntity.Blog) {
