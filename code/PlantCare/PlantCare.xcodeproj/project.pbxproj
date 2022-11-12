@@ -15,6 +15,7 @@
 		18091F44288282D800C08EC4 /* LanguageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18091F43288282D800C08EC4 /* LanguageVC.swift */; };
 		18091F46288283CE00C08EC4 /* HistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18091F45288283CE00C08EC4 /* HistoryVC.swift */; };
 		180E6F49287F33E900642E84 /* PredictionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180E6F48287F33E900642E84 /* PredictionViewModel.swift */; };
+		1818D71E292004940004167B /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1818D71D292004940004167B /* UIDeviceExtension.swift */; };
 		1825F3F12876EEED00ADC852 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1825F3F02876EEED00ADC852 /* Home.storyboard */; };
 		18260AE92882631400D1C935 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18260AE82882631400D1C935 /* SettingVC.swift */; };
 		182B978B29183D1C009D6D9B /* DiseaseInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B978929183D1C009D6D9B /* DiseaseInfoCell.swift */; };
@@ -36,7 +37,6 @@
 		182DAE7429141452005B201D /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182DAE7329141452005B201D /* UIColorExtension.swift */; };
 		18411F7F291435E3000F5C43 /* ProfileCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18411F7D291435E3000F5C43 /* ProfileCell.xib */; };
 		184F8C5B287C1C210079102B /* ClassifyResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F8C5A287C1C210079102B /* ClassifyResultVC.swift */; };
-		184F8C5D287C1CC30079102B /* BlogViewEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F8C5C287C1CC30079102B /* BlogViewEntity.swift */; };
 		184F8C60287C1CD80079102B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F8C5F287C1CD80079102B /* User.swift */; };
 		184F8C62287C1CDC0079102B /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F8C61287C1CDC0079102B /* Comment.swift */; };
 		184F8C64287C1CE10079102B /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F8C63287C1CE10079102B /* Post.swift */; };
@@ -82,12 +82,15 @@
 		18775F9B2875FDBA0032793D /* CameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18775F9A2875FDBA0032793D /* CameraVC.swift */; };
 		18775F9F2875FDE30032793D /* ForumVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18775F9E2875FDE30032793D /* ForumVC.swift */; };
 		187E143528830DF300CEAF54 /* ButtonWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E143428830DF300CEAF54 /* ButtonWithImage.swift */; };
+		1898C6CE2920159100F33072 /* ProgressHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898C6CD2920159100F33072 /* ProgressHub.swift */; };
 		18ABE5B528846AB500034619 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ABE5B428846AB500034619 /* Config.swift */; };
 		18ABE5B728846E6900034619 /* FirebaseUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ABE5B628846E6900034619 /* FirebaseUtilities.swift */; };
 		18ABE5B9288499D200034619 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ABE5B8288499D200034619 /* ProfileCell.swift */; };
 		18ABE5BB288499E500034619 /* ChangePasswordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ABE5BA288499E500034619 /* ChangePasswordCell.swift */; };
 		18ADFE2B2884BC1C00D159F1 /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ADFE2A2884BC1C00D159F1 /* NotificationExtension.swift */; };
 		18ADFE3A2884C65A00D159F1 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ADFE392884C65A00D159F1 /* CustomImageView.swift */; };
+		18B78ACE291FD57900A89DAF /* HeaderReferenceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B78ACC291FD57900A89DAF /* HeaderReferenceCell.swift */; };
+		18B78ACF291FD57900A89DAF /* HeaderReferenceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B78ACD291FD57900A89DAF /* HeaderReferenceCell.xib */; };
 		18BE2EDF28773F16004F1E43 /* ClassifierModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 18BE2EDE28773F16004F1E43 /* ClassifierModel.mlmodel */; };
 		18DBB6A72883E91F00D12D55 /* PostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DBB6A62883E91F00D12D55 /* PostVC.swift */; };
 		18EDEEF6287FBA8B008090E9 /* DetailDiseaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDEEF5287FBA8B008090E9 /* DetailDiseaseVC.swift */; };
@@ -103,6 +106,7 @@
 		18091F43288282D800C08EC4 /* LanguageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageVC.swift; sourceTree = "<group>"; };
 		18091F45288283CE00C08EC4 /* HistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryVC.swift; sourceTree = "<group>"; };
 		180E6F48287F33E900642E84 /* PredictionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionViewModel.swift; sourceTree = "<group>"; };
+		1818D71D292004940004167B /* UIDeviceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
 		1825F3F02876EEED00ADC852 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		18260AE82882631400D1C935 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
 		182B978929183D1C009D6D9B /* DiseaseInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseInfoCell.swift; sourceTree = "<group>"; };
@@ -124,7 +128,6 @@
 		182DAE7329141452005B201D /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		18411F7D291435E3000F5C43 /* ProfileCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCell.xib; sourceTree = "<group>"; };
 		184F8C5A287C1C210079102B /* ClassifyResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifyResultVC.swift; sourceTree = "<group>"; };
-		184F8C5C287C1CC30079102B /* BlogViewEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogViewEntity.swift; sourceTree = "<group>"; };
 		184F8C5F287C1CD80079102B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		184F8C61287C1CDC0079102B /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		184F8C63287C1CE10079102B /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -173,12 +176,15 @@
 		18775F9A2875FDBA0032793D /* CameraVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraVC.swift; sourceTree = "<group>"; };
 		18775F9E2875FDE30032793D /* ForumVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumVC.swift; sourceTree = "<group>"; };
 		187E143428830DF300CEAF54 /* ButtonWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithImage.swift; sourceTree = "<group>"; };
+		1898C6CD2920159100F33072 /* ProgressHub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHub.swift; sourceTree = "<group>"; };
 		18ABE5B428846AB500034619 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		18ABE5B628846E6900034619 /* FirebaseUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseUtilities.swift; sourceTree = "<group>"; };
 		18ABE5B8288499D200034619 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		18ABE5BA288499E500034619 /* ChangePasswordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordCell.swift; sourceTree = "<group>"; };
 		18ADFE2A2884BC1C00D159F1 /* NotificationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
 		18ADFE392884C65A00D159F1 /* CustomImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		18B78ACC291FD57900A89DAF /* HeaderReferenceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderReferenceCell.swift; sourceTree = "<group>"; };
+		18B78ACD291FD57900A89DAF /* HeaderReferenceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderReferenceCell.xib; sourceTree = "<group>"; };
 		18BE2EDE28773F16004F1E43 /* ClassifierModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ClassifierModel.mlmodel; sourceTree = "<group>"; };
 		18DBB6A62883E91F00D12D55 /* PostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostVC.swift; sourceTree = "<group>"; };
 		18EDEEF5287FBA8B008090E9 /* DetailDiseaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDiseaseVC.swift; sourceTree = "<group>"; };
@@ -228,6 +234,8 @@
 				182B9794291859E9009D6D9B /* FooterDiseaseInfoCell.xib */,
 				182B979729185AF2009D6D9B /* HeaderDiseaseInfoCell.swift */,
 				182B979829185AF2009D6D9B /* HeaderDiseaseInfoCell.xib */,
+				18B78ACC291FD57900A89DAF /* HeaderReferenceCell.swift */,
+				18B78ACD291FD57900A89DAF /* HeaderReferenceCell.xib */,
 			);
 			path = "Table Cell";
 			sourceTree = "<group>";
@@ -351,6 +359,7 @@
 				18775F412875DC190032793D /* NameConstant.swift */,
 				18775F422875DC190032793D /* EnumConstant.swift */,
 				18775F432875DC190032793D /* ServerConstant.swift */,
+				1898C6CD2920159100F33072 /* ProgressHub.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -358,6 +367,7 @@
 		18775F442875DC190032793D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				1818D71D292004940004167B /* UIDeviceExtension.swift */,
 				18775F452875DC190032793D /* UIStoryboardExtension.swift */,
 				18775F462875DC190032793D /* UIViewExtension.swift */,
 				18775F472875DC190032793D /* StringExtension.swift */,
@@ -392,7 +402,6 @@
 		18775F4F2875DC190032793D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				184F8C5C287C1CC30079102B /* BlogViewEntity.swift */,
 				18775F502875DC190032793D /* OnboardingViewEntity.swift */,
 				18775F512875DC190032793D /* LanguageViewEntity.swift */,
 				18091F4128826A2F00C08EC4 /* SettingViewEntity.swift */,
@@ -405,10 +414,10 @@
 			isa = PBXGroup;
 			children = (
 				18BE2EDE28773F16004F1E43 /* ClassifierModel.mlmodel */,
-				18775F662875DC9A0032793D /* AppColor.swift */,
-				18775F682875DCA30032793D /* AppImage.swift */,
 				18775F632875DC790032793D /* Localization */,
 				18775F2F2875DBF10032793D /* Assets.xcassets */,
+				18775F682875DCA30032793D /* AppImage.swift */,
+				18775F662875DC9A0032793D /* AppColor.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -603,6 +612,7 @@
 				18775F942875FD790032793D /* Forum.storyboard in Resources */,
 				1825F3F12876EEED00ADC852 /* Home.storyboard in Resources */,
 				18411F7F291435E3000F5C43 /* ProfileCell.xib in Resources */,
+				18B78ACF291FD57900A89DAF /* HeaderReferenceCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -663,13 +673,13 @@
 				18775F992875FDAE0032793D /* HomeVC.swift in Sources */,
 				180E6F49287F33E900642E84 /* PredictionViewModel.swift in Sources */,
 				18775F542875DC190032793D /* AppPreferences.swift in Sources */,
+				1898C6CE2920159100F33072 /* ProgressHub.swift in Sources */,
 				18775F572875DC190032793D /* ServerConstant.swift in Sources */,
 				18775F592875DC190032793D /* UIViewExtension.swift in Sources */,
 				18BE2EDF28773F16004F1E43 /* ClassifierModel.mlmodel in Sources */,
 				18775F752875E4A20032793D /* OnboardingVC.swift in Sources */,
 				184F8C5B287C1C210079102B /* ClassifyResultVC.swift in Sources */,
 				18775F8E2875FCCC0032793D /* ResetPasswordVC.swift in Sources */,
-				184F8C5D287C1CC30079102B /* BlogViewEntity.swift in Sources */,
 				184F8C62287C1CDC0079102B /* Comment.swift in Sources */,
 				18EDEEF6287FBA8B008090E9 /* DetailDiseaseVC.swift in Sources */,
 				182DAE5E29140F3B005B201D /* CommunityPostCell.swift in Sources */,
@@ -700,6 +710,7 @@
 				18775F612875DC190032793D /* LanguageViewEntity.swift in Sources */,
 				18775F562875DC190032793D /* EnumConstant.swift in Sources */,
 				182DAE6429140FAB005B201D /* CommunityEmptyStateView.swift in Sources */,
+				18B78ACE291FD57900A89DAF /* HeaderReferenceCell.swift in Sources */,
 				18ADFE3A2884C65A00D159F1 /* CustomImageView.swift in Sources */,
 				1870E0CB288332D3009C5529 /* DiseasesListVC.swift in Sources */,
 				18775F602875DC190032793D /* OnboardingViewEntity.swift in Sources */,
@@ -720,6 +731,7 @@
 				182DAE6029140F58005B201D /* CommunityPostCellVC.swift in Sources */,
 				18775F672875DC9A0032793D /* AppColor.swift in Sources */,
 				1870E0CD28833424009C5529 /* DiseaseCell.swift in Sources */,
+				1818D71E292004940004167B /* UIDeviceExtension.swift in Sources */,
 				18775F5F2875DC190032793D /* BaseNavigationController.swift in Sources */,
 				18775F5D2875DC190032793D /* CollectionViewExtension.swift in Sources */,
 				1870E0CF288352B2009C5529 /* ProfileVC.swift in Sources */,

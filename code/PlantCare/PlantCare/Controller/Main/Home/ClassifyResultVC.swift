@@ -4,7 +4,7 @@ class ClassifyResultVC: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     var model = DiseaseInfoViewEntity.Disease()
-    var arrayData = [DiseaseInfoViewEntity.ExpandedCell]()
+    private var arrayData = [DiseaseInfoViewEntity.ExpandedCell]()
     private var moreDetail = true
     
     override func viewDidLoad() {
@@ -16,13 +16,11 @@ class ClassifyResultVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-                
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     

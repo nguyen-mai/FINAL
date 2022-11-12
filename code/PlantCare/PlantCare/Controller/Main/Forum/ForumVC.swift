@@ -10,6 +10,7 @@ class ForumVC: CommunityPostCellViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar()
+        ProgressHub.shared.setupProgressHub()
         
         collectionView?.backgroundColor = .white
         collectionView?.register(CommunityPostCell.self, forCellWithReuseIdentifier: CommunityPostCell.cellId)

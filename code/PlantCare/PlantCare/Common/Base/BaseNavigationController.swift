@@ -20,8 +20,8 @@ class BaseNavigationController: UINavigationController {
         navBarAppearance.shadowColor = .clear
 
         self.navigationBar.standardAppearance = navBarAppearance
-        self.navigationBar.scrollEdgeAppearance = navBarAppearance
-        self.navigationItem.backButtonTitle = nil
+        self.navigationBar.scrollEdgeAppearance = navBarAppearance        
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
     }
 }
 

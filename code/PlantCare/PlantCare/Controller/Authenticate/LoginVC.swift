@@ -26,6 +26,8 @@ class LoginVC: UIViewController {
         setupTextField()
         setupButton()
         setupLabel()
+        
+        ProgressHub.shared.setupProgressHub()
     }
     
     private func setupNavigationItem() {
@@ -99,7 +101,7 @@ class LoginVC: UIViewController {
 extension LoginVC {
     @objc private func logInBtnTap() {
         view.endEditing(true)
-        ProgressHUD.show("Waiting...", interaction: false)
+        ProgressHUD.show("", interaction: false)
         guard let email = emailTextField.text, let password = passwordTextField.text else {
             return
         }

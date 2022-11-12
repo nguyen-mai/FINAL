@@ -11,4 +11,5 @@ struct AppColor {
     static let RedColor = UIColor(named: "Red")
     static let LightGrayColor2 = UIColor(named: "LightGray3")
     static let LightGrayColor4 = UIColor(named: "LightGray4")
+    static let DarkGray = UIColor(named: "DarkGray")
 }

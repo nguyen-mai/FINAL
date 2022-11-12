@@ -6,8 +6,8 @@ class DiseasesListVC: UIViewController {
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var table: UITableView!
     
-    private let data: BlogViewEntity = BlogViewEntity()
-    private var filteredData = [BlogViewEntity.Blog]()
+    private let data = DiseaseInfoViewEntity()
+    private var filteredData = [DiseaseInfoViewEntity.Disease]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,11 +82,7 @@ extension DiseasesListVC: UITableViewDelegate, UITableViewDataSource {
         let vc = UIStoryboard(name: NameConstant.Storyboard.Home,
                               bundle: nil).instantiateVC(DetailDiseaseVC.self)
         let item = filteredData[indexPath.row]
-        guard let urlImg = item.urlImg else {
-            return
-        }
-        vc.img = urlImg
-        vc.lbl = urlImg
+        vc.model = item
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
         navigationController?.pushViewController(vc, animated: true)
     }

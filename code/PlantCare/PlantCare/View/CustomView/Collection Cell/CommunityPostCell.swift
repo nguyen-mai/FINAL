@@ -12,6 +12,7 @@ protocol CommunityPostCellDelegate {
     func didTapUser(user: User)
     func didTapOptions(post: Post)
     func didLike(for cell: CommunityPostCell)
+    func didTapShare(image: UIImage)
 }
 
 class CommunityPostCell: UICollectionViewCell {
@@ -59,6 +60,7 @@ class CommunityPostCell: UICollectionViewCell {
     private let sendMessageButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "ic_send").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(handleShare), for: .touchUpInside)
         return button
     }()
     
@@ -155,6 +157,11 @@ class CommunityPostCell: UICollectionViewCell {
     @objc private func handleComment() {
         guard let post = post else { return }
         delegate?.didTapComment(post: post)
+    }
+    
+    @objc private func handleShare() {
+        guard let img = photoImageView.image else { return }
+        delegate?.didTapShare(image: img)
     }
 }
 

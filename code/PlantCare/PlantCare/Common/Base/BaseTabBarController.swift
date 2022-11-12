@@ -34,7 +34,6 @@ class BaseTabBarController: UITabBarController {
         
         let cameraVC = UIStoryboard(name: NameConstant.Storyboard.Camera,
                                   bundle: nil).instantiateVC(CameraVC.self)
-//        let cameraNavController = BaseNavigationController(rootViewController: cameraVC)
         cameraVC.tabBarItem = UITabBarItem(
             title: nil,
             image: nil,
@@ -84,11 +83,9 @@ extension BaseTabBarController: UITabBarControllerDelegate {
     
     func hideTabBar() {
         tabBar.isHidden = true
-        print("HIDE TAB BAR")
     }
 
     func showTabBar() {
         tabBar.isHidden = false
-        print("SHOW TAB BAR")
     }
 }

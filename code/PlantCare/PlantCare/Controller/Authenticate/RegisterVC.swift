@@ -30,6 +30,7 @@ class RegisterVC: UIViewController {
         setupLabel()
         setupTextField()
         setupButton()
+        ProgressHub.shared.setupProgressHub()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -117,7 +118,7 @@ extension RegisterVC {
               let password = passwordTextField.text else {
                   return
               }
-        ProgressHUD.show("Waiting...", interaction: false)
+        ProgressHUD.show("", interaction: false)
         Auth.auth().createUser(withEmail: email, username: username, password: password, image: nil) { (err) in
             ProgressHUD.dismiss()
             if err != nil {

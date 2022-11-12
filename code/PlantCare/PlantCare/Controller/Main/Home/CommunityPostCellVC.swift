@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 
 class CommunityPostCellViewController: UICollectionViewController, CommunityPostCellDelegate {
-  
+   
     var posts = [Post]()
     
     func showEmptyStateViewIfNeeded() {}
@@ -100,5 +100,14 @@ class CommunityPostCellViewController: UICollectionViewController, CommunityPost
                 }
             }
         }
+    }
+    
+    func didTapShare(image: UIImage) {
+        let imageToShare = [ image ] as [Any]
+        let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+       
+        // present the view controller
+        self.present(activityViewController, animated: true, completion: nil)
     }
 }

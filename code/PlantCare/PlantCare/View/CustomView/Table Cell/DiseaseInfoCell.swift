@@ -12,12 +12,10 @@ protocol DiseaseInfoCellDelegate: AnyObject {
 }
 
 class DiseaseInfoCell: UITableViewCell {
-    
     @IBOutlet private weak var titleLabel: UILabel!
-    
     @IBOutlet private weak var expandedButton: UIButton!
-    
     @IBOutlet private weak var infoLabel: UILabel!
+    @IBOutlet private weak var underlineView: UIView!
     
     weak var delegate: DiseaseInfoCellDelegate?
     var isExpanded: Bool = true
@@ -27,6 +25,13 @@ class DiseaseInfoCell: UITableViewCell {
         // Initialization code
         expandedButton.tintColor = AppColor.GreenColor
         expandedButton.addTarget(self, action: #selector(expandedBtnTapped), for: .touchUpInside)
+        
+        underlineView.backgroundColor = AppColor.GreenColor
+        
+        titleLabel.textColor = AppColor.DarkGray
+        
+//        titleLabel.font = AppFont.semiBold.size(16)
+//        infoLabel.font = AppFont.light.size(14)
     }
     
     func configDiseaseInfoCell(content: DiseaseInfoViewEntity.ExpandedCell, moreDetail: Bool) {

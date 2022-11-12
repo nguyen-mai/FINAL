@@ -2,6 +2,7 @@ import UIKit
 import AVKit
 import CoreML
 import Vision
+import ProgressHUD
 
 class HomeVC: UIViewController {
     @IBOutlet private weak var titleLabel: UILabel!
@@ -19,11 +20,14 @@ class HomeVC: UIViewController {
     @IBOutlet private weak var label3: UILabel!
     @IBOutlet private weak var allButton: UIButton!
     
-//    var user: User?
+    @IBOutlet private weak var heightConstraintScrollView: NSLayoutConstraint!
+    
+    //    var user: User?
     private var titleRightBtn = ""
-    private var blogs: BlogViewEntity = BlogViewEntity()
+    private var blogs = DiseaseInfoViewEntity()
     private var timer = Timer()
-    private var counter: Int = 0
+    private var currentPage: Int = 0
+    let screenSize: CGRect = UIScreen.main.bounds
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -45,6 +49,21 @@ class HomeVC: UIViewController {
         setupView()
         setupLabel()
         setupNavBar()
+        setupConstraint()
+        ProgressHub.shared.setupProgressHub()
+    }
+    
+    private func setupConstraint() {
+        switch UIDevice().type {
+            case .iPhoneSE, .iPhone5, .iPhone5S:
+            heightConstraintScrollView.constant = 100
+            case .iPhone6, .iPhone7, .iPhone8, .iPhone6S, .iPhoneX:
+            heightConstraintScrollView.constant = 90
+            case .iPhone11, .iPhone12, .iPhone13:
+            heightConstraintScrollView.constant = 0
+            default:
+            heightConstraintScrollView.constant = 0
+        }
     }
     
     private func setupNavBar() {
@@ -61,7 +80,7 @@ class HomeVC: UIViewController {
         collectionView.delegate = self
         
         DispatchQueue.main.async {
-            self.timer = Timer.scheduledTimer(timeInterval: 8,
+            self.timer = Timer.scheduledTimer(timeInterval: 5,
                                               target: self,
                                               selector: #selector(self.changeImage),
                                               userInfo: nil, repeats: true)
@@ -70,7 +89,7 @@ class HomeVC: UIViewController {
     
     private func setupTextField() {
         CustomTextField.shared.searchTextField(textfield: searchTextField,
-                                               placeholder: Localization.Home.Search,
+                                               placeholder: Localization.Home.Search.localized(),
                                                icon: AppImage.Icon.Search)
         searchTextField.addTarget(self, action: #selector(searchTextFieldTap), for: .editingDidBegin)
     }
@@ -178,15 +197,15 @@ extension HomeVC {
     }
     
     @objc private func changeImage() {
-        if counter < blogs.array.count {
-            let index = IndexPath(item: counter, section: 0)
+        if currentPage < blogs.array.count {
+            let index = IndexPath(item: currentPage, section: 0)
             collectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: true)
-            counter += 1
+            currentPage += 1
         } else {
-            counter = 0
-            let index = IndexPath(item: counter, section: 0)
+            currentPage = 0
+            let index = IndexPath(item: currentPage, section: 0)
             collectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: false)
-            counter = 1
+            currentPage = 1
         }
     }
 }
@@ -195,9 +214,9 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true, completion: nil)
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            
             guard let model = try? VNCoreMLModel(for: ClassifierModel(configuration: MLModelConfiguration()).model) else {
                 fatalError("Unable to load model")
+                ProgressHUD.showError(Localization.Notification.Error.localized())
             }
             
             let request = VNCoreMLRequest(model: model) {[weak self] request, error in
@@ -205,9 +224,9 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
                       let topResult = results.first, let prediction = results.first?.confidence
                     else {
                         fatalError("Unexpected results")
+                        ProgressHUD.showError(Localization.Notification.Error.localized())
                 }
                 let predconfidence = String(format: "%.02f%", prediction * 100)
-                
                 var predictedResult = topResult.identifier
                 var plantType: String = Localization.Result.None.localized()
                 var type: String = Localization.Result.None.localized()
@@ -427,8 +446,9 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
                     print(error)
                 }
             }
+        } else {
+            ProgressHUD.showError(Localization.Notification.Error.localized())
         }
-        
     }
 }
 
@@ -442,7 +462,7 @@ extension HomeVC: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "blogCell", for: indexPath) as? BlogCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BlogCell", for: indexPath) as? BlogCell else {
             fatalError()
         }
         let item = blogs.array[indexPath.item]
@@ -456,10 +476,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
         let vc = UIStoryboard(name: NameConstant.Storyboard.Home,
                                     bundle: nil).instantiateVC(DetailDiseaseVC.self)
         let item = blogs.array[indexPath.item]
-        if let imgUrl = item.urlImg {
-            vc.img = imgUrl
-            vc.lbl = imgUrl
-        }
+        vc.model = item
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
         self.collectionView.deselectItem(at: indexPath, animated: true)
@@ -468,5 +485,10 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         CGSize(width: collectionView.frame.width,
                height: collectionView.frame.height)
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let width = scrollView.frame.width
+        currentPage = Int(scrollView.contentOffset.x / width)
     }
 }

@@ -20,7 +20,7 @@ struct DiseaseInfoViewEntity {
         var treatmentInfo: String
         var certainty: String
         
-        init(diseaseImage: UIImage = UIImage(named: AppImage.Icon.PlaceholderPhoto) ?? UIImage(),
+        init(diseaseImage: UIImage = UIImage(named: AppImage.Icon.PlaceholderPhoto) ?? UIImage(named: AppImage.Icon.PlaceholderPhoto)!,
              diseaseName: String = "",
              plantName: String = "",
              typeDisease: String = "",
@@ -50,4 +50,43 @@ struct DiseaseInfoViewEntity {
             self.detail = detail
         }
     }
+    
+    let array: [Disease] = [
+        Disease(diseaseImage: UIImage(named: AppImage.DiseaseImage.CornGrayLeafSpot) ?? UIImage(named: AppImage.Icon.PlaceholderPhoto)!,
+                diseaseName: Localization.CornDisease.CornGraySpot.localized(),
+                plantName: Localization.CornDisease.Corn.localized(),
+                typeDisease: Localization.Result.Fungus.localized(),
+                threatLevel: Localization.Result.HighLevel.localized(),
+                symptomInfo: Localization.CornDisease.CornGraySpotAbout.localized(),
+                conditionInfo: Localization.CornDisease.CornGraySpotCondition.localized(),
+                treatmentInfo: Localization.CornDisease.CornGraySpotTreatment.localized(),
+                certainty: ""),
+    Disease(diseaseImage: UIImage(named: AppImage.DiseaseImage.AppleScab) ?? UIImage(named: AppImage.Icon.PlaceholderPhoto)!,
+            diseaseName: Localization.AppleDisease.AppleScab.localized(),
+            plantName: Localization.AppleDisease.Apple.localized(),
+            typeDisease: Localization.Result.Fungus.localized(),
+            threatLevel: Localization.Result.HighLevel.localized(),
+            symptomInfo: Localization.AppleDisease.AppleScabAbout.localized(),
+            conditionInfo: Localization.AppleDisease.AppleScabCondition.localized(),
+            treatmentInfo: Localization.AppleDisease.AppleScabTreatment.localized(),
+            certainty: ""),
+    Disease(diseaseImage: UIImage(named: AppImage.DiseaseImage.TomatoBacterialSpot) ?? UIImage(named: AppImage.Icon.PlaceholderPhoto)!,
+            diseaseName: Localization.CornDisease.CornGraySpot.localized(),
+            plantName: Localization.CornDisease.CornGraySpot.localized(),
+            typeDisease: Localization.Result.Fungus.localized(),
+            threatLevel: Localization.Result.HighLevel.localized(),
+            symptomInfo: Localization.CornDisease.CornGraySpotAbout.localized(),
+            conditionInfo: Localization.CornDisease.CornGraySpotCondition.localized(),
+            treatmentInfo: Localization.CornDisease.CornGraySpotTreatment.localized(),
+            certainty: ""),
+    Disease(diseaseImage: UIImage(named: AppImage.DiseaseImage.TomatoBacterialSpot) ?? UIImage(named: AppImage.Icon.PlaceholderPhoto)!,
+            diseaseName: Localization.CornDisease.Corn.localized(),
+            plantName: Localization.CornDisease.CornGraySpot.localized(),
+            typeDisease: Localization.Result.Fungus.localized(),
+            threatLevel: Localization.Result.HighLevel.localized(),
+            symptomInfo: Localization.CornDisease.CornGraySpotAbout.localized(),
+            conditionInfo: Localization.CornDisease.CornGraySpotCondition.localized(),
+            treatmentInfo: Localization.CornDisease.CornGraySpotTreatment.localized(),
+            certainty: "")
+    ]
 }

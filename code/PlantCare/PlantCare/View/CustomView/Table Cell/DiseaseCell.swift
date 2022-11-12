@@ -13,20 +13,18 @@ class DiseaseCell: UITableViewCell {
     }
     
     private func setupUI() {
-        cellView.layer.cornerRadius = 20
-        cellView.layer.borderWidth = 1
+        cellView.layer.cornerRadius = 10
+        cellView.layer.borderWidth = 1.5
         cellView.layer.borderColor = AppColor.LightGrayColor2?.cgColor
-        cellView.layer.shadowOpacity = 5
-        cellView.layer.shadowColor = AppColor.LightGrayColor1?.cgColor
         cellView.clipsToBounds = true
-//        img.layer.cornerRadius = 20
+        
+        cellView.layer.shadowColor = AppColor.BlackColor?.cgColor
+        cellView.layer.shadowOpacity = 0.3
+        cellView.layer.shadowOffset = CGSize(width: 0, height: 5)
     }
 
-    func configDiseaseCell(with model: BlogViewEntity.Blog) {
-        guard let urlImg = model.urlImg else {
-            return
-        }
-        img.image = UIImage(named: urlImg)
+    func configDiseaseCell(with model: DiseaseInfoViewEntity.Disease) {
+        img.image = model.diseaseImage
         diseaseName.text = model.diseaseName.localized()
     }
 

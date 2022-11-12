@@ -14,15 +14,15 @@ class BlogCell: UICollectionViewCell {
     }
     
     private func setupUI() {
-        dimView.layer.cornerRadius = 20
-        img.layer.cornerRadius = 20
+        dimView.layer.cornerRadius = 10
+        img.layer.cornerRadius = 10
+        
+        dimView.clipsToBounds = true
+        img.clipsToBounds = true
     }
     
-    func config(with model: BlogViewEntity.Blog) {
-        guard let urlImg = model.urlImg else {
-            return
-        }
-        img.image = UIImage(named: urlImg)
+    func config(with model: DiseaseInfoViewEntity.Disease) {
+        img.image = model.diseaseImage
         title.text = model.diseaseName.localized()
     }
     

@@ -59,6 +59,7 @@ struct Localization {
         static let Search = "Search..."
         static let All = "All"
         static let SearchTitle = "Search"
+        static let ReferenceResult = "Bạn nhận thấy kết quả đúng không?"
     }
     
     struct AppleDisease {
@@ -167,6 +168,10 @@ struct Localization {
         static let ChangePass = "Change password"
         static let UserName = "User name"
         static let Email = "Email"
+    }
+    
+    struct Notification {
+        static let Error = "Something went wrong."
     }
 }
 
