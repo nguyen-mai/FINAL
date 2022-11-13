@@ -48,10 +48,10 @@ extension UIView {
         return view
     }
     
-    func setTopBorderWithColor(color: UIColor, width: CGFloat) {
+    func setTopBorderWithColor(color: UIColor, height: CGFloat) {
         let border = CALayer()
         border.backgroundColor = color.cgColor
-        border.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: width)
+        border.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: height)
         self.layer.addSublayer(border)
     }
 }

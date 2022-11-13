@@ -82,6 +82,8 @@
 		18775F9B2875FDBA0032793D /* CameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18775F9A2875FDBA0032793D /* CameraVC.swift */; };
 		18775F9F2875FDE30032793D /* ForumVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18775F9E2875FDE30032793D /* ForumVC.swift */; };
 		187E143528830DF300CEAF54 /* ButtonWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E143428830DF300CEAF54 /* ButtonWithImage.swift */; };
+		1891D359292082AB009E2254 /* ListForumOneUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1891D358292082AB009E2254 /* ListForumOneUser.swift */; };
+		1891D35C2920A7BE009E2254 /* CustomFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1891D35B2920A7BE009E2254 /* CustomFlowLayout.swift */; };
 		1898C6CE2920159100F33072 /* ProgressHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898C6CD2920159100F33072 /* ProgressHub.swift */; };
 		18ABE5B528846AB500034619 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ABE5B428846AB500034619 /* Config.swift */; };
 		18ABE5B728846E6900034619 /* FirebaseUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ABE5B628846E6900034619 /* FirebaseUtilities.swift */; };
@@ -93,6 +95,7 @@
 		18B78ACF291FD57900A89DAF /* HeaderReferenceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B78ACD291FD57900A89DAF /* HeaderReferenceCell.xib */; };
 		18BE2EDF28773F16004F1E43 /* ClassifierModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 18BE2EDE28773F16004F1E43 /* ClassifierModel.mlmodel */; };
 		18DBB6A72883E91F00D12D55 /* PostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DBB6A62883E91F00D12D55 /* PostVC.swift */; };
+		18E496E62920EAF500E09129 /* HeaderProfileCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E496E52920EAF500E09129 /* HeaderProfileCollectionReusableView.swift */; };
 		18EDEEF6287FBA8B008090E9 /* DetailDiseaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDEEF5287FBA8B008090E9 /* DetailDiseaseVC.swift */; };
 		18EDEEF8287FBBB6008090E9 /* BlogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EDEEF7287FBBB6008090E9 /* BlogCell.swift */; };
 		18EF92F4290E6A4700BEB4A6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18EF92F3290E6A4700BEB4A6 /* GoogleService-Info.plist */; };
@@ -176,6 +179,8 @@
 		18775F9A2875FDBA0032793D /* CameraVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraVC.swift; sourceTree = "<group>"; };
 		18775F9E2875FDE30032793D /* ForumVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumVC.swift; sourceTree = "<group>"; };
 		187E143428830DF300CEAF54 /* ButtonWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithImage.swift; sourceTree = "<group>"; };
+		1891D358292082AB009E2254 /* ListForumOneUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListForumOneUser.swift; sourceTree = "<group>"; };
+		1891D35B2920A7BE009E2254 /* CustomFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFlowLayout.swift; sourceTree = "<group>"; };
 		1898C6CD2920159100F33072 /* ProgressHub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHub.swift; sourceTree = "<group>"; };
 		18ABE5B428846AB500034619 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		18ABE5B628846E6900034619 /* FirebaseUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseUtilities.swift; sourceTree = "<group>"; };
@@ -187,6 +192,7 @@
 		18B78ACD291FD57900A89DAF /* HeaderReferenceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderReferenceCell.xib; sourceTree = "<group>"; };
 		18BE2EDE28773F16004F1E43 /* ClassifierModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ClassifierModel.mlmodel; sourceTree = "<group>"; };
 		18DBB6A62883E91F00D12D55 /* PostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostVC.swift; sourceTree = "<group>"; };
+		18E496E52920EAF500E09129 /* HeaderProfileCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderProfileCollectionReusableView.swift; sourceTree = "<group>"; };
 		18EDEEF5287FBA8B008090E9 /* DetailDiseaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDiseaseVC.swift; sourceTree = "<group>"; };
 		18EDEEF7287FBBB6008090E9 /* BlogCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogCell.swift; sourceTree = "<group>"; };
 		18EF92F3290E6A4700BEB4A6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -222,6 +228,7 @@
 		18091F3E288267A700C08EC4 /* Table Cell */ = {
 			isa = PBXGroup;
 			children = (
+				18E496E52920EAF500E09129 /* HeaderProfileCollectionReusableView.swift */,
 				1870E0CC28833424009C5529 /* DiseaseCell.swift */,
 				18091F3F288267E400C08EC4 /* SettingCell.swift */,
 				1870E0C62883229E009C5529 /* LanguageCell.swift */,
@@ -282,6 +289,7 @@
 				18DBB6A62883E91F00D12D55 /* PostVC.swift */,
 				1800A24F28840D4400A394B7 /* AccountVC.swift */,
 				1800A25228840FFF00A394B7 /* CommentVC.swift */,
+				1891D358292082AB009E2254 /* ListForumOneUser.swift */,
 			);
 			path = Forum;
 			sourceTree = "<group>";
@@ -324,10 +332,12 @@
 			isa = PBXGroup;
 			children = (
 				180E6F48287F33E900642E84 /* PredictionViewModel.swift */,
+				1898C6CD2920159100F33072 /* ProgressHub.swift */,
 				18775F3D2875DC190032793D /* AppPreferences.swift */,
 				18775F3B2875DC190032793D /* Logger.swift */,
 				18775F3C2875DC190032793D /* CustomTextField.swift */,
 				187E143428830DF300CEAF54 /* ButtonWithImage.swift */,
+				1891D35B2920A7BE009E2254 /* CustomFlowLayout.swift */,
 			);
 			path = Utitlities;
 			sourceTree = "<group>";
@@ -359,7 +369,6 @@
 				18775F412875DC190032793D /* NameConstant.swift */,
 				18775F422875DC190032793D /* EnumConstant.swift */,
 				18775F432875DC190032793D /* ServerConstant.swift */,
-				1898C6CD2920159100F33072 /* ProgressHub.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -689,6 +698,7 @@
 				18775F582875DC190032793D /* UIStoryboardExtension.swift in Sources */,
 				18091F46288283CE00C08EC4 /* HistoryVC.swift in Sources */,
 				18775F652875DC8E0032793D /* Localization.swift in Sources */,
+				18E496E62920EAF500E09129 /* HeaderProfileCollectionReusableView.swift in Sources */,
 				18ABE5B728846E6900034619 /* FirebaseUtilities.swift in Sources */,
 				182B9795291859E9009D6D9B /* FooterDiseaseInfoCell.swift in Sources */,
 				18ADFE2B2884BC1C00D159F1 /* NotificationExtension.swift in Sources */,
@@ -699,6 +709,7 @@
 				182B978E2918409A009D6D9B /* DiseaseInfoViewEntity.swift in Sources */,
 				18775F692875DCA30032793D /* AppImage.swift in Sources */,
 				18775F9F2875FDE30032793D /* ForumVC.swift in Sources */,
+				1891D359292082AB009E2254 /* ListForumOneUser.swift in Sources */,
 				18DBB6A72883E91F00D12D55 /* PostVC.swift in Sources */,
 				18775F272875DBF00032793D /* AppDelegate.swift in Sources */,
 				18775F7F2875F1450032793D /* OnboardingCollectionViewCell.swift in Sources */,
@@ -718,6 +729,7 @@
 				184F8C60287C1CD80079102B /* User.swift in Sources */,
 				182DAE722914140F005B201D /* PlaceholderTextView.swift in Sources */,
 				18775F5A2875DC190032793D /* StringExtension.swift in Sources */,
+				1891D35C2920A7BE009E2254 /* CustomFlowLayout.swift in Sources */,
 				1800A25328840FFF00A394B7 /* CommentVC.swift in Sources */,
 				18775F5B2875DC190032793D /* TextFieldExtension.swift in Sources */,
 				182DAE6A29141055005B201D /* CommunityPostCellHeader.swift in Sources */,

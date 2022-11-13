@@ -13,18 +13,24 @@ class CameraVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
         return label
     }()
     
+    private let backButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(named: AppImage.Icon.Back)?.withTintColor(AppColor.GreenColor!), for: .normal)
+        button.addTarget(self, action: #selector(leftBtnTapped), for: .touchUpInside)
+        return button
+    }()
+    
     private var result: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupIdentifierConfidenceLabel()
+        setupBackButton()
         
         tabBarController?.tabBar.isHidden = true
         view.backgroundColor = AppColor.WhiteColor
-        
-        // Do any additional setup after loading the view.
-       
-        
+    
         let captureSession = AVCaptureSession()
         captureSession.sessionPreset = .photo
         
@@ -44,7 +50,16 @@ class CameraVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
         let dataOutput = AVCaptureVideoDataOutput()
         dataOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "videoQueue"))
         captureSession.addOutput(dataOutput)
-        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        let tabBarController = self.tabBarController as! BaseTabBarController
+        tabBarController.showTabBar()
+    }
+    
+    @objc func leftBtnTapped() {
+        tabBarController?.selectedIndex = 0
     }
     
     private func setupIdentifierConfidenceLabel() {
@@ -53,6 +68,14 @@ class CameraVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
         identifierLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
         identifierLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
         identifierLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    }
+    
+    private func setupBackButton() {
+        view.addSubviews(backButton)
+        backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 25).isActive = true
+        backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5).isActive = true
+        backButton.heightAnchor.constraint(equalToConstant: 28).isActive = true
+        backButton.widthAnchor.constraint(equalToConstant: 28).isActive = true
     }
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {

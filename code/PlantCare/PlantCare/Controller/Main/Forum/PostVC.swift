@@ -1,5 +1,6 @@
 import UIKit
 import Firebase
+import ProgressHUD
 
 class PostVC: UIViewController {
     
@@ -11,6 +12,7 @@ class PostVC: UIViewController {
     private var selectedImage = UIImage(named: AppImage.Icon.PlaceholderPhoto) {
         didSet {
             photo.image = selectedImage
+            handlePost()
         }
     }
     
@@ -19,6 +21,7 @@ class PostVC: UIViewController {
         
         configUI()
         setupNavBar()
+        ProgressHub.shared.setupProgressHub()
     }
     
     private func configUI() {        
@@ -33,6 +36,10 @@ class PostVC: UIViewController {
         
         shareButton.layer.cornerRadius = 20
         shareButton.addTarget(self, action: #selector(shareBtnTapped(_:)), for: .touchUpInside)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        view.addGestureRecognizer(tap)
+        view.isUserInteractionEnabled = true
     }
     
     private func setupNavBar() {
@@ -44,6 +51,13 @@ class PostVC: UIViewController {
         
         navigationController?.navigationBar.tintColor = AppColor.WhiteColor
         headerView.backgroundColor = AppColor.GreenColor
+        
+        let rightBtn = UIBarButtonItem(title: Localization.Postting.Cancel.localized(), style: .plain, target: self, action: #selector(rightBtnTapped))
+        navigationItem.rightBarButtonItem = rightBtn
+    }
+    
+    @objc private func rightBtnTapped() {
+        clean()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,24 +70,27 @@ class PostVC: UIViewController {
     }
     
     private func handlePost() {
-        if selectedImage != nil {
+        if selectedImage != UIImage(named: AppImage.Icon.PlaceholderPhoto) {
            self.shareButton.isEnabled = true
             self.shareButton.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
         } else {
            self.shareButton.isEnabled = false
             self.shareButton.backgroundColor = .lightGray
-
         }
     }
     
     private func clean() {
-        self.captionTextView.text = ""
-        self.photo.image = UIImage(named: AppImage.Icon.PlaceholderPhoto)
-        self.selectedImage = nil
+        captionTextView.text = Localization.Forum.PlaceholderProblem.localized()
+        captionTextView.textColor = UIColor.lightGray
+        self.selectedImage = UIImage(named: AppImage.Icon.PlaceholderPhoto)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
+    }
+    
+    @objc private func handleTap(_ sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
     }
     
     @objc func handleSelectPhoto() {
@@ -89,17 +106,22 @@ class PostVC: UIViewController {
         guard let caption = captionTextView.text else { return }
 
         captionTextView.isUserInteractionEnabled = false
-
-        Database.database().createPost(withImage: postImage, caption: caption) { (err) in
-            if err != nil {
-                self.captionTextView.isUserInteractionEnabled = true
-                return
+        if caption.isEmpty {
+            ProgressHUD.showError(Localization.Postting.EmptyTextView.localized())
+        } else {
+            ProgressHUD.show("", interaction: false)
+            Database.database().createPost(withImage: postImage, caption: caption) { (err) in
+                if err != nil {
+                    ProgressHUD.dismiss()
+                    self.captionTextView.isUserInteractionEnabled = true
+                    return
+                }
+                NotificationCenter.default.post(name: NSNotification.Name.updateCommunityFeed, object: nil)
+                self.dismiss(animated: true, completion: nil)
             }
-
-            NotificationCenter.default.post(name: NSNotification.Name.updateCommunityFeed, object: nil)
-            self.dismiss(animated: true, completion: nil)
+            ProgressHUD.dismiss()
+            navigationController?.popViewController(animated: true)
         }
-        navigationController?.popViewController(animated: true)
     }
 }
 

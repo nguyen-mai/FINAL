@@ -1,6 +1,7 @@
 import Foundation
 import Firebase
 
+// MARK: - Auth
 extension Auth {
     func logIn(email: String, password: String, completion: @escaping (Error?) -> ()) {
         Auth.auth().signIn(withEmail: email, password: password, completion: { (user, err) in
@@ -52,8 +53,8 @@ extension Auth {
     }
 }
 
+// MARK: - Storage
 extension Storage {
-    
     fileprivate func uploadUserProfileImage(image: UIImage, completion: @escaping (String) -> ()) {
         guard let uploadData = image.jpegData(compressionQuality: 1) else { return } //changed from 0.3
         
@@ -96,12 +97,32 @@ extension Storage {
             })
         })
     }
+    
+    fileprivate func uploadRelabeledDiseaseImage(image: UIImage, filename: String, completion: @escaping (String) -> ()) {
+        guard let uploadData = image.jpegData(compressionQuality: 1) else { return } //changed from 0.5
+        
+        let storageRef = Storage.storage().reference().child("relabeled_diseases_images").child(filename)
+        storageRef.putData(uploadData, metadata: nil, completion: { (_, err) in
+            if let err = err {
+                print("Failed to upload post image:", err.localizedDescription)
+                return
+            }
+            
+            storageRef.downloadURL(completion: { (downloadURL, err) in
+                if let err = err {
+                    print("Failed to obtain download url for post image:", err)
+                    return
+                }
+                guard let postImageUrl = downloadURL?.absoluteString else { return }
+                completion(postImageUrl)
+            })
+        })
+    }
 }
 
+// MARK: - Real Time
 extension Database {
-
     //MARK: Users
-    
     func fetchUser(withUID uid: String, completion: @escaping (User) -> ()) {
         Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
             guard let userDictionary = snapshot.value as? [String: Any] else { return }
@@ -144,7 +165,6 @@ extension Database {
     }
     
     //MARK: Posts
-    
     func createPost(withImage image: UIImage, caption: String, completion: @escaping (Error?) -> ()) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
@@ -312,7 +332,6 @@ extension Database {
     }
     
     //MARK: Utilities
-    
     func numberOfPostsForUser(withUID uid: String, completion: @escaping (Int) -> ()) {
         Database.database().reference().child("posts").child(uid).observeSingleEvent(of: .value) { (snapshot) in
             if let dictionaries = snapshot.value as? [String: Any] {
@@ -329,6 +348,27 @@ extension Database {
                 completion(dictionaries.count)
             } else {
                 completion(0)
+            }
+        }
+    }
+    
+    // MARK: Relabel disease image
+    func createRelabelImage(withImage image: UIImage, plantName: String, diseaseName: String, completion: @escaping (Error?) -> ()) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        let userPostRef = Database.database().reference().child("relabel_disease_images").child(uid).childByAutoId()
+        
+        guard let postId = userPostRef.key else { return }
+        
+        Storage.storage().uploadRelabeledDiseaseImage(image: image, filename: postId) { (postImageUrl) in
+            let values = ["imageUrl": postImageUrl, "plant_name": plantName, "disease_name": diseaseName, "imageWidth": image.size.width, "imageHeight": image.size.height, "creationDate": Date().timeIntervalSince1970, "id": postId] as [String : Any]
+            userPostRef.updateChildValues(values) { (err, ref) in
+                if let err = err {
+                    print("Failed to save post to database", err)
+                    completion(err)
+                    return
+                }
+                completion(nil)
             }
         }
     }

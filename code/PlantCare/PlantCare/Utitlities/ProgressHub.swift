@@ -6,6 +6,7 @@ struct ProgressHub {
     
     func setupProgressHub() {
         ProgressHUD.colorHUD = .clear
+        ProgressHUD.colorBackground = .clear
         ProgressHUD.animationType = .circleSpinFade
         ProgressHUD.colorAnimation = AppColor.GreenColor!
     }

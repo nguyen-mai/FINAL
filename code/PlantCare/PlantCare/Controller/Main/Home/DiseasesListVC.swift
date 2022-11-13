@@ -19,6 +19,10 @@ class DiseasesListVC: UIViewController {
         headerView.backgroundColor = AppColor.GreenColor
         view.backgroundColor = AppColor.WhiteColor
         table.backgroundColor = AppColor.WhiteColor
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        view.addGestureRecognizer(tap)
+        view.isUserInteractionEnabled = true
                 
         filteredData = data.array
         configTable()
@@ -56,6 +60,13 @@ class DiseasesListVC: UIViewController {
     func configTable() {
         table.delegate = self
         table.dataSource = self
+    }
+}
+
+// - MARK: - Handle actions
+extension DiseasesListVC {
+    @objc private func handleTap(_ sender: UITapGestureRecognizer) {
+        self.view.endEditing(true)
     }
 }
 

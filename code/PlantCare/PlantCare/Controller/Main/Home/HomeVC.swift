@@ -67,6 +67,7 @@ class HomeVC: UIViewController {
     }
     
     private func setupNavBar() {
+        UINavigationBarAppearance().backgroundColor = AppColor.GreenColor
         navigationController?.navigationBar.tintColor = AppColor.WhiteColor
         navigationController?.navigationBar.backgroundColor = AppColor.GreenColor
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: AppImage.Icon.Menu)?.withRenderingMode(.alwaysOriginal),

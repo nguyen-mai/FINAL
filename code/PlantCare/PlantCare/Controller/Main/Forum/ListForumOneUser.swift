@@ -2,16 +2,13 @@ import UIKit
 import Firebase
 import ProgressHUD
 
-class ForumVC: CommunityPostCellViewController {
+class ListForumOneUser: CommunityPostCellViewController {
+  
+    var otherUser: User?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        if !(Auth.auth().currentUser == nil) {
-            fetchAllPosts()
-        } else {
-            showAlert(title: Localization.Alert.NotLogIn)
-        }
+        fetchPosts()
     }
        
     override func viewDidLoad() {
@@ -19,7 +16,7 @@ class ForumVC: CommunityPostCellViewController {
         configureNavigationBar()
         ProgressHub.shared.setupProgressHub()
         
-        collectionView?.backgroundColor = AppColor.WhiteColor
+        collectionView?.backgroundColor = .white
         collectionView?.register(CommunityPostCell.self, forCellWithReuseIdentifier: CommunityPostCell.cellId)
         collectionView?.backgroundView = CommunityEmptyStateView()
         collectionView?.backgroundView?.alpha = 0
@@ -39,35 +36,16 @@ class ForumVC: CommunityPostCellViewController {
 
         let label = UILabel()
         label.textColor = AppColor.WhiteColor
-        label.text = Localization.Forum.Forum.localized()
+        label.text = otherUser?.username
         label.font = UIFont(name: "Noteworthy Bold", size: 20)
         navigationItem.titleView = label
         
-        let rightBtn = UIBarButtonItem(image: UIImage(named: AppImage.Icon.Post)?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(rightBtnTapped))
-        navigationItem.rightBarButtonItem = rightBtn
-        
-        let leftBtn = UIBarButtonItem(image: UIImage(named: AppImage.Icon.Profile)?.withTintColor(AppColor.WhiteColor!), style: .plain, target: self, action: #selector(leftBtnTapped))
+        let leftBtn = UIBarButtonItem(image: UIImage(named: AppImage.Icon.Back)?.withTintColor(AppColor.WhiteColor!), style: .plain, target: self, action: #selector(leftBtnTapped))
         navigationItem.leftBarButtonItem = leftBtn
     }
     
-    @objc func rightBtnTapped() {
-        let storyboard = UIStoryboard(name: "Forum", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(withIdentifier: "PostVC") as? PostVC else {
-            return
-        }
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
-        vc.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
     @objc func leftBtnTapped() {
-        let storyboard = UIStoryboard(name: "Forum", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(withIdentifier: "AccountVC") as? AccountVC else {
-            return
-        }
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
-        vc.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(vc, animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     private func showAlert(title: String) {
@@ -97,29 +75,25 @@ class ForumVC: CommunityPostCellViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    private func fetchAllPosts() {
+    private func fetchPosts() {
 //        collectionView?.refreshControl?.beginRefreshing()
-        ProgressHUD.show("", interaction: false)
+        ProgressHUD.show()
         
-        Database.database().fetchAllUsers(includeCurrentUser: true, completion: { (users) in
-            for user in users {
-                Database.database().fetchAllPosts(withUID: user.uid, completion: { (posts) in
-                    self.posts.append(contentsOf: posts)
-                    
-                    self.posts.sort(by: { (p1, p2) -> Bool in
-                        return p1.creationDate.compare(p2.creationDate) == .orderedDescending
-                    })
-                    
-                    self.collectionView?.reloadData()
-//                    self.collectionView?.refreshControl?.endRefreshing()
-                    ProgressHUD.dismiss()
-                }) { (err) in
-//                    self.collectionView?.refreshControl?.endRefreshing()
-                    ProgressHUD.dismiss()
-                }
-            }
-        }) {  (_) in
-            self.collectionView?.refreshControl?.endRefreshing()
+        guard let otherUser = otherUser else {
+            return
+        }
+        
+        Database.database().fetchAllPosts(withUID: otherUser.uid, completion: { (posts) in
+            self.posts.append(contentsOf: posts)
+            
+            self.posts.sort(by: { (p1, p2) -> Bool in
+                return p1.creationDate.compare(p2.creationDate) == .orderedDescending
+            })
+            self.collectionView?.reloadData()
+//            self.collectionView?.refreshControl?.endRefreshing()
+            ProgressHUD.dismiss()
+        }) { (err) in
+//            self.collectionView?.refreshControl?.endRefreshing()
             ProgressHUD.dismiss()
         }
     }
@@ -127,7 +101,7 @@ class ForumVC: CommunityPostCellViewController {
 
     @objc private func handleRefresh() {
         posts.removeAll()
-        fetchAllPosts()
+        fetchPosts()
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -145,7 +119,8 @@ class ForumVC: CommunityPostCellViewController {
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
-extension ForumVC: UICollectionViewDelegateFlowLayout {
+extension ListForumOneUser: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let dummyCell = CommunityPostCell(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 1000))
         dummyCell.post = posts[indexPath.item]
@@ -154,6 +129,7 @@ extension ForumVC: UICollectionViewDelegateFlowLayout {
         var height: CGFloat = dummyCell.header.bounds.height
         height += view.frame.width
         height += 24 + 2 * dummyCell.padding //bookmark button + padding
+//        height += dummyCell.captionLabel.intrinsicContentSize.height + 8
         switch indexPath.item {
         case posts.count - 1:
             height += dummyCell.captionLabel.intrinsicContentSize.height + 2 * 20

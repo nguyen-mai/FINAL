@@ -12,6 +12,7 @@ protocol CommunityPostCellDelegate {
     func didTapUser(user: User)
     func didTapOptions(post: Post)
     func didLike(for cell: CommunityPostCell)
+    func didDoubleTapLike(for cell: CommunityPostCell)
     func didTapShare(image: UIImage)
 }
 
@@ -63,13 +64,7 @@ class CommunityPostCell: UICollectionViewCell {
         button.addTarget(self, action: #selector(handleShare), for: .touchUpInside)
         return button
     }()
-    
-    private let bookmarkButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "ic_ribbon").withRenderingMode(.alwaysOriginal), for: .normal)
-        return button
-    }()
-    
+
     private let likeCounter: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 14)
@@ -114,9 +109,6 @@ class CommunityPostCell: UICollectionViewCell {
         stackView.spacing = 16
         addSubview(stackView)
         stackView.anchor(top: photoImageView.bottomAnchor, left: leftAnchor, paddingTop: padding, paddingLeft: padding)
-        
-        addSubview(bookmarkButton)
-        bookmarkButton.anchor(top: photoImageView.bottomAnchor, right: rightAnchor, paddingTop: padding, paddingRight: padding)
     }
     
     private func configurePost() {
@@ -160,15 +152,19 @@ class CommunityPostCell: UICollectionViewCell {
     }
     
     @objc private func handleShare() {
+        print("Tap Share")
         guard let img = photoImageView.image else { return }
         delegate?.didTapShare(image: img)
+    }
+    
+    @objc func doubleTapped(_ sender: UITapGestureRecognizer) {
+        delegate?.didDoubleTapLike(for: self)
     }
 }
 
 //MARK: - CommunityPostCellHeaderDelegate
 
 extension CommunityPostCell: CommunityPostCellHeaderDelegate {
-    
     func didTapUser() {
         guard let user = post?.user else { return }
         delegate?.didTapUser(user: user)

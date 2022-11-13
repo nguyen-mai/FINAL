@@ -79,10 +79,10 @@ class CommunityPostCellHeader: UIView {
     private func configureUser() {
         guard let user = user else { return }
         usernameButton.setTitle(user.username, for: .normal)
-        if let profileImageUrl = user.profileImageUrl {
+        if let profileImageUrl = user.profileImageUrl, profileImageUrl != "nil" {
             userProfileImageView.loadImage(urlString: profileImageUrl)
         } else {
-            userProfileImageView.image = #imageLiteral(resourceName: "user")
+            userProfileImageView.image = UIImage(named: AppImage.Icon.User)
         }
     }
     

@@ -18,7 +18,7 @@ class BaseTabBarController: UITabBarController {
         tabBar.tintColor = AppColor.GreenColor
         tabBar.isTranslucent = false
         tabBar.backgroundColor = AppColor.WhiteColor
-        tabBar.setTopBorderWithColor(color: AppColor.LightGrayColor1!, width: 1)
+        tabBar.setTopBorderWithColor(color: AppColor.LightGrayColor1!, height: 1)
         selectedIndex = 0
         delegate = self
     }

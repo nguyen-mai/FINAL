@@ -4,6 +4,7 @@ import ProgressHUD
 
 class RegisterVC: UIViewController {
     
+    @IBOutlet private weak var backButton: UIButton!
     @IBOutlet private weak var createAccountLabel: UILabel!
     @IBOutlet private weak var loginLabel: UILabel!
     
@@ -30,18 +31,22 @@ class RegisterVC: UIViewController {
         setupLabel()
         setupTextField()
         setupButton()
+        setupNavigationItem()
         ProgressHub.shared.setupProgressHub()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
-        // Show the navigation bar on other view controllers
-        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    private func setupNavigationItem() {
+        backButton.setImage(UIImage(named: AppImage.Icon.Back)?.withTintColor(AppColor.GreenColor!), for: .normal)
+        backButton.addTarget(self, action: #selector(backBtnTap), for: .touchUpInside)
     }
     
     private func setupLabel() {
@@ -111,6 +116,10 @@ class RegisterVC: UIViewController {
 
 // MARK: - Handle Actions
 extension RegisterVC {
+    @objc private func backBtnTap() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @objc private func registerBtnTap() {
         view.endEditing(true)
         guard let email = emailTextField.text,

@@ -2,25 +2,33 @@ import UIKit
 import Firebase
 
 class ResetPasswordVC: UIViewController {
-
+    @IBOutlet private weak var backButton: UIButton!
     @IBOutlet private weak var resetPassTitleLabel: UILabel!
     @IBOutlet private weak var resetPassSubTitleLabel: UILabel!
     @IBOutlet private weak var emailErrorLabel: UILabel!
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var sendButton: UIButton!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         setupUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     private func setupUI() {
         setupLabel()
         setupTextField()
         setupButton()
+        setupNavigationItem()
+    }
+    
+    private func setupNavigationItem() {
+        backButton.setImage(UIImage(named: AppImage.Icon.Back)?.withTintColor(AppColor.GreenColor!), for: .normal)
+        backButton.addTarget(self, action: #selector(backBtnTap), for: .touchUpInside)
     }
     
     private func setupLabel() {
@@ -56,6 +64,10 @@ class ResetPasswordVC: UIViewController {
 
 // MARK: - Handle Actions
 extension ResetPasswordVC {
+    @objc private func backBtnTap() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @objc
     private func sendBtnTap() {
         guard let email = emailTextField.text else {

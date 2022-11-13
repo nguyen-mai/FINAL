@@ -149,8 +149,8 @@ struct Localization {
     
     struct Alert {
         static let Congrat = "Hurray!"
-        static let RegisterSuccessfully = "Register successfully"
-        static let GoLogIn = "Go to Log in"
+        static let RegisterSuccessfully = "Register successfully!"
+        static let GoLogIn = "Log in"
         static let Cancel = "Cancel"
         static let Sorry = "Sorry"
         static let OK = "OK"
@@ -161,6 +161,8 @@ struct Localization {
         static let Yes = "Yes"
         static let No = "No"
         static let AuthentInfo = "Is the result right?"
+        static let NotLogIn = "Your account is not logged in!"
+        static let ReturnPage = "Homepage"
     }
     
     struct Profile {
@@ -172,6 +174,19 @@ struct Localization {
     
     struct Notification {
         static let Error = "Something went wrong."
+        static let Success = "Thank you for rating."
+    }
+    
+    struct Labelling {
+        static let Relabelling = "Relabel"
+        static let PlantName = "Enter plant name"
+        static let DiseaseName = "Enter disease name"
+        
+    }
+    
+    struct Postting {
+        static let EmptyTextView = "Please enter something!"
+        static let Cancel = "Cancel"
     }
 }
 

@@ -125,8 +125,10 @@ extension CommentsVC: CommentInputAccessoryViewDelegate {
 
 extension CommentsVC: CommentCellDelegate {
     func didTapUser(user: User) {
-//        let userProfileController = UserProfileController(collectionViewLayout: UICollectionViewFlowLayout())
-//        userProfileController.user = user
-//        navigationController?.pushViewController(userProfileController, animated: true)
+        let vc = UIStoryboard(name: NameConstant.Storyboard.Forum,
+                              bundle: nil).instantiateVC(ListForumOneUser.self)
+        vc.otherUser = user
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

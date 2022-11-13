@@ -7,11 +7,12 @@
 
 import UIKit
 import Firebase
+import ProgressHUD
 
 class CommunityPostCellViewController: UICollectionViewController, CommunityPostCellDelegate {
    
     var posts = [Post]()
-    
+        
     func showEmptyStateViewIfNeeded() {}
     
     //MARK: - CommunityPostCellDelegate
@@ -24,9 +25,11 @@ class CommunityPostCellViewController: UICollectionViewController, CommunityPost
     }
     
     func didTapUser(user: User) {
-//        let userProfileController = UserProfileController(collectionViewLayout: UICollectionViewFlowLayout())
-//        userProfileController.user = user
-//        navigationController?.pushViewController(userProfileController, animated: true)
+        let vc = UIStoryboard(name: NameConstant.Storyboard.Forum,
+                              bundle: nil).instantiateVC(ListForumOneUser.self)
+        vc.otherUser = user
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func didTapOptions(post: Post) {
@@ -52,8 +55,9 @@ class CommunityPostCellViewController: UICollectionViewController, CommunityPost
             let alert = UIAlertController(title: "Delete Post?", message: nil, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             alert.addAction(UIAlertAction(title: "Delete", style: .default, handler: { (_) in
-                
+                ProgressHUD.show()
                 Database.database().deletePost(withUID: currentLoggedInUserId, postId: post.id) { (_) in
+                    ProgressHUD.dismiss()
                     if let postIndex = self.posts.index(where: {$0.id == post.id}) {
                         self.posts.remove(at: postIndex)
                         self.collectionView?.reloadData()
@@ -103,11 +107,41 @@ class CommunityPostCellViewController: UICollectionViewController, CommunityPost
     }
     
     func didTapShare(image: UIImage) {
-        let imageToShare = [ image ] as [Any]
-        let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
-        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
-       
-        // present the view controller
-        self.present(activityViewController, animated: true, completion: nil)
+        let vc = UIActivityViewController(activityItems: [image], applicationActivities: [])
+        
+        // Cho Ipad
+        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(vc, animated: true, completion: nil)
+    }
+
+    func didDoubleTapLike(for cell: CommunityPostCell) {
+        ProgressHUD.colorAnimation = AppColor.WhiteColor!
+        ProgressHUD.show(icon: .heart)
+        guard let indexPath = collectionView?.indexPath(for: cell) else { return }
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        var post = posts[indexPath.item]
+        
+        if post.likedByCurrentUser {
+            post.likedByCurrentUser = true
+            self.posts[indexPath.item] = post
+            UIView.performWithoutAnimation {
+                self.collectionView?.reloadItems(at: [indexPath])
+            }
+        } else {
+            let values = [uid : 1]
+            Database.database().reference().child("likes").child(post.id).updateChildValues(values) { (err, _) in
+                if let err = err {
+                    print("Failed to like post:", err)
+                    return
+                }
+                post.likedByCurrentUser = true
+                post.likes = post.likes + 1
+                self.posts[indexPath.item] = post
+                UIView.performWithoutAnimation {
+                    self.collectionView?.reloadItems(at: [indexPath])
+                }
+            }
+        }
     }
 }

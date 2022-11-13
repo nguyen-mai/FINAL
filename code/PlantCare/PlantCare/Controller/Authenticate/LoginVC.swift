@@ -13,12 +13,23 @@ class LoginVC: UIViewController {
     @IBOutlet private weak var registerLabel: UILabel!
     @IBOutlet private weak var emailErrorLabel: UILabel!
     @IBOutlet private weak var passwordErrorLabel: UILabel!
+    @IBOutlet private weak var skipButton: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     private func setupUI() {
@@ -31,21 +42,9 @@ class LoginVC: UIViewController {
     }
     
     private func setupNavigationItem() {
-        let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.configureWithOpaqueBackground()
-        navBarAppearance.backgroundColor = AppColor.WhiteColor
-        navBarAppearance.shadowColor = .clear
-
-        navigationController?.navigationBar.tintColor = AppColor.GreenColor
-        navigationController?.navigationBar.backgroundColor = AppColor.WhiteColor
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: Localization.Onboarding.Skip.localized(),
-                                                            style: .plain,
-                                                            target: self,
-                                                            action: #selector(skipBtnTap))
-        
-        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+        skipButton.setTitle(Localization.Onboarding.Skip.localized(), for: .normal)
+        skipButton.setTitleColor(AppColor.GreenColor, for: .normal)
+        skipButton.addTarget(self, action: #selector(skipBtnTap), for: .touchUpInside)
     }
     
     private func setupTextField() {
@@ -101,12 +100,13 @@ class LoginVC: UIViewController {
 extension LoginVC {
     @objc private func logInBtnTap() {
         view.endEditing(true)
-        ProgressHUD.show("", interaction: false)
+        ProgressHUD.show(interaction: false)
         guard let email = emailTextField.text, let password = passwordTextField.text else {
             return
         }
         Auth.auth().logIn(email: email, password: password) { (err) in
             if err != nil {
+                ProgressHUD.showError(err?.localizedDescription.localized())
                 print("Error")
                 return
             }
@@ -118,27 +118,12 @@ extension LoginVC {
                 forKey: NameConstant.UserDefaults.HasOnboarding)
             ProgressHUD.dismiss()
         }
-        
-//        Auth.auth().signIn(withEmail: email, password: password, completion: { (user, err) in
-//            if let err = err {
-//                print("Failed to sign in with email:", err)
-//                ProgressHUD.showError()
-//                return
-//            }
-//            let tabBarController = BaseTabBarController()
-//            UIApplication.shared.windows.first?.rootViewController = tabBarController
-//            UIApplication.shared.windows.first?.makeKeyAndVisible()
-//            UserDefaults.standard.set(
-//                EnumConstant.OnboardingStatus.Home.rawValue,
-//                forKey: NameConstant.UserDefaults.HasOnboarding)
-//            ProgressHUD.dismiss()
-//        })
     }
     
     @objc private func registerBtnTap() {
         let registerVC = UIStoryboard(name: NameConstant.Storyboard.Authenticate,
                                       bundle: nil).instantiateVC(RegisterVC.self)
-        navigationController?.pushViewController(registerVC, animated: true)
+        navigationController?.pushViewController(registerVC, animated: false)
     }
     
     @objc private func forgotPasswordBtnTap() {

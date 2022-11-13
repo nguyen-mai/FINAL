@@ -115,9 +115,12 @@ extension OnboardingVC {
     
     @objc private func nextBtnTap(_ sender: Any) {
         if currentPage == slides.array.count - 1 {
-            let loginVC = UIStoryboard(name: NameConstant.Storyboard.Authenticate,
-                                       bundle: nil).instantiateVC(LoginVC.self)
-            self.navigationController?.pushViewController(loginVC, animated: true)
+            let vc = UIStoryboard(name: NameConstant.Storyboard.Authenticate,
+                                  bundle: nil).instantiateVC(LoginVC.self)
+            let navBar = BaseNavigationController(rootViewController: vc)
+            UIApplication.shared.windows.first?.rootViewController = navBar
+            UIApplication.shared.windows.first?.makeKeyAndVisible()
+            
             UserDefaults.standard.set(EnumConstant.OnboardingStatus.LoggedIn.rawValue,
                                       forKey: NameConstant.UserDefaults.HasOnboarding)
         } else {

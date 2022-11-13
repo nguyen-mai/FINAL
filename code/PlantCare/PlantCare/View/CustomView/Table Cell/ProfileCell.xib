@@ -39,7 +39,7 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Grz-Fq-FR6">
-                                <rect key="frame" x="20" y="39" width="279" height="1"/>
+                                <rect key="frame" x="0.0" y="39" width="319" height="1"/>
                                 <color key="backgroundColor" name="LightGray1"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="E9P-P8-P0N"/>
@@ -52,10 +52,10 @@
                             <constraint firstItem="Aa3-eF-iBX" firstAttribute="leading" secondItem="KPp-6d-OZs" secondAttribute="trailing" constant="30" id="Blc-iq-8Sk"/>
                             <constraint firstAttribute="trailing" secondItem="56h-6b-p2h" secondAttribute="trailing" constant="20" id="NdH-Zv-Voz"/>
                             <constraint firstItem="Aa3-eF-iBX" firstAttribute="centerY" secondItem="KPp-6d-OZs" secondAttribute="centerY" id="O6T-ER-mg9"/>
-                            <constraint firstAttribute="trailing" secondItem="Grz-Fq-FR6" secondAttribute="trailing" constant="20" id="ZO0-Cj-cXN"/>
+                            <constraint firstAttribute="trailing" secondItem="Grz-Fq-FR6" secondAttribute="trailing" id="ZO0-Cj-cXN"/>
                             <constraint firstItem="56h-6b-p2h" firstAttribute="centerY" secondItem="PBQ-MT-LBx" secondAttribute="centerY" id="g1t-ZU-lrW"/>
                             <constraint firstAttribute="bottom" secondItem="Grz-Fq-FR6" secondAttribute="bottom" id="hTt-W7-8mh"/>
-                            <constraint firstItem="Grz-Fq-FR6" firstAttribute="leading" secondItem="PBQ-MT-LBx" secondAttribute="leading" constant="20" id="iqz-82-fzr"/>
+                            <constraint firstItem="Grz-Fq-FR6" firstAttribute="leading" secondItem="PBQ-MT-LBx" secondAttribute="leading" id="iqz-82-fzr"/>
                             <constraint firstItem="KPp-6d-OZs" firstAttribute="leading" secondItem="PBQ-MT-LBx" secondAttribute="leading" constant="20" id="kxY-Mr-wuc"/>
                             <constraint firstAttribute="height" constant="40" id="vDu-rK-S7C"/>
                         </constraints>

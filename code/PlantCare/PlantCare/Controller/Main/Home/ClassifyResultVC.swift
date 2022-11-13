@@ -1,4 +1,6 @@
 import UIKit
+import Firebase
+import ProgressHUD
 
 class ClassifyResultVC: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
@@ -17,11 +19,17 @@ class ClassifyResultVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
+        
+        let tabBarController = self.tabBarController as! BaseTabBarController
+        tabBarController.hideTabBar()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        
+        let tabBarController = self.tabBarController as! BaseTabBarController
+        tabBarController.showTabBar()
     }
     
     private func setupData() {
@@ -98,13 +106,71 @@ extension ClassifyResultVC: DiseaseInfoCellDelegate, FooterDiseaseInfoCellDelega
     
     func yesBtnTap(cell: FooterDiseaseInfoCell) {
         print("Yes")
+        if Auth.auth().currentUser == nil {
+            showAlert(title: Localization.Alert.NotLogIn)
+        } else {
+            Database.database().createRelabelImage(withImage: model.diseaseImage, plantName: model.plantName, diseaseName: model.diseaseName) { (err) in
+                if err != nil {
+                    ProgressHUD.showError(Localization.Notification.Error.localized())
+                    return
+                }
+                ProgressHUD.showSucceed(Localization.Notification.Success.localized())
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+    
+    private func showAlert(title: String) {
+        let alert = UIAlertController(title: title,
+                                      message: "",
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(
+            title: Localization.Alert.GoLogIn.localized(),
+            style: .default) { _ in
+                let vc = UIStoryboard(name: NameConstant.Storyboard.Authenticate,
+                                      bundle: nil).instantiateVC(LoginVC.self)
+                let navBar = BaseNavigationController(rootViewController: vc)
+                UIApplication.shared.windows.first?.rootViewController = navBar
+                UIApplication.shared.windows.first?.makeKeyAndVisible()
+                
+                UserDefaults.standard.set(EnumConstant.OnboardingStatus.LoggedIn.rawValue,
+                                          forKey: NameConstant.UserDefaults.HasOnboarding)
+        }
+        let cancelAction = UIAlertAction(
+            title: Localization.Alert.Cancel.localized(),
+            style: .cancel)
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
     func noBtnTapp(cell: FooterDiseaseInfoCell) {
-        let ac = UIAlertController(title: "Label again", message: nil, preferredStyle: .alert)
-        ac.addTextField(configurationHandler: nil)
-        ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        self.present(ac, animated: true, completion: nil)
+        if Auth.auth().currentUser == nil {
+            showAlert(title: Localization.Alert.NotLogIn)
+        } else {
+            let alertController = UIAlertController(title: Localization.Labelling.Relabelling.localized(), message: nil, preferredStyle: .alert)
+            alertController.addTextField { (textField : UITextField!) -> Void in
+                textField.placeholder = Localization.Labelling.PlantName.localized()
+            }
+            alertController.addTextField { (textField : UITextField!) -> Void in
+                textField.placeholder = Localization.Labelling.DiseaseName.localized()
+            }
+            alertController.addAction(UIAlertAction(title: Localization.Alert.OK.localized(), style: .default, handler: { [weak alertController] _ in
+                guard let textFields = alertController?.textFields else { return }
+                if let plantName = textFields[0].text,
+                   let diseaseName = textFields[1].text {
+                    Database.database().createRelabelImage(withImage: self.model.diseaseImage, plantName: plantName, diseaseName: diseaseName) { (err) in
+                        if err != nil {
+                            ProgressHUD.showError(Localization.Notification.Error.localized())
+                            return
+                        }
+                        ProgressHUD.showSucceed(Localization.Notification.Success.localized())
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                }
+            }))
+            alertController.addAction(UIAlertAction(title: Localization.Alert.Cancel.localized(), style: .cancel, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
 }
