@@ -1,5 +1,6 @@
 import UIKit
 import Firebase
+import ProgressHUD
 
 class ResetPasswordVC: UIViewController {
     @IBOutlet private weak var backButton: UIButton!
@@ -24,6 +25,9 @@ class ResetPasswordVC: UIViewController {
         setupTextField()
         setupButton()
         setupNavigationItem()
+        ProgressHub.shared.setupProgressHub()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleKeyBoard))
+        self.view.addGestureRecognizer(tapGesture)
     }
     
     private func setupNavigationItem() {
@@ -64,6 +68,10 @@ class ResetPasswordVC: UIViewController {
 
 // MARK: - Handle Actions
 extension ResetPasswordVC {
+    @objc private func handleKeyBoard(_ tap: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
+    
     @objc private func backBtnTap() {
         self.navigationController?.popViewController(animated: true)
     }
@@ -73,27 +81,35 @@ extension ResetPasswordVC {
         guard let email = emailTextField.text else {
             return
         }
+        ProgressHUD.show()
         Auth.auth().sendPasswordReset(withEmail: email) { error in
-            if let error = error {
-                print(error.localizedDescription)
-                self.showAlert(title: Localization.Alert.Sorry.localized(),
-                               message: "\(error.localizedDescription)")
+            if error != nil {
+                print(error?.localizedDescription)
+                ProgressHUD.showError(error?.localizedDescription)
+            } else {
+                self.showSucessfulAlert()
+                ProgressHUD.dismiss()
             }
-            self.showAlert(title: Localization.Alert.Congrat.localized(),
-                           message: Localization.Alert.ResetEmail.localized())
         }
     }
     
-    private func showAlert(title: String?, message: String?) {
-        guard let title = title,
-              let message = message else {
-            return
-        }
-        let alert = UIAlertController(title: title.localized(),
-                                      message: message.localized(),
+    private func showSucessfulAlert() {
+        let alert = UIAlertController(title: Localization.Alert.Congrat.localized(),
+                                      message: Localization.Alert.ResetEmail.localized(),
                                       preferredStyle: .alert)
-        let okAction = UIAlertAction(title: Localization.Alert.OK, style: .default)
+        let okAction = UIAlertAction(
+            title: Localization.Alert.GoLogIn.localized(),
+            style: .default) { _ in
+            let vc = UIStoryboard(name: NameConstant.Storyboard.Authenticate,
+                                  bundle: nil).instantiateVC(LoginVC.self)
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        }
+        let cancelAction = UIAlertAction(
+            title: Localization.Alert.Cancel.localized(),
+            style: .cancel)
         alert.addAction(okAction)
+        alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
     }
     

@@ -38,9 +38,9 @@ extension Auth {
     private func uploadUser(withUID uid: String, email: String, username: String, profileImageUrl: String? = nil, completion: @escaping (() -> ())) {
         var dictionaryValues = ["username": username, "email": email]
         if profileImageUrl != nil {
-            dictionaryValues["profileImageUrl"] = profileImageUrl
+            dictionaryValues["profile_image_url"] = profileImageUrl
         } else {
-            dictionaryValues["profileImageUrl"] = "nil"
+            dictionaryValues["profile_image_url"] = "nil"
         }
         let values = [uid: dictionaryValues]
         Database.database().reference().child("users").updateChildValues(values, withCompletionBlock: { (err, ref) in
@@ -118,6 +118,27 @@ extension Storage {
             })
         })
     }
+    
+    fileprivate func uploadClassifyingResult(image: UIImage, filename: String, completion: @escaping (String) -> ()) {
+        guard let uploadData = image.jpegData(compressionQuality: 1) else { return } //changed from 0.5
+        
+        let storageRef = Storage.storage().reference().child("classifying_results").child(filename)
+        storageRef.putData(uploadData, metadata: nil, completion: { (_, err) in
+            if let err = err {
+                print("Failed to upload post image:", err.localizedDescription)
+                return
+            }
+            
+            storageRef.downloadURL(completion: { (downloadURL, err) in
+                if let err = err {
+                    print("Failed to obtain download url for post image:", err)
+                    return
+                }
+                guard let postImageUrl = downloadURL?.absoluteString else { return }
+                completion(postImageUrl)
+            })
+        })
+    }
 }
 
 // MARK: - Real Time
@@ -173,7 +194,7 @@ extension Database {
         guard let postId = userPostRef.key else { return }
         
         Storage.storage().uploadPostImage(image: image, filename: postId) { (postImageUrl) in
-            let values = ["imageUrl": postImageUrl, "caption": caption, "imageWidth": image.size.width, "imageHeight": image.size.height, "creationDate": Date().timeIntervalSince1970, "id": postId] as [String : Any]
+            let values = ["image_url": postImageUrl, "caption": caption, "image_width": image.size.width, "image_height": image.size.height, "creation_date": Date().timeIntervalSince1970, "id": postId] as [String : Any]
             
             userPostRef.updateChildValues(values) { (err, ref) in
                 if let err = err {
@@ -221,7 +242,6 @@ extension Database {
     
     func fetchAllPosts(withUID uid: String, completion: @escaping ([Post]) -> (), withCancel cancel: ((Error) -> ())?) {
         let ref = Database.database().reference().child("posts").child(uid)
-        
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             guard let dictionaries = snapshot.value as? [String: Any] else {
                 completion([])
@@ -284,7 +304,7 @@ extension Database {
     func addCommentToPost(withId postId: String, text: String, completion: @escaping (Error?) -> ()) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        let values = ["text": text, "creationDate": Date().timeIntervalSince1970, "uid": uid] as [String: Any]
+        let values = ["text": text, "creation_date": Date().timeIntervalSince1970, "uid": uid] as [String: Any]
         
         let commentsRef = Database.database().reference().child("comments").child(postId).childByAutoId()
         commentsRef.updateChildValues(values) { (err, _) in
@@ -361,7 +381,7 @@ extension Database {
         guard let postId = userPostRef.key else { return }
         
         Storage.storage().uploadRelabeledDiseaseImage(image: image, filename: postId) { (postImageUrl) in
-            let values = ["imageUrl": postImageUrl, "plant_name": plantName, "disease_name": diseaseName, "imageWidth": image.size.width, "imageHeight": image.size.height, "creationDate": Date().timeIntervalSince1970, "id": postId] as [String : Any]
+            let values = ["image_url": postImageUrl, "plant_name": plantName, "disease_name": diseaseName, "image_width": image.size.width, "image_height": image.size.height, "creation_date": Date().timeIntervalSince1970, "id": postId] as [String : Any]
             userPostRef.updateChildValues(values) { (err, ref) in
                 if let err = err {
                     print("Failed to save post to database", err)
@@ -370,6 +390,83 @@ extension Database {
                 }
                 completion(nil)
             }
+        }
+    }
+    
+    // MARK: Searching Result
+    func createClassifyingResult(withImage image: UIImage, plantName: String, diseaseName: String, certainty: Double, completion: @escaping (Error?) -> ()) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let userPostRef = Database.database().reference().child("classifying_results").child(uid).childByAutoId()
+        guard let postId = userPostRef.key else { return }
+        
+        Storage.storage().uploadClassifyingResult(image: image, filename: postId) { (postImageUrl) in
+            let values = ["image_url": postImageUrl, "plant_name": plantName, "disease_name": diseaseName, "certainty": certainty,"image_width": image.size.width, "image_height": image.size.height, "creation_date": Date().timeIntervalSince1970, "id": postId] as [String : Any]
+            userPostRef.updateChildValues(values) { (err, ref) in
+                if let err = err {
+                    print("Failed to save post to database", err)
+                    completion(err)
+                    return
+                }
+                completion(nil)
+            }
+        }
+    }
+    
+    func fetchClassifyingResult(postId: String, completion: @escaping (ClassifyingResult) -> (), withCancel cancel: ((Error) -> ())? = nil) {
+        guard let currentLoggedInUser = Auth.auth().currentUser?.uid else { return }
+        
+        let ref = Database.database().reference().child("classifying_results").child(currentLoggedInUser).child(postId)
+        
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let postDictionary = snapshot.value as? [String: Any] else { return }
+            var post = ClassifyingResult(uid: postId, dictionary: postDictionary)
+            completion(post)
+        })
+    }
+    
+    func fetchAllClassifyingResult(completion: @escaping ([ClassifyingResult]) -> (), withCancel cancel: ((Error) -> ())?) {
+        guard let currentLoggedInUser = Auth.auth().currentUser?.uid else { return }
+        let ref = Database.database().reference().child("classifying_results").child(currentLoggedInUser)
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let dictionaries = snapshot.value as? [String: Any] else {
+                completion([])
+                return
+            }
+
+            var posts = [ClassifyingResult]()
+            dictionaries.forEach({ (postId, value) in
+                Database.database().fetchClassifyingResult(postId: postId, completion: { (post) in
+                    posts.append(post)
+                    print(posts.count)
+                    if posts.count == dictionaries.count {
+                        print(posts.count)
+                        completion(posts)
+                    }
+                })
+            })
+        }) { (err) in
+            print("Failed to fetch posts:", err)
+            cancel?(err)
+        }
+    }
+    
+    func deleteClassifyingResult(resultId: String, completion: ((Error?) -> ())? = nil) {
+        guard let currentLoggedInUser = Auth.auth().currentUser?.uid else { return }
+        Database.database().reference().child("classifying_results").child(currentLoggedInUser).child(resultId).removeValue { (err, _) in
+            if let err = err {
+                print("Failed to delete post:", err)
+                completion?(err)
+                return
+            }
+            
+            Storage.storage().reference().child("classifying_results").child(resultId).delete(completion: { (err) in
+                if let err = err {
+                    print("Failed to delete post image from storage:", err)
+                    completion?(err)
+                    return
+                }
+            })
+            completion?(nil)
         }
     }
 }

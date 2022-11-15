@@ -18,7 +18,8 @@ class HeaderDiseaseInfoCell: UITableViewCell {
         diseaseNameLabel.text = content.diseaseName.localized()
         plantNameLabel.text = content.plantName.localized()
         diseaseImageView.image = content.diseaseImage
-        certaintyDiseaseLabel.text = Localization.Result.CertaintyTitle.localized() + ": " + content.certainty.localized()
+        let certaintyString = String(format: "%.02f%", content.certainty * 100)
+        certaintyDiseaseLabel.text = Localization.Result.CertaintyTitle.localized() + ": " + certaintyString
         typeDiseaseLabel.text = Localization.Result.TypeTitle.localized() + ": " + content.typeDisease.localized()
         threatDiseaseLevelLabel.text = Localization.Result.ThreatTitle.localized() + ": " + content.threatLevel.localized()
     }

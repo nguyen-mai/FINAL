@@ -3,7 +3,6 @@ import FirebaseAuth
 
 class ProfileVC: UIViewController {
 
-    @IBOutlet private weak var logOutButton: UIButton!
     @IBOutlet private weak var avaImageView: UIImageView!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var subView: UIImageView!
@@ -12,16 +11,38 @@ class ProfileVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         setupUI()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
     private func setupUI() {
-        setupButton()
         setupView()
         setupTableView()
         setupImageView()
+        setupNavView()
+    }
+    
+    private func setupNavView() {
+        navigationController?.navigationBar.backgroundColor = AppColor.GreenColor
+        navigationController?.navigationItem.titleView?.tintColor = AppColor.WhiteColor
+        navigationController?.navigationBar.tintColor = AppColor.WhiteColor
+
+        let label = UILabel()
+        label.textColor = AppColor.WhiteColor
+        label.text = Localization.TitleApp.Title
+        label.font = UIFont(name: "Noteworthy Bold", size: 20)
+        navigationItem.titleView = label
+     
+        let leftBtn = UIBarButtonItem(image: UIImage(named: AppImage.Icon.Back)?.withTintColor(AppColor.WhiteColor!), style: .plain, target: self, action: #selector(leftBtnTapped))
+        navigationItem.leftBarButtonItem = leftBtn
+    }
+    
+    @objc private func leftBtnTapped() {
+        navigationController?.popViewController(animated: true)
     }
     
     private func setupView() {
@@ -39,48 +60,9 @@ class ProfileVC: UIViewController {
     private func setupImageView() {
         
     }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-                
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-    
-    private func setupButton() {
-        logOutButton.setTitle(Localization.Authenticate.LogOut.localized(),
-                              for: .normal)
-        logOutButton.backgroundColor = AppColor.WhiteColor
-        logOutButton.setTitleColor(AppColor.RedColor, for: .normal)
-        logOutButton.addTarget(self, action: #selector(logOutBtnTap), for: .touchUpInside)
-    }
 }
 
-extension ProfileVC {
-    @objc private func backBtnTap() {
-        self.navigationController?.popViewController(animated: true)
-    }
-    @objc private func logOutBtnTap() {
-        let alert = UIAlertController(
-            title: Localization.Alert.LogOut.localized(),
-            message: Localization.Alert.LogoutMessage.localized(),
-            preferredStyle: .alert)
-        let cancelAction = UIAlertAction(
-            title: Localization.Alert.Cancel.localized(),
-            style: .cancel)
-        let okAction = UIAlertAction(
-            title: Localization.Alert.LogOut.localized().uppercased(),
-            style: .default) { _ in
-                try! Auth.auth().signOut()
-                let vc = UIStoryboard(name: NameConstant.Storyboard.Home,
-                                      bundle: nil).instantiateVC(SettingVC.self)
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
-        alert.addAction(cancelAction)
-        alert.addAction(okAction)
-        self.present(alert, animated: true, completion: nil)
-    }
-}
-
+// MARK: - Handle action
 extension ProfileVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3

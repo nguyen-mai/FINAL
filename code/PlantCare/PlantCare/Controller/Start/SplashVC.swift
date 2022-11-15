@@ -11,7 +11,9 @@ class SplashVC: UIViewController {
             
             let onboardingVC = UIStoryboard(name: NameConstant.Storyboard.Start, bundle: nil)
                 .instantiateVC(OnboardingVC.self)
-            self.navigationController?.pushViewController(onboardingVC, animated: true)
+            onboardingVC.modalPresentationStyle = .fullScreen
+            self.present(onboardingVC, animated: true, completion: nil)
+//            self.navigationController?.pushViewController(onboardingVC, animated: true)
         }
     }
     

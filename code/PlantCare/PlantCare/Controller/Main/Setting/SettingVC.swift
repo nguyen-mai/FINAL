@@ -5,13 +5,13 @@ class SettingVC: UIViewController {
     @IBOutlet private weak var subView: UIView!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var loginButton: ButtonWithImage!
+    @IBOutlet private weak var logOutBtn: UIButton!
     
     private let list = SettingViewEntity()
     private var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupUI()
     }
     
@@ -19,6 +19,7 @@ class SettingVC: UIViewController {
         setupTableView()
         setupView()
         setupButton()
+        setupNavView()
     }
     
     private func setupTableView() {
@@ -33,16 +34,8 @@ class SettingVC: UIViewController {
     }
     
     private func setupButton() {
-        navigationController?.navigationBar.tintColor = AppColor.WhiteColor
-        navigationController?.navigationBar.backgroundColor = AppColor.GreenColor
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: AppImage.Icon.Back)?.withRenderingMode(.alwaysOriginal),
-                                                           style: .plain,
-                                                           target: self,
-                                                           action: #selector(backBtnTap))
-      
         loginButton.setImage(UIImage(named: AppImage.Icon.CircleNext), for: .normal)
-        loginButton.titleLabel?.font = UIFont(name: "Noteworthy Bold", size: 30)
+        loginButton.titleLabel?.font = UIFont(name: "Noteworthy Bold", size: 20)
         if Auth.auth().currentUser == nil {
             loginButton.setTitle(Localization.Authenticate.Login, for: .normal)
             loginButton.addTarget(self, action: #selector(loginBtnTap), for: .touchUpInside)
@@ -56,15 +49,36 @@ class SettingVC: UIViewController {
                 }
             }
         }
+        
+        logOutBtn.setTitle(Localization.Authenticate.LogOut.localized(),
+                              for: .normal)
+        logOutBtn.backgroundColor = AppColor.WhiteColor
+        logOutBtn.setTitleColor(AppColor.RedColor, for: .normal)
+        logOutBtn.addTarget(self, action: #selector(logOutBtnTap), for: .touchUpInside)
+    }
+    
+    private func setupNavView() {
+        navigationController?.navigationBar.backgroundColor = AppColor.GreenColor
+        navigationController?.navigationItem.titleView?.tintColor = AppColor.WhiteColor
+        navigationController?.navigationBar.tintColor = AppColor.WhiteColor
+
+        let label = UILabel()
+        label.textColor = AppColor.WhiteColor
+        label.text = ""
+        label.font = UIFont(name: "Noteworthy Bold", size: 20)
+        navigationItem.titleView = label
+     
+        let leftBtn = UIBarButtonItem(image: UIImage(named: AppImage.Icon.Back)?.withTintColor(AppColor.WhiteColor!), style: .plain, target: self, action: #selector(leftBtnTapped))
+        navigationItem.leftBarButtonItem = leftBtn
+    }
+    
+    @objc private func leftBtnTapped() {
+        navigationController?.popViewController(animated: true)
     }
 }
 
 // MARK: - Handle actions
 extension SettingVC {
-    @objc private func backBtnTap() {
-        self.navigationController?.popToRootViewController(animated: true)
-    }
-    
     @objc private func loginBtnTap() {
         let vc = UIStoryboard(name: NameConstant.Storyboard.Authenticate,
                               bundle: nil).instantiateVC(LoginVC.self)
@@ -76,9 +90,27 @@ extension SettingVC {
     }
     
     @objc private func toProfileScreen() {
-        let vc = UIStoryboard(name: NameConstant.Storyboard.Home,
-                              bundle: nil).instantiateVC(ProfileVC.self)
+        let vc = UIStoryboard(name: NameConstant.Storyboard.Forum,
+                              bundle: nil).instantiateVC(AccountVC.self)
+        vc.uid = Auth.auth().currentUser?.uid ?? ""
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc private func logOutBtnTap() {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: Localization.Alert.LogOut.localized(), style: .destructive, handler: { _ in
+            try! Auth.auth().signOut()
+            let vc = UIStoryboard(name: NameConstant.Storyboard.Authenticate,
+                                  bundle: nil).instantiateVC(LoginVC.self)
+            let navBar = BaseNavigationController(rootViewController: vc)
+            UIApplication.shared.windows.first?.rootViewController = navBar
+            UIApplication.shared.windows.first?.makeKeyAndVisible()
+            
+            UserDefaults.standard.set(EnumConstant.OnboardingStatus.LoggedIn.rawValue,
+                                      forKey: NameConstant.UserDefaults.HasOnboarding)
+        }))
+        alert.addAction(UIAlertAction(title: Localization.Alert.Cancel.localized(), style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -106,8 +138,17 @@ extension SettingVC: UITableViewDelegate {
                                   bundle: nil).instantiateVC(LanguageVC.self)
             self.navigationController?.pushViewController(vc, animated: true)
         case 1:
+            let vc = UIStoryboard(name: NameConstant.Storyboard.Forum,
+                                  bundle: nil).instantiateVC(AccountVC.self)
+            vc.uid = Auth.auth().currentUser?.uid ?? ""
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 2:
             let vc = UIStoryboard(name: NameConstant.Storyboard.Home,
-                                  bundle: nil).instantiateVC(HistoryVC.self)
+                                  bundle: nil).instantiateVC(DiseasesSearchingVC.self)
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 3:
+            let vc = UIStoryboard(name: NameConstant.Storyboard.Home,
+                                  bundle: nil).instantiateVC(ProfileVC.self)
             self.navigationController?.pushViewController(vc, animated: true)
         default:
             break

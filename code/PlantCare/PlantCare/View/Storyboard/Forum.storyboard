@@ -266,40 +266,6 @@
             </objects>
             <point key="canvasLocation" x="-2193" y="-695"/>
         </scene>
-        <!--List Forum One User-->
-        <scene sceneID="t4Q-Rf-6lJ">
-            <objects>
-                <collectionViewController storyboardIdentifier="ListForumOneUser" id="XC4-WL-Mz8" customClass="ListForumOneUser" customModule="PlantCare" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="9hj-tG-mWc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mEM-bV-RHM">
-                            <size key="itemSize" width="128" height="128"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="JJZ-t3-UnI">
-                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gs4-i0-q5G">
-                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </collectionViewCellContentView>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="XC4-WL-Mz8" id="TWA-US-v7J"/>
-                            <outlet property="delegate" destination="XC4-WL-Mz8" id="JZ4-Ka-qMe"/>
-                        </connections>
-                    </collectionView>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0mh-Fj-ZQG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3038" y="-686"/>
-        </scene>
         <!--AccountVC-->
         <scene sceneID="Fty-hg-Oe7">
             <objects>
@@ -341,7 +307,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jane" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzE-ty-Cat">
-                                    <rect key="frame" x="15" y="150" width="34.5" height="18"/>
+                                    <rect key="frame" x="58" y="150" width="34.5" height="18"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -385,9 +351,9 @@
                             <constraints>
                                 <constraint firstItem="FzE-ty-Cat" firstAttribute="top" secondItem="ODV-gF-P0z" secondAttribute="bottom" constant="15" id="FOQ-Qd-0BR"/>
                                 <constraint firstItem="Ts3-8M-rv7" firstAttribute="leading" secondItem="TEH-bT-2jX" secondAttribute="leading" id="Mvq-is-bcb"/>
+                                <constraint firstItem="FzE-ty-Cat" firstAttribute="centerX" secondItem="ODV-gF-P0z" secondAttribute="centerX" id="POi-Ac-dUX"/>
                                 <constraint firstAttribute="trailing" secondItem="85p-L5-YT8" secondAttribute="trailing" constant="15" id="Sg5-Uo-pcY"/>
                                 <constraint firstAttribute="trailing" secondItem="Ts3-8M-rv7" secondAttribute="trailing" id="eBe-95-2NY"/>
-                                <constraint firstItem="FzE-ty-Cat" firstAttribute="leading" secondItem="ODV-gF-P0z" secondAttribute="leading" id="h8d-SH-bbV"/>
                                 <constraint firstAttribute="bottom" secondItem="Ts3-8M-rv7" secondAttribute="bottom" id="nFK-It-7kG"/>
                                 <constraint firstItem="85p-L5-YT8" firstAttribute="top" secondItem="TEH-bT-2jX" secondAttribute="top" constant="15" id="nwm-Es-PLD"/>
                                 <constraint firstItem="85p-L5-YT8" firstAttribute="leading" secondItem="ODV-gF-P0z" secondAttribute="trailing" constant="15" id="ocg-oF-chj"/>

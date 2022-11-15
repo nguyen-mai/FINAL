@@ -2,9 +2,10 @@ import UIKit
 
 class DiseaseCell: UITableViewCell {
     
+    @IBOutlet weak var img: CustomImageView!
     @IBOutlet private weak var cellView: UIView!
-    @IBOutlet private weak var img: UIImageView!
     @IBOutlet private weak var diseaseName: UILabel!
+    @IBOutlet private weak var timeLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,6 +27,14 @@ class DiseaseCell: UITableViewCell {
     func configDiseaseCell(with model: DiseaseInfoViewEntity.Disease) {
         img.image = model.diseaseImage
         diseaseName.text = model.diseaseName.localized()
+        timeLabel.isHidden = true
+    }
+    
+    func configDiseaseSearchingCell(with model: ClassifyingResult) {
+        img.loadImage(urlString: model.imageUrl)
+        diseaseName.text = model.diseaseName.localized()
+        timeLabel.isHidden = false
+        timeLabel.text = model.creationDate.timeAgoDisplay()
     }
 
 }

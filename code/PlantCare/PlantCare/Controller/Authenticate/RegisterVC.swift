@@ -33,6 +33,8 @@ class RegisterVC: UIViewController {
         setupButton()
         setupNavigationItem()
         ProgressHub.shared.setupProgressHub()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleKeyBoard))
+        self.view.addGestureRecognizer(tapGesture)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -116,6 +118,10 @@ class RegisterVC: UIViewController {
 
 // MARK: - Handle Actions
 extension RegisterVC {
+    @objc private func handleKeyBoard(_ tap: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
+    
     @objc private func backBtnTap() {
         self.navigationController?.popViewController(animated: true)
     }
@@ -127,20 +133,20 @@ extension RegisterVC {
               let password = passwordTextField.text else {
                   return
               }
-        ProgressHUD.show("", interaction: false)
+        ProgressHUD.show()
         Auth.auth().createUser(withEmail: email, username: username, password: password, image: nil) { (err) in
-            ProgressHUD.dismiss()
-            if err != nil {
-                print("Error")
+            if let err = err {
+                ProgressHUD.showError(err.localizedDescription)
                 return
             }
-            self.showAlert(title: Localization.Alert.Congrat)
+            ProgressHUD.dismiss()
+            self.showLogInAlert()
         }
     }
     
-    private func showAlert(title: String) {
-        let alert = UIAlertController(title: title,
-                                      message: Localization.Alert.RegisterSuccessfully,
+    private func showLogInAlert() {
+        let alert = UIAlertController(title: Localization.Alert.Congrat.localized(),
+                                      message: Localization.Alert.RegisterSuccessfully.localized(),
                                       preferredStyle: .alert)
         let okAction = UIAlertAction(
             title: Localization.Alert.GoLogIn.localized(),

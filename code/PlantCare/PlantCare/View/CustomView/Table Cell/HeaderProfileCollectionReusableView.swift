@@ -1,4 +1,5 @@
 import UIKit
+import Firebase
 
 protocol HeaderProfileCollectionReusableViewDelegate {
     func updateFollowButton(forUser user: User)
@@ -26,7 +27,6 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
         super.awakeFromNib()
         clear()
         profileImage.layer.cornerRadius = profileImage.frame.height / 2
-        editProfileButton.addTarget(self, action: #selector(goToSettingVC), for: .touchUpInside)
     }
     
     func updateView() {
@@ -36,6 +36,14 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
             profileImage.loadImage(urlString: profileImageUrl)
         } else {
             profileImage.image = UIImage(named: AppImage.Icon.User)
+        }
+        if user.uid == Auth.auth().currentUser?.uid {
+            editProfileButton.setTitle(Localization.Profile.EditPost.localized(), for: .normal)
+            editProfileButton.addTarget(self, action: #selector(goToSettingVC), for: .touchUpInside)
+            editProfileButton.isEnabled = true
+        } else {
+            editProfileButton.setTitle(Localization.Profile.Hello.localized(), for: .normal)
+            editProfileButton.isEnabled = false
         }
     }
     

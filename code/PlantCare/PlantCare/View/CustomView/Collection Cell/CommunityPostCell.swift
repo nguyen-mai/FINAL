@@ -1,10 +1,3 @@
-//
-//  CommunityPostCell.swift
-//  PlantCare
-//
-//  Created by Apple on 2022/3/27.
-//
-
 import UIKit
 
 protocol CommunityPostCellDelegate {
@@ -12,7 +5,6 @@ protocol CommunityPostCellDelegate {
     func didTapUser(user: User)
     func didTapOptions(post: Post)
     func didLike(for cell: CommunityPostCell)
-    func didDoubleTapLike(for cell: CommunityPostCell)
     func didTapShare(image: UIImage)
 }
 
@@ -64,7 +56,7 @@ class CommunityPostCell: UICollectionViewCell {
         button.addTarget(self, action: #selector(handleShare), for: .touchUpInside)
         return button
     }()
-
+    
     private let likeCounter: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 14)
@@ -152,18 +144,12 @@ class CommunityPostCell: UICollectionViewCell {
     }
     
     @objc private func handleShare() {
-        print("Tap Share")
-        guard let img = photoImageView.image else { return }
-        delegate?.didTapShare(image: img)
-    }
-    
-    @objc func doubleTapped(_ sender: UITapGestureRecognizer) {
-        delegate?.didDoubleTapLike(for: self)
+        guard let image = photoImageView.image else { return }
+        delegate?.didTapShare(image: image)
     }
 }
 
-//MARK: - CommunityPostCellHeaderDelegate
-
+//MARK: - HomePostCellHeaderDelegate
 extension CommunityPostCell: CommunityPostCellHeaderDelegate {
     func didTapUser() {
         guard let user = post?.user else { return }
@@ -175,6 +161,7 @@ extension CommunityPostCell: CommunityPostCellHeaderDelegate {
         delegate?.didTapOptions(post: post)
     }
 }
+
 
 
 

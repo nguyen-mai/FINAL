@@ -6,19 +6,19 @@ class ForumVC: CommunityPostCellViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         if !(Auth.auth().currentUser == nil) {
             fetchAllPosts()
         } else {
             showAlert(title: Localization.Alert.NotLogIn)
         }
     }
-       
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigationBar()
         ProgressHub.shared.setupProgressHub()
         
+       
         collectionView?.backgroundColor = AppColor.WhiteColor
         collectionView?.register(CommunityPostCell.self, forCellWithReuseIdentifier: CommunityPostCell.cellId)
         collectionView?.backgroundView = CommunityEmptyStateView()
@@ -66,6 +66,7 @@ class ForumVC: CommunityPostCellViewController {
             return
         }
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
+        vc.uid = Auth.auth().currentUser?.uid ?? ""
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -90,7 +91,7 @@ class ForumVC: CommunityPostCellViewController {
             title: Localization.Alert.ReturnPage.localized(),
             style: .cancel) { _ in
                 self.tabBarController?.selectedIndex = 0
-                
+                self.navigationController?.popViewController(animated: true)
             }
         alert.addAction(okAction)
         alert.addAction(cancelAction)
@@ -98,9 +99,9 @@ class ForumVC: CommunityPostCellViewController {
     }
     
     private func fetchAllPosts() {
-//        collectionView?.refreshControl?.beginRefreshing()
+        collectionView?.refreshControl?.beginRefreshing()
         ProgressHUD.show("", interaction: false)
-        
+        self.posts.removeAll()
         Database.database().fetchAllUsers(includeCurrentUser: true, completion: { (users) in
             for user in users {
                 Database.database().fetchAllPosts(withUID: user.uid, completion: { (posts) in
@@ -111,10 +112,10 @@ class ForumVC: CommunityPostCellViewController {
                     })
                     
                     self.collectionView?.reloadData()
-//                    self.collectionView?.refreshControl?.endRefreshing()
+                    self.collectionView?.refreshControl?.endRefreshing()
                     ProgressHUD.dismiss()
                 }) { (err) in
-//                    self.collectionView?.refreshControl?.endRefreshing()
+                    self.collectionView?.refreshControl?.endRefreshing()
                     ProgressHUD.dismiss()
                 }
             }

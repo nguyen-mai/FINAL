@@ -8,6 +8,8 @@ struct SettingViewEntity {
     
     let array: [Setting] = [
         Setting(image: AppImage.Icon.Language, title: Localization.Setting.Language),
-        Setting(image: AppImage.Icon.History, title: Localization.Setting.History)
+        Setting(image: AppImage.Icon.History, title: Localization.Setting.PostingHistory),
+        Setting(image: AppImage.Icon.Search, title: Localization.Setting.SearchingHistory),
+        Setting(image: AppImage.Icon.EditProfile, title: Localization.Setting.EditingInfo)
     ]
 }

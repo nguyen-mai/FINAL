@@ -8,7 +8,6 @@
 import UIKit
 
 class CommunityEmptyStateView: UIView {
-    
     private let noPostsLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 5

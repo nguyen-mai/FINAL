@@ -21,8 +21,7 @@ class HomeVC: UIViewController {
     @IBOutlet private weak var allButton: UIButton!
     
     @IBOutlet private weak var heightConstraintScrollView: NSLayoutConstraint!
-    
-    //    var user: User?
+        
     private var titleRightBtn = ""
     private var blogs = DiseaseInfoViewEntity()
     private var timer = Timer()
@@ -70,7 +69,7 @@ class HomeVC: UIViewController {
         UINavigationBarAppearance().backgroundColor = AppColor.GreenColor
         navigationController?.navigationBar.tintColor = AppColor.WhiteColor
         navigationController?.navigationBar.backgroundColor = AppColor.GreenColor
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: AppImage.Icon.Menu)?.withRenderingMode(.alwaysOriginal),
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: AppImage.Icon.Menu)?.withTintColor(AppColor.WhiteColor!),
                                                            style: .plain,
                                                            target: self,
                                                            action: #selector(leftButtonTap))
@@ -216,18 +215,19 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
         picker.dismiss(animated: true, completion: nil)
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             guard let model = try? VNCoreMLModel(for: ClassifierModel(configuration: MLModelConfiguration()).model) else {
-                fatalError("Unable to load model")
                 ProgressHUD.showError(Localization.Notification.Error.localized())
+                fatalError("Unable to load model")
             }
             
             let request = VNCoreMLRequest(model: model) {[weak self] request, error in
                 guard let results = request.results as? [VNClassificationObservation],
                       let topResult = results.first, let prediction = results.first?.confidence
                     else {
-                        fatalError("Unexpected results")
                         ProgressHUD.showError(Localization.Notification.Error.localized())
+                        fatalError("Unexpected results")
                 }
-                let predconfidence = String(format: "%.02f%", prediction * 100)
+//                let predconfidence = String(format: "%.02f%", prediction * 100)
+                let predconfidence = Double(round(100 * prediction) / 100)
                 var predictedResult = topResult.identifier
                 var plantType: String = Localization.Result.None.localized()
                 var type: String = Localization.Result.None.localized()

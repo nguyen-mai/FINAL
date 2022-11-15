@@ -43,20 +43,12 @@ class CommentsVC: UICollectionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-//        // Hide the navigation bar on the this view controller
-//        self.navigationController?.setNavigationBarHidden(false, animated: animated)
-        
         let tabBarController = self.tabBarController as! BaseTabBarController
         tabBarController.hideTabBar()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
-//        // Show the navigation bar on other view controllers
-//        self.navigationController?.setNavigationBarHidden(true, animated: animated)
-        
         let tabBarController = self.tabBarController as! BaseTabBarController
         tabBarController.showTabBar()
     }
@@ -126,8 +118,9 @@ extension CommentsVC: CommentInputAccessoryViewDelegate {
 extension CommentsVC: CommentCellDelegate {
     func didTapUser(user: User) {
         let vc = UIStoryboard(name: NameConstant.Storyboard.Forum,
-                              bundle: nil).instantiateVC(ListForumOneUser.self)
-        vc.otherUser = user
+                              bundle: nil).instantiateVC(AccountVC.self)
+        vc.user = user
+        vc.uid = user.uid
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }

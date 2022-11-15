@@ -8,9 +8,9 @@ struct User {
     let profileImageUrl: String?
     
     init(uid: String, dictionary: [String: Any]) {
-        self.uid = uid
+        self.uid = uid as? String ?? ""
         self.username = dictionary["username"] as? String ?? ""
         self.email = dictionary["email"] as? String ?? ""
-        self.profileImageUrl = dictionary["profileImageUrl"] as? String ?? nil
+        self.profileImageUrl = dictionary["profile_image_url"] as? String ?? nil
     }
 }

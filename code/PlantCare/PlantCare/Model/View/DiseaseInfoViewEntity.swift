@@ -18,7 +18,7 @@ struct DiseaseInfoViewEntity {
         var symptomInfo: String
         var conditionInfo: String
         var treatmentInfo: String
-        var certainty: String
+        var certainty: Double
         
         init(diseaseImage: UIImage = UIImage(named: AppImage.Icon.PlaceholderPhoto) ?? UIImage(named: AppImage.Icon.PlaceholderPhoto)!,
              diseaseName: String = "",
@@ -28,7 +28,7 @@ struct DiseaseInfoViewEntity {
              symptomInfo: String = "",
              conditionInfo: String = "",
              treatmentInfo: String = "",
-             certainty: String = "") {
+             certainty: Double = 0) {
             self.diseaseImage = diseaseImage
             self.diseaseName = diseaseName
             self.plantName = plantName
@@ -60,7 +60,7 @@ struct DiseaseInfoViewEntity {
                 symptomInfo: Localization.CornDisease.CornGraySpotAbout.localized(),
                 conditionInfo: Localization.CornDisease.CornGraySpotCondition.localized(),
                 treatmentInfo: Localization.CornDisease.CornGraySpotTreatment.localized(),
-                certainty: ""),
+                certainty: 0),
     Disease(diseaseImage: UIImage(named: AppImage.DiseaseImage.AppleScab) ?? UIImage(named: AppImage.Icon.PlaceholderPhoto)!,
             diseaseName: Localization.AppleDisease.AppleScab.localized(),
             plantName: Localization.AppleDisease.Apple.localized(),
@@ -69,7 +69,7 @@ struct DiseaseInfoViewEntity {
             symptomInfo: Localization.AppleDisease.AppleScabAbout.localized(),
             conditionInfo: Localization.AppleDisease.AppleScabCondition.localized(),
             treatmentInfo: Localization.AppleDisease.AppleScabTreatment.localized(),
-            certainty: ""),
+            certainty: 0),
     Disease(diseaseImage: UIImage(named: AppImage.DiseaseImage.TomatoBacterialSpot) ?? UIImage(named: AppImage.Icon.PlaceholderPhoto)!,
             diseaseName: Localization.CornDisease.CornGraySpot.localized(),
             plantName: Localization.CornDisease.CornGraySpot.localized(),
@@ -78,7 +78,7 @@ struct DiseaseInfoViewEntity {
             symptomInfo: Localization.CornDisease.CornGraySpotAbout.localized(),
             conditionInfo: Localization.CornDisease.CornGraySpotCondition.localized(),
             treatmentInfo: Localization.CornDisease.CornGraySpotTreatment.localized(),
-            certainty: ""),
+            certainty: 0),
     Disease(diseaseImage: UIImage(named: AppImage.DiseaseImage.TomatoBacterialSpot) ?? UIImage(named: AppImage.Icon.PlaceholderPhoto)!,
             diseaseName: Localization.CornDisease.Corn.localized(),
             plantName: Localization.CornDisease.CornGraySpot.localized(),
@@ -87,6 +87,6 @@ struct DiseaseInfoViewEntity {
             symptomInfo: Localization.CornDisease.CornGraySpotAbout.localized(),
             conditionInfo: Localization.CornDisease.CornGraySpotCondition.localized(),
             treatmentInfo: Localization.CornDisease.CornGraySpotTreatment.localized(),
-            certainty: "")
+            certainty: 0)
     ]
 }

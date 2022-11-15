@@ -79,10 +79,10 @@ class CommentCell: UICollectionViewCell {
         
         textView.attributedText = attributedText
         
-        if let profileImageUrl = comment.user.profileImageUrl {
+        if let profileImageUrl = comment.user.profileImageUrl, profileImageUrl != "nil" {
             profileImageView.loadImage(urlString: profileImageUrl)
         } else {
-            profileImageView.image = #imageLiteral(resourceName: "user")
+            profileImageView.image = UIImage(named: AppImage.Icon.User)
         }
     }
     

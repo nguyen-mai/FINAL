@@ -11,7 +11,6 @@ class DiseasesListVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
     
@@ -44,7 +43,7 @@ class DiseasesListVC: UIViewController {
     private func setupSearchBar() {
         searchBar.searchBarStyle = .minimal
         searchBar.placeholder = Localization.Home.Search.localized()
-        searchBar.becomeFirstResponder()
+//        searchBar.becomeFirstResponder()
         searchBar.delegate = self
     }
     

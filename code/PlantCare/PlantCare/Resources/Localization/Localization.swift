@@ -40,11 +40,8 @@ struct Localization {
         static let ResetPassTitle = "Reset Password"
         static let ResetPassInfo = "Enter your email address and follow the instructions on the link in the email you received to reset your password"
         static let Send = "Send"
-        
         static let RequirementPassword = "Password requires at least 8 characters, 1 uppercase, 1 lowercase and 1 number"
-        
         static let LogOut = "Log Out"
-        
         static let EmptyErrorTF = "Please enter this field!"
     }
     
@@ -129,8 +126,9 @@ struct Localization {
     
     struct Setting {
         static let Language = "Language"
-        static let History = "History"
-        static let EditingInfo = "Editing information"
+        static let PostingHistory = "Posting history"
+        static let SearchingHistory = "Searching history"
+        static let EditingInfo = "Editing profile"
         static let EditingInfoPlaceholder = "Enter something"
     }
     
@@ -163,6 +161,7 @@ struct Localization {
         static let AuthentInfo = "Is the result right?"
         static let NotLogIn = "Your account is not logged in!"
         static let ReturnPage = "Homepage"
+        static let SaveQuestion = "Do you want to save?"
     }
     
     struct Profile {
@@ -170,11 +169,15 @@ struct Localization {
         static let ChangePass = "Change password"
         static let UserName = "User name"
         static let Email = "Email"
+        static let EditPost = "Ask what?"
+        static let Hello = "Hello!"
     }
     
     struct Notification {
         static let Error = "Something went wrong."
         static let Success = "Thank you for rating."
+        static let SavedSuccess = "Saved successfully."
+        static let DeletedSuccess = "Deleted successfully."
     }
     
     struct Labelling {
@@ -187,6 +190,8 @@ struct Localization {
     struct Postting {
         static let EmptyTextView = "Please enter something!"
         static let Cancel = "Cancel"
+        static let SubmitPlaceHolder = "Add a comment..."
+        static let Submit = "Submit"
     }
 }
 

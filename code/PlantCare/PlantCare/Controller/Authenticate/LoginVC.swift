@@ -18,7 +18,6 @@ class LoginVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupUI()
     }
     
@@ -39,6 +38,8 @@ class LoginVC: UIViewController {
         setupLabel()
         
         ProgressHub.shared.setupProgressHub()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleKeyBoard))
+        self.view.addGestureRecognizer(tapGesture)
     }
     
     private func setupNavigationItem() {
@@ -98,9 +99,13 @@ class LoginVC: UIViewController {
 
 // MARK: - Handle Actions
 extension LoginVC {
+    @objc private func handleKeyBoard(_ tap: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
+    
     @objc private func logInBtnTap() {
         view.endEditing(true)
-        ProgressHUD.show(interaction: false)
+        ProgressHUD.show()
         guard let email = emailTextField.text, let password = passwordTextField.text else {
             return
         }
@@ -116,8 +121,8 @@ extension LoginVC {
             UserDefaults.standard.set(
                 EnumConstant.OnboardingStatus.Home.rawValue,
                 forKey: NameConstant.UserDefaults.HasOnboarding)
-            ProgressHUD.dismiss()
         }
+        ProgressHUD.dismiss()
     }
     
     @objc private func registerBtnTap() {

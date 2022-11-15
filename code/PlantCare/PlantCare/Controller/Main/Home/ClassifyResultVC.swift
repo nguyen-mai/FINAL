@@ -26,8 +26,8 @@ class ClassifyResultVC: UIViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-        
+//        navigationController?.setNavigationBarHidden(true, animated: animated)
+//
         let tabBarController = self.tabBarController as! BaseTabBarController
         tabBarController.showTabBar()
     }
@@ -42,24 +42,61 @@ class ClassifyResultVC: UIViewController {
     
     private func setupUI() {
         setupTableView()
+        setupNavView()
+    }
+    
+    private func setupNavView() {
+        navigationController?.navigationBar.backgroundColor = AppColor.GreenColor
+        navigationController?.navigationItem.titleView?.tintColor = AppColor.WhiteColor
+        navigationController?.navigationBar.tintColor = AppColor.WhiteColor
+
+        let label = UILabel()
+        label.textColor = AppColor.WhiteColor
+        label.text = Localization.TitleApp.Title
+        label.font = UIFont(name: "Noteworthy Bold", size: 20)
+        navigationItem.titleView = label
+     
+        let leftBtn = UIBarButtonItem(image: UIImage(named: AppImage.Icon.Back)?.withTintColor(AppColor.WhiteColor!), style: .plain, target: self, action: #selector(leftBtnTapped))
+        navigationItem.leftBarButtonItem = leftBtn
+    }
+    
+    @objc private func leftBtnTapped() {
+//        navigationController?.popViewController(animated: true)
+        let alert = UIAlertController(title: Localization.Alert.SaveQuestion.localized(),
+                                      message: nil, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: Localization.Alert.OK.localized(), style: .default, handler: { _ in
+            if Auth.auth().currentUser == nil {
+                self.showNotLogInAlert()
+            } else {
+                Database.database().createClassifyingResult(withImage: self.model.diseaseImage, plantName: self.model.plantName, diseaseName: self.model.diseaseName, certainty: self.model.certainty, completion: { (err) in
+                    if err != nil {
+                        ProgressHUD.showError(Localization.Notification.Error.localized())
+                        return
+                    }
+                    self.dismiss(animated: true, completion: nil)
+                })
+            }
+            ProgressHUD.showSucceed(Localization.Notification.SavedSuccess.localized())
+            UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseOut, animations: {
+                self.navigationController?.popViewController(animated: true)
+            }, completion: nil)
+        })
+        let cancelAction = UIAlertAction(title: Localization.Alert.Cancel.localized(), style: .cancel, handler: {_ in 
+            self.navigationController?.popViewController(animated: true)
+        })
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
     private func setupTableView() {
         tableView.registerCellNib(type: DiseaseInfoCell.self)
         tableView.registerCellNib(type: HeaderDiseaseInfoCell.self)
         tableView.registerCellNib(type: FooterDiseaseInfoCell.self)
-        
         tableView.rowHeight = UITableView.automaticDimension
         
         tableView.delegate = self
         tableView.dataSource = self
-    }
-}
-
-// MARK: - Handle actions
-extension ClassifyResultVC {
-    @objc private func dismissVC() {
-        navigationController?.popViewController(animated: true)
     }
 }
 
@@ -107,7 +144,7 @@ extension ClassifyResultVC: DiseaseInfoCellDelegate, FooterDiseaseInfoCellDelega
     func yesBtnTap(cell: FooterDiseaseInfoCell) {
         print("Yes")
         if Auth.auth().currentUser == nil {
-            showAlert(title: Localization.Alert.NotLogIn)
+            self.showNotLogInAlert()
         } else {
             Database.database().createRelabelImage(withImage: model.diseaseImage, plantName: model.plantName, diseaseName: model.diseaseName) { (err) in
                 if err != nil {
@@ -120,33 +157,9 @@ extension ClassifyResultVC: DiseaseInfoCellDelegate, FooterDiseaseInfoCellDelega
         }
     }
     
-    private func showAlert(title: String) {
-        let alert = UIAlertController(title: title,
-                                      message: "",
-                                      preferredStyle: .alert)
-        let okAction = UIAlertAction(
-            title: Localization.Alert.GoLogIn.localized(),
-            style: .default) { _ in
-                let vc = UIStoryboard(name: NameConstant.Storyboard.Authenticate,
-                                      bundle: nil).instantiateVC(LoginVC.self)
-                let navBar = BaseNavigationController(rootViewController: vc)
-                UIApplication.shared.windows.first?.rootViewController = navBar
-                UIApplication.shared.windows.first?.makeKeyAndVisible()
-                
-                UserDefaults.standard.set(EnumConstant.OnboardingStatus.LoggedIn.rawValue,
-                                          forKey: NameConstant.UserDefaults.HasOnboarding)
-        }
-        let cancelAction = UIAlertAction(
-            title: Localization.Alert.Cancel.localized(),
-            style: .cancel)
-        alert.addAction(okAction)
-        alert.addAction(cancelAction)
-        self.present(alert, animated: true, completion: nil)
-    }
-    
     func noBtnTapp(cell: FooterDiseaseInfoCell) {
         if Auth.auth().currentUser == nil {
-            showAlert(title: Localization.Alert.NotLogIn)
+            self.showNotLogInAlert()
         } else {
             let alertController = UIAlertController(title: Localization.Labelling.Relabelling.localized(), message: nil, preferredStyle: .alert)
             alertController.addTextField { (textField : UITextField!) -> Void in
@@ -172,5 +185,32 @@ extension ClassifyResultVC: DiseaseInfoCellDelegate, FooterDiseaseInfoCellDelega
             alertController.addAction(UIAlertAction(title: Localization.Alert.Cancel.localized(), style: .cancel, handler: nil))
             self.present(alertController, animated: true, completion: nil)
         }
+    }
+    
+    private func showNotLogInAlert() {
+        let alert = UIAlertController(title: Localization.Alert.NotLogIn.localized(),
+                                      message: "",
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(
+            title: Localization.Alert.GoLogIn.localized(),
+            style: .default) { _ in
+                let vc = UIStoryboard(name: NameConstant.Storyboard.Authenticate,
+                                      bundle: nil).instantiateVC(LoginVC.self)
+                let navBar = BaseNavigationController(rootViewController: vc)
+                UIApplication.shared.windows.first?.rootViewController = navBar
+                UIApplication.shared.windows.first?.makeKeyAndVisible()
+                
+                UserDefaults.standard.set(EnumConstant.OnboardingStatus.LoggedIn.rawValue,
+                                          forKey: NameConstant.UserDefaults.HasOnboarding)
+        }
+        let cancelAction = UIAlertAction(
+            title: Localization.Alert.ReturnPage.localized(),
+            style: .cancel) { _ in
+                self.tabBarController?.selectedIndex = 0
+                self.navigationController?.popViewController(animated: true)
+            }
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
     }
 }

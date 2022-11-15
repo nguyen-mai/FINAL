@@ -48,7 +48,7 @@ class PostVC: UIViewController {
         label.text = Localization.Forum.Post.localized()
         label.font = UIFont(name: "Noteworthy Bold", size: 20)
         navigationItem.titleView = label
-        
+
         navigationController?.navigationBar.tintColor = AppColor.WhiteColor
         headerView.backgroundColor = AppColor.GreenColor
         
@@ -109,17 +109,14 @@ class PostVC: UIViewController {
         if caption.isEmpty {
             ProgressHUD.showError(Localization.Postting.EmptyTextView.localized())
         } else {
-            ProgressHUD.show("", interaction: false)
             Database.database().createPost(withImage: postImage, caption: caption) { (err) in
                 if err != nil {
-                    ProgressHUD.dismiss()
                     self.captionTextView.isUserInteractionEnabled = true
                     return
                 }
                 NotificationCenter.default.post(name: NSNotification.Name.updateCommunityFeed, object: nil)
                 self.dismiss(animated: true, completion: nil)
             }
-            ProgressHUD.dismiss()
             navigationController?.popViewController(animated: true)
         }
     }

@@ -4,6 +4,8 @@ import Vision
 
 class CameraVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
+    let captureSession = AVCaptureSession()
+    
     private let identifierLabel: UILabel = {
         let label = UILabel()
         label.backgroundColor = .white
@@ -31,7 +33,6 @@ class CameraVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
         tabBarController?.tabBar.isHidden = true
         view.backgroundColor = AppColor.WhiteColor
     
-        let captureSession = AVCaptureSession()
         captureSession.sessionPreset = .photo
         
         guard let captureDevice = AVCaptureDevice.default(for: .video) else {
@@ -60,6 +61,8 @@ class CameraVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     @objc func leftBtnTapped() {
         tabBarController?.selectedIndex = 0
+        self.navigationController?.popViewController(animated: true)
+        self.captureSession.stopRunning()
     }
     
     private func setupIdentifierConfidenceLabel() {

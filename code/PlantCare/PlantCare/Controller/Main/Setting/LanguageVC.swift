@@ -9,7 +9,6 @@ class LanguageVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
     
@@ -20,8 +19,13 @@ class LanguageVC: UIViewController {
     }
     
     private func setupNavBar() {
+        let label = UILabel()
+        label.textColor = AppColor.WhiteColor
+        label.text = Localization.Setting.Language.localized()
+        label.font = UIFont(name: "Noteworthy Bold", size: 20)
+        navigationItem.titleView = label
+        
         navigationController?.navigationBar.tintColor = AppColor.WhiteColor
-        navigationController?.navigationBar.backgroundColor = AppColor.GreenColor
         headerView.backgroundColor = AppColor.GreenColor
     }
 }

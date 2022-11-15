@@ -13,7 +13,8 @@ class CommunityPostCellViewController: UICollectionViewController, CommunityPost
    
     var posts = [Post]()
         
-    func showEmptyStateViewIfNeeded() {}
+    func showEmptyStateViewIfNeeded() {
+    }
     
     //MARK: - CommunityPostCellDelegate
     
@@ -25,16 +26,24 @@ class CommunityPostCellViewController: UICollectionViewController, CommunityPost
     }
     
     func didTapUser(user: User) {
-        let vc = UIStoryboard(name: NameConstant.Storyboard.Forum,
-                              bundle: nil).instantiateVC(ListForumOneUser.self)
-        vc.otherUser = user
-        vc.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(vc, animated: true)
+        if user.uid == Auth.auth().currentUser?.uid {
+            let vc = UIStoryboard(name: NameConstant.Storyboard.Forum,
+                                  bundle: nil).instantiateVC(AccountVC.self)
+            vc.hidesBottomBarWhenPushed = true
+            vc.uid = Auth.auth().currentUser?.uid ?? ""
+            navigationController?.pushViewController(vc, animated: true)
+        } else {
+            let vc = UIStoryboard(name: NameConstant.Storyboard.Forum,
+                                  bundle: nil).instantiateVC(AccountVC.self)
+            vc.user = user
+            vc.uid = user.uid
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     func didTapOptions(post: Post) {
         guard let currentLoggedInUserId = Auth.auth().currentUser?.uid else { return }
-        
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
@@ -57,13 +66,13 @@ class CommunityPostCellViewController: UICollectionViewController, CommunityPost
             alert.addAction(UIAlertAction(title: "Delete", style: .default, handler: { (_) in
                 ProgressHUD.show()
                 Database.database().deletePost(withUID: currentLoggedInUserId, postId: post.id) { (_) in
-                    ProgressHUD.dismiss()
-                    if let postIndex = self.posts.index(where: {$0.id == post.id}) {
+                    if let postIndex = self.posts.firstIndex(where: {$0.id == post.id}) {
                         self.posts.remove(at: postIndex)
                         self.collectionView?.reloadData()
                         self.showEmptyStateViewIfNeeded()
                     }
                 }
+                ProgressHUD.dismiss()
             }))
             self.present(alert, animated: true, completion: nil)
         })
