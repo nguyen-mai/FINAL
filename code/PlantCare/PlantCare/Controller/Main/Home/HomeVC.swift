@@ -38,6 +38,7 @@ class HomeVC: UIViewController {
         // Do any additional setup after loading the view.
         setupUI()
     }
+   
     
     private func setupUI() {
         setupNavigationItem()
@@ -91,7 +92,8 @@ class HomeVC: UIViewController {
         CustomTextField.shared.searchTextField(textfield: searchTextField,
                                                placeholder: Localization.Home.Search.localized(),
                                                icon: AppImage.Icon.Search)
-        searchTextField.addTarget(self, action: #selector(searchTextFieldTap), for: .editingDidBegin)
+//        searchTextField.addTarget(self, action: #selector(searchTextFieldTap), for: .editingDidBegin)
+        searchTextField.isUserInteractionEnabled = false
     }
     
     private func setupImageView() {
@@ -190,10 +192,10 @@ extension HomeVC {
     }
     
     @objc private func searchTextFieldTap() {
-        let vc = UIStoryboard(name: NameConstant.Storyboard.Home,
-                              bundle: nil).instantiateVC(DiseasesListVC.self)
-        vc.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(vc, animated: true)
+//        let vc = UIStoryboard(name: NameConstant.Storyboard.Home,
+//                              bundle: nil).instantiateVC(DiseasesListVC.self)
+//        vc.hidesBottomBarWhenPushed = true
+//        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc private func changeImage() {
@@ -207,6 +209,13 @@ extension HomeVC {
             collectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: false)
             currentPage = 1
         }
+    }
+    
+    @IBAction private func tapTextField(_ sender: Any) {
+        let vc = UIStoryboard(name: NameConstant.Storyboard.Home,
+                              bundle: nil).instantiateVC(DiseasesListVC.self)
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -451,6 +460,7 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
             ProgressHUD.showError(Localization.Notification.Error.localized())
         }
     }
+    
 }
 
 extension HomeVC: UICollectionViewDataSource {

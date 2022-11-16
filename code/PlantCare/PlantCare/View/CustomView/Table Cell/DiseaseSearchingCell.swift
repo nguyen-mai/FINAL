@@ -1,11 +1,12 @@
 import UIKit
 
-class DiseaseCell: UITableViewCell {
+class DiseaseSearchingCell: UITableViewCell {
     
     @IBOutlet private weak var img: CustomImageView!
     @IBOutlet private weak var cellView: UIView!
     @IBOutlet private weak var diseaseName: UILabel!
-        
+    @IBOutlet private weak var timeLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,9 +23,11 @@ class DiseaseCell: UITableViewCell {
         cellView.layer.shadowOpacity = 0.3
         cellView.layer.shadowOffset = CGSize(width: 0, height: 5)
     }
-
-    func configDiseaseCell(with model: DiseaseInfoViewEntity.Disease) {
-        img.image = model.diseaseImage
+    
+    func configDiseaseSearchingCell(with model: ClassifyingResult) {
+        img.loadImage(urlString: model.imageUrl)
         diseaseName.text = model.diseaseName.localized()
+        timeLabel.text = model.creationDate.timeAgoDisplay()
     }
 }
+

@@ -23,9 +23,9 @@ class DiseasesSearchingVC: UIViewController {
         view.backgroundColor = AppColor.WhiteColor
         table.backgroundColor = AppColor.WhiteColor
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-        view.addGestureRecognizer(tap)
-        view.isUserInteractionEnabled = true
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+//        view.addGestureRecognizer(tap)
+//        view.isUserInteractionEnabled = true
                 
         filteredData = data
         configTable()
@@ -63,31 +63,63 @@ class DiseasesSearchingVC: UIViewController {
     }
     
     func configTable() {
+        table.registerCellNib(type: DiseaseSearchingCell.self)
         table.delegate = self
         table.dataSource = self
     }
     
     private func setupData() {
-        guard let currentUser = Auth.auth().currentUser else { return }
-        ProgressHUD.show()
-        self.data.removeAll()
-        self.filteredData.removeAll()
-        Database.database().fetchAllClassifyingResult(completion: { data in
-            print(data.count)
-            self.data = data
-            self.filteredData = data
-            self.table.reloadData()
-            ProgressHUD.dismiss()
-        }, withCancel: { err in
-            ProgressHUD.showError(err.localizedDescription.localized())
-        })
+        if let currentUser = Auth.auth().currentUser, !currentUser.uid.isEmpty {
+            ProgressHUD.show()
+            self.data.removeAll()
+            self.filteredData.removeAll()
+            Database.database().fetchAllClassifyingResult(completion: { data in
+                print(data.count)
+                self.data = data
+                self.filteredData = data
+                self.table.reloadData()
+                ProgressHUD.dismiss()
+            }, withCancel: { err in
+                ProgressHUD.showError(err.localizedDescription.localized())
+            })
+        } else {
+            self.showNotLogInAlert()
+        }
+
     }
 }
 
 // - MARK: - Handle actions
 extension DiseasesSearchingVC {
-    @objc private func handleTap(_ sender: UITapGestureRecognizer) {
-        self.view.endEditing(true)
+//    @objc private func handleTap(_ sender: UITapGestureRecognizer) {
+//        self.view.endEditing(true)
+//    }
+    
+    private func showNotLogInAlert() {
+        let alert = UIAlertController(title: Localization.Alert.NotLogIn.localized(),
+                                      message: "",
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(
+            title: Localization.Alert.GoLogIn.localized(),
+            style: .default) { _ in
+                let vc = UIStoryboard(name: NameConstant.Storyboard.Authenticate,
+                                      bundle: nil).instantiateVC(LoginVC.self)
+                let navBar = BaseNavigationController(rootViewController: vc)
+                UIApplication.shared.windows.first?.rootViewController = navBar
+                UIApplication.shared.windows.first?.makeKeyAndVisible()
+                
+                UserDefaults.standard.set(EnumConstant.OnboardingStatus.LoggedIn.rawValue,
+                                          forKey: NameConstant.UserDefaults.HasOnboarding)
+        }
+        let cancelAction = UIAlertAction(
+            title: Localization.Alert.ReturnPage.localized(),
+            style: .cancel) { _ in
+                self.tabBarController?.selectedIndex = 0
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -98,7 +130,7 @@ extension DiseasesSearchingVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCellNib(type: DiseaseCell.self, for: indexPath) else {
+        guard let cell = tableView.dequeueReusableCellNib(type: DiseaseSearchingCell.self, for: indexPath) else {
             return UITableViewCell()
         }
         let item = filteredData[indexPath.row]
@@ -110,21 +142,21 @@ extension DiseasesSearchingVC: UITableViewDelegate, UITableViewDataSource {
         return 120
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-      if editingStyle == .delete {
-        print("Deleted")
-          self.filteredData.remove(at: indexPath.row)
-          self.data.remove(at: indexPath.row)
-          Database.database().deleteClassifyingResult(resultId: filteredData[indexPath.row].uid, completion: { err in
-              if err != nil {
-                  ProgressHUD.showError(err?.localizedDescription.localized())
-              } else {
-                  ProgressHUD.showSucceed(Localization.Notification.DeletedSuccess.localized())
-              }
-          })
-          self.table.deleteRows(at: [indexPath], with: .automatic)
-      }
-    }
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//      if editingStyle == .delete {
+//        print("Deleted")
+//          self.filteredData.remove(at: indexPath.row)
+//          self.data.remove(at: indexPath.row)
+//          Database.database().deleteClassifyingResult(resultId: filteredData[indexPath.row].uid, completion: { err in
+//              if err != nil {
+//                  ProgressHUD.showError(err?.localizedDescription.localized())
+//              } else {
+//                  ProgressHUD.showSucceed(Localization.Notification.DeletedSuccess.localized())
+//              }
+//          })
+//          self.table.deleteRows(at: [indexPath], with: .automatic)
+//      }
+//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = UIStoryboard(name: NameConstant.Storyboard.Home,
@@ -341,6 +373,10 @@ extension DiseasesSearchingVC: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        view.endEditing(true)
     }
 }
 

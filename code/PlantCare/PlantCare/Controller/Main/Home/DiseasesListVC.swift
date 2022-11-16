@@ -19,9 +19,9 @@ class DiseasesListVC: UIViewController {
         view.backgroundColor = AppColor.WhiteColor
         table.backgroundColor = AppColor.WhiteColor
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-        view.addGestureRecognizer(tap)
-        view.isUserInteractionEnabled = true
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+//        view.addGestureRecognizer(tap)
+//        view.isUserInteractionEnabled = true
                 
         filteredData = data.array
         configTable()
@@ -64,13 +64,12 @@ class DiseasesListVC: UIViewController {
 
 // - MARK: - Handle actions
 extension DiseasesListVC {
-    @objc private func handleTap(_ sender: UITapGestureRecognizer) {
-        self.view.endEditing(true)
-    }
+//    @objc private func handleTap(_ sender: UITapGestureRecognizer) {
+//        self.view.endEditing(true)
+//    }
 }
 
 extension DiseasesListVC: UITableViewDelegate, UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredData.count
     }
@@ -101,7 +100,6 @@ extension DiseasesListVC: UITableViewDelegate, UITableViewDataSource {
 extension DiseasesListVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredData = []
-        
         if searchText == "" {
             filteredData = data.array
         }
@@ -120,5 +118,8 @@ extension DiseasesListVC: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        view.endEditing(true)
+    }
 }
-

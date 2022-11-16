@@ -83,6 +83,7 @@
 		18775F9B2875FDBA0032793D /* CameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18775F9A2875FDBA0032793D /* CameraVC.swift */; };
 		18775F9F2875FDE30032793D /* ForumVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18775F9E2875FDE30032793D /* ForumVC.swift */; };
 		187E143528830DF300CEAF54 /* ButtonWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E143428830DF300CEAF54 /* ButtonWithImage.swift */; };
+		188DC5012924616300435ADE /* DiseaseSearchingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188DC5002924616300435ADE /* DiseaseSearchingCell.swift */; };
 		1891D35C2920A7BE009E2254 /* CustomFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1891D35B2920A7BE009E2254 /* CustomFlowLayout.swift */; };
 		1898C6CE2920159100F33072 /* ProgressHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1898C6CD2920159100F33072 /* ProgressHub.swift */; };
 		18ABE5B528846AB500034619 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ABE5B428846AB500034619 /* Config.swift */; };
@@ -180,6 +181,7 @@
 		18775F9A2875FDBA0032793D /* CameraVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraVC.swift; sourceTree = "<group>"; };
 		18775F9E2875FDE30032793D /* ForumVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumVC.swift; sourceTree = "<group>"; };
 		187E143428830DF300CEAF54 /* ButtonWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithImage.swift; sourceTree = "<group>"; };
+		188DC5002924616300435ADE /* DiseaseSearchingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseSearchingCell.swift; sourceTree = "<group>"; };
 		1891D35B2920A7BE009E2254 /* CustomFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFlowLayout.swift; sourceTree = "<group>"; };
 		1898C6CD2920159100F33072 /* ProgressHub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHub.swift; sourceTree = "<group>"; };
 		18ABE5B428846AB500034619 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				182B979829185AF2009D6D9B /* HeaderDiseaseInfoCell.xib */,
 				18B78ACC291FD57900A89DAF /* HeaderReferenceCell.swift */,
 				18B78ACD291FD57900A89DAF /* HeaderReferenceCell.xib */,
+				188DC5002924616300435ADE /* DiseaseSearchingCell.swift */,
 			);
 			path = "Table Cell";
 			sourceTree = "<group>";
@@ -751,6 +754,7 @@
 				182DAE6029140F58005B201D /* CommunityPostCellVC.swift in Sources */,
 				18775F672875DC9A0032793D /* AppColor.swift in Sources */,
 				1870E0CD28833424009C5529 /* DiseaseCell.swift in Sources */,
+				188DC5012924616300435ADE /* DiseaseSearchingCell.swift in Sources */,
 				1818D71E292004940004167B /* UIDeviceExtension.swift in Sources */,
 				18775F5F2875DC190032793D /* BaseNavigationController.swift in Sources */,
 				18775F5D2875DC190032793D /* CollectionViewExtension.swift in Sources */,
