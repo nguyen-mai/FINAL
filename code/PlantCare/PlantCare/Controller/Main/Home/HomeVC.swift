@@ -92,7 +92,6 @@ class HomeVC: UIViewController {
         CustomTextField.shared.searchTextField(textfield: searchTextField,
                                                placeholder: Localization.Home.Search.localized(),
                                                icon: AppImage.Icon.Search)
-//        searchTextField.addTarget(self, action: #selector(searchTextFieldTap), for: .editingDidBegin)
         searchTextField.isUserInteractionEnabled = false
     }
     
@@ -192,10 +191,10 @@ extension HomeVC {
     }
     
     @objc private func searchTextFieldTap() {
-//        let vc = UIStoryboard(name: NameConstant.Storyboard.Home,
-//                              bundle: nil).instantiateVC(DiseasesListVC.self)
-//        vc.hidesBottomBarWhenPushed = true
-//        navigationController?.pushViewController(vc, animated: true)
+        let vc = UIStoryboard(name: NameConstant.Storyboard.Home,
+                              bundle: nil).instantiateVC(DiseasesListVC.self)
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc private func changeImage() {

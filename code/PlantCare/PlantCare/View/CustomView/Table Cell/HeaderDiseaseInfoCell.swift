@@ -10,7 +10,6 @@ class HeaderDiseaseInfoCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         diseaseImageView.layer.cornerRadius = 10
     }
 

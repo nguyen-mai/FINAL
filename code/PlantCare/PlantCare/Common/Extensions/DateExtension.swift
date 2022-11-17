@@ -67,7 +67,14 @@ extension Date {
         } else if secondsAgo < week {
             return "\(secondsAgo / day)d"
         }
-        
         return "\(secondsAgo / week)wk"
+    }
+    
+    func timeDayDisplay() -> String {
+        let secondsAgo = Double(Date().timeIntervalSince(self))
+        let date = Date(timeIntervalSinceNow: secondsAgo/1000.0)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = " hh:mm dd/MM/yyyy"
+        return dateFormatter.string(from: date)
     }
 }

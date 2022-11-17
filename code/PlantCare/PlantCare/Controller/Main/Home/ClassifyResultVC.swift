@@ -74,19 +74,18 @@ class ClassifyResultVC: UIViewController {
                         return
                     }
                     self.dismiss(animated: true, completion: nil)
+                    self.navigationController?.popViewController(animated: true)
                 })
+                ProgressHUD.showSucceed(Localization.Notification.SavedSuccess.localized())
             }
-            ProgressHUD.showSucceed(Localization.Notification.SavedSuccess.localized())
-            UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseOut, animations: {
-                self.navigationController?.popViewController(animated: true)
-            }, completion: nil)
+            
         })
-        let cancelAction = UIAlertAction(title: Localization.Alert.Cancel.localized(), style: .cancel, handler: {_ in 
+        let cancelAction = UIAlertAction(title: Localization.Alert.Cancel.localized(), style: .cancel, handler: {_ in
             self.navigationController?.popViewController(animated: true)
         })
         alert.addAction(okAction)
         alert.addAction(cancelAction)
-        self.present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true)
     }
     
     private func setupTableView() {

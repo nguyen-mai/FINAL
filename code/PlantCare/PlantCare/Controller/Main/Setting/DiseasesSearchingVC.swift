@@ -7,6 +7,7 @@ class DiseasesSearchingVC: UIViewController {
     @IBOutlet private weak var headerView: UIView!
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var table: UITableView!
+    @IBOutlet private weak var noDataLabel: UILabel!
     
     private var data = [ClassifyingResult]()
     private let result: ClassifyingResult? = nil
@@ -33,6 +34,12 @@ class DiseasesSearchingVC: UIViewController {
         setupNavBar()
         ProgressHub.shared.setupProgressHub()
         setupData()
+        setupLabel()
+    }
+    
+    private func setupLabel() {
+        noDataLabel.text = Localization.Result.NoResult.localized()
+        noDataLabel.isHidden = true
     }
     
     private func setupNavBar() {
@@ -63,7 +70,6 @@ class DiseasesSearchingVC: UIViewController {
     }
     
     func configTable() {
-        table.registerCellNib(type: DiseaseSearchingCell.self)
         table.delegate = self
         table.dataSource = self
     }
@@ -85,6 +91,8 @@ class DiseasesSearchingVC: UIViewController {
         } else {
             self.showNotLogInAlert()
         }
+        
+        
 
     }
 }
@@ -126,6 +134,7 @@ extension DiseasesSearchingVC {
 extension DiseasesSearchingVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        noDataLabel.isHidden = filteredData.count > 0
         return filteredData.count
     }
     
@@ -340,7 +349,7 @@ extension DiseasesSearchingVC: UITableViewDelegate, UITableViewDataSource {
 //        aboutTxt = Localization.CornDisease.CornGraySpotAbout.localized()
 //        conditionTxt = Localization.CornDisease.CornGraySpotCondition.localized()
 //        treatmentTxt = Localization.CornDisease.CornGraySpotTreatment.localized()
-        vc.model = DiseaseInfoViewEntity.Disease(diseaseImage: UIImage(named: AppImage.DiseaseImage.AppleBlackRot) ?? UIImage(),
+        vc.model = DiseaseInfoViewEntity.Disease(diseaseImage: UIImage(),
                                                  diseaseName: item.diseaseName,
                                                  plantName: item.plantName,
                                                  typeDisease: type,
@@ -349,6 +358,7 @@ extension DiseasesSearchingVC: UITableViewDelegate, UITableViewDataSource {
                                                  conditionInfo: conditionTxt,
                                                  treatmentInfo: treatmentTxt,
                                                  certainty: item.certainty)
+        vc.urlImage = item.imageUrl
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
         navigationController?.pushViewController(vc, animated: true)
     }

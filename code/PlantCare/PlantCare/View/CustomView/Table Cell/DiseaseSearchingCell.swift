@@ -27,7 +27,8 @@ class DiseaseSearchingCell: UITableViewCell {
     func configDiseaseSearchingCell(with model: ClassifyingResult) {
         img.loadImage(urlString: model.imageUrl)
         diseaseName.text = model.diseaseName.localized()
-        timeLabel.text = model.creationDate.timeAgoDisplay()
+//        timeLabel.text = model.creationDate.timeAgoDisplay()
+        timeLabel.text = model.creationDate.timeDayDisplay()
     }
 }
 

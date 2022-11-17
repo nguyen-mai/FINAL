@@ -756,6 +756,12 @@
                                 <color key="barTintColor" name="White"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oQr-l6-vHb">
+                                <rect key="frame" x="186.5" y="443" width="41.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="MUH-G6-nZw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -767,15 +773,18 @@
                             <constraint firstItem="MUH-G6-nZw" firstAttribute="trailing" secondItem="gWC-Mw-eUn" secondAttribute="trailing" id="Gfm-C2-Khi"/>
                             <constraint firstItem="mDL-Qu-L2i" firstAttribute="leading" secondItem="MUH-G6-nZw" secondAttribute="leading" id="JYb-zf-Pfu"/>
                             <constraint firstItem="mDL-Qu-L2i" firstAttribute="top" secondItem="AAH-wJ-DZ4" secondAttribute="bottom" id="Mgb-CZ-36N"/>
+                            <constraint firstItem="oQr-l6-vHb" firstAttribute="centerY" secondItem="MUH-G6-nZw" secondAttribute="centerY" id="Pw3-vb-V6W"/>
                             <constraint firstItem="MUH-G6-nZw" firstAttribute="trailing" secondItem="mDL-Qu-L2i" secondAttribute="trailing" id="ap7-cy-F13"/>
                             <constraint firstAttribute="trailing" secondItem="AAH-wJ-DZ4" secondAttribute="trailing" constant="20" id="bZb-PQ-oOq"/>
                             <constraint firstItem="mDL-Qu-L2i" firstAttribute="bottom" secondItem="MUH-G6-nZw" secondAttribute="bottom" id="gAe-HT-qFU"/>
+                            <constraint firstItem="oQr-l6-vHb" firstAttribute="centerX" secondItem="MUH-G6-nZw" secondAttribute="centerX" id="jSL-TD-zbR"/>
                             <constraint firstItem="AAH-wJ-DZ4" firstAttribute="top" secondItem="gWC-Mw-eUn" secondAttribute="bottom" id="teO-7G-70y"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9oV-JT-YlI"/>
                     <connections>
                         <outlet property="headerView" destination="gWC-Mw-eUn" id="b1B-er-SYp"/>
+                        <outlet property="noDataLabel" destination="oQr-l6-vHb" id="mkr-38-xXc"/>
                         <outlet property="searchBar" destination="AAH-wJ-DZ4" id="CzG-7a-pjo"/>
                         <outlet property="table" destination="mDL-Qu-L2i" id="xfz-RO-Vz1"/>
                     </connections>

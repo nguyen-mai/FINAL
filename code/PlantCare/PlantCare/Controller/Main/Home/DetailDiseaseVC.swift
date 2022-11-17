@@ -9,6 +9,8 @@ class DetailDiseaseVC: UIViewController {
     private var arrayData = [DiseaseInfoViewEntity.ExpandedCell]()
     private var moreDetail = true
     
+    var urlImage: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,7 +55,11 @@ extension DetailDiseaseVC: UITableViewDataSource, UITableViewDelegate {
             guard let cell = tableView.dequeueReusableCellNib(type: HeaderReferenceCell.self, for: indexPath) else {
                 return UITableViewCell()
             }
-            cell.configHeaderDiseaseInfoCell(content: model)
+            if urlImage.isEmpty {
+                cell.configHeaderDiseaseInfoCell(content: model)
+            } else {
+                cell.configHeaderDiseaseInfoCell(content: model, urlImage: urlImage)
+            }
             return cell
         case 1...arrayData.count:
             guard let cell = tableView.dequeueReusableCellNib(type: DiseaseInfoCell.self, for: indexPath) else {

@@ -130,7 +130,7 @@ class AccountVC: CommunityPostCellViewController {
     
     private func fetchPosts() {
         collectionView?.refreshControl?.beginRefreshing()
-        ProgressHUD.show()
+//        ProgressHUD.show()
         
         guard let user = user else {
             return
@@ -144,10 +144,10 @@ class AccountVC: CommunityPostCellViewController {
             })
             self.collectionView?.reloadData()
             self.collectionView?.refreshControl?.endRefreshing()
-            ProgressHUD.dismiss()
+//            ProgressHUD.dismiss()
         }) { (err) in
             self.collectionView?.refreshControl?.endRefreshing()
-            ProgressHUD.dismiss()
+//            ProgressHUD.dismiss()
         }
     }
     

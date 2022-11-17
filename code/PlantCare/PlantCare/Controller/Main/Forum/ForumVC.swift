@@ -100,7 +100,7 @@ class ForumVC: CommunityPostCellViewController {
     
     private func fetchAllPosts() {
         collectionView?.refreshControl?.beginRefreshing()
-        ProgressHUD.show("", interaction: false)
+//        ProgressHUD.show("", interaction: false)
         self.posts.removeAll()
         Database.database().fetchAllUsers(includeCurrentUser: true, completion: { (users) in
             for user in users {
@@ -113,15 +113,15 @@ class ForumVC: CommunityPostCellViewController {
                     
                     self.collectionView?.reloadData()
                     self.collectionView?.refreshControl?.endRefreshing()
-                    ProgressHUD.dismiss()
+//                    ProgressHUD.dismiss()
                 }) { (err) in
                     self.collectionView?.refreshControl?.endRefreshing()
-                    ProgressHUD.dismiss()
+//                    ProgressHUD.dismiss()
                 }
             }
         }) {  (_) in
             self.collectionView?.refreshControl?.endRefreshing()
-            ProgressHUD.dismiss()
+//            ProgressHUD.dismiss()
         }
     }
     

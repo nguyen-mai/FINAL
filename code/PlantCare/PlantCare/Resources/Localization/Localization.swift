@@ -136,6 +136,7 @@ struct Localization {
         static let Result = "Result"
         static let Refernce = "Reference"
         static let Setting = "Setting"
+        static let Welcome = "Welcome to PlantCare"
     }
     
     struct Forum {

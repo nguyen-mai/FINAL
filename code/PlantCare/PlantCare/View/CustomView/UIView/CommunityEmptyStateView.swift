@@ -13,7 +13,7 @@ class CommunityEmptyStateView: UIView {
         label.numberOfLines = 5
         label.textAlignment = .center
         
-        let attributedText = NSMutableAttributedString(string: "Welcome to PlantCare\n", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16)])
+        let attributedText = NSMutableAttributedString(string: Localization.Title.Welcome.localized() + "\n", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 16)])
         attributedText.append(NSAttributedString(string: "\n\n", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 4)]))
 //        attributedText.append(NSMutableAttributedString(string: "When you follow people, you'll see the photos and videos they share here.", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]))
         

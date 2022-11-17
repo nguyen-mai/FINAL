@@ -50,7 +50,7 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cli-Xc-azF">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cli-Xc-azF" customClass="CustomImageView" customModule="PlantCare" customModuleProvider="target">
                                 <rect key="frame" x="20" y="115" width="150" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="dpt-aj-kfe"/>
@@ -82,7 +82,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="pQM-Wb-GhQ"/>
             <connections>
-                <outlet property="diseaseImageView" destination="cli-Xc-azF" id="rzW-oR-fJC"/>
+                <outlet property="diseaseImageView" destination="cli-Xc-azF" id="qL3-rg-mzf"/>
                 <outlet property="diseaseNameLabel" destination="aoV-zT-OtP" id="JHq-ve-uZH"/>
                 <outlet property="plantNameLabel" destination="9G6-yz-wsY" id="t4I-qI-OLn"/>
                 <outlet property="threatDiseaseLevelLabel" destination="LqJ-Oa-2GZ" id="qok-4e-yBU"/>
