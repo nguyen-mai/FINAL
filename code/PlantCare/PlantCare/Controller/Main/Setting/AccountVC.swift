@@ -79,6 +79,15 @@ class AccountVC: CommunityPostCellViewController {
         
         let leftBtn = UIBarButtonItem(image: UIImage(named: AppImage.Icon.Back)?.withTintColor(AppColor.WhiteColor!), style: .plain, target: self, action: #selector(leftBtnTapped))
         navigationItem.leftBarButtonItem = leftBtn
+        
+//         let icon = UIImage(named: "imageName")
+// let iconSize = CGRect(origin: CGPoint.zero, size: CGSize(width: 50, height: 50))
+// let iconButton = UIButton(frame: iconSize)
+// iconButton.setBackgroundImage(icon, for: .normal)
+// let barButton = UIBarButtonItem(customView: iconButton)
+// iconButton.addTarget(self, action: #selector(foo), for: .touchUpInside)
+
+// navigationItem.leftBarButtonItem = barButton
     }
     
     @objc private func rightBtnTapped() {
