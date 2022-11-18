@@ -185,6 +185,54 @@ extension Database {
         }
     }
     
+    func updateUserProfileImage(withImage image: UIImage, completion: @escaping (Error?) -> ()) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let userInfoRef = Database.database().reference().child("users").child(uid)
+        Storage.storage().uploadUserProfileImage(image: image, completion: { (profileImageUrl) in
+            let values = ["profile_image_url": profileImageUrl] as [String : Any]
+            userInfoRef.updateChildValues(values) { (err, ref) in
+                if let err = err {
+                    print("Failed to save post to database", err)
+                    completion(err)
+                    return
+                }
+                completion(nil)
+            }
+        })
+    }
+    
+    func updateUserEmail(withEmail email: String, completion: @escaping (Error?) -> ()) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let userInfoRef = Database.database().reference().child("users").child(uid)
+        let currentUser = Auth.auth().currentUser
+
+        currentUser?.updateEmail(to: email) { error in
+           if let error = error {
+               print(error)
+           } else {
+               print("CHANGED")
+               let uid = Auth.auth().currentUser!.uid
+               let thisUserRef = userInfoRef.child("users").child(uid)
+               let thisUserEmailRef = thisUserRef.child("email")
+               thisUserEmailRef.setValue(email)
+           }
+       }
+    }
+    
+    func updateUserName(withUserName username: String, completion: @escaping (Error?) -> ()) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let userInfoRef = Database.database().reference().child("users").child(uid)
+        let values = ["username": username] as [String : Any]
+        userInfoRef.updateChildValues(values) { (err, ref) in
+            if let err = err {
+                print("Failed to save post to database", err)
+                completion(err)
+                return
+            }
+            completion(nil)
+        }
+    }
+    
     //MARK: Posts
     func createPost(withImage image: UIImage, caption: String, completion: @escaping (Error?) -> ()) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
@@ -419,7 +467,7 @@ extension Database {
         
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             guard let postDictionary = snapshot.value as? [String: Any] else { return }
-            var post = ClassifyingResult(uid: postId, dictionary: postDictionary)
+            let post = ClassifyingResult(uid: postId, dictionary: postDictionary)
             completion(post)
         })
     }

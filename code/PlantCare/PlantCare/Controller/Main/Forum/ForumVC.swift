@@ -3,10 +3,14 @@ import Firebase
 import ProgressHUD
 
 class ForumVC: CommunityPostCellViewController {
+    var user: User?
+    var leftBtn = UIBarButtonItem()
+    var profileImageUrl: String = "" 
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if !(Auth.auth().currentUser == nil) {
+            fetchCurrentUser()
             fetchAllPosts()
         } else {
             showAlert(title: Localization.Alert.NotLogIn)
@@ -17,8 +21,8 @@ class ForumVC: CommunityPostCellViewController {
         super.viewDidLoad()
         configureNavigationBar()
         ProgressHub.shared.setupProgressHub()
+        fetchCurrentUser()
         
-       
         collectionView?.backgroundColor = AppColor.WhiteColor
         collectionView?.register(CommunityPostCell.self, forCellWithReuseIdentifier: CommunityPostCell.cellId)
         collectionView?.backgroundView = CommunityEmptyStateView()
@@ -32,6 +36,16 @@ class ForumVC: CommunityPostCellViewController {
         collectionView?.refreshControl = refreshControl
     }
     
+    private func fetchCurrentUser() {
+        ProgressHUD.show()
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        Database.database().fetchUser(withUID: uid) { (user) in
+            self.user = user
+            self.profileImageUrl = user.profileImageUrl ?? AppImage.Icon.Ava
+        }
+        ProgressHUD.dismiss()
+    }
+    
     private func configureNavigationBar() {
         navigationController?.navigationBar.backgroundColor = AppColor.GreenColor
         navigationController?.navigationItem.titleView?.tintColor = AppColor.WhiteColor
@@ -42,12 +56,15 @@ class ForumVC: CommunityPostCellViewController {
         label.text = Localization.Forum.Forum.localized()
         label.font = UIFont(name: "Noteworthy Bold", size: 20)
         navigationItem.titleView = label
+                
+        leftBtn = UIBarButtonItem(image: CustomImageView().loadAvatarImage(urlString: user?.profileImageUrl ?? AppImage.Icon.Ava),
+                                      style: .plain,
+                                      target: self,
+                                      action: #selector(self.leftBtnTapped))
+        self.navigationItem.leftBarButtonItem = leftBtn
         
         let rightBtn = UIBarButtonItem(image: UIImage(named: AppImage.Icon.Post)?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(rightBtnTapped))
         navigationItem.rightBarButtonItem = rightBtn
-        
-        let leftBtn = UIBarButtonItem(image: UIImage(named: AppImage.Icon.Profile)?.withTintColor(AppColor.WhiteColor!), style: .plain, target: self, action: #selector(leftBtnTapped))
-        navigationItem.leftBarButtonItem = leftBtn
     }
     
     @objc func rightBtnTapped() {

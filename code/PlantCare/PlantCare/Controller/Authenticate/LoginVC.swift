@@ -115,6 +115,7 @@ extension LoginVC {
                 print("Error")
                 return
             }
+            ProgressHUD.dismiss()
             let tabBarController = BaseTabBarController()
             UIApplication.shared.windows.first?.rootViewController = tabBarController
             UIApplication.shared.windows.first?.makeKeyAndVisible()
@@ -122,7 +123,6 @@ extension LoginVC {
                 EnumConstant.OnboardingStatus.Home.rawValue,
                 forKey: NameConstant.UserDefaults.HasOnboarding)
         }
-        ProgressHUD.dismiss()
     }
     
     @objc private func registerBtnTap() {

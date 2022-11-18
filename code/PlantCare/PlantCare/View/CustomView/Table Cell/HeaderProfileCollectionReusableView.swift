@@ -1,12 +1,9 @@
 import UIKit
 import Firebase
 
-protocol HeaderProfileCollectionReusableViewDelegate {
-    func updateFollowButton(forUser user: User)
-}
-
 protocol HeaderProfileCollectionReusableViewDelegateSwitchSettingVC {
     func goToSettingVC()
+    func updateImage()
 }
 
 class HeaderProfileCollectionReusableView: UICollectionReusableView {
@@ -15,13 +12,13 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var editProfileButton: UIButton!
     
-    var delegate: HeaderProfileCollectionReusableViewDelegate?
-    var delegate2: HeaderProfileCollectionReusableViewDelegateSwitchSettingVC?
+    var delegate: HeaderProfileCollectionReusableViewDelegateSwitchSettingVC?
     var user: User? {
         didSet {
             updateView()
         }
     }
+    var changedImage: UIImage?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -41,6 +38,14 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
             editProfileButton.setTitle(Localization.Profile.EditPost.localized(), for: .normal)
             editProfileButton.addTarget(self, action: #selector(goToSettingVC), for: .touchUpInside)
             editProfileButton.isEnabled = true
+            
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleSelectProfileImageView))
+            profileImage.addGestureRecognizer(tapGesture)
+            profileImage.isUserInteractionEnabled = true
+            
+            if let changedImage = changedImage, changedImage != UIImage(named: AppImage.Icon.User) {
+                profileImage.image = changedImage
+            }
         } else {
             editProfileButton.setTitle(Localization.Profile.Hello.localized(), for: .normal)
             editProfileButton.isEnabled = false
@@ -52,6 +57,10 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
     }
     
     @objc private func goToSettingVC() {
-        delegate2?.goToSettingVC()
+        delegate?.goToSettingVC()
+    }
+    
+    @objc func handleSelectProfileImageView() {
+        delegate?.updateImage()
     }
 }

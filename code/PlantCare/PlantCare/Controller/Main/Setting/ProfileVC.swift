@@ -5,7 +5,6 @@ class ProfileVC: UIViewController {
 
     @IBOutlet private weak var avaImageView: UIImageView!
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var subView: UIImageView!
 
     private var user: User?
     
@@ -31,11 +30,11 @@ class ProfileVC: UIViewController {
         navigationController?.navigationItem.titleView?.tintColor = AppColor.WhiteColor
         navigationController?.navigationBar.tintColor = AppColor.WhiteColor
 
-        let label = UILabel()
-        label.textColor = AppColor.WhiteColor
-        label.text = Localization.TitleApp.Title
-        label.font = UIFont(name: "Noteworthy Bold", size: 20)
-        navigationItem.titleView = label
+//        let label = UILabel()
+//        label.textColor = AppColor.WhiteColor
+//        label.text = Localization.TitleApp.Title
+//        label.font = UIFont(name: "Noteworthy Bold", size: 20)
+//        navigationItem.titleView = label
      
         let leftBtn = UIBarButtonItem(image: UIImage(named: AppImage.Icon.Back)?.withTintColor(AppColor.WhiteColor!), style: .plain, target: self, action: #selector(leftBtnTapped))
         navigationItem.leftBarButtonItem = leftBtn
@@ -47,7 +46,6 @@ class ProfileVC: UIViewController {
     
     private func setupView() {
         view.backgroundColor = AppColor.GreenColor
-        subView.backgroundColor = AppColor.LightGrayColor2
     }
     
     private func setupTableView() {

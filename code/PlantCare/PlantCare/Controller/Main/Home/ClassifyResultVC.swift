@@ -74,14 +74,14 @@ class ClassifyResultVC: UIViewController {
                         return
                     }
                     self.dismiss(animated: true, completion: nil)
-                    self.navigationController?.popViewController(animated: true)
+                    self.navigationController?.popViewController(animated: false)
                 })
                 ProgressHUD.showSucceed(Localization.Notification.SavedSuccess.localized())
             }
             
         })
         let cancelAction = UIAlertAction(title: Localization.Alert.Cancel.localized(), style: .cancel, handler: {_ in
-            self.navigationController?.popViewController(animated: true)
+            self.navigationController?.popViewController(animated: false)
         })
         alert.addAction(okAction)
         alert.addAction(cancelAction)

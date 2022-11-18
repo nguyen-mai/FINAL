@@ -179,6 +179,8 @@ struct Localization {
         static let Success = "Thank you for rating."
         static let SavedSuccess = "Saved successfully."
         static let DeletedSuccess = "Deleted successfully."
+        static let Delete = "Delete"
+        static let DeletePost = "Delete Post?"
     }
     
     struct Labelling {

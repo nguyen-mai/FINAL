@@ -59,11 +59,11 @@ class CommunityPostCellViewController: UICollectionViewController, CommunityPost
     private func deleteAction(forPost post: Post) -> UIAlertAction? {
         guard let currentLoggedInUserId = Auth.auth().currentUser?.uid else { return nil }
         
-        let action = UIAlertAction(title: "Delete", style: .destructive, handler: { (_) in
+        let action = UIAlertAction(title: Localization.Notification.Delete.localized(), style: .destructive, handler: { (_) in
             
-            let alert = UIAlertController(title: "Delete Post?", message: nil, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            alert.addAction(UIAlertAction(title: "Delete", style: .default, handler: { (_) in
+            let alert = UIAlertController(title: Localization.Notification.DeletePost.localized(), message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: Localization.Postting.Cancel.localized(), style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: Localization.Notification.Delete.localized(), style: .default, handler: { (_) in
                 ProgressHUD.show()
                 Database.database().deletePost(withUID: currentLoggedInUserId, postId: post.id) { (_) in
                     if let postIndex = self.posts.firstIndex(where: {$0.id == post.id}) {

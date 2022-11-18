@@ -38,7 +38,7 @@ class DiseasesSearchingVC: UIViewController {
     }
     
     private func setupLabel() {
-        noDataLabel.text = Localization.Result.NoResult.localized()
+        noDataLabel.text = ""
         noDataLabel.isHidden = true
     }
     
@@ -83,7 +83,15 @@ class DiseasesSearchingVC: UIViewController {
                 print(data.count)
                 self.data = data
                 self.filteredData = data
-                self.table.reloadData()
+                if self.filteredData.count > 0 {
+                    self.noDataLabel.isHidden = true
+                    self.table.isHidden = false
+                    self.table.reloadData()
+                } else {
+                    self.noDataLabel.text = Localization.Result.NoResult.localized()
+                    self.noDataLabel.isHidden = false
+                    self.table.isHidden = false
+                }
                 ProgressHUD.dismiss()
             }, withCancel: { err in
                 ProgressHUD.showError(err.localizedDescription.localized())
@@ -151,21 +159,21 @@ extension DiseasesSearchingVC: UITableViewDelegate, UITableViewDataSource {
         return 120
     }
     
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//      if editingStyle == .delete {
-//        print("Deleted")
-//          self.filteredData.remove(at: indexPath.row)
-//          self.data.remove(at: indexPath.row)
-//          Database.database().deleteClassifyingResult(resultId: filteredData[indexPath.row].uid, completion: { err in
-//              if err != nil {
-//                  ProgressHUD.showError(err?.localizedDescription.localized())
-//              } else {
-//                  ProgressHUD.showSucceed(Localization.Notification.DeletedSuccess.localized())
-//              }
-//          })
-//          self.table.deleteRows(at: [indexPath], with: .automatic)
-//      }
-//    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+      if editingStyle == .delete {
+          Database.database().deleteClassifyingResult(resultId: filteredData[indexPath.row].uid, completion: { err in
+              if err != nil {
+                  ProgressHUD.showError(err?.localizedDescription.localized())
+              } else {
+                  self.data.remove(at: indexPath.row)
+                  self.filteredData.remove(at: indexPath.row)
+                  self.table.deleteRows(at: [indexPath], with: .automatic)
+                  self.table?.reloadData()
+                  ProgressHUD.showSucceed(Localization.Notification.DeletedSuccess.localized())
+              }
+          })
+      }
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = UIStoryboard(name: NameConstant.Storyboard.Home,

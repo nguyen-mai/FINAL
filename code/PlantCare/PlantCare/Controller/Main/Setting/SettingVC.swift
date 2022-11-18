@@ -39,6 +39,7 @@ class SettingVC: UIViewController {
         if Auth.auth().currentUser == nil {
             loginButton.setTitle(Localization.Authenticate.Login, for: .normal)
             loginButton.addTarget(self, action: #selector(loginBtnTap), for: .touchUpInside)
+            logOutBtn.isHidden = true
         } else {
             guard let uid = Auth.auth().currentUser?.uid else { return }
             Database.database().fetchUser(withUID: uid) { (user) in
@@ -46,6 +47,7 @@ class SettingVC: UIViewController {
                 DispatchQueue.main.async {
                     self.loginButton.setTitle(user.username, for: .normal)
                     self.loginButton.addTarget(self, action: #selector(self.toProfileScreen), for: .touchUpInside)
+                    self.logOutBtn.isHidden = false
                 }
             }
         }
@@ -53,7 +55,11 @@ class SettingVC: UIViewController {
         logOutBtn.setTitle(Localization.Authenticate.LogOut.localized(),
                               for: .normal)
         logOutBtn.backgroundColor = AppColor.WhiteColor
-        logOutBtn.setTitleColor(AppColor.RedColor, for: .normal)
+        logOutBtn.layer.borderWidth = 2
+        logOutBtn.backgroundColor = AppColor.GreenColor
+        logOutBtn.layer.borderColor = AppColor.GreenColor?.cgColor
+        logOutBtn.layer.cornerRadius = logOutBtn.frame.height / 2
+        logOutBtn.setTitleColor(AppColor.WhiteColor, for: .normal)
         logOutBtn.addTarget(self, action: #selector(logOutBtnTap), for: .touchUpInside)
     }
     

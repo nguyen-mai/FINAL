@@ -5,6 +5,7 @@ import ProgressHUD
 class AccountVC: CommunityPostCellViewController {
     var user: User?
     var uid: String = ""
+    var selectedImage: UIImage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -208,17 +209,48 @@ extension AccountVC: UICollectionViewDelegateFlowLayout {
         let headerViewCell = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderProfileCollectionReusableView", for: indexPath) as! HeaderProfileCollectionReusableView
         if let user = self.user {
             headerViewCell.user = user
-            headerViewCell.delegate2 = self
+            headerViewCell.changedImage = selectedImage
+            headerViewCell.delegate = self
         }
         return headerViewCell
     }
 }
 
 extension AccountVC: HeaderProfileCollectionReusableViewDelegateSwitchSettingVC {
+    func updateImage() {
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.sourceType = .photoLibrary
+        pickerController.allowsEditing = true
+        present(pickerController, animated: true, completion: nil)
+    }
+    
     func goToSettingVC() {
         let vc = UIStoryboard(name: NameConstant.Storyboard.Forum,
                               bundle: nil).instantiateVC(PostVC.self)
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension AccountVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.editedImage] as? UIImage else { return }
+        Database.database().updateUserProfileImage(withImage: image, completion:  { (err) in
+            ProgressHUD.show()
+            if err != nil {
+                ProgressHUD.showError(err?.localizedDescription.localized())
+                return
+            }
+            self.selectedImage = image
+            self.collectionView.reloadData()
+            self.dismiss(animated: true, completion: nil)
+            ProgressHUD.showSucceed()
+        }
+        )
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
     }
 }

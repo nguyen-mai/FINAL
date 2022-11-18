@@ -31,6 +31,7 @@ struct AppImage {
         static let BigProfile = "ic_big_profile"
         static let LogOut = "ic_logout"
         static let EditProfile = "ic_edit_profile"
+        static let Ava = "ic_ava"
     }
     
     struct Image {
