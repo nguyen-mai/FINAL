@@ -306,12 +306,6 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jane" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzE-ty-Cat">
-                                    <rect key="frame" x="58" y="150" width="34.5" height="18"/>
-                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="85p-L5-YT8">
                                     <rect key="frame" x="150" y="15" width="249" height="100"/>
                                     <subviews>
@@ -347,11 +341,29 @@
                                         <constraint firstAttribute="height" constant="1" id="6Vm-V4-S4L"/>
                                     </constraints>
                                 </view>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="t9F-hR-zty">
+                                    <rect key="frame" x="44" y="147" width="62.5" height="20"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jane" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FzE-ty-Cat">
+                                            <rect key="frame" x="0.0" y="2" width="34.5" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OEb-bD-8Ks">
+                                            <rect key="frame" x="42.5" y="0.0" width="20" height="20"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="20" id="bLi-TR-k6A"/>
+                                                <constraint firstAttribute="height" constant="20" id="mrf-SS-5Ty"/>
+                                            </constraints>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="Button"/>
+                                        </button>
+                                    </subviews>
+                                </stackView>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="FzE-ty-Cat" firstAttribute="top" secondItem="ODV-gF-P0z" secondAttribute="bottom" constant="15" id="FOQ-Qd-0BR"/>
                                 <constraint firstItem="Ts3-8M-rv7" firstAttribute="leading" secondItem="TEH-bT-2jX" secondAttribute="leading" id="Mvq-is-bcb"/>
-                                <constraint firstItem="FzE-ty-Cat" firstAttribute="centerX" secondItem="ODV-gF-P0z" secondAttribute="centerX" id="POi-Ac-dUX"/>
                                 <constraint firstAttribute="trailing" secondItem="85p-L5-YT8" secondAttribute="trailing" constant="15" id="Sg5-Uo-pcY"/>
                                 <constraint firstAttribute="trailing" secondItem="Ts3-8M-rv7" secondAttribute="trailing" id="eBe-95-2NY"/>
                                 <constraint firstAttribute="bottom" secondItem="Ts3-8M-rv7" secondAttribute="bottom" id="nFK-It-7kG"/>
@@ -359,8 +371,11 @@
                                 <constraint firstItem="85p-L5-YT8" firstAttribute="leading" secondItem="ODV-gF-P0z" secondAttribute="trailing" constant="15" id="ocg-oF-chj"/>
                                 <constraint firstItem="ODV-gF-P0z" firstAttribute="leading" secondItem="TEH-bT-2jX" secondAttribute="leading" constant="15" id="rf0-Nl-mKo"/>
                                 <constraint firstItem="ODV-gF-P0z" firstAttribute="top" secondItem="TEH-bT-2jX" secondAttribute="top" constant="15" id="rjl-qv-jAm"/>
+                                <constraint firstItem="t9F-hR-zty" firstAttribute="top" secondItem="ODV-gF-P0z" secondAttribute="bottom" constant="12" id="tk0-ly-qnd"/>
+                                <constraint firstItem="t9F-hR-zty" firstAttribute="centerX" secondItem="ODV-gF-P0z" secondAttribute="centerX" id="z8y-NE-MDG"/>
                             </constraints>
                             <connections>
+                                <outlet property="editButton" destination="OEb-bD-8Ks" id="LHR-2K-ZXo"/>
                                 <outlet property="editProfileButton" destination="YYg-aV-ytx" id="gXE-Zu-AfF"/>
                                 <outlet property="nameLabel" destination="FzE-ty-Cat" id="G4q-tb-FbG"/>
                                 <outlet property="profileImage" destination="ODV-gF-P0z" id="0L7-dJ-uSR"/>

@@ -1,16 +1,15 @@
 import UIKit
 import FirebaseAuth
+import Firebase
 
 class ProfileVC: UIViewController {
-
-    @IBOutlet private weak var avaImageView: UIImageView!
     @IBOutlet private weak var tableView: UITableView!
-
     private var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        fetchCurrentUser()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -25,16 +24,25 @@ class ProfileVC: UIViewController {
         setupNavView()
     }
     
+    @objc private func fetchCurrentUser() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        Database.database().fetchUser(withUID: uid) { (user) in
+            self.user = user
+            print("user: \(user)")
+            self.tableView.reloadData()
+        }
+    }
+    
     private func setupNavView() {
         navigationController?.navigationBar.backgroundColor = AppColor.GreenColor
         navigationController?.navigationItem.titleView?.tintColor = AppColor.WhiteColor
         navigationController?.navigationBar.tintColor = AppColor.WhiteColor
 
-//        let label = UILabel()
-//        label.textColor = AppColor.WhiteColor
-//        label.text = Localization.TitleApp.Title
-//        label.font = UIFont(name: "Noteworthy Bold", size: 20)
-//        navigationItem.titleView = label
+        let label = UILabel()
+        label.textColor = AppColor.WhiteColor
+        label.text = Localization.Title.EditProfile.localized()
+        label.font = UIFont(name: "Noteworthy Bold", size: 20)
+        navigationItem.titleView = label
      
         let leftBtn = UIBarButtonItem(image: UIImage(named: AppImage.Icon.Back)?.withTintColor(AppColor.WhiteColor!), style: .plain, target: self, action: #selector(leftBtnTapped))
         navigationItem.leftBarButtonItem = leftBtn
@@ -49,7 +57,7 @@ class ProfileVC: UIViewController {
     }
     
     private func setupTableView() {
-        tableView.backgroundColor = AppColor.LightGrayColor2
+        tableView.backgroundColor = AppColor.WhiteColor
         tableView.registerCellNib(type: ProfileCell.self)
         tableView.dataSource = self
         tableView.delegate = self
@@ -70,6 +78,16 @@ extension ProfileVC: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCellNib(type: ProfileCell.self, for: indexPath) else {
             return UITableViewCell()
         }
+        switch indexPath.row {
+        case 0:
+            cell.configProfileCell(stringTitle: Localization.Profile.Username, subTitleString: user?.username ?? "")
+        case 1:
+            cell.configProfileCell(stringTitle: Localization.Profile.Email, subTitleString: user?.email ?? "")
+        case 2:
+            cell.configProfileCell(stringTitle: Localization.Profile.Password, subTitleString: "**********")
+        default:
+            break
+        }
         cell.delegate = self
         return cell
     }
@@ -83,28 +101,63 @@ extension ProfileVC: UITableViewDelegate {
 
 extension ProfileVC: ProfileCellDelegate {
     func changeInfo(_ cell: ProfileCell) {
-        // create the actual alert controller view that will be the pop-up
-        let alertController = UIAlertController(title: Localization.Setting.EditingInfo.localized(), message: "", preferredStyle: .alert)
-
-        alertController.addTextField { (textField) in
-            // configure the properties of the text field
-            textField.placeholder = Localization.Setting.EditingInfoPlaceholder.localized()
+        guard let indexPath = self.tableView.indexPath(for: cell) else {
+            return
         }
+        switch indexPath.row {
+        case 0:
+            let alertController = UIAlertController(title: Localization.Setting.EditingInfo.localized(), message: "", preferredStyle: .alert)
 
+            alertController.addTextField { (textField) in
+                textField.placeholder = Localization.Setting.EditingInfoPlaceholder.localized()
+            }
 
-        // add the buttons/actions to the view controller
-        let cancelAction = UIAlertAction(title: Localization.Alert.Cancel, style: .cancel, handler: nil)
-        let saveAction = UIAlertAction(title: Localization.Alert.Save, style: .default) { _ in
-            // this code runs when the user hits the "save" button
-            let inputName = alertController.textFields![0].text
-            self.tableView.reloadData()
-            print(inputName)
+            let cancelAction = UIAlertAction(title: Localization.Alert.Cancel, style: .cancel, handler: nil)
+            let saveAction = UIAlertAction(title: Localization.Alert.Save, style: .default) { _ in
+                NotificationCenter.default.post(name: NSNotification.Name.updateUserProfileFeed, object: nil)
+                let inputName = alertController.textFields![0].text
+                self.tableView.reloadData()
+            }
 
+            alertController.addAction(cancelAction)
+            alertController.addAction(saveAction)
+            present(alertController, animated: true, completion: nil)
+        case 1:
+            let alertController = UIAlertController(title: Localization.Setting.EditingInfo.localized(), message: "", preferredStyle: .alert)
+
+            alertController.addTextField { (textField) in
+                textField.placeholder = Localization.Setting.EditingInfoPlaceholder.localized()
+            }
+
+            let cancelAction = UIAlertAction(title: Localization.Alert.Cancel, style: .cancel, handler: nil)
+            let saveAction = UIAlertAction(title: Localization.Alert.Save, style: .default) { _ in
+                NotificationCenter.default.post(name: NSNotification.Name.updateUserProfileFeed, object: nil)
+                let inputName = alertController.textFields![0].text
+                self.tableView.reloadData()
+            }
+
+            alertController.addAction(cancelAction)
+            alertController.addAction(saveAction)
+            present(alertController, animated: true, completion: nil)
+        case 2:
+            let alertController = UIAlertController(title: Localization.Setting.EditingInfo.localized(), message: "", preferredStyle: .alert)
+
+            alertController.addTextField { (textField) in
+                textField.placeholder = Localization.Setting.EditingInfoPlaceholder.localized()
+            }
+
+            let cancelAction = UIAlertAction(title: Localization.Alert.Cancel, style: .cancel, handler: nil)
+            let saveAction = UIAlertAction(title: Localization.Alert.Save, style: .default) { _ in
+                NotificationCenter.default.post(name: NSNotification.Name.updateUserProfileFeed, object: nil)
+                let inputName = alertController.textFields![0].text
+                self.tableView.reloadData()
+            }
+
+            alertController.addAction(cancelAction)
+            alertController.addAction(saveAction)
+            present(alertController, animated: true, completion: nil)
+        default:
+            break
         }
-
-        alertController.addAction(cancelAction)
-        alertController.addAction(saveAction)
-
-        present(alertController, animated: true, completion: nil)
     }
 }

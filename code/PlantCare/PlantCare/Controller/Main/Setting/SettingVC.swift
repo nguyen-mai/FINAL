@@ -7,7 +7,8 @@ class SettingVC: UIViewController {
     @IBOutlet private weak var loginButton: ButtonWithImage!
     @IBOutlet private weak var logOutBtn: UIButton!
     
-    private let list = SettingViewEntity()
+    private var list = SettingViewEntity()
+    private var listSetting = [SettingViewEntity.Setting]()
     private var user: User?
     
     override func viewDidLoad() {
@@ -40,8 +41,10 @@ class SettingVC: UIViewController {
             loginButton.setTitle(Localization.Authenticate.Login, for: .normal)
             loginButton.addTarget(self, action: #selector(loginBtnTap), for: .touchUpInside)
             logOutBtn.isHidden = true
+            listSetting = list.notLoginArray
         } else {
             guard let uid = Auth.auth().currentUser?.uid else { return }
+            listSetting = list.loginedArray
             Database.database().fetchUser(withUID: uid) { (user) in
                 self.user = user
                 DispatchQueue.main.async {
@@ -61,6 +64,11 @@ class SettingVC: UIViewController {
         logOutBtn.layer.cornerRadius = logOutBtn.frame.height / 2
         logOutBtn.setTitleColor(AppColor.WhiteColor, for: .normal)
         logOutBtn.addTarget(self, action: #selector(logOutBtnTap), for: .touchUpInside)
+        // shadow
+        logOutBtn.layer.shadowColor = UIColor.black.cgColor
+        logOutBtn.layer.shadowOffset = CGSize(width: 5, height: 5)
+        logOutBtn.layer.shadowOpacity = 0.5
+        logOutBtn.layer.shadowRadius = 5.0
     }
     
     private func setupNavView() {
@@ -122,14 +130,14 @@ extension SettingVC {
 
 extension SettingVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list.array.count
+        return listSetting.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCellNib(type: SettingCell.self, for: indexPath) else {
             return UITableViewCell()
         }
-        let item = list.array[indexPath.row]
+        let item = list.loginedArray[indexPath.row]
         cell.configCell(with: item)
         return cell
     }

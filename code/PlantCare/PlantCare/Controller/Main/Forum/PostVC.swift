@@ -104,7 +104,6 @@ class PostVC: UIViewController {
     @objc private func shareBtnTapped(_ sender: Any) {
         guard let postImage = selectedImage else { return }
         guard let caption = captionTextView.text else { return }
-
         captionTextView.isUserInteractionEnabled = false
         if caption.isEmpty {
             ProgressHUD.showError(Localization.Postting.EmptyTextView.localized())

@@ -4,13 +4,15 @@ import Firebase
 protocol HeaderProfileCollectionReusableViewDelegateSwitchSettingVC {
     func goToSettingVC()
     func updateImage()
+    func gotoEditProfile()
 }
 
 class HeaderProfileCollectionReusableView: UICollectionReusableView {
     
-    @IBOutlet weak var profileImage: CustomImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var editProfileButton: UIButton!
+    @IBOutlet private weak var profileImage: CustomImageView!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var editProfileButton: UIButton!
+    @IBOutlet private weak var editButton: UIButton!
     
     var delegate: HeaderProfileCollectionReusableViewDelegateSwitchSettingVC?
     var user: User? {
@@ -24,6 +26,7 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
         super.awakeFromNib()
         clear()
         profileImage.layer.cornerRadius = profileImage.frame.height / 2
+        NotificationCenter.default.addObserver(self, selector: #selector(handleRefresh), name: NSNotification.Name.updateUserProfileFeed, object: nil)
     }
     
     func updateView() {
@@ -46,14 +49,23 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
             if let changedImage = changedImage, changedImage != UIImage(named: AppImage.Icon.User) {
                 profileImage.image = changedImage
             }
+            
+            editButton.isHidden = false
+            editButton.setImage(UIImage(named: AppImage.Icon.Pencil), for: .normal)
+            editButton.addTarget(self, action: #selector(tapBtn), for: .touchUpInside)
         } else {
             editProfileButton.setTitle(Localization.Profile.Hello.localized(), for: .normal)
             editProfileButton.isEnabled = false
+            editButton.isHidden = true
         }
     }
     
     func clear() {
         self.nameLabel.text = ""
+    }
+    
+    @objc private func tapBtn() {
+        delegate?.gotoEditProfile()
     }
     
     @objc private func goToSettingVC() {
@@ -62,5 +74,11 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
     
     @objc func handleSelectProfileImageView() {
         delegate?.updateImage()
+    }
+    
+    @objc func handleRefresh() {
+        if let changedImage = changedImage, changedImage != UIImage(named: AppImage.Icon.User) {
+            profileImage.image = changedImage
+        }
     }
 }

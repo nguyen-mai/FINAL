@@ -336,11 +336,11 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="0nT-dk-zJS">
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="White"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xKw-Rb-eFU"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="White"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="0nT-dk-zJS" secondAttribute="bottom" id="FFE-Ww-ILi"/>
                             <constraint firstItem="xKw-Rb-eFU" firstAttribute="trailing" secondItem="0nT-dk-zJS" secondAttribute="trailing" id="FGb-Dv-wbd"/>
@@ -354,7 +354,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jvR-Hz-UXy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2991" y="1295"/>
+            <point key="canvasLocation" x="2654" y="1369"/>
         </scene>
         <!--SettingVC-->
         <scene sceneID="fC3-YY-7FV">

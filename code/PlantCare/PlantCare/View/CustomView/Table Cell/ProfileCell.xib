@@ -35,7 +35,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="56h-6b-p2h">
-                                <rect key="frame" x="269" y="3" width="30" height="34"/>
+                                <rect key="frame" x="271" y="6" width="28" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="Y95-J4-wL2"/>
+                                    <constraint firstAttribute="width" secondItem="56h-6b-p2h" secondAttribute="height" multiplier="1:1" id="lQp-dl-8mz"/>
+                                </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Grz-Fq-FR6">

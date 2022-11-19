@@ -4,24 +4,20 @@ import ProgressHUD
 
 class ForumVC: CommunityPostCellViewController {
     var user: User?
-    var leftBtn = UIBarButtonItem()
-    var profileImageUrl: String = "" 
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureNavigationBar()
+        ProgressHub.shared.setupProgressHub()
+        NotificationCenter.default.addObserver(self, selector: #selector(handleRefresh), name: NSNotification.Name.updateCommunityFeed, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(fetchCurrentUser), name: NSNotification.Name.updateUserProfileFeed, object: nil)
+        
         if !(Auth.auth().currentUser == nil) {
             fetchCurrentUser()
             fetchAllPosts()
         } else {
             showAlert(title: Localization.Alert.NotLogIn)
         }
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureNavigationBar()
-        ProgressHub.shared.setupProgressHub()
-        fetchCurrentUser()
         
         collectionView?.backgroundColor = AppColor.WhiteColor
         collectionView?.register(CommunityPostCell.self, forCellWithReuseIdentifier: CommunityPostCell.cellId)
@@ -29,21 +25,18 @@ class ForumVC: CommunityPostCellViewController {
         collectionView?.backgroundView?.alpha = 0
         collectionView.showsVerticalScrollIndicator = false
         
-        NotificationCenter.default.addObserver(self, selector: #selector(handleRefresh), name: NSNotification.Name.updateCommunityFeed, object: nil)
-        
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
         collectionView?.refreshControl = refreshControl
     }
     
-    private func fetchCurrentUser() {
-        ProgressHUD.show()
+    @objc private func fetchCurrentUser() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         Database.database().fetchUser(withUID: uid) { (user) in
             self.user = user
-            self.profileImageUrl = user.profileImageUrl ?? AppImage.Icon.Ava
+            self.collectionView.reloadData()
+            self.configLeftButton()
         }
-        ProgressHUD.dismiss()
     }
     
     private func configureNavigationBar() {
@@ -56,15 +49,31 @@ class ForumVC: CommunityPostCellViewController {
         label.text = Localization.Forum.Forum.localized()
         label.font = UIFont(name: "Noteworthy Bold", size: 20)
         navigationItem.titleView = label
-                
-        leftBtn = UIBarButtonItem(image: CustomImageView().loadAvatarImage(urlString: user?.profileImageUrl ?? AppImage.Icon.Ava),
-                                      style: .plain,
-                                      target: self,
-                                      action: #selector(self.leftBtnTapped))
-        self.navigationItem.leftBarButtonItem = leftBtn
         
         let rightBtn = UIBarButtonItem(image: UIImage(named: AppImage.Icon.Post)?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(rightBtnTapped))
         navigationItem.rightBarButtonItem = rightBtn
+    }
+    
+    private func configLeftButton() {
+        let iconSize = CGRect(origin: CGPoint.zero, size: CGSize(width: 30, height: 30))
+        let iconButton = UIButton(frame: iconSize)
+        let barButton = UIBarButtonItem(customView: iconButton)
+        iconButton.imageView?.contentMode = .scaleToFill
+        iconButton.addTarget(self, action: #selector(leftBtnTapped), for: .touchUpInside)
+        navigationItem.leftBarButtonItem = barButton
+        
+        let image = CustomImageView()
+        if let profileImageUrl = user?.profileImageUrl, profileImageUrl != "nil" {
+            image.loadImage(urlString: profileImageUrl)
+        } else {
+            image.image = UIImage(named: AppImage.Icon.User)?.withTintColor(AppColor.WhiteColor!)
+        }
+        image.frame = iconButton.frame
+        image.layer.borderColor = AppColor.WhiteColor?.cgColor
+        image.layer.borderWidth = 0.5
+        image.layer.cornerRadius = iconButton.frame.height / 2
+        image.layer.masksToBounds = true
+        iconButton.addSubviews(image)
     }
     
     @objc func rightBtnTapped() {
@@ -117,28 +126,26 @@ class ForumVC: CommunityPostCellViewController {
     
     private func fetchAllPosts() {
         collectionView?.refreshControl?.beginRefreshing()
-//        ProgressHUD.show("", interaction: false)
         self.posts.removeAll()
         Database.database().fetchAllUsers(includeCurrentUser: true, completion: { (users) in
+            ProgressHUD.show()
             for user in users {
                 Database.database().fetchAllPosts(withUID: user.uid, completion: { (posts) in
                     self.posts.append(contentsOf: posts)
-                    
                     self.posts.sort(by: { (p1, p2) -> Bool in
                         return p1.creationDate.compare(p2.creationDate) == .orderedDescending
                     })
-                    
                     self.collectionView?.reloadData()
                     self.collectionView?.refreshControl?.endRefreshing()
-//                    ProgressHUD.dismiss()
+                    ProgressHUD.dismiss()
                 }) { (err) in
+                    self.collectionView?.reloadData()
+                    ProgressHUD.show(err.localizedDescription.localized())
                     self.collectionView?.refreshControl?.endRefreshing()
-//                    ProgressHUD.dismiss()
                 }
             }
         }) {  (_) in
             self.collectionView?.refreshControl?.endRefreshing()
-//            ProgressHUD.dismiss()
         }
     }
     

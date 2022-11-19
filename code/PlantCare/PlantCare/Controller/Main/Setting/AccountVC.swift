@@ -6,6 +6,7 @@ class AccountVC: CommunityPostCellViewController {
     var user: User?
     var uid: String = ""
     var selectedImage: UIImage?
+    var headerViewCell = HeaderProfileCollectionReusableView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +44,7 @@ class AccountVC: CommunityPostCellViewController {
         self.uid = uid
         Database.database().fetchUser(withUID: uid) { (user) in
             self.user = user
+            print("USSER: \(self.user)")
             self.fetchPosts()
             self.collectionView.reloadData()
         }
@@ -79,15 +81,6 @@ class AccountVC: CommunityPostCellViewController {
         
         let leftBtn = UIBarButtonItem(image: UIImage(named: AppImage.Icon.Back)?.withTintColor(AppColor.WhiteColor!), style: .plain, target: self, action: #selector(leftBtnTapped))
         navigationItem.leftBarButtonItem = leftBtn
-        
-//         let icon = UIImage(named: "imageName")
-// let iconSize = CGRect(origin: CGPoint.zero, size: CGSize(width: 50, height: 50))
-// let iconButton = UIButton(frame: iconSize)
-// iconButton.setBackgroundImage(icon, for: .normal)
-// let barButton = UIBarButtonItem(customView: iconButton)
-// iconButton.addTarget(self, action: #selector(foo), for: .touchUpInside)
-
-// navigationItem.leftBarButtonItem = barButton
     }
     
     @objc private func rightBtnTapped() {
@@ -109,6 +102,8 @@ class AccountVC: CommunityPostCellViewController {
     
     @objc func leftBtnTapped() {
         navigationController?.popViewController(animated: true)
+        NotificationCenter.default.post(name: NSNotification.Name.updateCommunityFeed, object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name.updateUserProfileFeed, object: nil)
     }
     
     private func showAlert(title: String) {
@@ -140,24 +135,23 @@ class AccountVC: CommunityPostCellViewController {
     
     private func fetchPosts() {
         collectionView?.refreshControl?.beginRefreshing()
-//        ProgressHUD.show()
-        
+        ProgressHUD.show()
         guard let user = user else {
             return
         }
         
         Database.database().fetchAllPosts(withUID: user.uid, completion: { (posts) in
             self.posts.append(contentsOf: posts)
-            
             self.posts.sort(by: { (p1, p2) -> Bool in
                 return p1.creationDate.compare(p2.creationDate) == .orderedDescending
             })
-            self.collectionView?.reloadData()
+            self.collectionView.reloadData()
+            self.headerViewCell.updateView()
             self.collectionView?.refreshControl?.endRefreshing()
-//            ProgressHUD.dismiss()
+            ProgressHUD.dismiss()
         }) { (err) in
             self.collectionView?.refreshControl?.endRefreshing()
-//            ProgressHUD.dismiss()
+            ProgressHUD.dismiss()
         }
     }
     
@@ -215,7 +209,7 @@ extension AccountVC: UICollectionViewDelegateFlowLayout {
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let headerViewCell = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderProfileCollectionReusableView", for: indexPath) as! HeaderProfileCollectionReusableView
+        headerViewCell = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderProfileCollectionReusableView", for: indexPath) as! HeaderProfileCollectionReusableView
         if let user = self.user {
             headerViewCell.user = user
             headerViewCell.changedImage = selectedImage
@@ -226,6 +220,12 @@ extension AccountVC: UICollectionViewDelegateFlowLayout {
 }
 
 extension AccountVC: HeaderProfileCollectionReusableViewDelegateSwitchSettingVC {
+    func gotoEditProfile() {
+        let vc = UIStoryboard(name: NameConstant.Storyboard.Home,
+                              bundle: nil).instantiateVC(ProfileVC.self)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func updateImage() {
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
@@ -245,18 +245,19 @@ extension AccountVC: HeaderProfileCollectionReusableViewDelegateSwitchSettingVC 
 extension AccountVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[.editedImage] as? UIImage else { return }
+        ProgressHUD.show()
         Database.database().updateUserProfileImage(withImage: image, completion:  { (err) in
-            ProgressHUD.show()
             if err != nil {
                 ProgressHUD.showError(err?.localizedDescription.localized())
                 return
             }
-            self.selectedImage = image
-            self.collectionView.reloadData()
+            self.headerViewCell.changedImage = image
+            self.headerViewCell.updateView()
+            self.handleRefresh()
             self.dismiss(animated: true, completion: nil)
-            ProgressHUD.showSucceed()
-        }
-        )
+            ProgressHUD.showSucceed(Localization.Notification.UpdateImage)
+            NotificationCenter.default.post(name: NSNotification.Name.updateUserProfileFeed, object: nil)
+        })
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

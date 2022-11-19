@@ -28,7 +28,7 @@ class CommunityPostCellHeader: UIView {
         let iv = CustomImageView()
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
-        iv.image = UIImage(named: "placeholderImg")
+        iv.image = UIImage(named: AppImage.Icon.User)
         iv.layer.borderColor = UIColor(white: 0, alpha: 0.2).cgColor
         iv.layer.borderWidth = 0.5
         iv.isUserInteractionEnabled  = true
@@ -80,9 +80,11 @@ class CommunityPostCellHeader: UIView {
         guard let user = user else { return }
         usernameButton.setTitle(user.username, for: .normal)
         if let profileImageUrl = user.profileImageUrl, profileImageUrl != "nil" {
+            print("Profile image: \(profileImageUrl)")
             userProfileImageView.loadImage(urlString: profileImageUrl)
         } else {
             userProfileImageView.image = UIImage(named: AppImage.Icon.User)
+            print("Profile image: \(userProfileImageView.image)")
         }
     }
     

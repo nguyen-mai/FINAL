@@ -137,6 +137,7 @@ struct Localization {
         static let Refernce = "Reference"
         static let Setting = "Setting"
         static let Welcome = "Welcome to PlantCare"
+        static let EditProfile = "Edit Profile"
     }
     
     struct Forum {
@@ -168,19 +169,21 @@ struct Localization {
     struct Profile {
         static let MyAccount = "My Account"
         static let ChangePass = "Change password"
-        static let UserName = "User name"
-        static let Email = "Email"
         static let EditPost = "Ask what?"
         static let Hello = "Hello!"
+        static let Username = "Username"
+        static let Email = "Email"
+        static let Password = "Password"
     }
     
     struct Notification {
         static let Error = "Something went wrong."
         static let Success = "Thank you for rating."
-        static let SavedSuccess = "Saved successfully."
+        static let SavedSuccess = "Saved result successfully."
         static let DeletedSuccess = "Deleted successfully."
         static let Delete = "Delete"
         static let DeletePost = "Delete Post?"
+        static let UpdateImage = "Changed image successfully."
     }
     
     struct Labelling {

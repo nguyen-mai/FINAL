@@ -12,8 +12,8 @@ class ProfileCell: UITableViewCell {
     @IBOutlet private weak var underlineView: UIView!
     
     var delegate: ProfileCellDelegate?
-    private let titleArry: [String] = [
-        Localization.Profile.UserName.localized(),
+    private let titleArray: [String] = [
+        Localization.Profile.Username.localized(),
         Localization.Profile.Email.localized()
     ]
     
@@ -52,7 +52,7 @@ class ProfileCell: UITableViewCell {
     }
     
     func configProfileCell(stringTitle: String, subTitleString: String) {
-        title.text = stringTitle
+        title.text = stringTitle + ":"
         subTitle.text = subTitleString
     }
 }
