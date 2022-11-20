@@ -181,189 +181,176 @@ extension DiseasesSearchingVC: UITableViewDelegate, UITableViewDataSource {
         let item = filteredData[indexPath.row]
         var threatLevel = ""
         var aboutTxt = ""
-        var conditionTxt = ""
         var treatmentTxt = ""
         var type = ""
 //        vc.model = item
         switch item.diseaseName {
-        case Localization.AppleDisease.AppleScab.localized():
+        case "Apple___Apple_scab":
             type = Localization.Result.Fungus.localized()
             threatLevel = Localization.Result.HighLevel.localized()
             aboutTxt = Localization.AppleDisease.AppleScabAbout.localized()
-            conditionTxt = Localization.AppleDisease.AppleScabCondition.localized()
             treatmentTxt = Localization.AppleDisease.AppleScabTreatment.localized()
             
-        case Localization.AppleDisease.AppleBlackRot.localized():
+        case "Apple___Black_rot":
             type = Localization.Result.Fungus.localized()
             threatLevel = Localization.Result.HighLevel.localized()
             aboutTxt = Localization.AppleDisease.AppleBlackRotAbout.localized()
-            conditionTxt = Localization.AppleDisease.AppleBlackRotCondition.localized()
             treatmentTxt = Localization.AppleDisease.AppleBlackRotTreatment.localized()
             
-        case Localization.AppleDisease.AppleCedar.localized():
+        case "Apple___Cedar_apple_rust":
             type = Localization.Result.Fungus.localized()
             threatLevel = Localization.Result.HighLevel.localized()
             aboutTxt = Localization.AppleDisease.AppleCedarAbout.localized()
-            conditionTxt = Localization.AppleDisease.AppleCedarCondition.localized()
             treatmentTxt = Localization.AppleDisease.AppleCedarTreatment.localized()
             
-        case Localization.Result.Healthy.localized():
-            break
-            
-        case "Cherry Powdery Mildew".localized():
+        case "Cherry_(including_sour)___Powdery_mildew":
             type = Localization.Result.Fungus.localized()
             threatLevel = Localization.Result.HighLevel.localized()
+            aboutTxt = Localization.Cherry.CherryPowderyMildewAbout.localized()
+            treatmentTxt = Localization.Cherry.CherryPowderyMildewTreatment.localized()
             
-        case Localization.CornDisease.CornGraySpot.localized():
+        case "Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot":
             type = Localization.Result.Fungus.localized()
             threatLevel = Localization.Result.HighLevel.localized()
             aboutTxt = Localization.CornDisease.CornGraySpotAbout.localized()
-            conditionTxt = Localization.CornDisease.CornGraySpotCondition.localized()
             treatmentTxt = Localization.CornDisease.CornGraySpotTreatment.localized()
             
-        case Localization.CornDisease.CornRust.localized():
+        case "Corn_(maize)___Common_rust_":
             type = Localization.Result.Fungus.localized()
             threatLevel = Localization.Result.HighLevel.localized()
             aboutTxt = Localization.CornDisease.CornRustAbout.localized()
-            conditionTxt = Localization.CornDisease.CornRustCondition.localized()
             treatmentTxt = Localization.CornDisease.CornRustTreatment.localized()
             
-        case Localization.CornDisease.CornNorthenBlight.localized():
+        case "Corn_(maize)___Northern_Leaf_Blight":
             type = Localization.Result.Fungus.localized()
             threatLevel = Localization.Result.HighLevel.localized()
             aboutTxt = Localization.CornDisease.CornNorthenBlightAbout.localized()
-            conditionTxt = Localization.CornDisease.CornNorthenBlightCondition.localized()
             treatmentTxt = Localization.CornDisease.CornNorthenBlightTreatment.localized()
             
-//        case "Grape___Black_rot":
-//            predictedResult = "Black Rot".localized()
-//            plantType = "Grape".localized()
-//            type = Localization.Result.Fungus.localized()
-//            threatLevel = Localization.Result.HighLevel.localized()
-//
-//        case "Grape___Esca_(Black_Measles)":
-//            predictedResult = "Grape Esca"
-//            plantType = "Grape"
-//            type = Localization.Result.Fungus.localized()
-//            threatLevel = Localization.Result.HighLevel.localized()
-//
-//        case "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)":
-//            predictedResult = "Grape Leaf Blight"
-//            plantType = "Grape"
-//            type = Localization.Result.Fungus.localized()
-//            threatLevel = Localization.Result.Fungus.localized()
-//
-//        case "Orange___Haunglongbing_(Citrus_greening)":
-//            predictedResult = "Orange Haunglongbing"
-//            plantType = "Orange"
-//            type = Localization.Result.Fungus.localized()
-//            threatLevel = Localization.Result.HighLevel.localized()
-//
-//        case "Peach___Bacterial_spot":
-//            predictedResult = "Peach Bacterial Spot"
-//            plantType = "Peach"
-//            type = Localization.Result.Fungus.localized()
-//            threatLevel = Localization.Result.HighLevel.localized()
-//
-//        case "Pepper,_bell___Bacterial_spot":
-//            predictedResult = "Bacterial Spot"
-//            plantType = "Pepper Bell"
-//            type = Localization.Result.Fungus.localized()
-//            threatLevel = Localization.Result.HighLevel.localized()
-//
-//        case "Potato___Early_blight":
-//            predictedResult = "Early Blight"
-//            plantType = "Potato"
-//            type = Localization.Result.Fungus.localized()
-//            threatLevel = Localization.Result.HighLevel.localized()
-//
-//        case "Potato___Late_blight":
-//            predictedResult = "Potato Late Blight"
-//            plantType = "Potato"
-//            type = Localization.Result.Fungus.localized()
-//            threatLevel = Localization.Result.HighLevel.localized()
-//
-//        case "Squash___Powdery_mildew":
-//            predictedResult = "Squash Powdery Mildew"
-//            plantType = "Squash"
-//            type = Localization.Result.Fungus.localized()
-//            threatLevel = Localization.Result.HighLevel.localized()
-//
-//        case "Strawberry___Leaf_scorch":
-//            predictedResult = "Strawberry Leaf Scorch"
-//            plantType = "Strawberry"
-//            type = Localization.Result.Fungus.localized()
-//            threatLevel = Localization.Result.HighLevel.localized()
-//
-//        case "Tomato___Bacterial_spot":
-//            predictedResult = "Tomato Bacterial Spot"
-//            plantType = "Tomato"
-//            type = Localization.Result.Fungus.localized()
-//            threatLevel = Localization.Result.HighLevel.localized()
-//
-//        case "Tomato___Early_blight":
-//            predictedResult = "Tomato Early Blight"
-//            plantType = "Tomato"
-//            type = Localization.Result.Fungus.localized()
-//            threatLevel = Localization.Result.HighLevel.localized()
-//
-//        case "Tomato___Late_blight":
-//            predictedResult = "Tomato Late Blight"
-//            plantType = "Tomato"
-//            type = Localization.Result.Fungus.localized()
-//            threatLevel = Localization.Result.HighLevel.localized()
-//
-//        case "Tomato___Leaf_Mold":
-//            predictedResult = "Tomato Leaf Mold"
-//            plantType = "Tomato"
-//            type = Localization.Result.Fungus.localized()
-//            threatLevel = Localization.Result.HighLevel.localized()
-//
-//        case "Tomato___Septoria_leaf_spot":
-//            predictedResult = "Tomato Septoria Leaf Spot"
-//            plantType = "Tomato"
-//            type = Localization.Result.Fungus.localized()
-//            threatLevel = Localization.Result.HighLevel.localized()
-//
-//        case "Tomato___Spider_mites Two-spotted_spider_mite":
-//            predictedResult = "Tomato Spider Mites"
-//            plantType = "Tomato"
-//            type = Localization.Result.Fungus.localized()
-//            threatLevel = Localization.Result.HighLevel.localized()
-//
-//        case "Tomato___Target_Spot":
-//            predictedResult = "Tomato Target Spot"
-//            plantType = "Tomato"
-//            type = Localization.Result.Fungus.localized()
-//            threatLevel = Localization.Result.HighLevel.localized()
-//
-//        case "Tomato___Tomato_Yellow_Leaf_Curl_Virus":
-//            predictedResult = "Tomato Yellow Leaf Curl Virus"
-//            plantType = "Tomato"
-//            type = Localization.Result.Fungus.localized()
-//            threatLevel = Localization.Result.HighLevel.localized()
-//
-//        case "Tomato___Tomato_mosaic_virus":
-//            predictedResult = "Tomato Mosaic Virus"
-//            plantType = "Tomato"
-//            type = Localization.Result.Fungus.localized()
-//            threatLevel = Localization.Result.HighLevel.localized()
+        case "Grape___Black_rot":
+            type = Localization.Result.Fungus.localized()
+            threatLevel = Localization.Result.HighLevel.localized()
+            aboutTxt = Localization.Grape.BlackRot.BlackRotAbout.localized()
+            treatmentTxt = Localization.Grape.BlackRot.BlackRotTreatment.localized()
+            
+        case "Grape___Esca_(Black_Measles)":
+            type = Localization.Result.Fungus.localized()
+            threatLevel = Localization.Result.HighLevel.localized()
+            aboutTxt = Localization.Grape.Esca.EscaAbout.localized()
+            treatmentTxt = Localization.Grape.Esca.EscaTreatment.localized()
+            
+        case "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)":
+            type = Localization.Result.Fungus.localized()
+            threatLevel = Localization.Result.HighLevel.localized()
+            aboutTxt = Localization.Grape.GrapeLeafBlight.GrapeLeafBlightAbout.localized()
+            treatmentTxt = Localization.Grape.GrapeLeafBlight.GrapeLeafBlightTreatment.localized()
+            
+        case "Orange___Haunglongbing_(Citrus_greening)":
+            type = Localization.Result.Fungus.localized()
+            threatLevel = Localization.Result.HighLevel.localized()
+            aboutTxt = Localization.Orange.OrangeHaunglongbingAbout.localized()
+            treatmentTxt = Localization.Orange.OrangeHaunglongbingTreatment.localized()
+            
+        case "Peach___Bacterial_spot":
+            type = Localization.Result.Fungus.localized()
+            threatLevel = Localization.Result.HighLevel.localized()
+            aboutTxt = Localization.Peach.PeachBacterialSpotAbout.localized()
+            treatmentTxt = Localization.Peach.PeachBacterialSpotTreatment.localized()
+            
+        case "Pepper,_bell___Bacterial_spot":
+            type = Localization.Result.Fungus.localized()
+            threatLevel = Localization.Result.HighLevel.localized()
+            aboutTxt = Localization.PepperBell.BacterialSpot.BacterialSpotAbout.localized()
+            treatmentTxt = Localization.PepperBell.BacterialSpot.BacterialSpotTreatment.localized()
+            
+        case "Potato___Early_blight":
+            type = Localization.Result.Fungus.localized()
+            threatLevel = Localization.Result.HighLevel.localized()
+            aboutTxt = Localization.Potato.EarlyBlight.EarlyBlightAbout.localized()
+            treatmentTxt = Localization.Potato.EarlyBlight.EarlyBlightTreatment.localized()
+            
+        case "Potato___Late_blight":
+            type = Localization.Result.Fungus.localized()
+            threatLevel = Localization.Potato.LateBlight.LateBlight.localized()
+            aboutTxt = Localization.Potato.LateBlight.LateBlightAbout.localized()
+            treatmentTxt = Localization.Potato.LateBlight.LateBlightTreatment.localized()
+            
+        case "Squash___Powdery_mildew":
+            type = Localization.Result.Fungus.localized()
+            threatLevel = Localization.Result.HighLevel.localized()
+            aboutTxt = Localization.Squash.SquashPowderyMildewAbout.localized()
+            treatmentTxt = Localization.Squash.SquashPowderyMildewTreatment.localized()
+            
+        case "Strawberry___Leaf_scorch":
+            type = Localization.Result.Fungus.localized()
+            threatLevel = Localization.Result.HighLevel.localized()
+            aboutTxt = Localization.Strawberry.StrawberryLeafScorchAbout.localized()
+            treatmentTxt = Localization.Strawberry.StrawberryLeafScorchTreatment.localized()
+            
+        case "Tomato___Bacterial_spot":
+            type = Localization.Result.Fungus.localized()
+            threatLevel = Localization.Result.HighLevel.localized()
+            aboutTxt = Localization.Tomato.TomatoBacterialSpot.TomatoBacterialSpotAbout.localized()
+            treatmentTxt = Localization.Tomato.TomatoBacterialSpot.TomatoBacterialSpotTreatment.localized()
+            
+        case "Tomato___Early_blight":
+            type = Localization.Result.Fungus.localized()
+            threatLevel = Localization.Result.HighLevel.localized()
+            aboutTxt = Localization.Tomato.TomatoEarlyBlight.TomatoEarlyBlighAbout.localized()
+            treatmentTxt = Localization.Tomato.TomatoEarlyBlight.TomatoEarlyBlighTreatment.localized()
+            
+        case "Tomato___Late_blight":
+            type = Localization.Result.Fungus.localized()
+            threatLevel = Localization.Result.HighLevel.localized()
+            aboutTxt = Localization.Tomato.TomatoLateBlight.TomatoLateBlightAbout.localized()
+            treatmentTxt = Localization.Tomato.TomatoLateBlight.TomatoLateBlightTreatment.localized()
+            
+        case "Tomato___Leaf_Mold":
+            type = Localization.Result.Fungus.localized()
+            threatLevel = Localization.Result.HighLevel.localized()
+            aboutTxt = Localization.Tomato.TomatoLeafMold.TomatoLeafMoldAbout.localized()
+            treatmentTxt = Localization.Tomato.TomatoLeafMold.TomatoLeafMoldTreatment.localized()
+            
+        case "Tomato___Septoria_leaf_spot":
+            type = Localization.Result.Fungus.localized()
+            threatLevel = Localization.Result.HighLevel.localized()
+            aboutTxt = Localization.Tomato.TomatoSeptoriaLeafSpot.TomatoSeptoriaLeafSpotAbout.localized()
+            treatmentTxt = Localization.Tomato.TomatoSeptoriaLeafSpot.TomatoSeptoriaLeafSpotTreatment.localized()
+            
+        case "Tomato___Spider_mites Two-spotted_spider_mite":
+            type = Localization.Result.Fungus.localized()
+            threatLevel = Localization.Result.HighLevel.localized()
+            aboutTxt = Localization.Tomato.TomatoSpiderMites.TomatoSpiderMitesAbout.localized()
+            treatmentTxt = Localization.Tomato.TomatoSpiderMites.TomatoSpiderMitesTreatment.localized()
+            
+        case "Tomato___Target_Spot":
+            type = Localization.Result.Fungus.localized()
+            threatLevel = Localization.Result.HighLevel.localized()
+            aboutTxt = Localization.Tomato.TomatoTargetSpot.TomatoTargetSpotAbout.localized()
+            treatmentTxt = Localization.Tomato.TomatoTargetSpot.TomatoTargetSpotTreatment.localized()
+            
+        case "Tomato___Tomato_Yellow_Leaf_Curl_Virus":
+            type = Localization.Result.Fungus.localized()
+            threatLevel = Localization.Result.HighLevel.localized()
+            aboutTxt = Localization.Tomato.TomatoYellowLeafCurlVirus.TomatoYellowLeafCurlVirusAbout.localized()
+            treatmentTxt = Localization.Tomato.TomatoYellowLeafCurlVirus.TomatoYellowLeafCurlVirusTreatment.localized()
+            
+        case "Tomato___Tomato_mosaic_virus":
+            type = Localization.Result.Fungus.localized()
+            threatLevel = Localization.Result.HighLevel.localized()
+            aboutTxt = Localization.Tomato.TomatoMosaicVirus.TomatoMosaicVirusAbout.localized()
+            treatmentTxt = Localization.Tomato.TomatoMosaicVirus.TomatoMosaicVirusTreatment.localized()
             
         default:
             break
         }
-//        type = Localization.Result.Fungus.localized()
-//        threatLevel = Localization.Result.HighLevel.localized()
-//        aboutTxt = Localization.CornDisease.CornGraySpotAbout.localized()
-//        conditionTxt = Localization.CornDisease.CornGraySpotCondition.localized()
-//        treatmentTxt = Localization.CornDisease.CornGraySpotTreatment.localized()
+
         vc.model = DiseaseInfoViewEntity.Disease(diseaseImage: UIImage(),
                                                  diseaseName: item.diseaseName,
                                                  plantName: item.plantName,
                                                  typeDisease: type,
                                                  threatLevel: threatLevel,
                                                  symptomInfo: aboutTxt,
-                                                 conditionInfo: conditionTxt,
                                                  treatmentInfo: treatmentTxt,
                                                  certainty: item.certainty)
         vc.urlImage = item.imageUrl

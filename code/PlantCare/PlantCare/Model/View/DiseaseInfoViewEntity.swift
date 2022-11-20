@@ -16,7 +16,6 @@ struct DiseaseInfoViewEntity {
         var typeDisease: String
         var threatLevel: String
         var symptomInfo: String
-        var conditionInfo: String
         var treatmentInfo: String
         var certainty: Double
         
@@ -26,7 +25,6 @@ struct DiseaseInfoViewEntity {
              typeDisease: String = "",
              threatLevel: String = "",
              symptomInfo: String = "",
-             conditionInfo: String = "",
              treatmentInfo: String = "",
              certainty: Double = 0) {
             self.diseaseImage = diseaseImage
@@ -35,7 +33,6 @@ struct DiseaseInfoViewEntity {
             self.typeDisease = typeDisease
             self.threatLevel = threatLevel
             self.symptomInfo = symptomInfo
-            self.conditionInfo = conditionInfo
             self.treatmentInfo = treatmentInfo
             self.certainty = certainty
         }
@@ -58,7 +55,6 @@ struct DiseaseInfoViewEntity {
                 typeDisease: Localization.Result.Fungus.localized(),
                 threatLevel: Localization.Result.HighLevel.localized(),
                 symptomInfo: Localization.CornDisease.CornGraySpotAbout.localized(),
-                conditionInfo: Localization.CornDisease.CornGraySpotCondition.localized(),
                 treatmentInfo: Localization.CornDisease.CornGraySpotTreatment.localized(),
                 certainty: 0),
         Disease(diseaseImage: UIImage(named: AppImage.DiseaseImage.AppleScab) ?? UIImage(named: AppImage.Icon.PlaceholderPhoto)!,
@@ -67,7 +63,6 @@ struct DiseaseInfoViewEntity {
             typeDisease: Localization.Result.Fungus.localized(),
             threatLevel: Localization.Result.HighLevel.localized(),
             symptomInfo: Localization.AppleDisease.AppleScabAbout.localized(),
-            conditionInfo: Localization.AppleDisease.AppleScabCondition.localized(),
             treatmentInfo: Localization.AppleDisease.AppleScabTreatment.localized(),
             certainty: 0),
     Disease(diseaseImage: UIImage(named: AppImage.DiseaseImage.TomatoBacterialSpot) ?? UIImage(named: AppImage.Icon.PlaceholderPhoto)!,
@@ -76,7 +71,6 @@ struct DiseaseInfoViewEntity {
             typeDisease: Localization.Result.Fungus.localized(),
             threatLevel: Localization.Result.HighLevel.localized(),
             symptomInfo: Localization.CornDisease.CornGraySpotAbout.localized(),
-            conditionInfo: Localization.CornDisease.CornGraySpotCondition.localized(),
             treatmentInfo: Localization.CornDisease.CornGraySpotTreatment.localized(),
             certainty: 0),
     Disease(diseaseImage: UIImage(named: AppImage.DiseaseImage.TomatoBacterialSpot) ?? UIImage(named: AppImage.Icon.PlaceholderPhoto)!,
@@ -85,7 +79,6 @@ struct DiseaseInfoViewEntity {
             typeDisease: Localization.Result.Fungus.localized(),
             threatLevel: Localization.Result.HighLevel.localized(),
             symptomInfo: Localization.CornDisease.CornGraySpotAbout.localized(),
-            conditionInfo: Localization.CornDisease.CornGraySpotCondition.localized(),
             treatmentInfo: Localization.CornDisease.CornGraySpotTreatment.localized(),
             certainty: 0)
     ]

@@ -250,7 +250,6 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
                 var type: String = Localization.Result.None.localized()
                 var threatLevel: String  = Localization.Result.None.localized()
                 var aboutTxt: String = Localization.Result.None.localized()
-                var conditionTxt: String = Localization.Result.None.localized()
                 var treatmentTxt: String = Localization.Result.None.localized()
                 switch predictedResult {
                 case "Apple___Apple_scab":
@@ -259,7 +258,6 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
                     type = Localization.Result.Fungus.localized()
                     threatLevel = Localization.Result.HighLevel.localized()
                     aboutTxt = Localization.AppleDisease.AppleScabAbout.localized()
-                    conditionTxt = Localization.AppleDisease.AppleScabCondition.localized()
                     treatmentTxt = Localization.AppleDisease.AppleScabTreatment.localized()
                     
                 case "Apple___Black_rot":
@@ -268,7 +266,6 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
                     type = Localization.Result.Fungus.localized()
                     threatLevel = Localization.Result.HighLevel.localized()
                     aboutTxt = Localization.AppleDisease.AppleBlackRotAbout.localized()
-                    conditionTxt = Localization.AppleDisease.AppleBlackRotCondition.localized()
                     treatmentTxt = Localization.AppleDisease.AppleBlackRotTreatment.localized()
                     
                 case "Apple___Cedar_apple_rust":
@@ -277,10 +274,50 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
                     type = Localization.Result.Fungus.localized()
                     threatLevel = Localization.Result.HighLevel.localized()
                     aboutTxt = Localization.AppleDisease.AppleCedarAbout.localized()
-                    conditionTxt = Localization.AppleDisease.AppleCedarCondition.localized()
                     treatmentTxt = Localization.AppleDisease.AppleCedarTreatment.localized()
                     
-                case "Apple___healthy", "Blueberry___healthy", "Cherry_(including_sour)___healthy", "Corn_(maize)___healthy", "Grape___healthy", "Peach___healthy", "Pepper,_bell___healthy", "Potato___healthy", "Raspberry___healthy", "Soybean___healthy", "Strawberry___healthy", "Tomato___healthy":
+                case "Apple___healthy":
+                    plantType = Localization.AppleDisease.Apple.localized()
+                    predictedResult = Localization.Result.Healthy.localized()
+                
+                case "Blueberry___healthy":
+                    plantType = Localization.Blueberry.Blueberry.localized()
+                    predictedResult = Localization.Result.Healthy.localized()
+                
+                case "Cherry_(including_sour)___healthy":
+                    plantType = Localization.Cherry.Cherry.localized()
+                    predictedResult = Localization.Result.Healthy.localized()
+                    
+                case "Corn_(maize)___healthy":
+                    plantType = Localization.CornDisease.Corn.localized()
+                    predictedResult = Localization.Result.Healthy.localized()
+                    
+                case "Grape___healthy":
+                    plantType = Localization.Grape.Grape.localized()
+                    predictedResult = Localization.Result.Healthy.localized()
+                    
+                case "Peach___healthy":
+                    plantType = Localization.Peach.Peach.localized()
+                    predictedResult = Localization.Result.Healthy.localized()
+                    
+                case "Pepper,_bell___healthy":
+                    plantType = Localization.PepperBell.PepperBell.localized()
+                    predictedResult = Localization.Result.Healthy.localized()
+                    
+                case "Raspberry___healthy":
+                    plantType = Localization.Raspberry.Raspberry.localized()
+                    predictedResult = Localization.Result.Healthy.localized()
+                    
+                case "Soybean___healthy":
+                    plantType = Localization.Soybean.Soybean.localized()
+                    predictedResult = Localization.Result.Healthy.localized()
+                    
+                case "Strawberry___healthy":
+                    plantType = Localization.Strawberry.Strawberry.localized()
+                    predictedResult = Localization.Result.Healthy.localized()
+                    
+                case "Tomato___healthy":
+                    plantType = Localization.Tomato.Tomato.localized()
                     predictedResult = Localization.Result.Healthy.localized()
                     
                 case "Cherry_(including_sour)___Powdery_mildew":
@@ -289,7 +326,6 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
                     type = Localization.Result.Fungus.localized()
                     threatLevel = Localization.Result.HighLevel.localized()
                     aboutTxt = Localization.Cherry.CherryPowderyMildewAbout.localized()
-                    conditionTxt = Localization.Cherry.CherryPowderyMildewCondition.localized()
                     treatmentTxt = Localization.Cherry.CherryPowderyMildewTreatment.localized()
                     
                 case "Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot":
@@ -298,7 +334,6 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
                     type = Localization.Result.Fungus.localized()
                     threatLevel = Localization.Result.HighLevel.localized()
                     aboutTxt = Localization.CornDisease.CornGraySpotAbout.localized()
-                    conditionTxt = Localization.CornDisease.CornGraySpotCondition.localized()
                     treatmentTxt = Localization.CornDisease.CornGraySpotTreatment.localized()
                     
                 case "Corn_(maize)___Common_rust_":
@@ -307,7 +342,6 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
                     type = Localization.Result.Fungus.localized()
                     threatLevel = Localization.Result.HighLevel.localized()
                     aboutTxt = Localization.CornDisease.CornRustAbout.localized()
-                    conditionTxt = Localization.CornDisease.CornRustCondition.localized()
                     treatmentTxt = Localization.CornDisease.CornRustTreatment.localized()
                     
                 case "Corn_(maize)___Northern_Leaf_Blight":
@@ -316,7 +350,6 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
                     type = Localization.Result.Fungus.localized()
                     threatLevel = Localization.Result.HighLevel.localized()
                     aboutTxt = Localization.CornDisease.CornNorthenBlightAbout.localized()
-                    conditionTxt = Localization.CornDisease.CornNorthenBlightCondition.localized()
                     treatmentTxt = Localization.CornDisease.CornNorthenBlightTreatment.localized()
                     
                 case "Grape___Black_rot":
@@ -325,7 +358,6 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
                     type = Localization.Result.Fungus.localized()
                     threatLevel = Localization.Result.HighLevel.localized()
                     aboutTxt = Localization.Grape.BlackRot.BlackRotAbout.localized()
-                    conditionTxt = Localization.Grape.BlackRot.BlackRotCondition.localized()
                     treatmentTxt = Localization.Grape.BlackRot.BlackRotTreatment.localized()
                     
                 case "Grape___Esca_(Black_Measles)":
@@ -334,7 +366,6 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
                     type = Localization.Result.Fungus.localized()
                     threatLevel = Localization.Result.HighLevel.localized()
                     aboutTxt = Localization.Grape.Esca.EscaAbout.localized()
-                    conditionTxt = Localization.Grape.Esca.EscaCondition.localized()
                     treatmentTxt = Localization.Grape.Esca.EscaTreatment.localized()
                     
                 case "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)":
@@ -343,7 +374,6 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
                     type = Localization.Result.Fungus.localized()
                     threatLevel = Localization.Result.HighLevel.localized()
                     aboutTxt = Localization.Grape.GrapeLeafBlight.GrapeLeafBlightAbout.localized()
-                    conditionTxt = Localization.Grape.GrapeLeafBlight.GrapeLeafBlightCondition.localized()
                     treatmentTxt = Localization.Grape.GrapeLeafBlight.GrapeLeafBlightTreatment.localized()
                     
                 case "Orange___Haunglongbing_(Citrus_greening)":
@@ -352,7 +382,6 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
                     type = Localization.Result.Fungus.localized()
                     threatLevel = Localization.Result.HighLevel.localized()
                     aboutTxt = Localization.Orange.OrangeHaunglongbingAbout.localized()
-                    conditionTxt = Localization.Orange.OrangeHaunglongbingCondition.localized()
                     treatmentTxt = Localization.Orange.OrangeHaunglongbingTreatment.localized()
                     
                 case "Peach___Bacterial_spot":
@@ -361,7 +390,6 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
                     type = Localization.Result.Fungus.localized()
                     threatLevel = Localization.Result.HighLevel.localized()
                     aboutTxt = Localization.Peach.PeachBacterialSpotAbout.localized()
-                    conditionTxt = Localization.Peach.PeachBacterialSpotCondition.localized()
                     treatmentTxt = Localization.Peach.PeachBacterialSpotTreatment.localized()
                     
                 case "Pepper,_bell___Bacterial_spot":
@@ -370,7 +398,6 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
                     type = Localization.Result.Fungus.localized()
                     threatLevel = Localization.Result.HighLevel.localized()
                     aboutTxt = Localization.PepperBell.BacterialSpot.BacterialSpotAbout.localized()
-                    conditionTxt = Localization.PepperBell.BacterialSpot.BacterialSpotCondition.localized()
                     treatmentTxt = Localization.PepperBell.BacterialSpot.BacterialSpotTreatment.localized()
                     
                 case "Potato___Early_blight":
@@ -379,7 +406,6 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
                     type = Localization.Result.Fungus.localized()
                     threatLevel = Localization.Result.HighLevel.localized()
                     aboutTxt = Localization.Potato.EarlyBlight.EarlyBlightAbout.localized()
-                    conditionTxt = Localization.Potato.EarlyBlight.EarlyBlightCondition.localized()
                     treatmentTxt = Localization.Potato.EarlyBlight.EarlyBlightTreatment.localized()
                     
                 case "Potato___Late_blight":
@@ -388,7 +414,6 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
                     type = Localization.Result.Fungus.localized()
                     threatLevel = Localization.Potato.LateBlight.LateBlight.localized()
                     aboutTxt = Localization.Potato.LateBlight.LateBlightAbout.localized()
-                    conditionTxt = Localization.Potato.LateBlight.LateBlightCondition.localized()
                     treatmentTxt = Localization.Potato.LateBlight.LateBlightTreatment.localized()
                     
                 case "Squash___Powdery_mildew":
@@ -397,7 +422,6 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
                     type = Localization.Result.Fungus.localized()
                     threatLevel = Localization.Result.HighLevel.localized()
                     aboutTxt = Localization.Squash.SquashPowderyMildewAbout.localized()
-                    conditionTxt = Localization.Squash.SquashPowderyMildewCondition.localized()
                     treatmentTxt = Localization.Squash.SquashPowderyMildewTreatment.localized()
                     
                 case "Strawberry___Leaf_scorch":
@@ -406,7 +430,6 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
                     type = Localization.Result.Fungus.localized()
                     threatLevel = Localization.Result.HighLevel.localized()
                     aboutTxt = Localization.Strawberry.StrawberryLeafScorchAbout.localized()
-                    conditionTxt = Localization.Strawberry.StrawberryLeafScorchCondition.localized()
                     treatmentTxt = Localization.Strawberry.StrawberryLeafScorchTreatment.localized()
                     
                 case "Tomato___Bacterial_spot":
@@ -415,7 +438,6 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
                     type = Localization.Result.Fungus.localized()
                     threatLevel = Localization.Result.HighLevel.localized()
                     aboutTxt = Localization.Tomato.TomatoBacterialSpot.TomatoBacterialSpotAbout.localized()
-                    conditionTxt = Localization.Tomato.TomatoBacterialSpot.TomatoBacterialSpotCondition.localized()
                     treatmentTxt = Localization.Tomato.TomatoBacterialSpot.TomatoBacterialSpotTreatment.localized()
                     
                 case "Tomato___Early_blight":
@@ -424,7 +446,6 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
                     type = Localization.Result.Fungus.localized()
                     threatLevel = Localization.Result.HighLevel.localized()
                     aboutTxt = Localization.Tomato.TomatoEarlyBlight.TomatoEarlyBlighAbout.localized()
-                    conditionTxt = Localization.Tomato.TomatoEarlyBlight.TomatoEarlyBlighCondition.localized()
                     treatmentTxt = Localization.Tomato.TomatoEarlyBlight.TomatoEarlyBlighTreatment.localized()
                     
                 case "Tomato___Late_blight":
@@ -433,7 +454,6 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
                     type = Localization.Result.Fungus.localized()
                     threatLevel = Localization.Result.HighLevel.localized()
                     aboutTxt = Localization.Tomato.TomatoLateBlight.TomatoLateBlightAbout.localized()
-                    conditionTxt = Localization.Tomato.TomatoLateBlight.TomatoLateBlightCondition.localized()
                     treatmentTxt = Localization.Tomato.TomatoLateBlight.TomatoLateBlightTreatment.localized()
                     
                 case "Tomato___Leaf_Mold":
@@ -442,7 +462,6 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
                     type = Localization.Result.Fungus.localized()
                     threatLevel = Localization.Result.HighLevel.localized()
                     aboutTxt = Localization.Tomato.TomatoLeafMold.TomatoLeafMoldAbout.localized()
-                    conditionTxt = Localization.Tomato.TomatoLeafMold.TomatoLeafMoldCondition.localized()
                     treatmentTxt = Localization.Tomato.TomatoLeafMold.TomatoLeafMoldTreatment.localized()
                     
                 case "Tomato___Septoria_leaf_spot":
@@ -451,7 +470,6 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
                     type = Localization.Result.Fungus.localized()
                     threatLevel = Localization.Result.HighLevel.localized()
                     aboutTxt = Localization.Tomato.TomatoSeptoriaLeafSpot.TomatoSeptoriaLeafSpotAbout.localized()
-                    conditionTxt = Localization.Tomato.TomatoSeptoriaLeafSpot.TomatoSeptoriaLeafSpotCondition.localized()
                     treatmentTxt = Localization.Tomato.TomatoSeptoriaLeafSpot.TomatoSeptoriaLeafSpotTreatment.localized()
                     
                 case "Tomato___Spider_mites Two-spotted_spider_mite":
@@ -460,7 +478,6 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
                     type = Localization.Result.Fungus.localized()
                     threatLevel = Localization.Result.HighLevel.localized()
                     aboutTxt = Localization.Tomato.TomatoSpiderMites.TomatoSpiderMitesAbout.localized()
-                    conditionTxt = Localization.Tomato.TomatoSpiderMites.TomatoSpiderMitesCondition.localized()
                     treatmentTxt = Localization.Tomato.TomatoSpiderMites.TomatoSpiderMitesTreatment.localized()
                     
                 case "Tomato___Target_Spot":
@@ -469,7 +486,6 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
                     type = Localization.Result.Fungus.localized()
                     threatLevel = Localization.Result.HighLevel.localized()
                     aboutTxt = Localization.Tomato.TomatoTargetSpot.TomatoTargetSpotAbout.localized()
-                    conditionTxt = Localization.Tomato.TomatoTargetSpot.TomatoTargetSpotCondition.localized()
                     treatmentTxt = Localization.Tomato.TomatoTargetSpot.TomatoTargetSpotTreatment.localized()
                     
                 case "Tomato___Tomato_Yellow_Leaf_Curl_Virus":
@@ -478,7 +494,6 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
                     type = Localization.Result.Fungus.localized()
                     threatLevel = Localization.Result.HighLevel.localized()
                     aboutTxt = Localization.Tomato.TomatoYellowLeafCurlVirus.TomatoYellowLeafCurlVirusAbout.localized()
-                    conditionTxt = Localization.Tomato.TomatoYellowLeafCurlVirus.TomatoYellowLeafCurlVirusCondition.localized()
                     treatmentTxt = Localization.Tomato.TomatoYellowLeafCurlVirus.TomatoYellowLeafCurlVirusTreatment.localized()
                     
                 case "Tomato___Tomato_mosaic_virus":
@@ -487,7 +502,6 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
                     type = Localization.Result.Fungus.localized()
                     threatLevel = Localization.Result.HighLevel.localized()
                     aboutTxt = Localization.Tomato.TomatoMosaicVirus.TomatoMosaicVirusAbout.localized()
-                    conditionTxt = Localization.Tomato.TomatoMosaicVirus.TomatoMosaicVirusCondition.localized()
                     treatmentTxt = Localization.Tomato.TomatoMosaicVirus.TomatoMosaicVirusTreatment.localized()
                     
                 default:
@@ -504,7 +518,6 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
                                                              typeDisease: type,
                                                              threatLevel: threatLevel,
                                                              symptomInfo: aboutTxt,
-                                                             conditionInfo: conditionTxt,
                                                              treatmentInfo: treatmentTxt,
                                                              certainty: predconfidence)
                     self?.navigationController?.pushViewController(vc, animated: true)
