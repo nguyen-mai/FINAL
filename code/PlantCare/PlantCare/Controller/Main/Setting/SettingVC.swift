@@ -16,11 +16,19 @@ class SettingVC: UIViewController {
         setupUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let tabBarController = self.tabBarController as! BaseTabBarController
+        tabBarController.hideTabBar()
+    }
+    
     private func setupUI() {
         setupTableView()
         setupView()
         setupButton()
         setupNavView()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(setupButton), name: NSNotification.Name.updateUserProfileFeed, object: nil)
     }
     
     private func setupTableView() {
@@ -34,7 +42,7 @@ class SettingVC: UIViewController {
             title: "", style: .plain, target: nil, action: nil)
     }
     
-    private func setupButton() {
+    @objc private func setupButton() {
         loginButton.setImage(UIImage(named: AppImage.Icon.CircleNext), for: .normal)
         loginButton.titleLabel?.font = UIFont(name: "Noteworthy Bold", size: 20)
         if Auth.auth().currentUser == nil {

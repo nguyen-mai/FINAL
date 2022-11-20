@@ -117,7 +117,6 @@ class CommunityPostCellViewController: UICollectionViewController, CommunityPost
     
     func didTapShare(image: UIImage) {
         let vc = UIActivityViewController(activityItems: [image], applicationActivities: [])
-        
         // Cho Ipad
         vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
         present(vc, animated: true, completion: nil)

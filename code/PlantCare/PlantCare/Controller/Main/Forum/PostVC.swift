@@ -35,6 +35,7 @@ class PostVC: UIViewController {
         captionTextView.delegate = self
         
         shareButton.layer.cornerRadius = 20
+        shareButton.setTitle(Localization.Postting.Share.localized(), for: .normal)
         shareButton.addTarget(self, action: #selector(shareBtnTapped(_:)), for: .touchUpInside)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))

@@ -99,92 +99,93 @@ class CameraVC: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
             print(firstObservation.identifier, firstObservation.confidence)
             switch firstObservation.identifier {
             case "Apple___Apple_scab":
-                self.result = "Apple Scab"
+                self.result = Localization.AppleDisease.AppleScab.localized()
                 
             case "Apple___Black_rot":
-                self.result = "Apple Black Rot"
+                self.result = Localization.AppleDisease.AppleBlackRot.localized()
                 
             case "Apple___Cedar_apple_rust":
-                self.result = "Apple Cedar Rust"
+                self.result = Localization.AppleDisease.AppleCedar.localized()
                 
             case "Apple___healthy", "Blueberry___healthy", "Cherry_(including_sour)___healthy", "Corn_(maize)___healthy", "Grape___healthy", "Peach___healthy", "Pepper,_bell___healthy", "Potato___healthy", "Raspberry___healthy", "Soybean___healthy", "Strawberry___healthy", "Tomato___healthy":
-                self.result = "Healthy"
+                self.result = Localization.Result.Healthy
                 
             case "Cherry_(including_sour)___Powdery_mildew":
-                self.result = "Cherry Powdery Mildew"
+                self.result = Localization.Cherry.CherryPowderyMildew.localized()
                 
             case "Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot":
-                self.result = ""
+                self.result = Localization.CornDisease.CornGraySpot.localized()
                 
             case "Corn_(maize)___Common_rust_":
-                self.result = ""
+                self.result = Localization.CornDisease.CornRust.localized()
                 
             case "Corn_(maize)___Northern_Leaf_Blight":
-                self.result = ""
+                self.result = Localization.CornDisease.CornNorthenBlight.localized()
                 
             case "Grape___Black_rot":
-                self.result = ""
+                self.result = Localization.Grape.BlackRot.BlackRot.localized()
                 
             case "Grape___Esca_(Black_Measles)":
-                self.result = ""
+                self.result = Localization.Grape.Esca.Esca.localized()
                 
             case "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)":
-                self.result = ""
+                self.result = Localization.Grape.GrapeLeafBlight.GrapeLeafBlight.localized()
                 
             case "Orange___Haunglongbing_(Citrus_greening)":
-                self.result = ""
+                self.result = Localization.Orange.OrangeHaunglongbing.localized()
                 
             case "Peach___Bacterial_spot":
-                self.result = ""
+                self.result = Localization.Peach.PeachBacterialSpot.localized()
                 
             case "Pepper,_bell___Bacterial_spot":
-                self.result = ""
+                self.result = Localization.PepperBell.BacterialSpot.BacterialSpot.localized()
                 
             case "Potato___Early_blight":
-                self.result = ""
+                self.result = Localization.Potato.EarlyBlight.EarlyBlight.localized()
                 
             case "Potato___Late_blight":
-                self.result = ""
+                self.result = Localization.Potato.LateBlight.LateBlight.localized()
                 
             case "Squash___Powdery_mildew":
-                self.result = ""
+                self.result = Localization.Squash.SquashPowderyMildew.localized()
                 
             case "Strawberry___Leaf_scorch":
-                self.result = ""
+                self.result = Localization.Strawberry.StrawberryLeafScorch.localized()
                 
             case "Tomato___Bacterial_spot":
-                self.result = ""
+                self.result = Localization.Tomato.TomatoBacterialSpot.TomatoBacterialSpot.localized()
                 
             case "Tomato___Early_blight":
-                self.result = ""
+                self.result = Localization.Tomato.TomatoEarlyBlight.TomatoEarlyBlight.localized()
                 
             case "Tomato___Late_blight":
-                self.result = ""
+                self.result = Localization.Tomato.TomatoBacterialSpot.TomatoBacterialSpot.localized()
                 
             case "Tomato___Leaf_Mold":
-                self.result = "Tomato Leaf Mold"
+                self.result = Localization.Tomato.TomatoBacterialSpot.TomatoBacterialSpot.localized()
                 
             case "Tomato___Septoria_leaf_spot":
-                self.result = "Tomato Septoria Leaf Spot"
+                self.result = Localization.Tomato.TomatoBacterialSpot.TomatoBacterialSpot.localized()
                 
             case "Tomato___Spider_mites Two-spotted_spider_mite":
-                self.result = "Tomato Spider Mites"
+                self.result = Localization.Tomato.TomatoSpiderMites.TomatoSpiderMites.localized()
                 
             case "Tomato___Target_Spot":
-                self.result = "Tomato Target Spot"
+                self.result = Localization.Tomato.TomatoTargetSpot.TomatoTargetSpot.localized()
                 
             case "Tomato___Tomato_Yellow_Leaf_Curl_Virus":
-                self.result = "Tomato Yellow Leaf Curl Virus"
+                self.result = Localization.Tomato.TomatoYellowLeafCurlVirus.TomatoYellowLeafCurlVirus.localized()
                 
             case "Tomato___Tomato_mosaic_virus":
-                self.result = "Tomato Mosaic Virus"
+                self.result = Localization.Tomato.TomatoMosaicVirus.TomatoMosaicVirus.localized()
                 
             default:
                 self.result = Localization.Result.NoResult.localized()
             }
-            let confidence = String(format: "%.2f", firstObservation.confidence)
+            let result = firstObservation.confidence * 100
+            let confidence = String(format: "%.2f", result)
             DispatchQueue.main.async {
-                self.identifierLabel.text = "\(self.result.localized()) \(confidence)"
+                self.identifierLabel.text = "\(self.result.localized()): \(confidence)%"
             }
         }
         try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])

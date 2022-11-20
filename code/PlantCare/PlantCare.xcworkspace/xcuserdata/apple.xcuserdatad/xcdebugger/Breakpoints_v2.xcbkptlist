@@ -46,8 +46,8 @@
             filePath = "PlantCare/Controller/Main/Forum/CommunityPostCellVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
             landmarkName = "didTapShare(image:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -151,38 +151,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8795D83B-9682-4E66-9D84-1F03694E1327"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PlantCare/Services/FirebaseUtilities.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
-            landmarkName = "updateUserProfileImage(withImage:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "DA79CA72-4CF1-4786-827D-FC29B6D8A3F6"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PlantCare/Services/FirebaseUtilities.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
-            landmarkName = "updateUserProfileImage(withImage:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "E53D42D7-3A6F-4366-8901-EC15CCE86110"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -215,80 +183,64 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2D3FEBEC-EC1D-49D5-97F2-38898203194C"
+            uuid = "0066D8B5-F5C0-4960-A602-29DB7CC926D1"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PlantCare/Controller/Main/Setting/AccountVC.swift"
+            filePath = "PlantCare/Controller/Main/Setting/ProfileVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "fetchCurrentUser()"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
+            landmarkName = "changeInfo(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "9ABF18AE-0044-4BFD-8054-544F68BEB293"
+            uuid = "28076047-54D1-4CC5-88E5-F8EE47120C96"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PlantCare/View/CustomView/UIView/CommunityPostCellHeader.swift"
+            filePath = "PlantCare/Controller/Main/Setting/ProfileVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "configureUser()"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
+            landmarkName = "changeInfo(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "48BF2AD4-7242-4F4B-9F39-0EF335B4C754"
+            uuid = "88F888D4-6634-4CA7-BF22-1F0F809E2B71"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PlantCare/View/CustomView/UIView/CommunityPostCellHeader.swift"
+            filePath = "PlantCare/Controller/Main/Setting/ProfileVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "configureUser()"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
+            landmarkName = "changeInfo(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "DB9F8614-CE2C-4763-B78F-C724CF4E87E9"
+            uuid = "947B6CC4-3E0D-40FF-B8FD-708FD2D3FC89"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PlantCare/Controller/Main/Forum/ForumVC.swift"
+            filePath = "PlantCare/Controller/Main/Setting/ProfileVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "fetchCurrentUser()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C7365A5C-91BD-4FD1-8B9C-792DD4F19F03"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PlantCare/Controller/Main/Forum/ForumVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "fetchCurrentUser()"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
+            landmarkName = "changeInfo(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

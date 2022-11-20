@@ -26,8 +26,6 @@ class ClassifyResultVC: UIViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-//        navigationController?.setNavigationBarHidden(true, animated: animated)
-//
         let tabBarController = self.tabBarController as! BaseTabBarController
         tabBarController.showTabBar()
     }
@@ -35,7 +33,7 @@ class ClassifyResultVC: UIViewController {
     private func setupData() {
         arrayData = [
             DiseaseInfoViewEntity.ExpandedCell(title: Localization.Result.SymptomTitle, detail: self.model.symptomInfo),
-            DiseaseInfoViewEntity.ExpandedCell(title: Localization.Result.ConditionTitle, detail: self.model.conditionInfo),
+//            DiseaseInfoViewEntity.ExpandedCell(title: Localization.Result.ConditionTitle, detail: self.model.conditionInfo),
             DiseaseInfoViewEntity.ExpandedCell(title: Localization.Result.PreventionTitle, detail: self.model.treatmentInfo)
         ]
     }
@@ -61,7 +59,6 @@ class ClassifyResultVC: UIViewController {
     }
     
     @objc private func leftBtnTapped() {
-//        navigationController?.popViewController(animated: true)
         let alert = UIAlertController(title: Localization.Alert.SaveQuestion.localized(),
                                       message: nil, preferredStyle: .alert)
         let okAction = UIAlertAction(title: Localization.Alert.OK.localized(), style: .default, handler: { _ in

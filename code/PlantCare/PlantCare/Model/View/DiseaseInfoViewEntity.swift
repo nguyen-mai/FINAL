@@ -61,7 +61,7 @@ struct DiseaseInfoViewEntity {
                 conditionInfo: Localization.CornDisease.CornGraySpotCondition.localized(),
                 treatmentInfo: Localization.CornDisease.CornGraySpotTreatment.localized(),
                 certainty: 0),
-    Disease(diseaseImage: UIImage(named: AppImage.DiseaseImage.AppleScab) ?? UIImage(named: AppImage.Icon.PlaceholderPhoto)!,
+        Disease(diseaseImage: UIImage(named: AppImage.DiseaseImage.AppleScab) ?? UIImage(named: AppImage.Icon.PlaceholderPhoto)!,
             diseaseName: Localization.AppleDisease.AppleScab.localized(),
             plantName: Localization.AppleDisease.Apple.localized(),
             typeDisease: Localization.Result.Fungus.localized(),

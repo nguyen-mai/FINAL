@@ -10,41 +10,43 @@
 
 "Identify Plant Diseases" = "Nhận Diện Bệnh Cây Trồng";
 
-"You can identify the plant diseases you don't know through your camera" = "Nhận diện bệnh cây trồng bạn chưa biết thông qua máy ảnh";
+"You can identify the plant diseases you don't know through your camera" = "Bạn có thể nhận diện bệnh cây trồng bằng cách sử dụng máy ảnh của điện thoại";
 
 "Discover Many Plant Diseases" = "Khám Phá Nhiều Loại Bệnh Cây Trồng";
 
-"Let's learn about the many plant diseases that exist in the world" = "Khám phá thêm nhiều loại bệnh cây trồng tồn tại trên thế giới";
+"Let's learn about the many plant diseases that exist in the world" = "Tìm hiểu thêm về một số loại cây trồng";
 
-"Q&A About Plant Diseases" = "Hỏi Đáp Về Bệnh Cây Trồng";
+"Q&A About Plant Diseases" = "Q&A Về Bệnh Cây Trồng";
 
-"Let's ask questions and answers with the community" = "Đặt câu hỏi và trả lời với cộng đồng sử dụng ứng dụng";
+"Let's ask questions and answers with the community" = "Hãy tham gia đặt câu hỏi và trả lời cùng với cộng đồng người dùng ứng dụng";
 
-"Back" = "Trở lại";
+"Enter your email address and follow the instructions on the link in the email you received to reset your password" = "Nhập địa chỉ email của bạn và thực hiện theo hướng dẫn qua địa chỉ của bạn để khôi phục lại mật khẩu";
 
-"Take a picture" = " Chụp ảnh";
+"Back" = "Quay lại";
 
-"See diagnosis" = "Chẩn đoán";
+"Take a picture" = "Chụp ảnh";
 
-"Get medicine" = "Lấy thuốc";
+"See diagnosis" = "Phân tích";
 
-"Prediction" = "Chẩn đoán";
+"Get medicine" = "Xem bệnh";
+
+"Prediction" = "Dự đoán";
 
 "Symptom" = "Triệu chứng";
 
-"Conditions for disease development" = "Điều kiện";
+"Conditions for disease development" = "Điều kiện phát triển bệnh cây trồng";
 
-"Prevention and treatment" = "Chữa trị";
+"Prevention and treatment" = "Cách phòng trị";
 
-"Certainty" = "Dự đoán";
+"Certainty" = "Độ xác thực";
 
-"Type" = "Loại";
+"Type" = "Loại cây trồng";
 
-"Threat Level" = "Mức độ nguy hiểm";
+"Threat Level" = "Mức độ đe doạ";
 
-"Select a photo" = "Lựa chọn ảnh";
+"Select a photo" = "Chọn ảnh từ";
 
-"Photo" = "Thư viện";
+"Photo" = "Thư viện ảnh";
 
 "Camera" = "Máy ảnh";
 
@@ -57,14 +59,14 @@
 "Fungus" = "Nấm";
 "Healthy" = "Khoẻ mạnh";
 
-"Apple" = "Cây táo";
+"Apple" = "Táo đỏ";
 
 "Apple Scab" = "Bệnh ghẻ";
-"On leaves, diseased spots are round, greenish-gray, slightly raised. The disease usually first appears on the underside of leaves, then spreads gradually. On the fruit, the disease is dark brown, raised like a scab and cracked, the fruit is distorted and falls prematurely." = "Trên lá đốm bệnh tròn, màu xám xanh, hơi gồ lên, bệnh thường xuất hiện đầu tiên ở mặt dưới lá, sau đó mới lan dần. Trên quả vết bệnh màu nâu đen, gồ lên như nốt ghẻ và nứt, quả méo mó và rụng sớm.";
+"On leaves, diseased spots are round, greenish-gray, slightly raised. The disease usually first appears on the underside of leaves, then spreads gradually. On the fruit, the disease is dark brown, raised like a scab and cracked, the fruit is distorted and falls prematurely." = "On leaves, diseased spots are round, greenish-gray, slightly raised. The disease usually first appears on the underside of leaves, then spreads gradually. On the fruit, the disease is dark brown, raised like a scab and cracked, the fruit is distorted and falls prematurely.";
 "Fungi usually attack on leaf blades, petioles, flowers and young fruit, rarely on young shoots.\nThe mycelium usually spreads through water droplets, wind and infects the stomata of young parts of leaves, flower stalks, and young fruit to develop and cause damage." = "Fungi usually attack on leaf blades, petioles, flowers and young fruit, rarely on young shoots.\nThe mycelium usually spreads through water droplets, wind and infects the stomata of young parts of leaves, flower stalks, and young fruit to develop and cause damage.";
 "After harvesting, it is necessary to cut down thoroughly and collect all tree remnants. \nThe disease is concentrated and burned to avoid spreading.\n Do not plant too thick to make garden lack of light; pruning, shaping for good growth, good ventilation, avoiding high humidity in the garden: Ridozeb 72WP , Manozeb 80WP(60-80 g/16 lít nước); Carbenda Supper 50SC(30 ml/16 lít nước); Top 70WP(15 g/16 lit nước); Lipman 80WP(60-80 g/16 lít nước)" = "After harvesting, it is necessary to cut down thoroughly and collect all tree remnants. \nThe disease is concentrated and burned to avoid spreading.\n Do not plant too thick to make garden lack of light; pruning, shaping for good growth, good ventilation, avoiding high humidity in the garden: Ridozeb 72WP , Manozeb 80WP(60-80 g/16 lít nước); Carbenda Supper 50SC(30 ml/16 lít nước); Top 70WP(15 g/16 lit nước); Lipman 80WP(60-80 g/16 lít nước)";
     
-"Black Rot" = "Bệnh đốm đen";
+"Black Rot" = "Thối đen";
 "The first signs of this disease are small spots that appear on the upper surface of the leaves, which then develop into brown or yellow spots, resembling \"frog eyes.\" Initially, the infected area is brown and may not change color as it increases in size or may turn black.As the area of ​​decay increases, a series of concentric bands usually form. of the rotting area remains firm and has a leathery odor.In the end, the apple completely rots, withers" = "The first signs of this disease are small spots that appear on the upper surface of the leaves, which then develop into brown or yellow spots, resembling \"frog eyes.\" Initially, the infected area is brown and may not change color as it increases in size or may turn black.As the area of ​​decay increases, a series of concentric bands usually form. of the rotting area remains firm and has a leathery odor.In the end, the apple completely rots, withers";
 "It will spread from leaf to fruit." = "It will spread from leaf to fruit.";
 "Adequate and balanced fertilization of NPK helps plants grow well in the dry season, ventilates the garden in the rainy season, and avoids low humidity.\nSpray evenly wet foliage, fruit when the disease appears: Gekko 20SC(15-20 ml/16 lít nước), Ridozeb 72WP, Manozeb 80WP(60-80 g/16 lít nước), Carbenda Supper 50SC(30 ml/16 lít nước)" = "Adequate and balanced fertilization of NPK helps plants grow well in the dry season, ventilates the garden in the rainy season, and avoids low humidity.\nSpray evenly wet foliage, fruit when the disease appears: Gekko 20SC(15-20 ml/16 lít nước), Ridozeb 72WP, Manozeb 80WP(60-80 g/16 lít nước), Carbenda Supper 50SC(30 ml/16 lít nước)";
@@ -74,12 +76,12 @@
 "It will spread from leaf to fruit." = "It will spread from leaf to fruit.";
 "To prevent rust, remove host plants. Also grow the following rust resistant apple varieties: Apple Redfree, Apples William's Pride, Apple Freedom" = "To prevent rust, remove host plants. Also grow the following rust resistant apple varieties: Apple Redfree, Apples William's Pride, Apple Freedom";
 
-"Corn" = "Corn";
+"Corn" = "Ngô";
     
-"Corn Grey Leaf Spot" = "Bệnh sọc lá cây ngô";
-"Initially, the lesions are only as small as needles, yellowish in color, then gradually develop into round, oval or amorphous shapes, the color and size of the lesions change. The disease occurs in all parts of the maize plant: leaves, stems, corn but mainly on leaves. The disease can arise very early as soon as the corn plant has 2-3 leaves." = "Ban đầu vết bệnh chỉ nhỏ như đầu kim, có màu hơi vàng, sau phát triển dần thành hình tròn, bầu dục hoặc vô định hình, màu sắc và kích thước vết bệnh thay đổi. Bệnh xuất hiện ở tất cả các bộ phận của cây ngô: lá, thân. , ngô nhưng chủ yếu trên lá. Bệnh có thể phát sinh rất sớm ngay khi cây ngô được 2 - 3 lá.";
-"The disease arises in humid climates, fungal spores form a lot, especially in the stem nodes, leaf blades, corn husks forming a brown or black hairy layer. Leaf spot disease often causes a lot of damage in bad corn fields are fields without intensive farming, making the plants stunted and ugly. In addition, bad soils, lowland or waterlogged soils, fields with heavy, tight meat texture, or fields with frequent water shortages... make maize plants grow poorly, stunted, and unable to develop." = "Bệnh phát sinh ở những nơi có khí hậu ẩm ướt, bào tử nấm hình thành nhiều, đặc biệt ở các đốt thân, phiến lá, vỏ ngô tạo thành một lớp lông màu nâu hoặc đen. Bệnh đốm lá thường gây hại nhiều ở những ruộng ngô xấu là những ruộng không thâm canh làm cho cây còi cọc, xấu xí. Ngoài ra, đất xấu, đất trũng hay úng nước, ruộng nặng, thịt chặt, ruộng thường xuyên thiếu nước ... làm cho cây ngô sinh trưởng kém, còi cọc, không phát triển được.";
-"Corn should be planted in fields with light soil or sandy soil, with a good irrigation system, ensuring drainage in the rainy season and having enough water to actively irrigate corn in the dry season, creating growth for maize. and favorable development.\nCollect cleanly the remnants of diseased corn plants after harvest… Before planting, it is necessary to plow and harrow the field thoroughly to bury the remnants of diseased plants to kill the source of the disease spreading to the next crop.\nCare, fertilize and water properly to prevent diseases.\nWhen the field is sick, use one of the drugs such as: Tilt super 300EC; Daconil; Ridomil; Validacin; Mannozeb 80WP…for spraying. Before spraying, carefully read the instructions on how to use the drug printed on the packaging.\nIf the field is often seriously damaged by diseases, it should be rotated with some other vegetables to limit and prevent diseases." = "Nên trồng ngô trên ruộng đất thịt nhẹ hoặc đất cát pha, có hệ thống tưới tiêu tốt, đảm bảo thoát nước trong mùa mưa và đủ nước để chủ động tưới cho ngô trong mùa khô, tạo sự sinh trưởng cho cây ngô. phát triển thuận lợi. \ n Thu gom sạch sẽ tàn dư cây ngô bị bệnh sau khi thu hoạch… Trước khi trồng phải cày, bừa kỹ ruộng để vùi xác những cây bệnh còn sót lại để diệt nguồn bệnh lây lan sang vụ sau. \ n Chăm sóc, bón phân, tưới nước hợp lý để phòng bệnh. \ n Khi ruộng bị bệnh sử dụng một trong các loại thuốc như: Tilt super 300EC; Daconil; Ridomil; Validacin; Mannozeb 80WP… để phun. Trước khi phun phải đọc kỹ hướng dẫn sử dụng thuốc in trên bao bì, nếu ruộng thường xuyên bị bệnh hại nặng thì nên luân canh với một số loại rau khác để hạn chế và phòng trừ bệnh.";
+"Corn Grey Leaf Spot" = "Corn Grey Leaf Spot";
+"Initially, the lesions are only as small as needles, yellowish in color, then gradually develop into round, oval or amorphous shapes, the color and size of the lesions change. The disease occurs in all parts of the maize plant: leaves, stems, corn but mainly on leaves. The disease can arise very early as soon as the corn plant has 2-3 leaves." = "Initially, the lesions are only as small as needles, yellowish in color, then gradually develop into round, oval or amorphous shapes, the color and size of the lesions change. The disease occurs in all parts of the maize plant: leaves, stems, corn but mainly on leaves. The disease can arise very early as soon as the corn plant has 2-3 leaves.";
+"The disease arises in humid climates, fungal spores form a lot, especially in the stem nodes, leaf blades, corn husks forming a brown or black hairy layer. Leaf spot disease often causes a lot of damage in bad corn fields are fields without intensive farming, making the plants stunted and ugly. In addition, bad soils, lowland or waterlogged soils, fields with heavy, tight meat texture, or fields with frequent water shortages... make maize plants grow poorly, stunted, and unable to develop." = "The disease arises in humid climates, fungal spores form a lot, especially in the stem nodes, leaf blades, corn husks forming a brown or black hairy layer. Leaf spot disease often causes a lot of damage in bad corn fields are fields without intensive farming, making the plants stunted and ugly. In addition, bad soils, lowland or waterlogged soils, fields with heavy, tight meat texture, or fields with frequent water shortages... make maize plants grow poorly, stunted, and unable to develop.";
+"Corn should be planted in fields with light soil or sandy soil, with a good irrigation system, ensuring drainage in the rainy season and having enough water to actively irrigate corn in the dry season, creating growth for maize. and favorable development.\nCollect cleanly the remnants of diseased corn plants after harvest… Before planting, it is necessary to plow and harrow the field thoroughly to bury the remnants of diseased plants to kill the source of the disease spreading to the next crop.\nCare, fertilize and water properly to prevent diseases.\nWhen the field is sick, use one of the drugs such as: Tilt super 300EC; Daconil; Ridomil; Validacin; Mannozeb 80WP…for spraying. Before spraying, carefully read the instructions on how to use the drug printed on the packaging.\nIf the field is often seriously damaged by diseases, it should be rotated with some other vegetables to limit and prevent diseases." = "Corn should be planted in fields with light soil or sandy soil, with a good irrigation system, ensuring drainage in the rainy season and having enough water to actively irrigate corn in the dry season, creating growth for maize. and favorable development.\nCollect cleanly the remnants of diseased corn plants after harvest… Before planting, it is necessary to plow and harrow the field thoroughly to bury the remnants of diseased plants to kill the source of the disease spreading to the next crop.\nCare, fertilize and water properly to prevent diseases.\nWhen the field is sick, use one of the drugs such as: Tilt super 300EC; Daconil; Ridomil; Validacin; Mannozeb 80WP…for spraying. Before spraying, carefully read the instructions on how to use the drug printed on the packaging.\nIf the field is often seriously damaged by diseases, it should be rotated with some other vegetables to limit and prevent diseases.";
     
 "Common Rust" = "Common Rust";
 "Initially clear to pale yellow dots, scattered on the leaf blade. After creating floating tumors, causing the cells to crack, the inside contains a yellow-brown powder, yellow brick when young. At the end of the growth stage, the disease develops a lot, covers the leaves, black spots form long black spots on the leaf blade." = "Initially clear to pale yellow dots, scattered on the leaf blade. After creating floating tumors, causing the cells to crack, the inside contains a yellow-brown powder, yellow brick when young. At the end of the growth stage, the disease develops a lot, covers the leaves, black spots form long black spots on the leaf blade.";
@@ -91,26 +93,199 @@
 "Large leaf spot disease often occurs in bad, underdeveloped corn fields; bad fields, lowland or waterlogged soil, fields with heavy texture, tight, easy to scum, or fields that are often lack of water… making corn plants grow poorly, stunted, unable to develop as well. is a condition for the disease to arise and cause more damage than other fields, old leaves close to the base often arise first, severe disease can spread to the upper leaves. The fungus enters the leaves mainly through the stomata, mostly in the young parts of the plant.\nThe growth temperature of the fungus is 5-8°C, 27-35°C." = "Large leaf spot disease often occurs in bad, underdeveloped corn fields; bad fields, lowland or waterlogged soil, fields with heavy texture, tight, easy to scum, or fields that are often lack of water… making corn plants grow poorly, stunted, unable to develop as well. is a condition for the disease to arise and cause more damage than other fields, old leaves close to the base often arise first, severe disease can spread to the upper leaves. The fungus enters the leaves mainly through the stomata, mostly in the young parts of the plant.\nThe growth temperature of the fungus is 5-8°C, 27-35°C.";
 "Rotating maize with legumes.\nUse disease resistant maize.\nCollect the remnants of corn and then take it out of the field to destroy.\nFertilize fully and balance for corn plants. Increase potassium fertilizer for corn.\nTreat corn seeds with hot water of 52°C for 10 minutes." = "Rotating maize with legumes.\nUse disease resistant maize.\nCollect the remnants of corn and then take it out of the field to destroy.\nFertilize fully and balance for corn plants. Increase potassium fertilizer for corn.\nTreat corn seeds with hot water of 52°C for 10 minutes.";
 
-"None" = "None";
+"None" = "Không có gì hiển thị";
 
-"No Result" = "No Result";
+"No Result" = "Không có kết quả";
 
 "Search..." = "Tìm kiếm...";
 
-"All" = "All";
+"All" = "Tất cả";
 
-"Describe your problem ..." = "Describe your problem ...";
+"Describe your problem ..." = "Mô tả vấn đề cây trồng ...";
 
-"Post" = "Post";
+"Post" = "Bài đăng";
 
-"Forum" = "Forum";
+"Forum" = "Diễn đàn";
 
-"Re-enter password..." = "Re-enter password...";
+"Re-enter password..." = "Nhập lại mật khẩu...";
 
-"Log Out" = "Log Out";
+"Log Out" = "Đăng xuất";
 
 "Yes" = "Có";
 
 "No" = "Không";
 
-"Is the result right?" = "Thông tin này hữu ích không?";
+"Is the result right?" = "Kết quả chính xác không?";
+
+"Enter new password..." = "Nhập mật khẩu mới...";
+"Enter old password..." = "Nhập mật khẩu hiện tại...";
+"Changed image successfully." = "Thay đổi ảnh thành công.";
+"Changed information successfully." = "Thay đổi thông tin thành công.";
+"Delete Post?" = "Xoá bài đăng?";
+"Delete" = "Xoá";
+"Deleted successfully." = "Xoá thành công.";
+"Saved result successfully." = "Lưu kết quả thành công.";
+"Plant piseases classification" = "Chẩn đoán bệnh cây";
+"References" = "Tham khảo";
+"Language" = "Ngôn ngữ";
+"Posting history" = "Lịch sử đăng bài";
+"Searching history" = "Lịch sử tra cứu";
+"Editing profile" = "Sửa thông tin";
+"Enter something" = "Hãy nhập gì đó";
+"My Account" = "Tài khoản của tôi";
+"Change password" = "Thay đổi mật khẩu";
+"Ask what?" = "Hỏi gì nào?";
+"Hello!" = "Xin chào!";
+"Username" = "Tên người dùng";
+"Email" = "Email";
+"Password" = "Mật khẩu";
+
+
+"Grape" = "Nho";
+"Black Rot" = "Thối đen";
+"Grape Esca" = "Grape Esca";
+"Grape Leaf Blight" = "Grape Leaf Blight";
+"Orange" = "Cam";
+"Orange Haunglongbing" = "Orange Haunglongbing";
+"Peach" = "Đào";
+"Peach Bacterial Spot" = "Peach Bacterial Spot";
+"Pepper Bell" = "Ớt chuông";
+"Bacterial Spot" = "Bacterial Spot";
+"Potato" = "Khoai tây";
+"Early Blight" = "Early Blight";
+"Late Blight" = "Late Blight";
+"Squash" = "Bí đỏ";
+"Squash Powdery Mildew" = "Squash Powdery Mildew";
+"Strawberry" = "Dâu tây";
+"Strawberry Leaf Scorch" = "Strawberry Leaf Scorch";
+"Tomato" = "Cà chua";
+"Tomato Bacterial Spot" = "Tomato Bacterial Spot";
+"Tomato Early Blight" = "Tomato Early Blight";
+"Tomato Late Blight" = "Tomato Late Blight";
+"Tomato Leaf Mold" = "Tomato Leaf Mold";
+"Tomato Septoria Leaf Spot" = "Tomato Septoria Leaf Spot";
+"Tomato Spider Mites" = "Tomato Spider Mites";
+"Tomato Target Spot" = "Tomato Target Spot";
+"Tomato Yellow Leaf Curl Virus" = "Tomato Yellow Leaf Curl Virus";
+"Tomato Mosaic Virus" = "Tomato Mosaic Virus";
+
+"Password is at least 8 characters, contains a special character and a number."= "Mật khẩu chứa tối thiểu 8 ký tự, chứa một ký tự đặc biệt và một số";
+"Please make sure your password is at least 8 characters, contains a special character and a number." = "Hãy đảm bảo mật khẩu của bạn chứa tối thiểu 8 ký tự, chứa một ký tự đặc biệt và một số";
+"Result" = "Kết quả";
+"Reference" = "Tham khảo";
+"Setting" = "Cài đặt";
+"Welcome to PlantCare" = "Chào mừng đến với PlantCare";
+"Edit Profile" = "Chỉnh Sửa Thông Tin";
+"Username" = "Tên người dùng";
+"Email" = "Email";
+"Password" = "Mật khẩu";
+"Enter username..." = "Nhập tên người dùng";
+"Enter new username..." = "Nhập tên người dùng mới";
+"Cancel" = "Huỷ";
+"Save" = "Lưu";
+"Search" = "Tìm kiếm";
+"Enter new email..." = "Nhập địa chỉ email mới...";
+"Do you want to save?" = "Bạn muốn lưu không?";
+"Relabel" = "Gán nhãn lại";
+"Enter plant name" = "Nhập tên loài cây";
+"Enter disease name" = "Nhập tên cây trồng";
+"Please enter something!" = "Hãy để lại gì đó!";
+"Add a comment..." = "Thêm bình luận...";
+"Submit" = "Đăng";
+"Just now" = "Vừa xong";
+"second ago" = "giây trước";
+"seconds ago" = "giây trước";
+"mininute ago" = "phút trước";
+"minutes ago" = "phút trước";
+"hour ago" = "tiếng trước";
+"hours ago" = "tiếng trước";
+"day ago" = "ngày trước";
+"days ago" = "ngày trước";
+"week ago" = "tuần trước";
+"weeks ago" = "tuần trước";
+"Comment" = "Bình luận";
+"Share" = "Chia sẻ";
+
+"Apple" = "Táo đỏ";
+"Apple Scab" = "Bệnh vảy táo - Ghẻ táo";
+"The disease usually occurs on leaves and fruits. In the leaves, the diseased spots are round, greenish gray and slightly raised, usually appearing under the leaves, and then gradually spreading to other places. On the fruit, the diseased spots are dark brown, and also raised like scabs and cracks, the fruit is distorted and falls prematurely. At first, the spots are round, bluish-gray in color, then gradually become more prominent and have bluish-black filaments. Over a period of time, these filaments disappear, and the lesions grow up like thorns. In the later stages, the disease causes the leaves to shrivel and die, and the lesions on the fruit turn dark brown, and scab and crack. If there is no timely treatment, the fruit will be deformed, distorted, low quality, hard fruit pulp and less water, sometimes falling prematurely. " = "Bệnh thường xuất hiện ở lá và quả. Ở lá, đốm bệnh hình tròn, màu xám xanh và hơi gồ lên, thường ở xuất hiện ở dưới lá, rồi sau đó lan dần ra những chỗ khác. Còn trên quả, đốm bệnh màu nâu đen, và cũng gồ lên như những nốt ghẻ và nứt, quả méo mó và rụng sớm. Khi mới xuất hiện, các đốm bệnh có hình tròn, màu xám xanh, rồi dần dần rõ hơn và có tơ màu đen hơi xanh. Qua một khoảng thời gian, các sợi tơ này biến mất, vết bệnh mọc lồi lên như những chiếc gai. Giai đoạn sau, bệnh làm cho lá bị teo lại và khô chết, còn trên quả các vết bệnh chuyển thành màu nâu sẫm, và bị ghẻ, nứt. Nếu không có biện pháp trị bệnh kịp thời, làm cho quả bị biến dạng, méo mó, chất lượng thấp, thịt quả cứng và ít nước, có khi bị rụng sớm.";
+"After harvesting, it is necessary to cut down thoroughly and collect all remnants of diseased plants to focus and burn to avoid spreading. Do not plant too thick to make the garden lack of light. Regularly prune to have ventilation, avoid high humidity to help plants grow well. When the disease first appears, it is possible to use some chemical drugs such as Carosal 50SC, Canazole Super 320EC, Azoxystrobin, Benomyl, Metalaxyl ... and should spray the foliage and fruits evenly. How to use please read the label carefully. Pay attention to spray at times before the new batch of plants." = "Sau khi thu hoạch, cần đốn tỉa triệt để và gom hết tàn dư cây bệnh đem tập trung và đốt hết để tránh lây lan. Không nên trồng quá dày làm vườn cây thiếu ánh sáng. Thường xuyên cắt tỉa để có độ thông thoáng, tránh độ ẩm cao để giúp cho cây sinh trưởng tốt. Khi mới xuất hiện bệnh, có thể sử dụng một số loại thuốc hoá học như Carosal 50SC, Canazole Super 320EC, Azoxystrobin, Benomyl, Metalaxyl… và nên phun đều tán lá và quả. Cách sử dụng xin đọc kỹ trên nhãn thuốc. Chú ý xịt vào các thời điểm tr­ước khi cây ra đợt mới.";
+
+"Apple Black Rot" = "Bệnh thối đen";
+"This disease occurs in leaves, fruit and bark. The disease usually appears starting on the leaves. The leaves have purple spots on the leaf surface, and as these spots age, the edges are purple, and the center of the spot is yellow-brown. This disease causes leaves to fall, affecting crop yield." = "Bệnh này xuất hiện ở lá, quả và vỏ cây. Bệnh thường xuất hiện bắt đầu trên lá. Lá có những các đốm màu tím trên mặt lá, và khi những đốm này già đi thì có rìa màu tím, và phần trung tâm đốm có màu vàng nâu. Bệnh này làm cho lá bị rụng, ảnh hưởng đến năng xuất cây trồng.";
+"After harvesting, it is necessary to cut down thoroughly and collect all remnants of diseased plants to focus and burn to avoid spreading. When signs of disease appear, remove the diseased area to avoid spreading. Insect screens can be used to keep insects out. In addition, copper-based sprays, lime sulfur can be used to control the disease. How to use please read the label carefully. How to use please read the label carefully. Pay attention to spray at times before the new batch of plants." = "Sau khi thu hoạch, cần đốn tỉa triệt để và gom hết tàn dư cây bệnh đem tập trung và đốt hết để tránh lây lan. Khi thấy dấu hiệu bệnh xuất hiện, loại bỏ vùng bệnh để tránh lây lan. Có thể sử dụng lưới chắn côn trùng để tránh côn trùng. Ngoài ra, có thể sử dụng thuốc xịt gốc đồng, lưu huỳnh vôi để kiểm soát bệnh. Cách sử dụng xin đọc kỹ trên nhãn thuốc. Chú ý xịt vào các thời điểm tr­ước khi cây ra đợt mới.";
+
+"Cedar Apple Rust" = "Bệnh gỉ sắt tuyết tùng";
+"Signs of this disease are rust spots on the leaves. The fruit may also be deformed or spotty." = "Dấu hiệu nhận biết bệnh này là những vết gỉ trên lá. Quả cũng có thể bị biến dạng hoặc bị đốm.";
+"When diseased plants are detected, they should be removed to avoid infecting other plants. Some chemical drugs can be used to combat this disease." = "Khi phát hiện cây bị bệnh, cần loại bỏ để tránh lây nhiễm sang những cây khác. Có thể dùng một số loại thuốc hoá học để kháng bệnh này.";
+
+
+"Corn" = "Ngô";
+"Corn Grey Leaf Spot" = "Bệnh đốm lá nhỏ";
+"This disease is common in maize and the extent of damage depends on the cultivar. The disease affects mainly leaf blades, leaf nests and seeds. The disease causes damage from the time the plant has 2-3 leaves until the end of the growth period of the plant. Lesions are initially small, needle-like, yellowish spots that then expand into small circles or ovals." = "Bệnh này phổ biến ở cây ngô và mức độ thiệt hại tuỳ thuộc vào từng giống cây ngô. Bệnh gây hại chủ yếu ở phiến lá, bẹ lá và hạt. Bệnh gây hại từ khi cây có 2 – 3 lá cho đến hết thời kỳ sinh trưởng của cây. Vết bệnh lúc đầu là những chấm nhỏ, như mũi kim, hơi vàng sau đó lớn rộng thành hình tròn, hoặc hình bầu dục nhỏ.";
+"Use disease resistant varieties. Note, seeds can be treated with Rovrral before planting. Sanitize the field, remove the remnants of diseased plants. When plants are sick, chemical drugs Tilt 250ND and Anvil 5SC 0.1% concentration can be used to prevent diseases in the field (Please read the instructions carefully before using)." = "Sử dụng giống kháng bệnh. Chú ý, có thể xử lý hạt giống bằng Rovrral trước khi gieo trồng. Vệ sinh đồng ruộng, thu dọn tàn dư cây bị bệnh. Khi cây bị bệnh, có thể sử dụng các loại thuốc hoá học Tilt 250ND và Anvil 5SC nồng độ 0,1% để phòng trừ bệnh trên đồng ruộng ( Hãy đọc kỹ hướng dẫn sử dụng trước khi sử dụng).";
+
+"Common Rust" = "Bệnh gỉ sắt";
+"Signs of this disease are clear yellow to pale yellow spots, scattered on the leaf blade. After a period of time, the disease covers the leaves, creating long black spots on the leaves. The disease persists on leaf, seed and corn residues. The disease appears more during the flowering stage. The disease causes poor plant growth, and reduced yield." = "Dấu hiệu nhận biết bệnh này là những chấm màu vàng trong đến vàng nhạt, rải rác trên phiến lá. Sau khoảng thời gian, bệnh phủ kín lá, tạo vết đen dài trên lá. Bệnh tồn tại trên tàn dư lá, hạt và bắp. Bệnh xuất hiện nhiều vào giai đoạn cây ra hoa. Bệnh làm cho cây sinh trưởng kém, và năng suất giảm sút.";
+"Sanitize the field, increase intensive farming. When detecting diseased plants, some chemical drugs such as New Kasuran can be used; Dithane; Anvil; Kumulus; Cavil; Tilvil; Vectra; Copper – zin C… (Remember to read carefully before using)." = "Vệ sinh đồng ruộng, tăng cường thâm canh. Khi phát hiện cây bị bệnh, có thể sử dụng một số loại thuốc hoá học như  New Kasuran; Dithane; Anvil; Kumulus; Cavil; Tilvil; Vectra; Copper – zin C…(Nhớ đọc kỹ sử dụng trước khi dùng).";
+
+"" = "";
+"" = "";
+"" = "";
+
+"" = "";
+"" = "";
+"" = "";
+
+"" = "";
+"" = "";
+"" = "";
+
+"" = "";
+"" = "";
+"" = "";
+
+"" = "";
+"" = "";
+"" = "";
+
+"" = "";
+"" = "";
+"" = "";
+
+"" = "";
+"" = "";
+"" = "";
+
+"" = "";
+"" = "";
+"" = "";
+
+"" = "";
+"" = "";
+"" = "";
+
+"" = "";
+"" = "";
+"" = "";
+
+"" = "";
+"" = "";
+"" = "";
+
+"" = "";
+"" = "";
+"" = "";
+
+"" = "";
+"" = "";
+"" = "";
+
+"" = "";
+"" = "";
+"" = "";
+
+"" = "";
+"" = "";
+"" = "";
+

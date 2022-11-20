@@ -122,7 +122,7 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="50" id="3QZ-nE-zAO"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                                <fontDescription key="fontDescription" name="NotoSansOriya-Bold" family="Noto Sans Oriya" pointSize="16"/>
                                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                 <state key="normal" title="Take a picture">
@@ -308,6 +308,7 @@
                         <outlet property="allButton" destination="vLE-p4-WgE" id="Wkd-5e-Eis"/>
                         <outlet property="cameraBtn" destination="r3g-Zk-LKB" id="TdU-BX-m1L"/>
                         <outlet property="collectionView" destination="ldO-ht-V8k" id="5py-6K-DFr"/>
+                        <outlet property="firstTitleLabel" destination="szz-vG-EwD" id="pMy-Rf-3la"/>
                         <outlet property="heightConstraintScrollView" destination="vaV-X0-hOK" id="ptw-MM-NbG"/>
                         <outlet property="helpView" destination="JL9-lH-ySv" id="Dze-cw-XzI"/>
                         <outlet property="image1" destination="EZ2-aK-VOd" id="Str-Ru-yJ2"/>
@@ -319,6 +320,7 @@
                         <outlet property="nextImage1" destination="eIX-33-Jxg" id="MWo-4M-zYr"/>
                         <outlet property="nextImage2" destination="JgB-fy-jkc" id="pOF-vY-BTg"/>
                         <outlet property="searchTextField" destination="b0P-cq-gnj" id="FsK-5R-YoL"/>
+                        <outlet property="secondTitleLabel" destination="wJz-ao-yxc" id="8QL-9d-JBv"/>
                         <outlet property="titleLabel" destination="O8F-wt-fQs" id="SLv-Rx-6XP"/>
                     </connections>
                 </viewController>

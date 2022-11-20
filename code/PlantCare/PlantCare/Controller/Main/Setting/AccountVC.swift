@@ -32,26 +32,26 @@ class AccountVC: CommunityPostCellViewController {
         collectionView.showsVerticalScrollIndicator = false
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleRefresh), name: NSNotification.Name.updateCommunityFeed, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(fetchCurrentUser), name: NSNotification.Name.updateUserProfileFeed, object: nil)
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
         collectionView?.refreshControl = refreshControl
     }
     
-    private func fetchCurrentUser() {
+    @objc private func fetchCurrentUser() {
         ProgressHUD.show()
         guard let uid = Auth.auth().currentUser?.uid else { return }
         self.uid = uid
         Database.database().fetchUser(withUID: uid) { (user) in
             self.user = user
-            print("USSER: \(self.user)")
             self.fetchPosts()
             self.collectionView.reloadData()
         }
         ProgressHUD.dismiss()
     }
     
-    private func fetchOtherUser() {
+    @objc private func fetchOtherUser() {
         ProgressHUD.show()
         guard let user = user else {
             return

@@ -1,6 +1,7 @@
 import UIKit
 import FirebaseAuth
 import Firebase
+import ProgressHUD
 
 class ProfileVC: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
@@ -28,7 +29,6 @@ class ProfileVC: UIViewController {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         Database.database().fetchUser(withUID: uid) { (user) in
             self.user = user
-            print("user: \(user)")
             self.tableView.reloadData()
         }
     }
@@ -50,6 +50,8 @@ class ProfileVC: UIViewController {
     
     @objc private func leftBtnTapped() {
         navigationController?.popViewController(animated: true)
+        NotificationCenter.default.post(name: NSNotification.Name.updateUserProfileFeed, object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name.updateCommunityFeed, object: nil)
     }
     
     private func setupView() {
@@ -80,11 +82,11 @@ extension ProfileVC: UITableViewDataSource {
         }
         switch indexPath.row {
         case 0:
-            cell.configProfileCell(stringTitle: Localization.Profile.Username, subTitleString: user?.username ?? "")
+            cell.configProfileCell(stringTitle: Localization.Profile.Username.localized(), subTitleString: user?.username ?? "")
         case 1:
-            cell.configProfileCell(stringTitle: Localization.Profile.Email, subTitleString: user?.email ?? "")
+            cell.configProfileCell(stringTitle: Localization.Profile.Email.localized(), subTitleString: user?.email ?? "")
         case 2:
-            cell.configProfileCell(stringTitle: Localization.Profile.Password, subTitleString: "**********")
+            cell.configProfileCell(stringTitle: Localization.Profile.Password.localized(), subTitleString: "**********")
         default:
             break
         }
@@ -109,53 +111,106 @@ extension ProfileVC: ProfileCellDelegate {
             let alertController = UIAlertController(title: Localization.Setting.EditingInfo.localized(), message: "", preferredStyle: .alert)
 
             alertController.addTextField { (textField) in
-                textField.placeholder = Localization.Setting.EditingInfoPlaceholder.localized()
+                textField.placeholder = Localization.Authenticate.NewUsernamePlaceholder.localized()
             }
 
             let cancelAction = UIAlertAction(title: Localization.Alert.Cancel, style: .cancel, handler: nil)
             let saveAction = UIAlertAction(title: Localization.Alert.Save, style: .default) { _ in
                 NotificationCenter.default.post(name: NSNotification.Name.updateUserProfileFeed, object: nil)
-                let inputName = alertController.textFields![0].text
-                self.tableView.reloadData()
+                let name = alertController.textFields![0].text
+                if let name = name {
+                    Database.database().updateUserName(withUserName: name, completion: { (err) in
+                        if err != nil {
+                            ProgressHUD.showError(err?.localizedDescription.localized())
+                            return
+                        }
+                        self.fetchCurrentUser()
+                        ProgressHUD.showSucceed(Localization.Notification.UpdateInfo.localized())
+                        NotificationCenter.default.post(name: NSNotification.Name.updateUserProfileFeed, object: nil)
+                    })
+                } else {
+                    ProgressHUD.showError(Localization.Authenticate.EmptyErrorTF.localized())
+                }
             }
-
             alertController.addAction(cancelAction)
             alertController.addAction(saveAction)
             present(alertController, animated: true, completion: nil)
+            
         case 1:
             let alertController = UIAlertController(title: Localization.Setting.EditingInfo.localized(), message: "", preferredStyle: .alert)
 
-            alertController.addTextField { (textField) in
-                textField.placeholder = Localization.Setting.EditingInfoPlaceholder.localized()
+            alertController.addTextField { (textField : UITextField!) -> Void in
+                textField.placeholder = Localization.Authenticate.NewEmailPlaceHolder.localized()
+            }
+            alertController.addTextField { (textField : UITextField!) -> Void in
+                textField.placeholder = Localization.Authenticate.PasswordPlaceHolder.localized()
+                textField.isSecureTextEntry = true
             }
 
             let cancelAction = UIAlertAction(title: Localization.Alert.Cancel, style: .cancel, handler: nil)
             let saveAction = UIAlertAction(title: Localization.Alert.Save, style: .default) { _ in
                 NotificationCenter.default.post(name: NSNotification.Name.updateUserProfileFeed, object: nil)
-                let inputName = alertController.textFields![0].text
-                self.tableView.reloadData()
+                let email = alertController.textFields![0].text
+                let password = alertController.textFields![1].text
+                if let email = email, let password = password {
+                    Database.database().updateUserEmail(newEmail: email, password: password, completion: { (err) in
+                        if err != nil {
+                            ProgressHUD.showError(err?.localizedDescription.localized())
+                            return
+                        }
+                        self.fetchCurrentUser()
+                        ProgressHUD.showSucceed(Localization.Notification.UpdateInfo.localized())
+                        NotificationCenter.default.post(name: NSNotification.Name.updateUserProfileFeed, object: nil)
+                    })
+                } else {
+                    ProgressHUD.showError(Localization.Authenticate.EmptyErrorTF.localized())
+                }
             }
-
             alertController.addAction(cancelAction)
             alertController.addAction(saveAction)
-            present(alertController, animated: true, completion: nil)
+            self.present(alertController, animated: true, completion: nil)
+            
         case 2:
             let alertController = UIAlertController(title: Localization.Setting.EditingInfo.localized(), message: "", preferredStyle: .alert)
 
-            alertController.addTextField { (textField) in
-                textField.placeholder = Localization.Setting.EditingInfoPlaceholder.localized()
+            alertController.addTextField { (textField : UITextField!) -> Void in
+                textField.isSecureTextEntry = true
+                textField.placeholder = Localization.Authenticate.NewPasswordPlaceHolder.localized()
+            }
+            alertController.addTextField { (textField : UITextField!) -> Void in
+                textField.placeholder = Localization.Authenticate.OldPasswordPlaceHolder.localized()
+                textField.isSecureTextEntry = true
             }
 
-            let cancelAction = UIAlertAction(title: Localization.Alert.Cancel, style: .cancel, handler: nil)
-            let saveAction = UIAlertAction(title: Localization.Alert.Save, style: .default) { _ in
+            let cancelAction = UIAlertAction(title: Localization.Alert.Cancel.localized(), style: .cancel, handler: nil)
+            let saveAction = UIAlertAction(title: Localization.Alert.Save.localized(), style: .default) { _ in
                 NotificationCenter.default.post(name: NSNotification.Name.updateUserProfileFeed, object: nil)
-                let inputName = alertController.textFields![0].text
-                self.tableView.reloadData()
+                let newPassword = alertController.textFields![0].text
+                let password = alertController.textFields![1].text
+                
+                if let newPassword = newPassword, let password = password {
+                    // Check if the password is secure
+                    let cleanedNewPassword = newPassword.trimmingCharacters(in: .whitespacesAndNewlines)
+                    if CustomTextField.isPasswordValid(cleanedNewPassword) == false {
+                        ProgressHUD.showError(Localization.Authenticate.ErrorRequirementPassword.localized())
+                    } else {
+                        Database.database().updateUserPassord(newPassword: newPassword, password: password, completion: { (err) in
+                            if err != nil {
+                                ProgressHUD.showError(err?.localizedDescription.localized())
+                                return
+                            }
+                            self.fetchCurrentUser()
+                            ProgressHUD.showSucceed(Localization.Notification.UpdateInfo.localized())
+                            NotificationCenter.default.post(name: NSNotification.Name.updateUserProfileFeed, object: nil)
+                        })
+                    }
+                }  else {
+                    ProgressHUD.showError(Localization.Authenticate.EmptyErrorTF.localized())
+                }
             }
-
             alertController.addAction(cancelAction)
             alertController.addAction(saveAction)
-            present(alertController, animated: true, completion: nil)
+            self.present(alertController, animated: true, completion: nil)
         default:
             break
         }

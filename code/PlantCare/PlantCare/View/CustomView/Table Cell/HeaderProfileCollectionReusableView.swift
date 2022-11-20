@@ -26,12 +26,15 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
         super.awakeFromNib()
         clear()
         profileImage.layer.cornerRadius = profileImage.frame.height / 2
+        profileImage.layer.borderColor = UIColor(white: 0, alpha: 0.2).cgColor
+        profileImage.layer.borderWidth = 0.5
         NotificationCenter.default.addObserver(self, selector: #selector(handleRefresh), name: NSNotification.Name.updateUserProfileFeed, object: nil)
     }
     
     func updateView() {
         guard let user = user else { return }
         self.nameLabel.text = user.username
+        print("Image url: \(user.profileImageUrl)")
         if let profileImageUrl = user.profileImageUrl, profileImageUrl != "nil" {
             profileImage.loadImage(urlString: profileImageUrl)
         } else {
@@ -47,6 +50,7 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
             profileImage.isUserInteractionEnabled = true
             
             if let changedImage = changedImage, changedImage != UIImage(named: AppImage.Icon.User) {
+                print("Profile image: \(changedImage)")
                 profileImage.image = changedImage
             }
             

@@ -8,6 +8,8 @@
 
 "Get Started" = "Get Started";
 
+"Plant piseases classification" = "Plant piseases classification";
+
 "Identify Plant Diseases" = "Identify Plant Diseases";
 
 "You can identify the plant diseases you don't know through your camera" = "You can identify the plant diseases you don't know through your camera";
@@ -116,3 +118,196 @@
 "No" = "No";
 
 "Is the result right?" = "Is the result right?";
+
+"Enter new password..." = "Enter new password...";
+"Enter old password..." = "Enter old password...";
+"Changed image successfully." = "Changed image successfully.";
+"Changed information successfully." = "Changed information successfully.";
+"Delete Post?" = "Delete Post?";
+"Delete" = "Delete";
+"Deleted successfully." = "Deleted successfully.";
+"Saved result successfully." = "Saved result successfully.";
+"References" = "References";
+"Language" = "Language";
+"Posting history" = "Posting history";
+"Searching history" = "Searching history";
+"Editing profile" = "Editing profile";
+"Enter something" = "Enter something";
+"My Account" = "My Account";
+"Change password" = "Change password";
+"Ask what?" = "Ask what?";
+"Hello!" = "Hello!";
+"Username" = "Username";
+"Email" = "Email";
+"Password" = "Password";
+
+"Grape" = "Grape";
+"Black Rot" = "Black Rot";
+"Grape Esca" = "Grape Esca";
+"Grape Leaf Blight" = "Grape Leaf Blight";
+"Orange" = "Orange";
+"Orange Haunglongbing" = "Orange Haunglongbing";
+"Peach" = "Peach";
+"Peach Bacterial Spot" = "Peach Bacterial Spot";
+"Pepper Bell" = "Pepper Bell";
+"Bacterial Spot" = "Bacterial Spot";
+"Potato" = "Potato";
+"Early Blight" = "Early Blight";
+"Late Blight" = "Late Blight";
+"Squash" = "Squash";
+"Squash Powdery Mildew" = "Squash Powdery Mildew";
+"Strawberry" = "Strawberry";
+"Strawberry Leaf Scorch" = "Strawberry Leaf Scorch";
+"Tomato" = "Tomato";
+"Tomato Bacterial Spot" = "Tomato Bacterial Spot";
+"Tomato Early Blight" = "Tomato Early Blight";
+"Tomato Late Blight" = "Tomato Late Blight";
+"Tomato Leaf Mold" = "Tomato Leaf Mold";
+"Tomato Septoria Leaf Spot" = "Tomato Septoria Leaf Spot";
+"Tomato Spider Mites" = "Tomato Spider Mites";
+"Tomato Target Spot" = "Tomato Target Spot";
+"Tomato Yellow Leaf Curl Virus" = "Tomato Yellow Leaf Curl Virus";
+"Tomato Mosaic Virus" = "Tomato Mosaic Virus";
+
+"Password is at least 8 characters, contains a special character and a number."= "Password is at least 8 characters, contains a special character and a number.";
+"Please make sure your password is at least 8 characters, contains a special character and a number." = "Please make sure your password is at least 8 characters, contains a special character and a number.";
+"Result" = "Result";
+"Reference" = "Reference";
+"Setting" = "Setting";
+"Welcome to PlantCare" = "Welcome to PlantCare";
+"Edit Profile" = "Edit Profile";
+"Username" = "Username";
+"Email" = "Email";
+"Password" = "Password";
+"Enter username..." = "Enter username...";
+"Enter new username..." = "Enter new username...";
+"Cancel" = "Cancel";
+"Save" = "Save";
+"Search" = "Search";
+"Enter new email..." = "Enter new email...";
+"Do you want to save?" = "Do you want to save?";
+"Relabel" = "Relabel";
+"Enter plant name" = "Enter plant name";
+"Enter disease name" = "Enter disease name";
+"Please enter something!" = "Please enter something!";
+"Add a comment..." = "Add a comment...";
+"Submit" = "Submit";
+"Just now" = "Just now";
+"second ago" = "second ago";
+"seconds ago" = "seconds ago";
+"mininute ago" = "minute ago";
+"minutes ago" = "minutes ago";
+"hour ago" = "hour ago";
+"hours ago" = "hours ago";
+"day ago" = "day ago";
+"days ago" = "days ago";
+"week ago" = "week ago";
+"weeks ago" = "weeks ago";
+"Comment" = "Comment";
+"Share" = "Share";
+
+"Apple" = "Apple";
+"Apple Scab" = "Apple Scab";
+"The disease usually occurs on leaves and fruits. In the leaves, the diseased spots are round, greenish gray and slightly raised, usually appearing under the leaves, and then gradually spreading to other places. On the fruit, the diseased spots are dark brown, and also raised like scabs and cracks, the fruit is distorted and falls prematurely. At first, the spots are round, bluish-gray in color, then gradually become more prominent and have bluish-black filaments. Over a period of time, these filaments disappear, and the lesions grow up like thorns. In the later stages, the disease causes the leaves to shrivel and die, and the lesions on the fruit turn dark brown, and scab and crack. If there is no timely treatment, the fruit will be deformed, distorted, low quality, hard fruit pulp and less water, sometimes falling prematurely." = "The disease usually occurs on leaves and fruits. In the leaves, the diseased spots are round, greenish gray and slightly raised, usually appearing under the leaves, and then gradually spreading to other places. On the fruit, the diseased spots are dark brown, and also raised like scabs and cracks, the fruit is distorted and falls prematurely. At first, the spots are round, bluish-gray in color, then gradually become more prominent and have bluish-black filaments. Over a period of time, these filaments disappear, and the lesions grow up like thorns. In the later stages, the disease causes the leaves to shrivel and die, and the lesions on the fruit turn dark brown, and scab and crack. If there is no timely treatment, the fruit will be deformed, distorted, low quality, hard fruit pulp and less water, sometimes falling prematurely.";
+"After harvesting, it is necessary to cut down thoroughly and collect all remnants of diseased plants to focus and burn to avoid spreading. Do not plant too thick to make the garden lack of light. Regularly prune to have ventilation, avoid high humidity to help plants grow well. When the disease first appears, it is possible to use some chemical drugs such as Carosal 50SC, Canazole Super 320EC, Azoxystrobin, Benomyl, Metalaxyl ... and should spray the foliage and fruits evenly. How to use please read the label carefully. Pay attention to spray at times before the new batch of plants." = "After harvesting, it is necessary to cut down thoroughly and collect all remnants of diseased plants to focus and burn to avoid spreading. Do not plant too thick to make the garden lack of light. Regularly prune to have ventilation, avoid high humidity to help plants grow well. When the disease first appears, it is possible to use some chemical drugs such as Carosal 50SC, Canazole Super 320EC, Azoxystrobin, Benomyl, Metalaxyl ... and should spray the foliage and fruits evenly. How to use please read the label carefully. Pay attention to spray at times before the new batch of plants.";
+
+"Apple Black Rot" = "Apple Black Rot";
+"This disease occurs in leaves, fruit and bark. The disease usually appears starting on the leaves. The leaves have purple spots on the leaf surface, and as these spots age, the edges are purple, and the center of the spot is yellow-brown. This disease causes leaves to fall, affecting crop yield." = "This disease occurs in leaves, fruit and bark. The disease usually appears starting on the leaves. The leaves have purple spots on the leaf surface, and as these spots age, the edges are purple, and the center of the spot is yellow-brown. This disease causes leaves to fall, affecting crop yield.";
+"After harvesting, it is necessary to cut down thoroughly and collect all remnants of diseased plants to focus and burn to avoid spreading. When signs of disease appear, remove the diseased area to avoid spreading. Insect screens can be used to keep insects out. In addition, copper-based sprays, lime sulfur can be used to control the disease. How to use please read the label carefully. How to use please read the label carefully. Pay attention to spray at times before the new batch of plants." = "After harvesting, it is necessary to cut down thoroughly and collect all remnants of diseased plants to focus and burn to avoid spreading. When signs of disease appear, remove the diseased area to avoid spreading. Insect screens can be used to keep insects out. In addition, copper-based sprays, lime sulfur can be used to control the disease. How to use please read the label carefully. How to use please read the label carefully. Pay attention to spray at times before the new batch of plants.";
+
+"Cedar Apple Rust" = "Cedar Apple Rust";
+"Signs of this disease are rust spots on the leaves. The fruit may also be deformed or spotty." = "Signs of this disease are rust spots on the leaves. The fruit may also be deformed or spotty.";
+"When diseased plants are detected, they should be removed to avoid infecting other plants. Some chemical drugs can be used to combat this disease." = "When diseased plants are detected, they should be removed to avoid infecting other plants. Some chemical drugs can be used to combat this disease.";
+
+"Corn" = "Corn";
+"Corn Grey Leaf Spot" = "Corn Grey Leaf Spot";
+"This disease is common in maize and the extent of damage depends on the cultivar. The disease affects mainly leaf blades, leaf nests and seeds. The disease causes damage from the time the plant has 2-3 leaves until the end of the growth period of the plant. Lesions are initially small, needle-like, yellowish spots that then expand into small circles or ovals." = "This disease is common in maize and the extent of damage depends on the cultivar. The disease affects mainly leaf blades, leaf nests and seeds. The disease causes damage from the time the plant has 2-3 leaves until the end of the growth period of the plant. Lesions are initially small, needle-like, yellowish spots that then expand into small circles or ovals.";
+"Use disease resistant varieties. Note, seeds can be treated with Rovrral before planting. Sanitize the field, remove the remnants of diseased plants. When plants are sick, chemical drugs Tilt 250ND and Anvil 5SC 0.1% concentration can be used to prevent diseases in the field (Please read the instructions carefully before using)." = "Use disease resistant varieties. Note, seeds can be treated with Rovrral before planting. Sanitize the field, remove the remnants of diseased plants. When plants are sick, chemical drugs Tilt 250ND and Anvil 5SC 0.1% concentration can be used to prevent diseases in the field (Please read the instructions carefully before using).";
+
+"Common Rust" = "Common Rust";
+"Signs of this disease are clear yellow to pale yellow spots, scattered on the leaf blade. After a period of time, the disease covers the leaves, creating long black spots on the leaves. The disease persists on leaf, seed and corn residues. The disease appears more during the flowering stage. The disease causes poor plant growth, and reduced yield." = "Signs of this disease are clear yellow to pale yellow spots, scattered on the leaf blade. After a period of time, the disease covers the leaves, creating long black spots on the leaves. The disease persists on leaf, seed and corn residues. The disease appears more during the flowering stage. The disease causes poor plant growth, and reduced yield.";
+"Sanitize the field, increase intensive farming. When detecting diseased plants, some chemical drugs such as New Kasuran can be used; Dithane; Anvil; Kumulus; Cavil; Tilvil; Vectra; Copper – zin C… (Remember to read carefully before using)." = "Sanitize the field, increase intensive farming. When detecting diseased plants, some chemical drugs such as New Kasuran can be used; Dithane; Anvil; Kumulus; Cavil; Tilvil; Vectra; Copper – zin C… (Remember to read carefully before using).";
+
+"" = "";
+"" = "";
+
+"" = "";
+"" = "";
+"" = "";
+
+"" = "";
+"" = "";
+"" = "";
+ 
+"" = "";
+"" = "";
+"" = "";
+
+"" = "";
+"" = "";
+"" = "";
+
+"" = "";
+"" = "";
+"" = "";
+
+"" = "";
+"" = "";
+"" = "";
+
+"" = "";
+"" = "";
+"" = "";
+
+"" = "";
+"" = "";
+"" = "";
+
+"" = "";
+"" = "";
+"" = "";
+
+"" = "";
+"" = "";
+"" = "";
+
+"" = "";
+"" = "";
+"" = "";
+
+"" = "";
+"" = "";
+"" = "";
+
+"" = "";
+"" = "";
+"" = "";
+
+"" = "";
+"" = "";
+"" = "";
+
+"" = "";
+"" = "";
+"" = "";
+
+"" = "";
+"" = "";
+"" = "";
+
+"" = "";
+"" = "";
+"" = "";
+
+"" = "";
+"" = "";
+"" = "";
+
+"" = "";
+"" = "";
+"" = "";
+
+"" = "";
+"" = "";
+"" = "";
+

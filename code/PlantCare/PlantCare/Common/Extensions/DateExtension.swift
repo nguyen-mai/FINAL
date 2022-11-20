@@ -12,38 +12,38 @@ extension Date {
         let week = 7 * day
         
         if secondsAgo == 0 {
-            return "Just now"
+            return Localization.Time.JustNow.localized()
         }
         if secondsAgo < minute {
             if secondsAgo == 1 {
-                return "\(secondsAgo) second ago"
+                return "\(secondsAgo) " + Localization.Time.SecondAgo.localized()
             } else {
-                return "\(secondsAgo) seconds ago"
+                return "\(secondsAgo) " + Localization.Time.SecondsAgo.localized()
             }
         } else if secondsAgo < hour {
             if secondsAgo / minute == 1 {
-                return "\(secondsAgo / minute) minute ago"
+                return "\(secondsAgo / minute) " + Localization.Time.MinuteAgo.localized()
             } else {
-                return "\(secondsAgo / minute) minutes ago"
+                return "\(secondsAgo / minute) " + Localization.Time.MinutesAgo.localized()
             }
         } else if secondsAgo < day {
             if secondsAgo / hour == 1 {
-                return "\(secondsAgo / hour) hour ago"
+                return "\(secondsAgo / hour) " + Localization.Time.HourAgo.localized()
             } else {
-                return "\(secondsAgo / hour) hours ago"
+                return "\(secondsAgo / hour) " + Localization.Time.HoursAgo.localized()
             }
         } else if secondsAgo < week {
             if secondsAgo / day == 1 {
-                return "\(secondsAgo / day) day ago"
+                return "\(secondsAgo / day) " + Localization.Time.DayAgo.localized()
             } else {
-                return "\(secondsAgo / day) days ago"
+                return "\(secondsAgo / day) " + Localization.Time.DaysAgo.localized()
             }
         }
         
         if secondsAgo / week == 1 {
-            return "\(secondsAgo / week) week ago"
+            return "\(secondsAgo / week) " + Localization.Time.WeekAgo.localized()
         } else {
-            return "\(secondsAgo / week) weeks ago"
+            return "\(secondsAgo / week) " + Localization.Time.WeeksAgo.localized()
         }
     }
     
@@ -56,7 +56,7 @@ extension Date {
         let week = 7 * day
         
         if secondsAgo == 0 {
-            return "Just now"
+            return Localization.Time.JustNow.localized()
         }
         if secondsAgo < minute {
             return "\(secondsAgo)s"

@@ -201,22 +201,54 @@ extension Database {
         })
     }
     
-    func updateUserEmail(withEmail email: String, completion: @escaping (Error?) -> ()) {
+    func updateUserEmail(newEmail: String, password: String, completion: @escaping (Error?) -> ()) {
+        let currentUser = Auth.auth().currentUser
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let userInfoRef = Database.database().reference().child("users").child(uid)
+        guard let currentEmail = currentUser?.email else {return}
+        let credential = EmailAuthProvider.credential(withEmail: currentEmail, password: password)
+        currentUser?.reauthenticate(with: credential, completion: { (result, error) in
+            if error != nil {
+                print("ERROR: ", error?.localizedDescription ?? "")
+                completion(error)
+                return
+            }
+            currentUser?.updateEmail(to: newEmail, completion: { (error) in
+                if error != nil {
+                    print("ERROR: ", error?.localizedDescription ?? "")
+                    completion(error)
+                    return
+                }else {
+                    let thisUserEmailRef = userInfoRef.child("email")
+                    thisUserEmailRef.setValue(newEmail)
+                    completion(nil)
+                }
+            })
+        })
+    }
+    
+    func updateUserPassord(newPassword: String, password: String, completion: @escaping (Error?) -> ()) {
         let currentUser = Auth.auth().currentUser
-
-        currentUser?.updateEmail(to: email) { error in
-           if let error = error {
-               print(error)
-           } else {
-               print("CHANGED")
-               let uid = Auth.auth().currentUser!.uid
-               let thisUserRef = userInfoRef.child("users").child(uid)
-               let thisUserEmailRef = thisUserRef.child("email")
-               thisUserEmailRef.setValue(email)
-           }
-       }
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let userInfoRef = Database.database().reference().child("users").child(uid)
+        guard let currentEmail = currentUser?.email else {return}
+        let credential = EmailAuthProvider.credential(withEmail: currentEmail, password: password)
+        currentUser?.reauthenticate(with: credential, completion: { (result, error) in
+            if error != nil {
+                print("ERROR: ", error?.localizedDescription ?? "")
+                completion(error)
+                return
+            }
+            currentUser?.updatePassword(to: password, completion: { (error) in
+                if error != nil {
+                    print("ERROR: ", error?.localizedDescription ?? "")
+                    completion(error)
+                    return
+                } else {
+                    completion(nil)
+                }
+            })
+        })
     }
     
     func updateUserName(withUserName username: String, completion: @escaping (Error?) -> ()) {

@@ -133,14 +133,20 @@ extension RegisterVC {
               let password = passwordTextField.text else {
                   return
               }
-        ProgressHUD.show()
-        Auth.auth().createUser(withEmail: email, username: username, password: password, image: nil) { (err) in
-            if let err = err {
-                ProgressHUD.showError(err.localizedDescription)
-                return
+        // Check if the password is secure
+        let cleanedPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        if CustomTextField.isPasswordValid(cleanedPassword) == false {
+            ProgressHUD.showError(Localization.Authenticate.ErrorRequirementPassword.localized())
+        } else {
+            ProgressHUD.show()
+            Auth.auth().createUser(withEmail: email, username: username, password: password, image: nil) { (err) in
+                if let err = err {
+                    ProgressHUD.showError(err.localizedDescription)
+                    return
+                }
+                ProgressHUD.dismiss()
+                self.showLogInAlert()
             }
-            ProgressHUD.dismiss()
-            self.showLogInAlert()
         }
     }
     
