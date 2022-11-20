@@ -453,7 +453,7 @@ extension Database {
     }
     
     // MARK: Relabel disease image
-    func createRelabelImage(withImage image: UIImage, plantName: String, diseaseName: String, completion: @escaping (Error?) -> ()) {
+    func createRelabelImage(withImage image: UIImage, plantName: String, diseaseName: String, relabelPlantName: String, relabelDiseaseName: String, completion: @escaping (Error?) -> ()) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
         let userPostRef = Database.database().reference().child("relabel_disease_images").child(uid).childByAutoId()
@@ -461,7 +461,7 @@ extension Database {
         guard let postId = userPostRef.key else { return }
         
         Storage.storage().uploadRelabeledDiseaseImage(image: image, filename: postId) { (postImageUrl) in
-            let values = ["image_url": postImageUrl, "plant_name": plantName, "disease_name": diseaseName, "image_width": image.size.width, "image_height": image.size.height, "creation_date": Date().timeIntervalSince1970, "id": postId] as [String : Any]
+            let values = ["image_url": postImageUrl, "plant_name": plantName, "disease_name": diseaseName, "relabel_plant_name": relabelPlantName, "relabel_disease_name": relabelDiseaseName, "image_width": image.size.width, "image_height": image.size.height, "creation_date": Date().timeIntervalSince1970, "id": postId] as [String : Any]
             userPostRef.updateChildValues(values) { (err, ref) in
                 if let err = err {
                     print("Failed to save post to database", err)

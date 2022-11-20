@@ -11,21 +11,29 @@ class ClassifyResultVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
         setupData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
+        navigationController?.navigationBar.backgroundColor = AppColor.GreenColor
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        let tabBarController = self.tabBarController as! BaseTabBarController
-        tabBarController.showTabBar()
     }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        navigationController?.setNavigationBarHidden(false, animated: animated)
+//    }
+//
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        let tabBarController = self.tabBarController as! BaseTabBarController
+//        tabBarController.showTabBar()
+//    }
     
     private func setupData() {
         arrayData = [
@@ -138,7 +146,7 @@ extension ClassifyResultVC: DiseaseInfoCellDelegate, FooterDiseaseInfoCellDelega
         if Auth.auth().currentUser == nil {
             self.showNotLogInAlert()
         } else {
-            Database.database().createRelabelImage(withImage: model.diseaseImage, plantName: model.plantName, diseaseName: model.diseaseName) { (err) in
+            Database.database().createRelabelImage(withImage: model.diseaseImage, plantName: model.plantName, diseaseName: model.diseaseName, relabelPlantName: model.plantName, relabelDiseaseName: model.diseaseName) { (err) in
                 if err != nil {
                     ProgressHUD.showError(Localization.Notification.Error.localized())
                     return
@@ -164,7 +172,7 @@ extension ClassifyResultVC: DiseaseInfoCellDelegate, FooterDiseaseInfoCellDelega
                 guard let textFields = alertController?.textFields else { return }
                 if let plantName = textFields[0].text,
                    let diseaseName = textFields[1].text {
-                    Database.database().createRelabelImage(withImage: self.model.diseaseImage, plantName: plantName, diseaseName: diseaseName) { (err) in
+                    Database.database().createRelabelImage(withImage: self.model.diseaseImage, plantName: self.model.plantName, diseaseName: self.model.diseaseName, relabelPlantName: plantName, relabelDiseaseName: diseaseName) { (err) in
                         if err != nil {
                             ProgressHUD.showError(Localization.Notification.Error.localized())
                             return

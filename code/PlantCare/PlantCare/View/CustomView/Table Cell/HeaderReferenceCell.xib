@@ -22,8 +22,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="441" height="255"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aoV-zT-OtP">
-                                <rect key="frame" x="185" y="10" width="71" height="51"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="29"/>
+                                <rect key="frame" x="20" y="10" width="401" height="51"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -62,12 +62,13 @@
                         <constraints>
                             <constraint firstItem="9G6-yz-wsY" firstAttribute="top" secondItem="aoV-zT-OtP" secondAttribute="bottom" constant="10" id="3ni-nj-I1d"/>
                             <constraint firstAttribute="trailing" secondItem="cdC-1y-QxP" secondAttribute="trailing" constant="10" id="4SX-UV-yuR"/>
+                            <constraint firstItem="aoV-zT-OtP" firstAttribute="leading" secondItem="WwL-Fb-Cmb" secondAttribute="leading" constant="20" id="6lc-St-yy5"/>
                             <constraint firstItem="cli-Xc-azF" firstAttribute="leading" secondItem="WwL-Fb-Cmb" secondAttribute="leading" constant="20" id="9x8-EC-Fmz"/>
                             <constraint firstItem="9G6-yz-wsY" firstAttribute="centerX" secondItem="aoV-zT-OtP" secondAttribute="centerX" id="Aq4-Fu-oNm"/>
                             <constraint firstAttribute="bottom" secondItem="cli-Xc-azF" secondAttribute="bottom" constant="20" id="Xpl-ek-wdq"/>
                             <constraint firstItem="cli-Xc-azF" firstAttribute="top" secondItem="9G6-yz-wsY" secondAttribute="bottom" constant="20" id="egW-Fo-oOF"/>
                             <constraint firstItem="aoV-zT-OtP" firstAttribute="top" secondItem="WwL-Fb-Cmb" secondAttribute="top" constant="10" id="fgc-Di-Lhx"/>
-                            <constraint firstItem="aoV-zT-OtP" firstAttribute="centerX" secondItem="WwL-Fb-Cmb" secondAttribute="centerX" id="nFn-L4-Nu8"/>
+                            <constraint firstAttribute="trailing" secondItem="aoV-zT-OtP" secondAttribute="trailing" constant="20" id="m4q-td-BQ3"/>
                             <constraint firstItem="cdC-1y-QxP" firstAttribute="centerY" secondItem="cli-Xc-azF" secondAttribute="centerY" id="tbH-TW-4Tj"/>
                             <constraint firstItem="cdC-1y-QxP" firstAttribute="leading" secondItem="cli-Xc-azF" secondAttribute="trailing" constant="10" id="zAf-HO-Y3K"/>
                         </constraints>

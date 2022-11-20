@@ -520,8 +520,8 @@ extension HomeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
                                                              symptomInfo: aboutTxt,
                                                              treatmentInfo: treatmentTxt,
                                                              certainty: predconfidence)
-                    self?.navigationController?.pushViewController(vc, animated: true)
                     vc.hidesBottomBarWhenPushed = true
+                    self?.navigationController?.pushViewController(vc, animated: true)
                 }
             }
             
@@ -563,7 +563,6 @@ extension HomeVC: UICollectionViewDataSource {
     }
 }
 extension HomeVC: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = UIStoryboard(name: NameConstant.Storyboard.Home,
                                     bundle: nil).instantiateVC(DetailDiseaseVC.self)
