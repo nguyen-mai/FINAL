@@ -19,9 +19,6 @@ class ClassifyResultVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
-        
-        let tabBarController = self.tabBarController as! BaseTabBarController
-        tabBarController.hideTabBar()
     }
 
     override func viewWillDisappear(_ animated: Bool) {

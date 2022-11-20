@@ -6,20 +6,6 @@
 
 "Next" = "Tiếp theo";
 
-"Get Started" = "Bắt đầu";
-
-"Identify Plant Diseases" = "Nhận Diện Bệnh Cây Trồng";
-
-"You can identify the plant diseases you don't know through your camera" = "Bạn có thể nhận diện bệnh cây trồng bằng cách sử dụng máy ảnh của điện thoại";
-
-"Discover Many Plant Diseases" = "Khám Phá Nhiều Loại Bệnh Cây Trồng";
-
-"Let's learn about the many plant diseases that exist in the world" = "Tìm hiểu thêm về một số loại cây trồng";
-
-"Q&A About Plant Diseases" = "Q&A Về Bệnh Cây Trồng";
-
-"Let's ask questions and answers with the community" = "Hãy tham gia đặt câu hỏi và trả lời cùng với cộng đồng người dùng ứng dụng";
-
 "Enter your email address and follow the instructions on the link in the email you received to reset your password" = "Nhập địa chỉ email của bạn và thực hiện theo hướng dẫn qua địa chỉ của bạn để khôi phục lại mật khẩu";
 
 "Back" = "Quay lại";
@@ -38,11 +24,11 @@
 
 "Prevention and treatment" = "Cách phòng trị";
 
-"Certainty" = "Độ xác thực";
+"Certainty" = "Độ tin cậy";
 
-"Type" = "Loại cây trồng";
+"Type" = "Loại bệnh";
 
-"Threat Level" = "Mức độ đe doạ";
+"Threat Level" = "Mức độ bệnh";
 
 "Select a photo" = "Chọn ảnh từ";
 
@@ -223,7 +209,7 @@
 "Corn" = "Ngô";
 "Corn Grey Leaf Spot" = "Bệnh đốm lá nhỏ";
 "This disease is common in maize and the extent of damage depends on the cultivar. The disease affects mainly leaf blades, leaf nests and seeds. The disease causes damage from the time the plant has 2-3 leaves until the end of the growth period of the plant. Lesions are initially small, needle-like, yellowish spots that then expand into small circles or ovals." = "Bệnh này phổ biến ở cây ngô và mức độ thiệt hại tuỳ thuộc vào từng giống cây ngô. Bệnh gây hại chủ yếu ở phiến lá, bẹ lá và hạt. Bệnh gây hại từ khi cây có 2 – 3 lá cho đến hết thời kỳ sinh trưởng của cây. Vết bệnh lúc đầu là những chấm nhỏ, như mũi kim, hơi vàng sau đó lớn rộng thành hình tròn, hoặc hình bầu dục nhỏ.";
-"Use disease resistant varieties. Note, seeds can be treated with Rovrral before planting. Sanitize the field, remove the remnants of diseased plants. When plants are sick, chemical drugs Tilt 250ND and Anvil 5SC 0.1% concentration can be used to prevent diseases in the field (Please read the instructions carefully before using)." = "Sử dụng giống kháng bệnh. Chú ý, có thể xử lý hạt giống bằng Rovrral trước khi gieo trồng. Vệ sinh đồng ruộng, thu dọn tàn dư cây bị bệnh. Khi cây bị bệnh, có thể sử dụng các loại thuốc hoá học Tilt 250ND và Anvil 5SC nồng độ 0,1% để phòng trừ bệnh trên đồng ruộng ( Hãy đọc kỹ hướng dẫn sử dụng trước khi sử dụng).";
+"Use disease resistant varieties. Note, seeds can be treated with Rovrral before planting. Sanitize the field, remove the remnants of diseased plants. When plants are sick, chemical drugs Tilt 250ND and Anvil 5SC 0.1% concentration can be used to prevent diseases in the field (Please read the instructions carefully before using)." = "Sử dụng giống kháng bệnh. Chú ý, có thể xử lý hạt giống bằng Rovrral trước khi gieo trồng. Vệ sinh đồng ruộng, thu dọn tàn dư cây bị bệnh. Khi cây bị bệnh, có thể sử dụng các loại thuốc hoá học Tilt 250ND và Anvil 5SC nồng độ 0,1% để phòng trừ bệnh trên đồng ruộng(Hãy đọc kỹ hướng dẫn sử dụng trước khi sử dụng).";
 
 "Common Rust" = "Bệnh gỉ sắt";
 "Signs of this disease are clear yellow to pale yellow spots, scattered on the leaf blade. After a period of time, the disease covers the leaves, creating long black spots on the leaves. The disease persists on leaf, seed and corn residues. The disease appears more during the flowering stage. The disease causes poor plant growth, and reduced yield." = "Dấu hiệu nhận biết bệnh này là những chấm màu vàng trong đến vàng nhạt, rải rác trên phiến lá. Sau khoảng thời gian, bệnh phủ kín lá, tạo vết đen dài trên lá. Bệnh tồn tại trên tàn dư lá, hạt và bắp. Bệnh xuất hiện nhiều vào giai đoạn cây ra hoa. Bệnh làm cho cây sinh trưởng kém, và năng suất giảm sút.";
@@ -329,3 +315,24 @@
 "Raspberry" = "Mâm xôi";
 
 "Soybean" = "Đậu nành";
+
+"Get Started" = "Bắt đầu thôi!";
+"Identify Plant Diseases" = "Nhận Diện Bệnh Cây Trồng";
+"You can identify the plant diseases you don't know through your camera" = "Bạn có thể nhận diện bệnh cây trồng mà bạn chưa biết bằng cách sử dụng máy ảnh của điện thoại";
+"Discover Many Plant Diseases" = "Khám Phá Nhiều Loại Bệnh Hơn";
+"Let's learn about the many plant diseases that exist in the world" = "Tìm hiểu thêm về bệnh cây trồng";
+"Q&A About Plant Diseases" = "Q&A Các Loại Bệnh Cây Trồng";
+"Let's ask questions and answers with the community" = "Cùng nhau thảo luận với cộng đồng để tìm hiểu rõ hơn về các loại bệnh cây trồng";
+
+"Login" = "Đăng nhập";
+"Enter email..." = "Nhập địa chỉ email...";
+"Enter password..." = "Nhập mật khẩu...";
+"Forgot password?" = "Quên mật khẩu?";
+"Register" = "Đăng ký";
+"Send" = "Gửi";
+"Reset Password" = "Khôi phục mật khẩu";
+"Create your account" = "Tạo tài khoản";
+"Get Started!" = "Bắt đầu!";
+"Don't have an account?" = "Bạn chưa có tài khoản";
+"Already have an account?" = "Bạn đã có tài khoản";
+"Thank you for rating." = "Cảm ơn vì đã tham gia đánh giá";

@@ -58,16 +58,16 @@ class RegisterVC: UIViewController {
         loginLabel.text = Localization.Authenticate.AlreadyAccount.localized()
         loginLabel.textColor = AppColor.BlackColor
         
-        emailErrorLabel.text = Localization.Authenticate.EmptyErrorTF
+        emailErrorLabel.text = Localization.Authenticate.EmptyErrorTF.localized()
         emailErrorLabel.textColor = AppColor.RedColor
         
-        passwordErrorLabel.text = Localization.Authenticate.EmptyErrorTF
+        passwordErrorLabel.text = Localization.Authenticate.EmptyErrorTF.localized()
         passwordErrorLabel.textColor = AppColor.RedColor
         
-        userNameErrrorLabel.text = Localization.Authenticate.EmptyErrorTF
+        userNameErrrorLabel.text = Localization.Authenticate.EmptyErrorTF.localized()
         userNameErrrorLabel.textColor = AppColor.RedColor
         
-        passInfoLabel.text = Localization.Authenticate.RequirementPassword
+        passInfoLabel.text = Localization.Authenticate.RequirementPassword.localized()
         passInfoLabel.textColor = AppColor.GrayColor
         
         emailErrorLabel.isHidden = true
@@ -110,7 +110,7 @@ class RegisterVC: UIViewController {
         registerButton.layer.cornerRadius = 20
         registerButton.addTarget(self, action: #selector(registerBtnTap), for: .touchUpInside)
         
-        logInButton.setTitle(Localization.Authenticate.Login, for: .normal)
+        logInButton.setTitle(Localization.Authenticate.Login.localized(), for: .normal)
         logInButton.setTitleColor(AppColor.GreenColor, for: .normal)
         logInButton.addTarget(self, action: #selector(logInBtnTap), for: .touchUpInside)
     }

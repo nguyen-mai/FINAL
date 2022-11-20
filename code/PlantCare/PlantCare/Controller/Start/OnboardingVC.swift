@@ -6,6 +6,7 @@ class OnboardingVC: UIViewController {
     @IBOutlet private weak var pageControl: UIPageControl!
     @IBOutlet private weak var skipButton: UIButton!
     @IBOutlet private weak var nextButton: UIButton!
+    @IBOutlet private weak var languageButton: UIButton!
     
     // MARK: - Variables
     private let slides: OnboardingViewEntity = OnboardingViewEntity()
@@ -21,6 +22,7 @@ class OnboardingVC: UIViewController {
             }
         }
     }
+    private let data: LanguageViewEntity = LanguageViewEntity()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,9 +32,13 @@ class OnboardingVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
+        super.viewWillAppear(animated)
         self.navigationItem.hidesBackButton = true
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
     }
 }
 
@@ -59,36 +65,45 @@ extension OnboardingVC {
         
         if language.contains("vi") {
             isVnLanguage = true
-            navigationItem.rightBarButtonItem = UIBarButtonItem(
-                title: Localization.Language.Vietnamese.localized(),
-                style: .done,
-                target: self,
-                action: #selector(changeLanguageTap))
+            languageButton.setTitle(Localization.Language.Vietnamese.localized(), for: .normal)
+            languageButton.addTarget(self, action: #selector(changeLanguageTap), for: .touchUpInside)
+//            navigationItem.rightBarButtonItem = UIBarButtonItem(
+//                title: Localization.Language.Vietnamese.localized(),
+//                style: .done,
+//                target: self,
+//                action: #selector(changeLanguageTap))
         } else {
             isVnLanguage = false
-            navigationItem.rightBarButtonItem = UIBarButtonItem(
-                title: Localization.Language.English.localized(),
-                style: .plain,
-                target: self,
-                action: #selector(changeLanguageTap))
+            languageButton.setTitle(Localization.Language.English.localized(), for: .normal)
+            languageButton.addTarget(self, action: #selector(changeLanguageTap), for: .touchUpInside)
+//            navigationItem.rightBarButtonItem = UIBarButtonItem(
+//                title: Localization.Language.English.localized(),
+//                style: .plain,
+//                target: self,
+//                action: #selector(changeLanguageTap))
         }
        
     }
     
     private func setupButton() {
         nextButton.setTitle(Localization.Onboarding.Next.localized(), for: .normal)
-        nextButton.layer.cornerRadius = 20
+        nextButton.layer.cornerRadius = 10
         nextButton.tintColor = AppColor.WhiteColor
         nextButton.backgroundColor = AppColor.GreenColor
         nextButton.addTarget(self, action: #selector(nextBtnTap), for: .touchUpInside)
         
         skipButton.setTitle(Localization.Onboarding.Skip.localized(), for: .normal)
-        skipButton.layer.cornerRadius = 20
+        skipButton.layer.cornerRadius = 10
         skipButton.layer.borderColor = AppColor.GreenColor!.cgColor
         skipButton.layer.borderWidth = 2
         skipButton.tintColor = AppColor.GreenColor
         skipButton.backgroundColor = AppColor.WhiteColor
         skipButton.addTarget(self, action: #selector(skipBtnTap), for: .touchUpInside)
+        
+        languageButton.setTitleColor(AppColor.GreenColor, for: .normal)
+        languageButton.layer.cornerRadius = 20
+        languageButton.layer.borderColor = AppColor.GreenColor?.cgColor
+        languageButton.layer.borderWidth = 1.5
     }
     
     private func setupCollectionView() {
@@ -133,18 +148,22 @@ extension OnboardingVC {
     @objc private func changeLanguageTap() {
         isVnLanguage = !isVnLanguage
         if isVnLanguage == true {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(
-                title: Localization.Language.Vietnamese.localized(),
-                style: .done,
-                target: self,
-                action: #selector(changeLanguageTap))
+//            navigationItem.rightBarButtonItem = UIBarButtonItem(
+//                title: Localization.Language.Vietnamese.localized(),
+//                style: .done,
+//                target: self,
+//                action: #selector(changeLanguageTap))
+            languageButton.setTitle(Localization.Language.Vietnamese.localized(), for: .normal)
+            languageButton.addTarget(self, action: #selector(changeLanguageTap), for: .touchUpInside)
             AppPreferences.shared.setLanguage(EnumConstant.Language.vietnamese)
         } else {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(
-                title: Localization.Language.English.localized(),
-                style: .plain,
-                target: self,
-                action: #selector(changeLanguageTap))
+//            navigationItem.rightBarButtonItem = UIBarButtonItem(
+//                title: Localization.Language.English.localized(),
+//                style: .plain,
+//                target: self,
+//                action: #selector(changeLanguageTap))
+            languageButton.setTitle(Localization.Language.English.localized(), for: .normal)
+            languageButton.addTarget(self, action: #selector(changeLanguageTap), for: .touchUpInside)
             AppPreferences.shared.setLanguage(EnumConstant.Language.english)
         }
         refresh()

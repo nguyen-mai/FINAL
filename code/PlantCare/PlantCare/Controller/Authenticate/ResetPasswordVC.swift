@@ -49,7 +49,7 @@ class ResetPasswordVC: UIViewController {
     private func setupTextField() {
         CustomTextField.shared.styleTextField(
             textfield: emailTextField,
-            placeholer: Localization.Authenticate.EmailPlaceHolder,
+            placeholer: Localization.Authenticate.EmailPlaceHolder.localized(),
             icon: nil,
             underlineColor: AppColor.LightGrayColor)
         emailTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
@@ -57,7 +57,7 @@ class ResetPasswordVC: UIViewController {
     }
     
     private func setupButton() {
-        sendButton.setTitle(Localization.Authenticate.Send, for: .normal)
+        sendButton.setTitle(Localization.Authenticate.Send.localized(), for: .normal)
         sendButton.setTitleColor(AppColor.WhiteColor, for: .normal)
         sendButton.backgroundColor = AppColor.LightGrayColor
         sendButton.isEnabled = false
@@ -84,7 +84,6 @@ extension ResetPasswordVC {
         ProgressHUD.show()
         Auth.auth().sendPasswordReset(withEmail: email) { error in
             if error != nil {
-                print(error?.localizedDescription)
                 ProgressHUD.showError(error?.localizedDescription)
             } else {
                 self.showSucessfulAlert()

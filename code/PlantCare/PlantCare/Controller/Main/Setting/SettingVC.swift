@@ -46,7 +46,7 @@ class SettingVC: UIViewController {
         loginButton.setImage(UIImage(named: AppImage.Icon.CircleNext), for: .normal)
         loginButton.titleLabel?.font = UIFont(name: "Noteworthy Bold", size: 20)
         if Auth.auth().currentUser == nil {
-            loginButton.setTitle(Localization.Authenticate.Login, for: .normal)
+            loginButton.setTitle(Localization.Authenticate.Login.localized(), for: .normal)
             loginButton.addTarget(self, action: #selector(loginBtnTap), for: .touchUpInside)
             logOutBtn.isHidden = true
             listSetting = list.notLoginArray

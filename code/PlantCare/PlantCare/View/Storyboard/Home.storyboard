@@ -624,7 +624,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ga1-jT-RCZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1871" y="2103"/>
+            <point key="canvasLocation" x="1869.5652173913045" y="2102.6785714285716"/>
         </scene>
         <!--Detail DiseaseVC-->
         <scene sceneID="2fy-lM-BIM">

@@ -139,7 +139,7 @@ class AccountVC: CommunityPostCellViewController {
         guard let user = user else {
             return
         }
-        
+        posts.removeAll()
         Database.database().fetchAllPosts(withUID: user.uid, completion: { (posts) in
             self.posts.append(contentsOf: posts)
             self.posts.sort(by: { (p1, p2) -> Bool in
@@ -253,10 +253,10 @@ extension AccountVC: UIImagePickerControllerDelegate, UINavigationControllerDele
             }
             self.headerViewCell.changedImage = image
             self.headerViewCell.updateView()
-            self.handleRefresh()
             self.dismiss(animated: true, completion: nil)
             ProgressHUD.showSucceed(Localization.Notification.UpdateImage)
             NotificationCenter.default.post(name: NSNotification.Name.updateUserProfileFeed, object: nil)
+//            NotificationCenter.default.post(name: NSNotification.Name.updateCommunityFeed, object: nil)
         })
     }
     

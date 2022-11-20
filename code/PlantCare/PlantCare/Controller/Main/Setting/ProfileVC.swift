@@ -114,8 +114,8 @@ extension ProfileVC: ProfileCellDelegate {
                 textField.placeholder = Localization.Authenticate.NewUsernamePlaceholder.localized()
             }
 
-            let cancelAction = UIAlertAction(title: Localization.Alert.Cancel, style: .cancel, handler: nil)
-            let saveAction = UIAlertAction(title: Localization.Alert.Save, style: .default) { _ in
+            let cancelAction = UIAlertAction(title: Localization.Alert.Cancel.localized(), style: .cancel, handler: nil)
+            let saveAction = UIAlertAction(title: Localization.Alert.Save.localized(), style: .default) { _ in
                 NotificationCenter.default.post(name: NSNotification.Name.updateUserProfileFeed, object: nil)
                 let name = alertController.textFields![0].text
                 if let name = name {
@@ -147,8 +147,8 @@ extension ProfileVC: ProfileCellDelegate {
                 textField.isSecureTextEntry = true
             }
 
-            let cancelAction = UIAlertAction(title: Localization.Alert.Cancel, style: .cancel, handler: nil)
-            let saveAction = UIAlertAction(title: Localization.Alert.Save, style: .default) { _ in
+            let cancelAction = UIAlertAction(title: Localization.Alert.Cancel.localized(), style: .cancel, handler: nil)
+            let saveAction = UIAlertAction(title: Localization.Alert.Save.localized(), style: .default) { _ in
                 NotificationCenter.default.post(name: NSNotification.Name.updateUserProfileFeed, object: nil)
                 let email = alertController.textFields![0].text
                 let password = alertController.textFields![1].text

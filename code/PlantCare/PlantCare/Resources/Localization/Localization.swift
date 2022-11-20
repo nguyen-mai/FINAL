@@ -13,7 +13,7 @@ struct Localization {
     struct Onboarding {
         static let Skip = "Skip"
         static let Next = "Next"
-        static let GetStarted = "Get Started"
+        static let GetStarted = "Get Started!"
         static let titleSlide1 = "Identify Plant Diseases"
         static let descriptionSlide1 = "You can identify the plant diseases you don't know through your camera"
         static let titleSlide2 = "Discover Many Plant Diseases"

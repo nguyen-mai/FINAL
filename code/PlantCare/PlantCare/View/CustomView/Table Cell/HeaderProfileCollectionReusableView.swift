@@ -34,7 +34,6 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
     func updateView() {
         guard let user = user else { return }
         self.nameLabel.text = user.username
-        print("Image url: \(user.profileImageUrl)")
         if let profileImageUrl = user.profileImageUrl, profileImageUrl != "nil" {
             profileImage.loadImage(urlString: profileImageUrl)
         } else {
@@ -50,7 +49,6 @@ class HeaderProfileCollectionReusableView: UICollectionReusableView {
             profileImage.isUserInteractionEnabled = true
             
             if let changedImage = changedImage, changedImage != UIImage(named: AppImage.Icon.User) {
-                print("Profile image: \(changedImage)")
                 profileImage.image = changedImage
             }
             

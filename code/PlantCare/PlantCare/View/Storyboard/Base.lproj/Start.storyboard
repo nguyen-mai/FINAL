@@ -39,7 +39,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Sz-oU-XPs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="996" y="679"/>
+            <point key="canvasLocation" x="280" y="678"/>
         </scene>
         <!--OnboardingVC-->
         <scene sceneID="meq-E2-3NH">
@@ -50,7 +50,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="G9Z-M0-lZL">
-                                <rect key="frame" x="0.0" y="74" width="414" height="491"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="491"/>
                                 <color key="backgroundColor" name="View-Background"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="LP0-pU-6Ff">
                                     <size key="itemSize" width="413" height="588"/>
@@ -71,7 +71,7 @@
                                 </cells>
                             </collectionView>
                             <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="150-1T-FRC">
-                                <rect key="frame" x="149.5" y="565" width="115.5" height="26"/>
+                                <rect key="frame" x="149.5" y="585" width="115.5" height="26"/>
                                 <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="currentPageIndicatorTintColor" name="Green"/>
                             </pageControl>
@@ -93,13 +93,23 @@
                                     <constraint firstAttribute="height" constant="45" id="Jgd-Ja-Nv9"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SMD-DS-pTA">
+                                <rect key="frame" x="294" y="49" width="100" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="tk1-KA-jyw"/>
+                                    <constraint firstAttribute="height" constant="40" id="znB-gi-X4c"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Jng-If-g8E"/>
                         <color key="backgroundColor" name="White"/>
                         <constraints>
                             <constraint firstItem="G9Z-M0-lZL" firstAttribute="leading" secondItem="Jng-If-g8E" secondAttribute="leading" id="1Md-ap-ZEx"/>
                             <constraint firstItem="150-1T-FRC" firstAttribute="centerX" secondItem="Jng-If-g8E" secondAttribute="centerX" id="1PM-Ee-hui"/>
-                            <constraint firstItem="G9Z-M0-lZL" firstAttribute="top" secondItem="Jng-If-g8E" secondAttribute="top" constant="30" id="DiE-sN-4kq"/>
+                            <constraint firstItem="Jng-If-g8E" firstAttribute="trailing" secondItem="SMD-DS-pTA" secondAttribute="trailing" constant="20" id="2fv-oN-VX4"/>
+                            <constraint firstItem="G9Z-M0-lZL" firstAttribute="top" secondItem="Jng-If-g8E" secondAttribute="top" constant="50" id="DiE-sN-4kq"/>
+                            <constraint firstItem="SMD-DS-pTA" firstAttribute="top" secondItem="Jng-If-g8E" secondAttribute="top" constant="5" id="Jax-6b-8nG"/>
                             <constraint firstItem="Jng-If-g8E" firstAttribute="trailing" secondItem="I3c-Ym-V0K" secondAttribute="trailing" constant="30" id="cqo-hx-sBz"/>
                             <constraint firstItem="150-1T-FRC" firstAttribute="top" secondItem="G9Z-M0-lZL" secondAttribute="bottom" id="eAO-nI-e8x"/>
                             <constraint firstItem="Jng-If-g8E" firstAttribute="bottom" secondItem="I3c-Ym-V0K" secondAttribute="bottom" constant="50" id="fZe-46-eXi"/>
@@ -110,6 +120,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="G9Z-M0-lZL" id="FhF-5z-GKg"/>
+                        <outlet property="languageButton" destination="SMD-DS-pTA" id="cAJ-9B-XD5"/>
                         <outlet property="nextButton" destination="6Ub-jL-qXv" id="Kcl-AY-9Xz"/>
                         <outlet property="pageControl" destination="150-1T-FRC" id="Q86-V9-pOo"/>
                         <outlet property="skipButton" destination="GqV-h9-FxD" id="5Ky-UW-U8P"/>
@@ -117,12 +128,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mfO-XH-JhK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1791" y="678"/>
+            <point key="canvasLocation" x="1310" y="678"/>
         </scene>
     </scenes>
     <resources>
         <namedColor name="Green">
-            <color red="0.35294117647058826" green="0.6705882352941176" blue="0.38039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.36862745098039218" green="0.68235294117647061" blue="0.49411764705882355" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="View-Background">
             <color red="0.32899999618530273" green="0.32400000095367432" blue="0.4779999852180481" alpha="0.33000001311302185" colorSpace="custom" customColorSpace="sRGB"/>
