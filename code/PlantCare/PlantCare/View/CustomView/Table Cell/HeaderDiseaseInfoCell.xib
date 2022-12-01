@@ -48,7 +48,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0X-xY-gIB">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0X-xY-gIB">
                                         <rect key="frame" x="0.0" y="66.5" width="45" height="33.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                         <nil key="textColor"/>
@@ -76,7 +76,7 @@
                             <constraint firstItem="lfk-5z-1dM" firstAttribute="top" secondItem="xzo-aF-mMg" secondAttribute="top" constant="10" id="UFg-Pz-WD4"/>
                             <constraint firstAttribute="trailing" secondItem="lfk-5z-1dM" secondAttribute="trailing" constant="20" id="XIq-nT-xLf"/>
                             <constraint firstItem="lfk-5z-1dM" firstAttribute="leading" secondItem="xzo-aF-mMg" secondAttribute="leading" constant="20" id="fdP-eF-pxY"/>
-                            <constraint firstItem="jxf-iw-b3E" firstAttribute="bottom" secondItem="pgJ-ZM-Yq6" secondAttribute="bottom" constant="10" id="lOk-pU-MOo"/>
+                            <constraint firstItem="jxf-iw-b3E" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="pgJ-ZM-Yq6" secondAttribute="bottom" constant="10" id="lOk-pU-MOo"/>
                             <constraint firstItem="TXp-fb-oM1" firstAttribute="top" secondItem="lfk-5z-1dM" secondAttribute="bottom" constant="10" id="uW8-Ni-q0H"/>
                         </constraints>
                     </view>
