@@ -305,7 +305,7 @@
 "Use drugs containing the active ingredient chlorantraniliprole to kill spiders (Be sure to read the instructions carefully before using)." = "Use drugs containing the active ingredient chlorantraniliprole to kill spiders (Be sure to read the instructions carefully before using).";
 
 "Tomato Target Spot" = "Tomato Target Spot";
-"The disease can infect all aboveground parts of the tomato plant. The initial symptoms on the leaves are small spots, then gradually form large spots." = "The disease can infect all aboveground parts of the tomato plant. The initial symptoms on the leaves are small spots, then gradually form large spots.";
+"The disease affects older leaves first, initially as a yellow-green spot, without obvious margins, forming on the upper surface of the leaf. The underside of the disease forms a greenish-gray mold like velvet, the lesions are linked, turning brown, causing the leaves to wilt, die but usually do not fall. The disease also causes damage on inflorescences, left peduncles become black spots, concave, after drying, they fall off. The disease thrives in conditions of humidity > 85%, high humidity, the fungus forms many spores and spreads rapidly. Spores are easily transmitted by wind, rain, tools and insects." = "The disease affects older leaves first, initially as a yellow-green spot, without obvious margins, forming on the upper surface of the leaf. The underside of the disease forms a greenish-gray mold like velvet, the lesions are linked, turning brown, causing the leaves to wilt, die but usually do not fall. The disease also causes damage on inflorescences, left peduncles become black spots, concave, after drying, they fall off. The disease thrives in conditions of humidity > 85%, high humidity, the fungus forms many spores and spreads rapidly. Spores are easily transmitted by wind, rain, tools and insects.";
 "Remove diseased plant parts. A number of biological and chemical methods can be used to prevent and treat plant diseases." = "Remove diseased plant parts. A number of biological and chemical methods can be used to prevent and treat plant diseases.";
 
 "Tomato Yellow Leaf Curl Virus" = "Tomato Yellow Leaf Curl Virus";
@@ -346,3 +346,10 @@
 "Don't have an account?" = "Don't have an account?";
 "Already have an account?" = "Already have an account?";
 "Thank you for rating." = "Thank you for rating.";
+
+"Fungi" = "Fungi";
+"Bacterial" = "Bacterial";
+"Mold" = "Mold";
+"Virus" = "Virus";
+"Mite" = "Mite";
+"Healthy" = "Healthy";

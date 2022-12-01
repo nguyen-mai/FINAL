@@ -225,7 +225,7 @@ struct Localization {
         
         struct TomatoTargetSpot {
             static let TomatoTargetSpot = "Tomato Target Spot"
-            static let TomatoTargetSpotAbout = "The disease can infect all aboveground parts of the tomato plant. The initial symptoms on the leaves are small spots, then gradually form large spots."
+            static let TomatoTargetSpotAbout = "The disease affects older leaves first, initially as a yellow-green spot, without obvious margins, forming on the upper surface of the leaf. The underside of the disease forms a greenish-gray mold like velvet, the lesions are linked, turning brown, causing the leaves to wilt, die but usually do not fall. The disease also causes damage on inflorescences, left peduncles become black spots, concave, after drying, they fall off. The disease thrives in conditions of humidity > 85%, high humidity, the fungus forms many spores and spreads rapidly. Spores are easily transmitted by wind, rain, tools and insects."
             static let TomatoTargetSpotTreatment = "Remove diseased plant parts. A number of biological and chemical methods can be used to prevent and treat plant diseases."
         }
         
@@ -267,6 +267,12 @@ struct Localization {
         
         static let None = "None"
         static let NoResult = "No Result"
+        
+        static let Fungi = "Fungi"
+        static let Bacterial = "Bacterial"
+        static let Mold = "Mold"
+        static let Virus = "Virus"
+        static let Mite = "Mite"
     }
     
     struct Setting {

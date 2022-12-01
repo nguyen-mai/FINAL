@@ -274,7 +274,7 @@ extension Database {
         guard let postId = userPostRef.key else { return }
         
         Storage.storage().uploadPostImage(image: image, filename: postId) { (postImageUrl) in
-            let values = ["image_url": postImageUrl, "caption": caption, "image_width": image.size.width, "image_height": image.size.height, "creation_date": Date().timeIntervalSince1970, "id": postId] as [String : Any]
+            let values = ["image_url": postImageUrl, "caption": caption, "image_width": image.size.width, "image_height": image.size.height, "creation_date": Date().timeIntervalSince1970, "uid": postId] as [String : Any]
             
             userPostRef.updateChildValues(values) { (err, ref) in
                 if let err = err {
@@ -384,7 +384,7 @@ extension Database {
     func addCommentToPost(withId postId: String, text: String, completion: @escaping (Error?) -> ()) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        let values = ["text": text, "creation_date": Date().timeIntervalSince1970, "uid": uid] as [String: Any]
+        let values = ["content": text, "creation_date": Date().timeIntervalSince1970, "uid": uid] as [String: Any]
         
         let commentsRef = Database.database().reference().child("comments").child(postId).childByAutoId()
         commentsRef.updateChildValues(values) { (err, _) in
@@ -461,7 +461,7 @@ extension Database {
         guard let postId = userPostRef.key else { return }
         
         Storage.storage().uploadRelabeledDiseaseImage(image: image, filename: postId) { (postImageUrl) in
-            let values = ["image_url": postImageUrl, "plant_name": plantName, "disease_name": diseaseName, "relabel_plant_name": relabelPlantName, "relabel_disease_name": relabelDiseaseName, "image_width": image.size.width, "image_height": image.size.height, "creation_date": Date().timeIntervalSince1970, "id": postId] as [String : Any]
+            let values = ["image_url": postImageUrl, "plant_name": plantName, "disease_name": diseaseName, "relabel_plant_name": relabelPlantName, "relabel_disease_name": relabelDiseaseName, "image_width": image.size.width, "image_height": image.size.height, "creation_date": Date().timeIntervalSince1970, "uid": postId] as [String : Any]
             userPostRef.updateChildValues(values) { (err, ref) in
                 if let err = err {
                     print("Failed to save post to database", err)
@@ -480,7 +480,7 @@ extension Database {
         guard let postId = userPostRef.key else { return }
         
         Storage.storage().uploadClassifyingResult(image: image, filename: postId) { (postImageUrl) in
-            let values = ["image_url": postImageUrl, "plant_name": plantName, "disease_name": diseaseName, "certainty": certainty,"image_width": image.size.width, "image_height": image.size.height, "creation_date": Date().timeIntervalSince1970, "id": postId] as [String : Any]
+            let values = ["image_url": postImageUrl, "plant_name": plantName, "disease_name": diseaseName, "certainty": certainty,"image_width": image.size.width, "image_height": image.size.height, "creation_date": Date().timeIntervalSince1970, "uid": postId] as [String : Any]
             userPostRef.updateChildValues(values) { (err, ref) in
                 if let err = err {
                     print("Failed to save post to database", err)

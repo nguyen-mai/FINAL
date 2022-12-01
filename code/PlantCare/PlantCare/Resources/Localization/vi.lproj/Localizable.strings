@@ -63,12 +63,6 @@
 "To prevent rust, remove host plants. Also grow the following rust resistant apple varieties: Apple Redfree, Apples William's Pride, Apple Freedom" = "To prevent rust, remove host plants. Also grow the following rust resistant apple varieties: Apple Redfree, Apples William's Pride, Apple Freedom";
 
 "Corn" = "Ngô";
-    
-"Corn Grey Leaf Spot" = "Corn Grey Leaf Spot";
-"Initially, the lesions are only as small as needles, yellowish in color, then gradually develop into round, oval or amorphous shapes, the color and size of the lesions change. The disease occurs in all parts of the maize plant: leaves, stems, corn but mainly on leaves. The disease can arise very early as soon as the corn plant has 2-3 leaves." = "Initially, the lesions are only as small as needles, yellowish in color, then gradually develop into round, oval or amorphous shapes, the color and size of the lesions change. The disease occurs in all parts of the maize plant: leaves, stems, corn but mainly on leaves. The disease can arise very early as soon as the corn plant has 2-3 leaves.";
-"The disease arises in humid climates, fungal spores form a lot, especially in the stem nodes, leaf blades, corn husks forming a brown or black hairy layer. Leaf spot disease often causes a lot of damage in bad corn fields are fields without intensive farming, making the plants stunted and ugly. In addition, bad soils, lowland or waterlogged soils, fields with heavy, tight meat texture, or fields with frequent water shortages... make maize plants grow poorly, stunted, and unable to develop." = "The disease arises in humid climates, fungal spores form a lot, especially in the stem nodes, leaf blades, corn husks forming a brown or black hairy layer. Leaf spot disease often causes a lot of damage in bad corn fields are fields without intensive farming, making the plants stunted and ugly. In addition, bad soils, lowland or waterlogged soils, fields with heavy, tight meat texture, or fields with frequent water shortages... make maize plants grow poorly, stunted, and unable to develop.";
-"Corn should be planted in fields with light soil or sandy soil, with a good irrigation system, ensuring drainage in the rainy season and having enough water to actively irrigate corn in the dry season, creating growth for maize. and favorable development.\nCollect cleanly the remnants of diseased corn plants after harvest… Before planting, it is necessary to plow and harrow the field thoroughly to bury the remnants of diseased plants to kill the source of the disease spreading to the next crop.\nCare, fertilize and water properly to prevent diseases.\nWhen the field is sick, use one of the drugs such as: Tilt super 300EC; Daconil; Ridomil; Validacin; Mannozeb 80WP…for spraying. Before spraying, carefully read the instructions on how to use the drug printed on the packaging.\nIf the field is often seriously damaged by diseases, it should be rotated with some other vegetables to limit and prevent diseases." = "Corn should be planted in fields with light soil or sandy soil, with a good irrigation system, ensuring drainage in the rainy season and having enough water to actively irrigate corn in the dry season, creating growth for maize. and favorable development.\nCollect cleanly the remnants of diseased corn plants after harvest… Before planting, it is necessary to plow and harrow the field thoroughly to bury the remnants of diseased plants to kill the source of the disease spreading to the next crop.\nCare, fertilize and water properly to prevent diseases.\nWhen the field is sick, use one of the drugs such as: Tilt super 300EC; Daconil; Ridomil; Validacin; Mannozeb 80WP…for spraying. Before spraying, carefully read the instructions on how to use the drug printed on the packaging.\nIf the field is often seriously damaged by diseases, it should be rotated with some other vegetables to limit and prevent diseases.";
-    
 "Common Rust" = "Common Rust";
 "Initially clear to pale yellow dots, scattered on the leaf blade. After creating floating tumors, causing the cells to crack, the inside contains a yellow-brown powder, yellow brick when young. At the end of the growth stage, the disease develops a lot, covers the leaves, black spots form long black spots on the leaf blade." = "Initially clear to pale yellow dots, scattered on the leaf blade. After creating floating tumors, causing the cells to crack, the inside contains a yellow-brown powder, yellow brick when young. At the end of the growth stage, the disease develops a lot, covers the leaves, black spots form long black spots on the leaf blade.";
 "The disease exists on the remnants of diseased leaves, seeds, and corn. The suitable temperature for disease development is 17-18°C. Inadequately cared for fields, plants grow poorly, diseases arise early, cause severe damage, leaves dry, die early, yield is reduced by 20%. The fungus retains the following crop mainly by spores on maize residues and seeds.\nThe disease appears more in the flowering stage." = "The disease exists on the remnants of diseased leaves, seeds, and corn. The suitable temperature for disease development is 17-18°C. Inadequately cared for fields, plants grow poorly, diseases arise early, cause severe damage, leaves dry, die early, yield is reduced by 20%. The fungus retains the following crop mainly by spores on maize residues and seeds.\nThe disease appears more in the flowering stage.";
@@ -174,7 +168,7 @@
 "Do you want to save?" = "Bạn muốn lưu kết quả nhận diện này không?";
 "Relabel" = "Gán nhãn lại";
 "Enter plant name" = "Nhập tên loài cây";
-"Enter disease name" = "Nhập tên cây trồng";
+"Enter disease name" = "Nhập tên bệnh cây trồng";
 "Please enter something!" = "Hãy để lại gì đó!";
 "Add a comment..." = "Thêm bình luận...";
 "Submit" = "Đăng";
@@ -293,11 +287,11 @@
 "Use drugs containing the active ingredient chlorantraniliprole to kill spiders (Be sure to read the instructions carefully before using)." = "Sử dụng các loại thuốc có chứa hoạt chất chlorantraniliprole để tiêu diệt nhện (Nhớ đọc kỹ hướng dẫn sử dụng trước khi dùng).";
 
 
-"Tomato Target Spot" = "Bệnh đốm mục tiêu";
-"The disease can infect all aboveground parts of the tomato plant. The initial symptoms on the leaves are small spots, then gradually form large spots." = "Bệnh có thể lây nhiễm tất cả các bộ phận trên mặt đất của cây cà chua. Các triệu chứng ban đầu trên lá là những đốm nhỏ, sau hình thành dần những đốm to.";
+"Tomato Target Spot" = "Bệnh đốm mốc đen";
+"The disease affects older leaves first, initially as a yellow-green spot, without obvious margins, forming on the upper surface of the leaf. The underside of the disease forms a greenish-gray mold like velvet, the lesions are linked, turning brown, causing the leaves to wilt, die but usually do not fall. The disease also causes damage on inflorescences, left peduncles become black spots, concave, after drying, they fall off. The disease thrives in conditions of humidity > 85%, high humidity, the fungus forms many spores and spreads rapidly. Spores are easily transmitted by wind, rain, tools and insects." = "Bệnh gây hại trên lá già trước, ban đầu là đốm màu vàng xanh, không có rìa rõ ràng, hình thành ở mặt trên của lá. Mặt dưới vết bệnh hình thành lớp mốc xanh xám như phủ nhung, các vết bệnh liên kết, chuyển sang nâu làm lá héo, chết nhưng thường không rụng. Bệnh cũng gây hại trên chùm hoa, cuống trái thành vết đen, lõm, sau khô rụng. Bệnh phát triển mạnh trong điều kiện ẩm độ > 85%, ẩm độ cao nấm hình thành nhiều bào tử và lây lan mạnh. Bào tử dể dàng lây qua gió, mưa, công cụ và côn trùng.";
 "Remove diseased plant parts. A number of biological and chemical methods can be used to prevent and treat plant diseases." = "Loại bỏ những phần cây bị bệnh. Có thể sử dụng một số biện pháp sinh học và hoá học để phòng trị bệnh cho cây.";
 
-"Tomato Yellow Leaf Curl Virus" = "Bệnh vi-rút vàng xoăn lá";
+"Tomato Yellow Leaf Curl Virus" = "Bệnh Héo vàng(Héo rũ)";
 "The disease is caused by a viral infection, usually spread by aphids or brought into the garden through infected seedlings. The first sign is that the foliage curls inward, then begins to turn yellow. Plant growth will be stunted, flowering will be reduced and fruit set will be reduced or stopped altogether." = "Bệnh do nhiễm virus, thường do rệp lây lan hoặc mang vào vườn thông qua cây con bị nhiễm bệnh. Dấu hiệu đầu tiên là tán lá cong vào trong, sau đó bắt đầu chuyển sang màu vàng. Sự phát triển của cây sẽ bị còi cọc, sự ra hoa sẽ giảm đi và sự đậu trái sẽ bị suy giảm hoặc ngừng hoàn toàn.";
 "Field sanitation. Use disease resistant varieties. Making trellis, pruning leaves at the base, increasing ventilation for tomato beds have the effect of reducing the level of disease." = "Vệ sinh đồng ruộng. Sử dụng giống kháng bệnh. Làm giàn, cắt tỉa lá phía gốc, tăng độ thông thoáng cho luống cà chua có tác dụng làm giảm mức độ bệnh.";
 
@@ -336,3 +330,10 @@
 "Don't have an account?" = "Bạn chưa có tài khoản";
 "Already have an account?" = "Bạn đã có tài khoản";
 "Thank you for rating." = "Cảm ơn vì đã tham gia đánh giá";
+
+"Fungi" = "Nấm";
+"Bacterial" = "Vi khuẩn";
+"Mold" = "Nấm mốc";
+"Virus" = "Vi-rút";
+"Mite" = "Côn trùng";
+"Healthy" = "Khoẻ mạnh";

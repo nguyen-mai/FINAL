@@ -31,7 +31,6 @@
 		182DAE6429140FAB005B201D /* CommunityEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182DAE6329140FAB005B201D /* CommunityEmptyStateView.swift */; };
 		182DAE662914103C005B201D /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182DAE652914103C005B201D /* CommentCell.swift */; };
 		182DAE6A29141055005B201D /* CommunityPostCellHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182DAE6929141055005B201D /* CommunityPostCellHeader.swift */; };
-		182DAE6C29141287005B201D /* CommentInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182DAE6B29141287005B201D /* CommentInputAccessoryView.swift */; };
 		182DAE70291413BB005B201D /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182DAE6F291413BB005B201D /* DateExtension.swift */; };
 		182DAE722914140F005B201D /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182DAE712914140F005B201D /* PlaceholderTextView.swift */; };
 		182DAE7429141452005B201D /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182DAE7329141452005B201D /* UIColorExtension.swift */; };
@@ -82,6 +81,7 @@
 		18775F992875FDAE0032793D /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18775F982875FDAE0032793D /* HomeVC.swift */; };
 		18775F9B2875FDBA0032793D /* CameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18775F9A2875FDBA0032793D /* CameraVC.swift */; };
 		18775F9F2875FDE30032793D /* ForumVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18775F9E2875FDE30032793D /* ForumVC.swift */; };
+		187A264B293967F200369428 /* CommentInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187A264A293967F200369428 /* CommentInputAccessoryView.swift */; };
 		187E143528830DF300CEAF54 /* ButtonWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E143428830DF300CEAF54 /* ButtonWithImage.swift */; };
 		188DC5012924616300435ADE /* DiseaseSearchingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188DC5002924616300435ADE /* DiseaseSearchingCell.swift */; };
 		1891D35C2920A7BE009E2254 /* CustomFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1891D35B2920A7BE009E2254 /* CustomFlowLayout.swift */; };
@@ -126,7 +126,6 @@
 		182DAE6329140FAB005B201D /* CommunityEmptyStateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityEmptyStateView.swift; sourceTree = "<group>"; };
 		182DAE652914103C005B201D /* CommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		182DAE6929141055005B201D /* CommunityPostCellHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityPostCellHeader.swift; sourceTree = "<group>"; };
-		182DAE6B29141287005B201D /* CommentInputAccessoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentInputAccessoryView.swift; path = ../../../../../../../Mock/code/PlantCare/Views/CommentInputAccessoryView.swift; sourceTree = "<group>"; };
 		182DAE6F291413BB005B201D /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		182DAE712914140F005B201D /* PlaceholderTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
 		182DAE7329141452005B201D /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -180,6 +179,7 @@
 		18775F982875FDAE0032793D /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		18775F9A2875FDBA0032793D /* CameraVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraVC.swift; sourceTree = "<group>"; };
 		18775F9E2875FDE30032793D /* ForumVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumVC.swift; sourceTree = "<group>"; };
+		187A264A293967F200369428 /* CommentInputAccessoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentInputAccessoryView.swift; sourceTree = "<group>"; };
 		187E143428830DF300CEAF54 /* ButtonWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithImage.swift; sourceTree = "<group>"; };
 		188DC5002924616300435ADE /* DiseaseSearchingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiseaseSearchingCell.swift; sourceTree = "<group>"; };
 		1891D35B2920A7BE009E2254 /* CustomFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFlowLayout.swift; sourceTree = "<group>"; };
@@ -219,7 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				182DAE712914140F005B201D /* PlaceholderTextView.swift */,
-				182DAE6B29141287005B201D /* CommentInputAccessoryView.swift */,
+				187A264A293967F200369428 /* CommentInputAccessoryView.swift */,
 				182DAE6929141055005B201D /* CommunityPostCellHeader.swift */,
 				182DAE6329140FAB005B201D /* CommunityEmptyStateView.swift */,
 				18ADFE392884C65A00D159F1 /* CustomImageView.swift */,
@@ -685,7 +685,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				182DAE6C29141287005B201D /* CommentInputAccessoryView.swift in Sources */,
 				182DAE70291413BB005B201D /* DateExtension.swift in Sources */,
 				184B737F2923807400DC911A /* DiseasesSearchingVC.swift in Sources */,
 				182DAE662914103C005B201D /* CommentCell.swift in Sources */,
@@ -700,6 +699,7 @@
 				180EDEB929240C9A00FC5660 /* ClassifyingResult.swift in Sources */,
 				18BE2EDF28773F16004F1E43 /* ClassifierModel.mlmodel in Sources */,
 				18775F752875E4A20032793D /* OnboardingVC.swift in Sources */,
+				187A264B293967F200369428 /* CommentInputAccessoryView.swift in Sources */,
 				184F8C5B287C1C210079102B /* ClassifyResultVC.swift in Sources */,
 				18775F8E2875FCCC0032793D /* ResetPasswordVC.swift in Sources */,
 				184F8C62287C1CDC0079102B /* Comment.swift in Sources */,
