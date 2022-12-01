@@ -343,3 +343,4 @@
 "The password is invalid or the user does not have a password" = "Mật khẩu sai";
 "There is no user record corresponding to this identifier. The user may have been deleted." = "Không tồn tại tài khoản này.";
 "The email address is already in use by another account." = "Email này đã được đăng ký.";
+"Cause" = "Nguyên nhân";

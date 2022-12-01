@@ -255,7 +255,7 @@ struct Localization {
         static let ConditionTitle = "Conditions for disease development"
         static let PreventionTitle = "Prevention and treatment"
         static let CertaintyTitle = "Certainty"
-        static let TypeTitle = "Type"
+        static let TypeTitle = "Cause"
         static let ThreatTitle = "Threat Level"
         
         static let HighLevel = "High"
