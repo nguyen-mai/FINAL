@@ -141,7 +141,7 @@ extension RegisterVC {
             ProgressHUD.show()
             Auth.auth().createUser(withEmail: email, username: username, password: password, image: nil) { (err) in
                 if let err = err {
-                    ProgressHUD.showError(err.localizedDescription)
+                    ProgressHUD.showError(err.localizedDescription.localized())
                     return
                 }
                 ProgressHUD.dismiss()

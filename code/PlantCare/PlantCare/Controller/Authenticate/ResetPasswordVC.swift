@@ -84,7 +84,7 @@ extension ResetPasswordVC {
         ProgressHUD.show()
         Auth.auth().sendPasswordReset(withEmail: email) { error in
             if error != nil {
-                ProgressHUD.showError(error?.localizedDescription)
+                ProgressHUD.showError(error?.localizedDescription.localized())
             } else {
                 self.showSucessfulAlert()
                 ProgressHUD.dismiss()

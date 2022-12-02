@@ -339,8 +339,10 @@
 "Healthy" = "Khoẻ mạnh";
 
 "The email address is badly formatted." = "Email định dạng sai.";
-"Access to this account has been temporarily due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later." = "Tài khoản của bạn tạm thời bị khoá do đăng nhập sai quá nhiều lần. Bạn xin vui lòng đợi thêm ít phút hoặc chọn quên mật khẩu.";
-"The password is invalid or the user does not have a password" = "Mật khẩu sai";
+"Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later." = "Tài khoản của bạn tạm thời bị khoá do đăng nhập sai quá nhiều lần. Bạn xin vui lòng đợi thêm ít phút hoặc chọn quên mật khẩu.";
+"The password is invalid or the user does not have a password." = "Mật khẩu sai.";
 "There is no user record corresponding to this identifier. The user may have been deleted." = "Không tồn tại tài khoản này.";
 "The email address is already in use by another account." = "Email này đã được đăng ký.";
+
 "Cause" = "Nguyên nhân";
+"Register successfully!" = "Đăng ký thành công!";
