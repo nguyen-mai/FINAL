@@ -327,8 +327,8 @@
 "Reset Password" = "Khôi phục mật khẩu";
 "Create your account" = "Tạo tài khoản";
 "Get Started!" = "Bắt đầu!";
-"Don't have an account?" = "Bạn chưa có tài khoản";
-"Already have an account?" = "Bạn đã có tài khoản";
+"Don't have an account?" = "Bạn chưa có tài khoản?";
+"Already have an account?" = "Bạn đã có tài khoản?";
 "Thank you for rating." = "Cảm ơn vì đã tham gia đánh giá";
 
 "Fungi" = "Nấm";
@@ -346,3 +346,4 @@
 
 "Cause" = "Nguyên nhân";
 "Register successfully!" = "Đăng ký thành công!";
+"History" = "Lịch sử tra cứu";

@@ -64,6 +64,7 @@ struct Localization {
         static let ReferenceResult = "Bạn nhận thấy kết quả đúng không?"
         static let Heal = "Plant piseases classification"
         static let References = "References"
+        static let History = "History"
     }
     
     struct AppleDisease {
