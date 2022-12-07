@@ -18,10 +18,14 @@ class ClassifyResultVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.backgroundColor = AppColor.GreenColor
+        let tabBarController = self.tabBarController as! BaseTabBarController
+        tabBarController.hideTabBar()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        let tabBarController = self.tabBarController as! BaseTabBarController
+        tabBarController.showTabBar()
     }
     
 //    override func viewWillAppear(_ animated: Bool) {
