@@ -363,3 +363,6 @@
 "The email address is already in use by another account." = "The email address is already in use by another account.";
 "Register successfully!" = "Register successfully!";
 "History" = "History";
+"Your account is not logged in!" = "Your account is not logged in!";
+"Homepage" = "Homepage";
+"Log in" = "Log in";

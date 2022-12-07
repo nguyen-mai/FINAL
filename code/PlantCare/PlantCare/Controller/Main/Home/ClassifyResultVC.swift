@@ -21,23 +21,17 @@ class ClassifyResultVC: UIViewController {
         let tabBarController = self.tabBarController as! BaseTabBarController
         tabBarController.hideTabBar()
     }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        let tabBarController = self.tabBarController as! BaseTabBarController
-        tabBarController.showTabBar()
-    }
     
 //    override func viewWillAppear(_ animated: Bool) {
 //        super.viewWillAppear(animated)
 //        navigationController?.setNavigationBarHidden(false, animated: animated)
 //    }
 //
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//        let tabBarController = self.tabBarController as! BaseTabBarController
-//        tabBarController.showTabBar()
-//    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        let tabBarController = self.tabBarController as! BaseTabBarController
+        tabBarController.showTabBar()
+    }
     
     private func setupData() {
         arrayData = [
